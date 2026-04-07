@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reorder PDF Pages Online — Rearrange Page Order (No Upload) | Compress It Small</title>
+<meta content="Reorder PDF pages online directly in your browser. Change page order, move important pages to the front, or create a new sequence without uploading your file to any server." name="description"/>
+<meta content="reorder pdf pages, rearrange pdf, change pdf page order online, pdf page reordering, no upload pdf tool, browser-based pdf reorder, pdf-lib" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/pdf/reorder-pdf/" rel="canonical"/>
+<!-- pdf-lib for PDF manipulation -->
+<script src="/assets/js/pdf-lib.min.js"></script>
+<!-- Structured Data: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Compress It Small – Reorder PDF Pages Online",
+  "url": "https://compressitsmall.co.uk/tools/pdf/reorder-pdf/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web browser",
+  "description": "Free online PDF tool to reorder pages. Change the order of pages in a PDF securely in your browser with no uploads.",
+  "featureList": [
+    "Reorder PDF pages by custom sequence",
+    "Local-only, no file upload",
+    "Works on any modern browser",
+    "Download a clean, rebuilt PDF"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<!-- Structured Data: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to upload my PDF to reorder pages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This PDF reorder tool works entirely in your browser. Your PDF is not uploaded or stored on any external server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will reordering pages reduce the quality of my PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The tool copies the existing page objects from your PDF into a new document without re-encoding images or text, so visual quality remains the same."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I duplicate pages when reordering?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can reference the same page number multiple times in the order field to create duplicates in the new PDF."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I only want a subset of pages in a new order?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can specify exactly which pages you want and in what sequence. The tool will build a new PDF containing only those pages in the order you choose."
+      }
+    }
+  ]
+}
+</script>
+<style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-pill: 999px;
+      --radius-lg: 16px;
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+      --max-width: 1120px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    header {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 22px rgba(30, 64, 175, 0.45);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text span:first-child {
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: var(--radius-pill);
+      background: var(--primary);
+      transition: width 0.16s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.3rem;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: #eef2ff;
+      color: var(--primary-dark);
+    }
+
+    .btn-small {
+      padding: 0.45rem 0.95rem;
+      font-size: 0.8rem;
+    }
+
+    main {
+      padding: 2.25rem 0 2.5rem;
+    }
+
+    /* HERO */
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .page-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+    }
+
+    .page-description {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 42rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      background: #e0f2fe;
+      font-size: 0.78rem;
+    }
+
+    .hero-pill span.icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      background: #0ea5e9;
+      color: #ffffff;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      max-width: 36rem;
+    }
+
+    .hero-card {
+      background: var(--bg-alt);
+      border-radius: 20px;
+      padding: 1rem 1.1rem 1.2rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-card h2 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      padding-left: 0;
+    }
+
+    .hero-card li {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-card li span.bullet {
+      margin-top: 0.26rem;
+      font-size: 0.6rem;
+      color: #16a34a;
+    }
+
+    /* TOOL SECTION */
+
+    .tool-section {
+      margin-top: 2.2rem;
+    }
+
+    .tool-card {
+      background: var(--bg-alt);
+      border-radius: 20px;
+      padding: 1.2rem 1.2rem 1.3rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .tool-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .tool-title-row h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .tool-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: #ecfeff;
+      color: #0369a1;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .tool-summary {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .tool-ui {
+      margin-top: 0.1rem;
+      padding: 0.9rem 1rem;
+      border-radius: 14px;
+      border: 1px dashed #d1d5db;
+      background: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.86rem;
+    }
+
+    .tool-ui-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    input[type="file"],
+    input[type="text"] {
+      font: inherit;
+      font-size: 0.85rem;
+      padding: 0.4rem 0.55rem;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      min-width: 0;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
+    }
+
+    .tool-help {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .tool-help code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      background: #e5e7eb;
+      padding: 0.02rem 0.25rem;
+      border-radius: 4px;
+    }
+
+    .tool-status {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      min-height: 1.1rem;
+    }
+
+    .tool-status.success {
+      color: #15803d;
+    }
+
+    .tool-status.error {
+      color: #b91c1c;
+    }
+
+    /* ARTICLE */
+
+    .article {
+      margin-top: 1.4rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem;
+      color: #4b5563;
+    }
+
+    .article h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0.6rem 0 0.3rem;
+      color: #111827;
+    }
+
+    .article h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0.6rem 0 0.3rem;
+      color: #111827;
+    }
+
+    .article h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin: 0.55rem 0 0.25rem;
+      color: #111827;
+    }
+
+    .article p {
+      margin-bottom: 0.4rem;
+    }
+
+    .article ul {
+      padding-left: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .article li {
+      margin-bottom: 0.26rem;
+    }
+
+    .article code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      background: #e5e7eb;
+      padding: 0.02rem 0.25rem;
+      border-radius: 4px;
+    }
+
+    .article blockquote {
+      border-left: 3px solid #d1d5db;
+      padding-left: 0.7rem;
+      margin: 0.35rem 0;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #020617;
+      color: #9ca3af;
+      padding: 1.4rem 0;
+      font-size: 0.78rem;
+      margin-top: 2.2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+      }
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+</style>
+<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="Reorder PDF Pages Online — Rearrange Page Order (No Upload) | Compress It Small" property="og:title"/><meta content="Reorder PDF pages online directly in your browser. Change page order, move important pages to the front, or create a new sequence without uploading your file to any server." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/pdf/reorder-pdf/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Reorder PDF Pages Online — Rearrange Page Order (No Upload) | Compress It Small" name="twitter:title"/><meta content="Reorder PDF pages online directly in your browser. Change page order, move important pages to the front, or create a new sequence without uploading your file to any server." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<div class="container">
+<!-- HERO -->
+<section class="hero">
+<div class="hero-grid">
+<div>
+<div class="page-kicker">PDF page reorder</div>
+<h1 class="page-title">
+              Reorder PDF pages online — rearrange your document safely in your browser
+            </h1>
+<p class="page-description">
+              Change the order of pages in a PDF without uploading it anywhere. Move
+              important sections to the front, group related pages, or rebuild a cleaner
+              version of your document using a simple, page-based order field.
+            </p>
+<div class="hero-pills">
+<div class="hero-pill">
+<span class="icon">✓</span>
+                No upload — all processing stays in your browser
+              </div>
+<div class="hero-pill">
+<span class="icon">⇄</span>
+                Custom page order: 3,1,2,5–7…
+              </div>
+<div class="hero-pill">
+<span class="icon">📄</span>
+                Duplicate or remove pages by editing the sequence
+              </div>
+</div>
+<div class="hero-actions">
+<button class="btn btn-primary" onclick="document.getElementById('reorder-section').scrollIntoView({behavior:'smooth'})">
+                Start reordering pages
+              </button>
+<button class="btn btn-outline" onclick="location.href='/tools/pdf/'">
+                View all PDF tools
+              </button>
+</div>
+<p class="hero-meta">
+              Perfect when you need to send a single, well-structured PDF to a portal,
+              professor, employer, or government office — but your current document has
+              important pages buried in the wrong place.
+            </p>
+</div>
+<aside aria-label="Benefits of this PDF page reorder tool" class="hero-card">
+<h2>Why reorder pages with this tool?</h2>
+<ul>
+<li>
+<span class="bullet">●</span>
+<span>
+<strong>Privacy-friendly:</strong> your PDF stays in the browser tab —
+                  no external upload or storage.
+                </span>
+</li>
+<li>
+<span class="bullet">●</span>
+<span>
+<strong>Flexible order syntax:</strong> accept patterns like
+                  <code>3,1,2,5-7</code> for advanced rearrangements.
+                </span>
+</li>
+<li>
+<span class="bullet">●</span>
+<span>
+<strong>Clean rebuilt output:</strong> the tool creates a fresh PDF,
+                  often with a tidier internal structure.
+                </span>
+</li>
+<li>
+<span class="bullet">●</span>
+<span>
+<strong>No watermark or sign-up:</strong> just reorder, download,
+                  and upload your improved document wherever you need it.
+                </span>
+</li>
+</ul>
+</aside>
+</div>
+</section>
+<!-- TOOL SECTION -->
+<section aria-label="Reorder PDF pages tool" class="tool-section" id="reorder-section">
+<article class="tool-card">
+<div class="tool-title-row">
+<div>
+<h2>Reorder PDF pages in a custom sequence</h2>
+<p class="tool-summary">
+                Choose a PDF, type the new page order (for example,
+                <code>3,1,2,5-7</code>), and download a freshly rebuilt document where
+                pages follow that exact sequence.
+              </p>
+</div>
+<span class="tool-tag">Reorder</span>
+</div>
+<div class="tool-ui">
+<div class="tool-ui-row">
+<label for="reorderFile">1. Select PDF file</label>
+</div>
+<div class="tool-ui-row">
+<input accept="application/pdf" id="reorderFile" type="file"/>
+</div>
+<div class="tool-ui-row">
+<label for="reorderOrder">
+                2. Enter new page order
+              </label>
+</div>
+<div class="tool-ui-row">
+<input id="reorderOrder" placeholder="Example: 3,1,2,5-7 (for a 7-page PDF)" type="text"/>
+<button class="btn btn-primary btn-small" onclick="runPdfReorder()" type="button">
+                Reorder &amp; download
+              </button>
+</div>
+<p class="tool-help">
+              Use <code>1,2,3…</code> for individual pages, and
+              <code>a-b</code> for ranges. You can:
+              <br/>
+              • Skip pages to remove them (e.g., <code>1,2,5-7</code> omits pages 3–4)
+              <br/>
+              • Repeat numbers to duplicate a page (e.g., <code>1,1,2</code>)
+              <br/>
+              • Combine single pages and ranges in any order.
+            </p>
+<div class="tool-status" id="reorderStatus">
+              Choose a PDF, type the new page order, then click “Reorder &amp; download”.
+            </div>
+</div>
+<!-- LONG SEO ARTICLE -->
+<div class="article">
+<h2>Why page order matters in real-world PDF workflows</h2>
+<p>
+              In practice, many PDFs are assembled in a hurry. You combine scans from
+              different devices, export sections from several Word documents, or merge
+              multiple files just to meet a deadline. The result is a single PDF that
+              technically contains everything you need, but the page order is not ideal.
+              The cover may be in the wrong place, supporting evidence might appear
+              before the main explanation, or signature pages are scattered in the middle
+              of the file instead of at the end.
+            </p>
+<p>
+              When you send such a document to a scholarship portal, administrative
+              office, or potential employer, the reader has to jump back and forth
+              between pages to understand what is going on. In a worst-case scenario,
+              important information can be missed because it is hidden between less
+              relevant pages. Reordering the PDF into a logical sequence makes the
+              document easier to read and signals that you pay attention to detail.
+            </p>
+<p>
+              This browser-based tool is built for that exact need. It allows you to
+              specify a custom sequence of pages — including ranges and duplicates — and
+              then generates a clean, newly rebuilt PDF that follows your chosen order.
+              Because everything happens locally in your browser, you can safely use it
+              with confidential or sensitive files without sending anything to a remote
+              server.
+            </p>
+<h2>Typical scenarios where reordering a PDF is essential</h2>
+<p>
+              You might not always think about page order as a “problem” until you run
+              into a specific use-case. Some of the most common scenarios include:
+            </p>
+<ul>
+<li>
+<strong>Scholarship or grant applications:</strong> you need your
+                motivation letter, CV, transcripts, and supporting documents in a very
+                specific order defined by the call.
+              </li>
+<li>
+<strong>Job applications:</strong> you want your cover letter as page 1,
+                your CV as pages 2–3, and references or certificates after that.
+              </li>
+<li>
+<strong>Academic submissions:</strong> you must place the title page,
+                main content, appendices, and supplementary material in a proper order
+                for examiners or reviewers.
+              </li>
+<li>
+<strong>Legal and administrative documents:</strong> contracts often
+                require certain clauses, annexes, or signatures to be in a particular
+                sequence for clarity and legal compliance.
+              </li>
+<li>
+<strong>Teaching materials and course packs:</strong> educators often
+                build large PDFs by merging different handouts, slides, and exercises,
+                then want to reorder them later.
+              </li>
+</ul>
+<p>
+              In each of these cases, the ability to rearrange pages manually, without
+              needing a heavy desktop application or risky online upload, saves time and
+              stress. You simply load the file, think about the sequence you want, type
+              that sequence into the order field, and download a fixed version.
+            </p>
+<h2>Understanding the page order field: how the syntax works</h2>
+<p>
+              The power of this tool comes from a flexible, text-based syntax that
+              allows you to express your new page sequence in a single line. It uses
+              simple rules so you do not need to learn a complex language.
+            </p>
+<h3>1. Basic indexing</h3>
+<p>
+              Page numbers are <strong>1-based</strong> and follow the natural order of
+              the PDF. If your document has 10 pages, the valid page numbers are 1
+              through 10. You can see the total number of pages in most PDF viewers
+              before using the tool, or you can experiment and adjust.
+            </p>
+<h3>2. Comma-separated individual pages</h3>
+<p>
+              To specify individual pages, separate them with commas:
+            </p>
+<ul>
+<li><code>1,2,3</code> — keeps the original first three pages in order.</li>
+<li><code>3,2,1</code> — reverses the first three pages.</li>
+<li><code>1,4,7</code> — creates a new PDF with only pages 1, 4, and 7.</li>
+</ul>
+<p>
+              This is useful when only a few pages need to be moved around or when you
+              want to build a new document from a subset of the original.
+            </p>
+<h3>3. Ranges using the “a-b” pattern</h3>
+<p>
+              For continuous blocks of pages, you can use a hyphen:
+              <code>a-b</code> means “all pages from a to b inclusive”.
+            </p>
+<ul>
+<li><code>1-5</code> — pages 1, 2, 3, 4, and 5.</li>
+<li><code>3-7</code> — pages 3, 4, 5, 6, and 7.</li>
+<li><code>5-5</code> — just page 5 (equivalent to writing <code>5</code>).</li>
+</ul>
+<p>
+              Ranges save time when you know large segments are already in the correct
+              internal order but need to be moved as a block within your new sequence.
+            </p>
+<h3>4. Combining pages and ranges</h3>
+<p>
+              You can mix single pages and ranges in any order:
+            </p>
+<ul>
+<li><code>3,1,2,5-7</code> — places page 3 first, then 1, then 2, then pages 5–7.</li>
+<li><code>1-3,7,4-6</code> — keeps 1–3, then adds page 7, then pages 4–6.</li>
+</ul>
+<p>
+              This is the most powerful pattern because it lets you correct complex
+              mis-orderings with a single instruction. You do not need to split and
+              merge multiple times — the new sequence is defined in one pass.
+            </p>
+<h3>5. Omitting pages to remove them</h3>
+<p>
+              Any page number that you do not include in the sequence will be dropped
+              from the new PDF. This is a simple and effective way to remove unwanted
+              pages:
+            </p>
+<ul>
+<li>
+                If your PDF has 8 pages and you write <code>1-3,6-8</code>, then pages 4
+                and 5 are omitted.
+              </li>
+<li>
+                If you only need the first page of a multi-page invoice, you can just
+                write <code>1</code>.
+              </li>
+</ul>
+<p>
+              This doubles as a quick “delete pages” feature without needing a separate
+              interface.
+            </p>
+<h3>6. Duplicating pages intentionally</h3>
+<p>
+              The tool also supports duplicates. If you reference the same page number
+              multiple times, it will appear multiple times in the output PDF:
+            </p>
+<ul>
+<li><code>1,1,2</code> — duplicates page 1 so that it appears twice.</li>
+<li><code>3,3,3</code> — makes a PDF with three copies of page 3.</li>
+</ul>
+<p>
+              You might use duplication for highlighting instructions, creating “cover
+              pages” repeated before sections, or preparing training materials where a
+              particular page needs to appear more than once.
+            </p>
+<h2>Privacy and security: reordering PDFs without uploads</h2>
+<p>
+              Many online PDF tools provide page reordering, but they rely on a
+              server-based architecture. Your file is uploaded, stored, processed, and
+              then made available again as a new download. Even with auto-deletion
+              policies, that entire process temporarily transfers your content to an
+              external system you do not control.
+            </p>
+<p>
+              This tool is intentionally different. It uses the <code>PDFDocument</code>
+              APIs from <code>pdf-lib</code> directly in your browser. The steps look
+              roughly like this:
+            </p>
+<ul>
+<li>You select a PDF from your device.</li>
+<li>The file is read into memory via JavaScript (no network transfer).</li>
+<li>
+                The library parses its structure and exposes a list of page indices for
+                copying.
+              </li>
+<li>
+                The tool interprets your order string, maps human page numbers to zero-based indices, and creates a new PDF in memory.
+              </li>
+<li>The new file is offered as a standard browser download.</li>
+</ul>
+<p>
+              At no point is your content sent to a remote server by this page. When you
+              close the tab, the in-memory data used during processing is cleared by the
+              browser’s normal behavior.
+            </p>
+<h2>Combining reordering with other PDF tools</h2>
+<p>
+              Reordering is just one step in a typical document preparation workflow.
+              Once you have the pages in the right sequence, you might still want to:
+            </p>
+<ul>
+<li>
+<strong>Compress the PDF</strong> so that it meets strict upload size
+                limits.
+              </li>
+<li>
+<strong>Split the PDF</strong> into multiple smaller documents if
+                different portals require different subsets.
+              </li>
+<li>
+<strong>Convert to Word</strong> for last-minute edits, then export a
+                new optimized PDF.
+              </li>
+</ul>
+<p>
+              The idea is that you can move between the tools on Compress It Small like
+              a small toolbox: reorder pages here, compress the result in the PDF
+              compressor, or split and extract pages using the splitter if needed. Because
+              the interface is consistent, it quickly becomes a simple routine.
+            </p>
+<h2>Practical examples of reordering PDFs</h2>
+<h3>Example 1: Making scholarship documents easier to review</h3>
+<p>
+              Imagine you are assembling a scholarship application that needs a cover
+              letter, CV, academic transcripts, and proof of enrollment. You initially
+              merge the documents in the wrong order: transcripts first, then proof,
+              then your CV, and finally the letter.
+            </p>
+<p>
+              Using this tool, you can create a new order that starts with your letter,
+              followed by your CV, then transcripts, and finally proof of enrollment. If
+              the merged PDF has 12 pages in total and the components are arranged like
+              this:
+            </p>
+<ul>
+<li>Pages 1–2: transcripts</li>
+<li>Pages 3–4: proof of enrollment</li>
+<li>Pages 5–8: CV</li>
+<li>Pages 9–12: letter</li>
+</ul>
+<p>
+              You can write an order such as:
+              <code>9-12,5-8,1-2,3-4</code>. The resulting PDF will begin with your
+              letter, then CV, then transcripts, then proof — matching the structure that
+              reviewers expect.
+            </p>
+<h3>Example 2: Reordering a multi-section report</h3>
+<p>
+              Suppose you create a report that has an executive summary at the end,
+              because that is how the document evolved. Before submitting it to your
+              supervisor or committee, you realize that the executive summary should be
+              first. If the summary is pages 21–24 in a 40-page PDF, you can place it at
+              the front with:
+              <code>21-24,1-20,25-40</code>.
+            </p>
+<p>
+              Now your report opens with a clear overview, followed by the main body and
+              appendices, without needing to rebuild the entire document in your word
+              processor.
+            </p>
+<h3>Example 3: Removing order-sensitive pages from scanned bundles</h3>
+<p>
+              Large scanned PDFs often contain extra pages that you do not want to send:
+              blank pages, cover scans that are no longer needed, or pages that belong
+              to another case. Instead of rescanning everything, you can build a cleaner
+              sequence:
+            </p>
+<ul>
+<li>Identify the relevant page ranges.</li>
+<li>
+                Compose a new sequence that excludes unwanted segments, e.g.,
+                <code>1-10,15-22,27-30</code>.
+              </li>
+</ul>
+<p>
+              The result is a smaller, more coherent PDF ready to share with whoever
+              requested it.
+            </p>
+<h2>FAQ: reordering PDF pages with this tool</h2>
+<h4>What happens if I reference a page number twice?</h4>
+<p>
+              That page will appear twice in your new PDF. This is intentional and can be
+              useful if you want to repeat instructions or cover pages for different
+              sections.
+            </p>
+<h4>What if I forget to include a page number?</h4>
+<p>
+              Any page not mentioned in the order string is omitted from the new PDF.
+              That means you can use reordering as a way to delete pages as well. If you
+              accidentally omit a page, simply run the tool again with a corrected
+              sequence.
+            </p>
+<h4>Can I reverse the entire PDF easily?</h4>
+<p>
+              Yes. If your PDF has 10 pages, simply write
+              <code>10-1</code> is <em>not</em> valid syntax, but you can list pages in
+              reverse manually or via ranges like <code>10,9,8,7,6,5,4,3,2,1</code>. For
+              shorter documents this is straightforward; for long documents you typically
+              only reorder key sections instead of fully reversing the order.
+            </p>
+<h4>Does the tool modify my original file?</h4>
+<p>
+              No. The original PDF you selected remains unchanged on your device. The
+              tool creates a new PDF in memory and offers it as a download. You can store
+              both versions if you want to keep a raw and a cleaned-up variant.
+            </p>
+<h4>Will the new PDF work in all readers?</h4>
+<p>
+              The rebuilt PDF is generated using standard, widely supported PDF
+              structures. It should open correctly in all mainstream readers, including
+              Adobe Acrobat, browser-based viewers, and mobile apps.
+            </p>
+<h2>Summary: from messy to well-structured PDF in one step</h2>
+<p>
+              Reordering pages is one of the simplest but most impactful ways to improve
+              the professionalism and clarity of your PDF documents. Whether you are
+              preparing scholarship applications, academic submissions, or paperwork for
+              public administration, a document where the story unfolds in a logical
+              order is easier to trust and understand.
+            </p>
+<p>
+              With this browser-based tool, you gain that control without having to
+              install heavy software or hand your files to a remote server. Express your
+              ideal sequence using a compact text pattern, click one button, and download
+              a new PDF that reflects your intent.
+            </p>
+<p>
+              From here, you can continue your workflow — compressing the new document,
+              splitting it into smaller parts, or converting it to Word — all while
+              keeping your data on your own device and maintaining a consistent,
+              privacy-friendly workflow.
+            </p>
+</div>
+</article>
+</section>
+</div>
+</main>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/pdf/"><div class="link-title">Compress PDF</div><p class="link-desc">Reduce PDF size for portals, email and uploads.</p></a><a class="link-card" href="/tools/pdf/merge-pdf/"><div class="link-title">Merge PDF</div><p class="link-desc">Combine multiple PDFs into one clean document.</p></a><a class="link-card" href="/tools/pdf/split-pdf/"><div class="link-title">Split PDF</div><p class="link-desc">Extract ranges or split large PDFs into smaller parts.</p></a><a class="link-card" href="/tools/pdf/rotate-pdf/"><div class="link-title">Rotate PDF</div><p class="link-desc">Fix sideways pages for submissions and printing.</p></a><a class="link-card" href="/tools/pdf/delete-pages/"><div class="link-title">Delete PDF Pages</div><p class="link-desc">Remove unwanted pages to cut size and clutter.</p></a><a class="link-card" href="/tools/pdf/jpg-to-pdf/"><div class="link-title">JPG to PDF</div><p class="link-desc">Convert images into a single shareable PDF.</p></a><a class="link-card" href="/blog/how-to-compress-pdf/"><div class="link-title">How to Compress PDF</div><p class="link-desc">Step-by-step PDF compression workflow.</p></a><a class="link-card" href="/blog/reorder-pdf-pages-for-application/"><div class="link-title">Reorder PDF for Applications</div><p class="link-desc">Keep annexes, evidence, and signatures in order.</p></a><a class="link-card" href="/blog/reorder-pdf-pages-for-application/"><div class="link-title">Reorder PDF Pages (Workflow)</div><p class="link-desc">Short steps + best practices for submissions.</p></a></div></div></section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a></div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+<script>
+    // Footer year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Parse order string like "3,1,2,5-7"
+    function parseOrderString(input, totalPages) {
+      if (!input) return null;
+      let cleaned = input.replace(/\s+/g, "");
+      if (!cleaned) return null;
+
+      const tokens = cleaned.split(",");
+      const indices = [];
+
+      for (const token of tokens) {
+        if (!token) continue;
+
+        if (token.includes("-")) {
+          // Range a-b
+          const parts = token.split("-");
+          if (parts.length !== 2) return null;
+
+          let start = parseInt(parts[0], 10);
+          let end = parseInt(parts[1], 10);
+
+          if (
+            Number.isNaN(start) ||
+            Number.isNaN(end) ||
+            start < 1 ||
+            end < 1 ||
+            start > totalPages ||
+            end > totalPages
+          ) {
+            return null;
+          }
+
+          // support reversed "b-a" is not logical, require start <= end
+          if (end < start) return null;
+
+          for (let p = start; p <= end; p++) {
+            indices.push(p - 1); // convert to 0-based
+          }
+        } else {
+          // Single page
+          const pageNum = parseInt(token, 10);
+          if (
+            Number.isNaN(pageNum) ||
+            pageNum < 1 ||
+            pageNum > totalPages
+          ) {
+            return null;
+          }
+          indices.push(pageNum - 1);
+        }
+      }
+
+      if (!indices.length) return null;
+      return indices;
+    }
+
+    async function runPdfReorder() {
+      const status = document.getElementById("reorderStatus");
+      status.className = "tool-status";
+      status.textContent = "Loading PDF and reading pages…";
+
+      const fileInput = document.getElementById("reorderFile");
+      const orderInput = document
+        .getElementById("reorderOrder")
+        .value.trim();
+
+      if (!fileInput.files || !fileInput.files[0]) {
+        status.textContent = "Please select a PDF file first.";
+        status.classList.add("error");
+        return;
+      }
+
+      const file = fileInput.files[0];
+
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+        const totalPages = pdfDoc.getPageCount();
+
+        const orderIndices = parseOrderString(orderInput, totalPages);
+        if (!orderIndices) {
+          status.textContent =
+            "Invalid page order. Use numbers and ranges like 3,1,2,5-7.";
+          status.classList.add("error");
+          return;
+        }
+
+        const newPdf = await PDFLib.PDFDocument.create();
+        const copiedPages = await newPdf.copyPages(
+          pdfDoc,
+          orderIndices
+        );
+
+        copiedPages.forEach((page) => newPdf.addPage(page));
+
+        const outBytes = await newPdf.save();
+        const blob = new Blob([outBytes], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        const baseName =
+          file.name.replace(/\.pdf$/i, "") || "reordered_document";
+        a.download = baseName + "_reordered.pdf";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+
+        status.textContent =
+          "Done! Your reordered PDF has been downloaded.";
+        status.classList.add("success");
+      } catch (err) {
+        console.error(err);
+        status.textContent =
+          "Something went wrong while reordering the PDF. Try another file or check the order format.";
+        status.classList.add("error");
+      }
+    }
+  </script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

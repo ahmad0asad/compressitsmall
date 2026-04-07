@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog | Compress It Small</title>
+<meta content="Guides and checklists to shrink PDFs, compress images, and fix upload errors. Practical step‑by‑step tutorials plus links to our free browser tools." name="description"/>
+<meta content="compress pdf, compress image, reduce file size, online file compression, shrink pdf, compress video, compressitsmall, compress it small" name="keywords"/>
+<link href="https://compressitsmall.co.uk/blog/" rel="canonical"/>
+<!-- Basic reset & typography -->
+<style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout helpers */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 28px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-ghost {
+      background: #eef2ff;
+      color: var(--primary-dark);
+    }
+
+    .btn-ghost:hover {
+      background: #e0e7ff;
+    }
+
+    /* Header */
+    header {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      box-shadow: 0 10px 22px rgba(30, 64, 175, 0.45);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text span:first-child {
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 0.25rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--primary);
+      transition: width 0.18s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 4px 0;
+      background: #111827;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .nav-mobile a {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+
+      .nav-mobile .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-mobile.open {
+        display: flex;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      padding: 2.5rem 0 2.75rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        padding: 3.25rem 0 3.5rem;
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.22rem 0.6rem 0.22rem 0.3rem;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0f172a;
+      font-size: 0.78rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .hero-kicker-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: #0ea5e9;
+      color: #f9fafb;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.85rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at 0% 0%, #eff6ff, #ffffff);
+      border-radius: 24px;
+      padding: 1.4rem 1.4rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      color: #047857;
+      font-weight: 600;
+    }
+
+    .hero-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-card-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-chip {
+      padding: 0.45rem 0.6rem;
+      border-radius: 12px;
+      background: #eff6ff;
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.35rem;
+      align-items: center;
+    }
+
+    .hero-chip span:first-child {
+      font-weight: 500;
+    }
+
+    .hero-chip span:last-child {
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .hero-progress {
+      background: #e5e7eb;
+      border-radius: 999px;
+      height: 6px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-progress-bar {
+      width: 84%;
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+    }
+
+    .hero-progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Common section styles */
+    section {
+      padding: 2.25rem 0;
+    }
+
+    section:nth-of-type(even) {
+      background: var(--bg-alt);
+    }
+
+    .section-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .section-description {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 40rem;
+    }
+
+    /* Tools grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(148, 163, 184, 0.16);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .card-badge {
+      display: inline-flex;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #ecfeff;
+      color: #0e7490;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .card-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card-meta {
+      margin-top: 0.25rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .card-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-right: 0.8rem;
+    }
+
+    .card-meta span::before {
+      content: "•";
+      font-size: 1rem;
+      line-height: 1;
+      color: var(--primary);
+    }
+
+    .card-footer-link {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    /* How it works */
+    .how-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .how-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem 1rem;
+      align-items: flex-start;
+    }
+
+    .step-index {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 2px solid #bfdbfe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      background: #eff6ff;
+      margin-top: 0.1rem;
+    }
+
+    .step-title {
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+
+    .step-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .benefits {
+      padding: 1.1rem;
+      border-radius: var(--radius-lg);
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      font-size: 0.85rem;
+      color: #111827;
+    }
+
+    .benefits ul {
+      margin-top: 0.6rem;
+      padding-left: 1.2rem;
+    }
+
+    .benefits li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Guides / blog preview */
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .guide {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      box-shadow: 0 8px 18px rgba(148, 163, 184, 0.18);
+    }
+
+    .guide-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .guide-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .guide-excerpt {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .guide-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .guide-link {
+      margin-top: 0.15rem;
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .faq-intro {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .faq-note {
+      margin-top: 0.9rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: 12px;
+      background: #ecfdf5;
+      border: 1px solid #bbf7d0;
+      font-size: 0.8rem;
+      color: #166534;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 0.65rem 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .faq-toggle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .faq-answer {
+      padding: 0 0.9rem 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: none;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* About & contact */
+    .about-contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .about-list {
+      padding-left: 1.2rem;
+    }
+
+    .about-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1.1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 22px rgba(148, 163, 184, 0.2);
+      font-size: 0.88rem;
+    }
+
+    .contact-card form {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .field label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      padding: 0.55rem 0.65rem;
+      font-size: 0.85rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 38px;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35);
+    }
+
+    .contact-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: #020617;
+      color: #9ca3af;
+      padding: 1.5rem 0;
+      font-size: 0.8rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      margin-top: 0.5rem;
+    }
+  
+.card-btn {
+  display:inline-block;
+  background:#dc2626;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:8px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+.card-mini-btn {
+  font-size:0.85rem;
+  color:#b91c1c;
+  text-decoration:underline;
+}
+
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+</style>
+<!-- Simple structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Compress It Small",
+  "url": "https://compressitsmall.co.uk/",
+  "description": "Online hub for smarter file compression, tutorials, and tools to reduce PDF, image, and video size without losing quality."
+}
+</script>
+<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="Blog | Compress It Small" property="og:title"/><meta content="Compress It Small is your all-in-one hub for smarter online file compression. Learn how to reduce PDF, image, and video size without losing quality, with free browser-based tools and step-by-step guides." property="og:description"/><meta content="https://compressitsmall.co.uk/blog/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Blog | Compress It Small" name="twitter:title"/><meta content="Compress It Small is your all-in-one hub for smarter online file compression. Learn how to reduce PDF, image, and video size without losing quality, with free browser-based tools and step-by-step guid" name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<link href="https://compressitsmall.co.uk/blog/" rel="canonical"/>
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- Floating Support Button (replaces social share widget) -->
+<script>
+(function(){
+  var wrap = document.getElementById("support-float");
+  if (!wrap) return;
+
+  function adjust(){
+    var link = wrap.querySelector("a");
+    if (!link) return;
+
+    // If a cookie banner pushes content, float above it by toggling body.has-cookie-banner
+    var hasBanner = document.body.classList.contains("has-cookie-banner");
+    wrap.style.bottom = hasBanner ? "110px" : "20px";
+
+    // Compact on very small screens
+    if (window.innerWidth <= 420) {
+      link.style.fontSize = "0.80rem";
+      link.style.padding = "8px 12px";
+    } else {
+      link.style.fontSize = "0.85rem";
+      link.style.padding = "8px 14px";
+    }
+  }
+
+  adjust();
+  window.addEventListener("resize", adjust);
+
+  try {
+    var obs = new MutationObserver(adjust);
+    obs.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  } catch(e) {}
+})();
+</script>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="container">
+<div class="hero-grid">
+<div>
+<div class="hero-kicker">Guides</div>
+<h1 class="hero-title">Blog</h1>
+<p class="hero-subtitle">Long-form, practical guides to compress PDFs, images, and Office files—built for real upload limits, email rules, and quality constraints.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="/tools/pdf/">Open PDF tools</a>
+<a class="btn btn-secondary" href="/tools/image/">Open Image tools</a>
+</div>
+</div>
+<aside aria-label="Blog summary" class="hero-card">
+<div class="hero-card-badge">A–Z index</div>
+<div class="hero-card-title">47 guides</div>
+<div class="hero-chips">
+<div class="hero-chip"><span>Order</span><strong>Alphabetical</strong></div>
+<div class="hero-chip"><span>Focus</span><strong>Quality + size</strong></div>
+<div class="hero-chip"><span>Updated</span><strong>2026</strong></div>
+</div>
+<div class="hero-progress">
+<div class="hero-progress-title"><span>Coverage</span><span>PDF • Image • Office</span></div>
+<div class="hero-progress-bar"><span style="width: 95%;"></span></div>
+<p class="hero-progress-note">New guides added regularly.</p>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<h2>All posts (A–Z)</h2>
+<div class="guides-grid"><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/add-page-numbers-to-pdf-fast/">Add Page Numbers to a PDF (Fast, Clean, and Portal‑Friendly)</a></div>
+<p class="guide-excerpt">Add clean page numbers to any PDF directly in your browser. Covers placement, font sizing, and keeping the output small enough for portal submissions.</p>
+<p class="guide-meta">Read time: 10 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/add-page-numbers-to-pdf-fast/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Guide</div>
+<div class="guide-title"><a class="guide-link" href="/blog/best-compression-settings-whatsapp-email-forms/">Best Compression Settings for WhatsApp, Email, and Online Forms</a></div>
+<p class="guide-excerpt">Quick reference guide for picking the right file size, format, and compression preset for WhatsApp, email attachments, and government or scholarship portals.</p>
+<p class="guide-meta">Read time: 12 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/best-compression-settings-whatsapp-email-forms/">Read guide →</a>
+</article><article class="guide"><div class="guide-tag">IMAGE</div><div class="guide-title"><a class="guide-link" href="/blog/pdf-pages-to-images-and-back-best-size/">Best Trick to Shrink Scanned PDFs: Convert Pages to JPG and Rebuild</a></div><p class="guide-excerpt">The most effective method for shrinking heavy scanned PDFs: convert pages to compressed JPGs and rebuild the document to dramatically cut file size.</p><p class="guide-meta">Read time: 10 min · Updated: February 14, 2026</p><a class="guide-link" href="/blog/pdf-pages-to-images-and-back-best-size/">Read guide →</a></article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/compare-two-pdfs-find-changes/">Compare Two PDFs and Find Differences (Text Changes, Missing Pages, Revisions)</a></div>
+<p class="guide-excerpt">Spot text changes, missing pages, and revision differences between two PDF versions — ideal for reviewing contracts, submissions, and tracked edits.</p>
+<p class="guide-meta">Read time: 11 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/compare-two-pdfs-find-changes/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Image</div>
+<div class="guide-title"><a class="guide-link" href="/blog/compress-images-for-google-forms-lms/">Compress Images for Google Forms, Moodle and LMS Uploads Without Ruining Text</a></div>
+<p class="guide-excerpt">Step-by-step workflows for reducing image sizes to pass Google Forms, Moodle, and other LMS upload validators without losing readability.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/compress-images-for-google-forms-lms/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Office</div>
+<div class="guide-title"><a class="guide-link" href="/blog/csv-to-excel-clean-formatting/">Convert CSV to Excel Cleanly (Preserve Columns, Dates, and Leading Zeros)</a></div>
+<p class="guide-excerpt">Avoid broken columns, stripped leading zeros, and garbled dates when converting CSV to Excel. Covers encoding, delimiter settings, and formatting traps.</p>
+<p class="guide-meta">Read time: 11 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/csv-to-excel-clean-formatting/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/pdf-to-jpg-small-size-for-forms/">Convert PDF to JPG for Online Forms (Small Size, Clear Text)</a></div>
+<p class="guide-excerpt">Export PDF pages as small, legible JPGs for online forms with image-only upload fields. Covers DPI targets, quality settings, and common portal constraints.</p>
+<p class="guide-meta">Read time: 12 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/pdf-to-jpg-small-size-for-forms/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Image</div>
+<div class="guide-title"><a class="guide-link" href="/blog/crop-image-to-passport-photo-size/">Crop an Image to Passport/ID Photo Size (Without Stretching or Blurry Text)</a></div>
+<p class="guide-excerpt">Resize and crop photos to exact passport or ID dimensions in the browser. Covers aspect ratios, background requirements, and typical portal specifications.</p>
+<p class="guide-meta">Read time: 10 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/crop-image-to-passport-photo-size/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Guide</div>
+<div class="guide-title"><a class="guide-link" href="/blog/email-attachment-limits-gmail-outlook-icloud/">Email Attachment Size Limits in 2026: Gmail, Outlook, iCloud and What to Do When You Hit Them</a></div>
+<p class="guide-excerpt">Up-to-date attachment size limits for Gmail, Outlook, iCloud, and other major providers — plus practical workflows when your file exceeds the cap.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/email-attachment-limits-gmail-outlook-icloud/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/extract-pages-from-pdf-create-new-file/">Extract Pages from a PDF (Create a New PDF from Selected Pages)</a></div>
+<p class="guide-excerpt">Pull specific pages from a large PDF and save them as a standalone document — useful for splitting applications, contracts, and multi-section reports.</p>
+<p class="guide-meta">Read time: 9 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/extract-pages-from-pdf-create-new-file/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/extract-text-from-pdf-copy-download/">Extract Text from a PDF (Copy, Search, and Download a Clean TXT)</a></div>
+<p class="guide-excerpt">Copy or download the text content of a PDF as plain TXT — handy for editing, searching, or repurposing content without retyping from scratch.</p>
+<p class="guide-meta">Read time: 10 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/extract-text-from-pdf-copy-download/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">OFFICE</div>
+<div class="guide-title"><a class="guide-link" href="/blog/fix-invalid-json-common-errors/">Fix Invalid JSON: Common Errors, Fast Validation, and Clean Exports</a></div>
+<p class="guide-excerpt">Diagnose and fix the most common JSON syntax errors — missing commas, unquoted keys, trailing commas — then export clean formatted or minified output.</p>
+<p class="guide-meta">Read time: 11 min · Updated: January 25, 2026</p><a class="guide-link" href="/blog/fix-invalid-json-common-errors/">Read guide →</a></article><article class="guide">
+<div class="guide-tag">Image</div>
+<div class="guide-title"><a class="guide-link" href="/blog/heic-vs-jpg-best-settings-iphone/">HEIC vs JPG on iPhone: Best Settings for the Smallest Files Without Visible Quality Loss</a></div>
+<p class="guide-excerpt">Understand the trade-offs between Apple HEIC and standard JPG, and when to convert before sending files to portals, email, or Android recipients.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/heic-vs-jpg-best-settings-iphone/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/compress-pdf-iphone-android-without-apps/">How to Compress a PDF on iPhone and Android Without Installing Apps</a></div>
+<p class="guide-excerpt">Browser-based methods for shrinking PDFs directly on your phone — no app download needed. Covers iOS Shortcuts, Android browsers, and size-check steps.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/compress-pdf-iphone-android-without-apps/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/how-to-compress-pdf/">How to Compress a PDF Without Making It Blurry</a></div>
+<p class="guide-excerpt">Reduce PDF file size while keeping text and images sharp. Covers safe DPI targets, compression levels, and a step-by-step workflow for real portal limits.</p>
+<p class="guide-meta">Read time: 13 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/how-to-compress-pdf/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/compress-pdf-email-job-portals/">How to Compress PDF for Email, Job Portals &amp; Government Forms Without Losing Quality</a></div>
+<p class="guide-excerpt">Targeted compression strategies for common upload destinations — email, HR portals, and government forms — with recommended size targets and quality checks.</p>
+<p class="guide-meta">Read time: 14 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/compress-pdf-email-job-portals/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/compress-scanned-pdfs-clear-text-small-size/">How to Compress Scanned PDFs Without Losing Legibility (Clear Text, Small Size)</a></div>
+<p class="guide-excerpt">Settings and workflows for compressing image-heavy scanned PDFs without blurring text or losing detail required for official submissions.</p>
+<p class="guide-meta">Read time: 12 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/compress-scanned-pdfs-clear-text-small-size/">Read guide →</a>
+</article><article class="guide"><div class="guide-tag">PDF</div><div class="guide-title"><a class="guide-link" href="/blog/make-pdf-under-2mb-for-scholarship-visa/">How to Make a PDF Under 2 MB for Scholarship &amp; Visa Portals (No Quality Panic)</a></div><p class="guide-excerpt">Step-by-step guide to reliably getting any PDF below the 2 MB limit imposed by most scholarship and visa portals, with a verification checklist.</p><p class="guide-meta">Read time: 10 min · Updated: February 14, 2026</p><a class="guide-link" href="/blog/make-pdf-under-2mb-for-scholarship-visa/">Read guide →</a></article><article class="guide">
+<div class="guide-tag">Guide</div>
+<div class="guide-title"><a class="guide-link" href="/blog/make-any-file-under-1mb/">How to Make Any File Under 1MB: Practical Strategies</a></div>
+<p class="guide-excerpt">Multi-format strategies for hitting the 1 MB threshold: which formats to use, what to cut first, and how to verify the result before submitting.</p>
+<p class="guide-meta">Read time: 13 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/make-any-file-under-1mb/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/merge-pdfs-without-increasing-size/">How to Merge PDFs Without Increasing File Size</a></div>
+<p class="guide-excerpt">Merge multiple PDFs into one document while keeping the final size under control — covers input preparation, merge order, and a post-merge compression pass.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/merge-pdfs-without-increasing-size/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Image</div>
+<div class="guide-title"><a class="guide-link" href="/blog/reduce-image-size-for-web-without-losing-quality/">How to Reduce Image Size for Web Without Losing Quality</a></div>
+<p class="guide-excerpt">A practical guide to resizing and compressing images for web use: choosing the right format, setting export dimensions, and targeting fast load times.</p>
+<p class="guide-meta">Read time: 12 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/reduce-image-size-for-web-without-losing-quality/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Office</div>
+<div class="guide-title"><a class="guide-link" href="/blog/shrink-word-excel-powerpoint-files/">How to Shrink Word, Excel, and PowerPoint Files in Minutes</a></div>
+<p class="guide-excerpt">Quick checklist for removing the embedded images, fonts, and revision data that silently inflate Office files without breaking layouts or losing content.</p>
+<p class="guide-meta">Read time: 13 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/shrink-word-excel-powerpoint-files/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/sign-pdf-online-free-secure/">How to Sign a PDF Online Without Printing (Free and Private)</a></div>
+<p class="guide-excerpt">Create and place a digital signature on any PDF in the browser — no printing, scanning, or subscription required. Covers legibility and file size impact.</p>
+<p class="guide-meta">Read time: 12 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/sign-pdf-online-free-secure/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Image</div>
+<div class="guide-title"><a class="guide-link" href="/blog/image-size-best-practices/">Ideal Image Sizes for Blogs, Portfolios, and Shops</a></div>
+<p class="guide-excerpt">Reference dimensions for common publishing contexts: blog hero images, product thumbnails, portfolio galleries, and social media previews — with file size targets.</p>
+<p class="guide-meta">Read time: 13 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/image-size-best-practices/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/jpg-to-pdf-small-file-a4-multi-page/">JPG to PDF: Make a Small A4 Multi‑Page PDF Without Losing Readability</a></div>
+<p class="guide-excerpt">Combine multiple JPG images into a compact, legible A4 PDF — useful for multi-page applications, receipts, and document sets with strict upload limits.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/jpg-to-pdf-small-file-a4-multi-page/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Image</div>
+<div class="guide-title"><a class="guide-link" href="/blog/jpg-vs-png-smallest-file-size/">JPG vs PNG: Which Format Gives You the Smallest File Size?</a></div>
+<p class="guide-excerpt">When to use JPG and when to use PNG, based on image content, transparency needs, and target platform — with concrete file size comparisons.</p>
+<p class="guide-meta">Read time: 12 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/jpg-vs-png-smallest-file-size/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/ocr-make-pdf-searchable-and-small/">OCR a Scanned PDF: Make It Searchable and Smaller at the Same Time</a></div>
+<p class="guide-excerpt">Add selectable, searchable text to scanned PDFs using OCR, reducing reliance on heavy image compression while making the file more accessible and submittable.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/ocr-make-pdf-searchable-and-small/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/pdf-linearization-fast-web-view/">PDF Linearization (Fast Web View): What It Is and When It Helps</a></div>
+<p class="guide-excerpt">How PDF linearization restructures files for faster browser loading, when it makes a practical difference, and how to check if your PDF is linearized.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/pdf-linearization-fast-web-view/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Image</div>
+<div class="guide-title"><a class="guide-link" href="/blog/pdf-to-png-jpg-for-forms-and-web/">PDF to PNG or JPG: Best Export Settings for Forms, Websites and Social Media</a></div>
+<p class="guide-excerpt">Export PDF pages as PNG or JPG with the right resolution and quality for web display, online forms, and social media — with format comparison tips.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/pdf-to-png-jpg-for-forms-and-web/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/pdf-too-large-to-upload-size-limits/">PDF Too Large to Upload? Understanding Common Size Limits</a></div>
+<p class="guide-excerpt">Why upload portals reject large PDFs, what the typical limits are across common platforms, and which steps to take first to bring files within range.</p>
+<p class="guide-meta">Read time: 13 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/pdf-too-large-to-upload-size-limits/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Image</div>
+<div class="guide-title"><a class="guide-link" href="/blog/png-transparency-vs-file-size-when-to-use/">PNG Transparency vs File Size: When to Use PNG and When to Switch to JPG</a></div>
+<p class="guide-excerpt">How PNG transparency affects file size, when transparency is genuinely necessary, and when switching to JPG delivers significant savings without visual loss.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/png-transparency-vs-file-size-when-to-use/">Read guide →</a>
+</article><article class="guide"><div class="guide-tag">Guide</div><div class="guide-title"><a class="guide-link" href="/blog/email-forms-upload-limits-spain-italy-2026/">Real Upload Limits in 2026: Email, Scholarships, University Portals (Spain &amp; Italy)</a></div><p class="guide-excerpt">Verified file size limits for major email services, Spanish and Italian university portals, and scholarship systems — with practical compression targets for each.</p><p class="guide-meta">Read time: 10 min · Updated: February 14, 2026</p><a class="guide-link" href="/blog/email-forms-upload-limits-spain-italy-2026/">Read guide →</a></article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/redact-pdf-before-sharing-private-data/">Redact a PDF Properly (So the Hidden Text Cannot Be Recovered)</a></div>
+<p class="guide-excerpt">How to permanently remove sensitive text and images from a PDF so the hidden content cannot be copied, searched, or recovered after the file is shared.</p>
+<p class="guide-meta">Read time: 14 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/redact-pdf-before-sharing-private-data/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Office</div>
+<div class="guide-title"><a class="guide-link" href="/blog/reduce-powerpoint-size-embedded-video/">Reduce PowerPoint File Size: Embedded Video, Images, Fonts and Hidden Bloat</a></div>
+<p class="guide-excerpt">Strip the main sources of hidden bloat from PowerPoint files — embedded videos, uncompressed images, unused fonts — and export a lean, submission-ready copy.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/reduce-powerpoint-size-embedded-video/">Read guide →</a>
+</article><article class="guide"><div class="guide-tag">IMAGE</div><div class="guide-title"><a class="guide-link" href="/blog/remove-exif-metadata-from-images-privacy/">Remove EXIF Metadata from Images (Privacy Checklist Before Sharing)</a></div><p class="guide-excerpt">Step-by-step privacy checklist for stripping GPS coordinates, device details, and timestamps from images before sharing them online or submitting to portals.</p><p class="guide-meta">Read time: 10 min · Updated: February 14, 2026</p><a class="guide-link" href="/blog/remove-exif-metadata-from-images-privacy/">Read guide →</a></article><article class="guide">
+<div class="guide-tag">Privacy</div>
+<div class="guide-title"><a class="guide-link" href="/blog/remove-hidden-data-from-documents/">Remove Hidden Data From Documents: The Secret Cause of Large Files</a></div>
+<p class="guide-excerpt">How to identify and remove revision history, author details, comments, and embedded thumbnails that inflate document file sizes and expose private data.</p>
+<p class="guide-meta">Read time: 12 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/remove-hidden-data-from-documents/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Privacy</div>
+<div class="guide-title"><a class="guide-link" href="/blog/metadata-removal-privacy-pdf-office/">Remove Metadata for Privacy: PDFs, Word, Excel and PowerPoint (Without Breaking the File)</a></div>
+<p class="guide-excerpt">Clean personal and document metadata from PDFs and Office files before submission — covering author name, edit history, comments, and linked file paths.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/metadata-removal-privacy-pdf-office/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/reorder-pdf-pages-for-application/">Reorder PDF Pages Online (Rearrange Pages for Applications, Portals &amp; Signatures)</a></div>
+<p class="guide-excerpt">Rearrange, rotate, or delete individual PDF pages in the browser — useful for fixing scan order, removing blank pages, and preparing clean submissions.</p>
+<p class="guide-meta">Read time: 9 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/reorder-pdf-pages-for-application/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/scholarship-upload-limits-compress-pdf/">Scholarship Portals Upload Limits: How to Compress PDFs for Applications Without Losing Readability</a></div>
+<p class="guide-excerpt">How to compress PDFs specifically for scholarship application portals: common size limits, recommended DPI targets, and a pre-submission quality checklist.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/scholarship-upload-limits-compress-pdf/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Guide</div>
+<div class="guide-title"><a class="guide-link" href="/blog/file-size-checklist/">Simple File Size Checklist Before Sending Any Large File</a></div>
+<p class="guide-excerpt">A fast, format-agnostic checklist to run before sending any large file — covers size, format, naming, content checks, and common portal-specific gotchas.</p>
+<p class="guide-meta">Read time: 12 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/file-size-checklist/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/split-pdf-to-meet-upload-limits/">Split a PDF to Meet Upload Limits (While Keeping Pages in the Right Order)</a></div>
+<p class="guide-excerpt">How to divide a large PDF into smaller parts that individually pass strict upload size limits, while keeping pages in the correct order and format.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/split-pdf-to-meet-upload-limits/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Image</div>
+<div class="guide-title"><a class="guide-link" href="/blog/image-compression-for-web/">The Complete Guide to Image Compression for Web, Social Media &amp; Email (2026 Edition)</a></div>
+<p class="guide-excerpt">Comprehensive reference for image compression across all major formats, platforms, and use cases — from blog images to social headers and email attachments.</p>
+<p class="guide-meta">Read time: 13 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/image-compression-for-web/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Guide</div>
+<div class="guide-title"><a class="guide-link" href="/blog/all-tools-explained-2026/">The Ultimate File Compression Guide (2026): Compress PDF, Images, Word, Excel, PowerPoint &amp; More — Complete Toolset &amp; Workflows</a></div>
+<p class="guide-excerpt">A complete overview of every compression tool and workflow on this site — PDF, image, and Office — with links to the right guide for each use case.</p>
+<p class="guide-meta">Read time: 13 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/all-tools-explained-2026/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">PDF</div>
+<div class="guide-title"><a class="guide-link" href="/blog/watermark-a-pdf-confidential-draft/">Watermark a PDF: Confidential Stamps, Draft Labels, and File‑Size Tips</a></div>
+<p class="guide-excerpt">Add visible watermarks such as DRAFT or CONFIDENTIAL to PDF pages in the browser, with advice on placement, opacity, and keeping file size under control.</p>
+<p class="guide-meta">Read time: 11 min · Updated: January 25, 2026</p><a class="guide-link" href="/blog/watermark-a-pdf-confidential-draft/">Read guide →</a></article><article class="guide">
+<div class="guide-tag">Image</div>
+<div class="guide-title"><a class="guide-link" href="/blog/watermark-image-protect-work/">Watermark Images the Right Way (Protect Your Work Without Ruining Quality)</a></div>
+<p class="guide-excerpt">How to overlay a visible watermark on images without degrading quality or inflating file size — covers text watermarks, logo overlays, and opacity settings.</p>
+<p class="guide-meta">Read time: 9 min · Updated: January 25, 2026</p>
+<a class="guide-link" href="/blog/watermark-image-protect-work/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Image</div>
+<div class="guide-title"><a class="guide-link" href="/blog/why-images-are-so-big-how-to-fix/">Why Your Images Are So Big and How to Fix Them</a></div>
+<p class="guide-excerpt">Common reasons image files are larger than expected — wrong format, uncropped dimensions, embedded metadata — and the fastest corrective steps for each.</p>
+<p class="guide-meta">Read time: 12 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/why-images-are-so-big-how-to-fix/">Read guide →</a>
+</article><article class="guide">
+<div class="guide-tag">Office</div>
+<div class="guide-title"><a class="guide-link" href="/blog/word-document-too-large-fix/">Word Document Too Large? Fix Images, Tracked Changes, Fonts and Embedded Objects</a></div>
+<p class="guide-excerpt">How to diagnose and shrink Word document file size: compress embedded images, remove tracked changes, strip embedded fonts, and export a clean PDF copy.</p>
+<p class="guide-meta">Read time: 15 min · Updated: January 2, 2026</p>
+<a class="guide-link" href="/blog/word-document-too-large-fix/">Read guide →</a>
+</article></div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a></div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+<script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    function toggleMobileNav(force) {
+      var nav = document.getElementById("nav-mobile");
+      if (typeof force === "boolean") {
+        nav.classList.toggle("open", force);
+      } else {
+        nav.classList.toggle("open");
+      }
+    }
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      var item = btn.closest(".faq-item");
+      var list = item.parentElement.querySelectorAll(".faq-item");
+      list.forEach(function (el) {
+        if (el !== item) el.classList.remove("open");
+      });
+      item.classList.toggle("open");
+    }
+  </script>
+ Cookie Consent Banner 
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

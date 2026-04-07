@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Free Online PDF Tools – Compress, Merge, Split, Redact, Sign, Convert &amp; More | Compress It Small</title>
+<meta content="Use 10+ powerful browser-based PDF tools to compress, merge, split, reorder, delete pages, rotate, redact, sign, compare PDFs, and convert PDF to PNG images. 100% private — all processing happens locally in your browser with no file uploads." name="description"/>
+<meta content="PDF tools, PDF compressor, merge PDF, split PDF, reorder PDF, delete PDF pages, rotate PDF, redact PDF, sign PDF, compare PDFs, PDF to PNG, browser PDF tools, no upload PDF converter" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/pdf/" rel="canonical"/>
+<style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+      --max-width: 1120px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    header {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 22px rgba(30, 64, 175, 0.45);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text span:first-child {
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--primary);
+      transition: width 0.16s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.3rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.88rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 28px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-outline {
+      background: #eef2ff;
+      color: var(--primary-dark);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+    }
+
+    main {
+      padding: 2.25rem 0 2.5rem;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      text-align: left;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-subtitle {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      max-width: 44rem;
+    }
+
+    /* HERO TOOLS GRID */
+    .hero-tools-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.3rem;
+      margin-top: 1.6rem;
+    }
+
+    @media (min-width: 720px) {
+      .hero-tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1040px) {
+      .hero-tools-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .hero-tool-card {
+      background: var(--bg-alt);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      padding: 1rem 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .hero-tool-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .hero-tool-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .hero-tool-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #ecfeff;
+      color: #0e7490;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .hero-tool-summary {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .hero-tool-footer {
+      margin-top: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-tool-footer span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .btn-small {
+      padding: 0.4rem 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    /* PAGE HEADING FOR DETAILED TOOLS */
+    .page-heading {
+      margin-top: 2.6rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .page-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .page-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+    }
+
+    .page-description {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 44rem;
+    }
+
+    /* DETAILED TOOLS GRID (ORIGINAL) */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 980px) {
+      .tools-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: flex-start;
+      }
+    }
+
+    .tool-card {
+      background: var(--bg-alt);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 32px rgba(148, 163, 184, 0.18);
+      padding: 1.1rem 1.1rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .tool-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .tool-title {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .tool-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #ecfeff;
+      color: #0e7490;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .tool-summary {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .tool-ui {
+      margin-top: 0.2rem;
+      padding: 0.75rem 0.8rem;
+      border-radius: 14px;
+      background: #f9fafb;
+      border: 1px dashed #d1d5db;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+    }
+
+    .field-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .field-row label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+      margin-right: 0.45rem;
+    }
+
+    input[type="file"],
+    input[type="text"],
+    select {
+      font: inherit;
+      font-size: 0.84rem;
+      padding: 0.4rem 0.55rem;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      min-width: 0;
+    }
+
+    input[type="file"] {
+      padding: 0.3rem;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
+    }
+
+    .tool-status {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      min-height: 1.1rem;
+    }
+
+    .tool-status.success {
+      color: #15803d;
+    }
+
+    .tool-status.error {
+      color: #b91c1c;
+    }
+
+    .article {
+      font-size: 0.86rem;
+      color: #4b5563;
+      margin-top: 0.25rem;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 0.75rem;
+    }
+
+    .article h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .article h4 {
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-top: 0.55rem;
+      margin-bottom: 0.22rem;
+    }
+
+    .article p {
+      margin-bottom: 0.4rem;
+    }
+
+    .article ul {
+      padding-left: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .article li {
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #020617;
+      color: #9ca3af;
+      padding: 1.4rem 0;
+      font-size: 0.78rem;
+      margin-top: 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 1.4rem;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      width: 18px;
+      height: 2px;
+      background: #4b5563;
+      border-radius: 999px;
+    }
+
+    #nav-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.75rem 0;
+    }
+
+    #nav-mobile a {
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    @media (max-width: 860px) {
+      .nav-toggle {
+        display: flex;
+      }
+    }
+  
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+</style>
+<!-- pdf-lib (for editing) -->
+
+<!-- pdf.js (for text & page rendering) -->
+
+<!-- docx (for Word export) -->
+
+<!-- JSZip (for PNG ZIP export) -->
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Compress It Small – PDF Tools",
+  "url": "https://compressitsmall.co.uk/tools/pdf/",
+  "image": "https://compressitsmall.co.uk/assets/pdf-compressor.png",
+  "applicationCategory": "Utility",
+  "operatingSystem": "Web browser",
+  "description": "Free in-browser PDF tools to compress, merge, split, reorder, delete pages, rotate, redact, sign, compare, and convert PDF pages to PNG images with no file uploads.",
+  "featureList": [
+    "PDF compression",
+    "PDF merging",
+    "PDF splitting",
+    "PDF reordering",
+    "Delete PDF pages",
+    "Rotate PDF pages",
+    "PDF redaction",
+    "PDF digital signatures",
+    "Compare two PDF documents",
+    "Export PDF pages as PNG images"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="Free Online PDF Tools – Compress, Merge, Split, Redact, Sign, Convert &amp; More | Compress It Small" property="og:title"/><meta content="Use 10+ powerful browser-based PDF tools to compress, merge, split, reorder, delete pages, rotate, redact, sign, compare PDFs, and convert PDF to PNG images. 100% private — all processing happens locally in your browser with no file uploads." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/pdf/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Free Online PDF Tools – Compress, Merge, Split, Redact, Sign, Convert &amp; More | Compress It Small" name="twitter:title"/><meta content="Use 10+ powerful browser-based PDF tools to compress, merge, split, reorder, delete pages, rotate, redact, sign, compare PDFs, and convert PDF to PNG images. 100% private — all processing happens loca" name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<div class="container">
+<!-- HERO TITLE -->
+<section class="hero">
+<div class="hero-kicker">PDF toolkit</div>
+<h1 class="hero-title">Compress, merge, split, reorder, redact, sign &amp; compare PDFs in your browser</h1>
+<p class="hero-subtitle">
+          Choose from a full suite of free PDF tools to compress files, merge multiple PDFs,
+          reorder or delete pages, rotate misaligned scans, redact sensitive data, sign documents,
+          compare versions, and export pages as PNG images. Everything runs locally in your browser
+          for maximum privacy.
+        </p>
+</section>
+<!-- HERO CARDS FOR 10 TOOLS -->
+<section class="hero-tools-grid" id="tools">
+<!-- 1. Compress PDF -->
+<article class="hero-tool-card">
+<header class="hero-tool-header">
+<h2 class="hero-tool-title">Compress PDF to meet upload limits</h2>
+<span class="hero-tool-tag">Compress</span>
+</header>
+<p class="hero-tool-summary">
+Reduce PDF size using a safe structure clean-up (keeps text selectable) or a strong scan-style compressor for scanned documents.
+</p>
+<div class="hero-tool-footer">
+<span>Safe + strong modes</span>
+<a class="btn btn-primary btn-small" href="/tools/pdf/compress-pdf/">Open Compress PDF</a>
+</div>
+</article>
+
+
+<!-- 2. Merge PDF -->
+<article class="hero-tool-card">
+<header class="hero-tool-header">
+<h2 class="hero-tool-title">Merge multiple PDFs into one</h2>
+<span class="hero-tool-tag">Merge</span>
+</header>
+<p class="hero-tool-summary">
+            Combine separate PDF files (CV, cover letter, certificates, invoices, scanned pages) into a
+            single, well-ordered document ready for upload or sharing. Ideal for applications that only
+            accept one PDF file.
+          </p>
+<div class="hero-tool-footer">
+<span>Combine PDFs in seconds</span>
+<a class="btn btn-primary btn-small" href="/tools/pdf/merge-pdf/">Open Merge PDF</a>
+</div>
+</article>
+<!-- 3. Split PDF -->
+<article class="hero-tool-card">
+<header class="hero-tool-header">
+<h2 class="hero-tool-title">Split or extract pages from PDF</h2>
+<span class="hero-tool-tag">Split</span>
+</header>
+<p class="hero-tool-summary">
+            Extract selected pages, create smaller PDFs, or share only the relevant section of a long
+            document. Great for sending just the signed pages of a contract or a specific chapter of a report.
+          </p>
+<div class="hero-tool-footer">
+<span>Page-range extraction</span>
+<a class="btn btn-primary btn-small" href="/tools/pdf/split-pdf/">Open Split PDF</a>
+</div>
+</article>
+<!-- 4. Reorder PDF -->
+<article class="hero-tool-card">
+<header class="hero-tool-header">
+<h2 class="hero-tool-title">Reorder PDF pages</h2>
+<span class="hero-tool-tag">Reorder</span>
+</header>
+<p class="hero-tool-summary">
+            Fix the reading order of your files by rearranging pages after scanning or merging. Move covers,
+            summaries, or signatures to the right position without recreating the original document.
+          </p>
+<div class="hero-tool-footer">
+<span>Custom page sequence</span>
+<a class="btn btn-primary btn-small" href="/tools/pdf/reorder-pdf/">Open Reorder PDF</a>
+</div>
+</article>
+<!-- 5. Delete PDF Pages -->
+<article class="hero-tool-card">
+<header class="hero-tool-header">
+<h2 class="hero-tool-title">Delete or keep selected PDF pages</h2>
+<span class="hero-tool-tag">Delete</span>
+</header>
+<p class="hero-tool-summary">
+            Remove unnecessary pages, annexes, or blank scans from a PDF and keep only what matters. Perfect
+            for cleaning up exports before sending them to a professor, client, or administration office.
+          </p>
+<div class="hero-tool-footer">
+<span>Trim large documents</span>
+<a class="btn btn-primary btn-small" href="/tools/pdf/delete-pages/">Open Delete Pages</a>
+</div>
+</article>
+<!-- 6. Rotate PDF -->
+<article class="hero-tool-card">
+<header class="hero-tool-header">
+<h2 class="hero-tool-title">Rotate PDF pages</h2>
+<span class="hero-tool-tag">Rotate</span>
+</header>
+<p class="hero-tool-summary">
+            Correct sideways or upside-down scans by rotating selected pages by 90°, 180°, or 270°. Fix the
+            orientation before sharing or archiving your documents.
+          </p>
+<div class="hero-tool-footer">
+<span>Fix misaligned scans</span>
+<a class="btn btn-primary btn-small" href="/tools/pdf/rotate-pdf/">Open Rotate PDF</a>
+</div>
+</article>
+<!-- 7. Compare PDFs -->
+<article class="hero-tool-card">
+<header class="hero-tool-header">
+<h2 class="hero-tool-title">Compare two PDFs (find differences)</h2>
+<span class="hero-tool-tag">Compare</span>
+</header>
+<p class="hero-tool-summary">
+            Upload two versions of a contract, paper, or report and highlight differences in content. Track
+            added, removed, or modified text for legal, academic, or editorial review workflows.
+          </p>
+<div class="hero-tool-footer">
+<span>Version comparison</span>
+<a class="btn btn-primary btn-small" href="/tools/pdf/compare-pdf/">Open Compare PDFs</a>
+</div>
+</article>
+<!-- 8. PDF Redactor -->
+<article class="hero-tool-card">
+<header class="hero-tool-header">
+<h2 class="hero-tool-title">Redact &amp; blackout sensitive PDF text</h2>
+<span class="hero-tool-tag">Redact</span>
+</header>
+<p class="hero-tool-summary">
+            Hide confidential names, IDs, email addresses, signatures, or case details by permanently
+            blacking out selected areas. Ideal for GDPR, privacy requests, and sharing anonymized documents.
+          </p>
+<div class="hero-tool-footer">
+<span>GDPR-friendly redaction</span>
+<a class="btn btn-primary btn-small" href="/tools/pdf/pdf-redactor/">Open PDF Redactor</a>
+</div>
+</article>
+<!-- 9. PDF Signature -->
+<article class="hero-tool-card">
+<header class="hero-tool-header">
+<h2 class="hero-tool-title">Sign PDF documents online</h2>
+<span class="hero-tool-tag">Sign</span>
+</header>
+<p class="hero-tool-summary">
+            Draw, type, or upload your signature and place it on any page of your PDF. Create clean, professional
+            signatures for contracts, forms, and agreements without printing.
+          </p>
+<div class="hero-tool-footer">
+<span>Digital signing workflow</span>
+<a class="btn btn-primary btn-small" href="/tools/pdf/pdf-signature/">Open Sign PDF</a>
+</div>
+</article>
+<!-- 10. JPG to PDF -->
+<article class="hero-tool-card">
+<header class="hero-tool-header">
+<h2 class="hero-tool-title">Convert JPG images to PDF pages</h2>
+<span class="hero-tool-tag">JPG to PDF</span>
+</header>
+<p class="hero-tool-summary">
+            Turn every Image into a high-quality PDF pages for reports, social media, blog posts,
+            or documentation. Great for visual sharing when PDF uploads are not supported.
+          </p>
+<div class="hero-tool-footer">
+<span>Trim large documents</span>
+<a class="btn btn-primary btn-small" href="/tools/pdf/jpg-to-pdf/">Open JPG to PDF Tool</a>
+</div>
+</article>
+<!-- 11. PDF to PNG -->
+<article class="hero-tool-card">
+<header class="hero-tool-header">
+<h2 class="hero-tool-title">Convert PDF pages to PNG images</h2>
+<span class="hero-tool-tag">Images</span>
+</header>
+<p class="hero-tool-summary">
+            Turn every page of a PDF into a high-quality PNG image for slides, social media, blog posts,
+            or documentation. Great for visual sharing when PDF uploads are not supported.
+          </p>
+<div class="hero-tool-footer">
+<span>High-quality PNG export</span>
+<a class="btn btn-primary btn-small" href="/tools/pdf/pdf-to-png/">Open PDF to PNG</a>
+</div>
+</article>
+</section>
+<!-- DETAILED INLINE TOOLS SECTION -->
+<section class="page-heading" id="how-it-works">
+<div class="page-kicker">In-browser processing</div>
+<h2 class="page-title">Advanced PDF tools that run fully on your device</h2>
+<p class="page-description">
+          The sections below explain how the core browser-based tools work: PDF compression,
+          merging, splitting, reordering, text extraction to Word (DOCX), and exporting pages
+          as PNG images. These utilities run entirely in JavaScript, so your PDFs are never
+          uploaded to an external server.
+        </p>
+</section>
+<section class="tools-grid" id="detailed-tools">
+<!-- TOOL 1: PDF COMPRESSOR (INLINE) -->
+<article class="tool-card" id="tool-compress">
+<header class="tool-header">
+<div>
+<h2 class="tool-title">Browser-based PDF compressor</h2>
+<p class="tool-summary">
+                Quickly resave a PDF with streamlined structure to trim size without altering
+                page content. Ideal for moderately large PDFs that need a small reduction to
+                pass upload limits.
+              </p>
+</div>
+<span class="tool-tag">Compress</span>
+</header>
+
+<div style="margin-top:0.75rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+  <a class="btn btn-primary btn-small" href="/tools/pdf/compress-pdf/">Open PDF Compressor →</a>
+  <a class="btn btn-outline btn-small" href="/blog/how-to-compress-pdf/">Read the guide</a>
+</div>
+
+<div class="article">
+<h3>What this browser PDF compressor actually does</h3>
+<p>
+              This tool focuses on a very specific problem: many PDFs are larger than they
+              need to be because they contain redundant internal structures, unused objects,
+              and inefficient cross-reference tables. Instead of trying to “magically
+              shrink” scanned pages or re-encode every image, the compressor re-parses the
+              document in your browser and writes a clean, modern file structure. The visual
+              appearance of each page remains identical, but the saved file can be smaller
+              because of reduced overhead.
+            </p>
+<p>
+              The code uses the <code>pdf-lib</code> library directly in the browser. When
+              you drop a file, the script reads it as an <code>ArrayBuffer</code>, loads it
+              into a PDFDocument instance, and then saves a fresh copy with a new internal
+              layout. No parts of your file are sent to a remote server: all processing
+              happens inside the user’s browser tab. This is useful in situations where you
+              cannot upload confidential documents to third-party services, yet you still
+              need a leaner version to attach to email or submit to a portal.
+            </p>
+<h4>When this compressor works best</h4>
+<p>
+              The browser-based approach is most effective on PDFs that have grown over
+              time: reports edited repeatedly, forms combined from multiple sources, or
+              presentations exported more than once. These documents often carry duplicated
+              fonts, obsolete cross-reference sections, and incremental updates that do not
+              add visible content but still occupy space. Rebuilding the file structure in a
+              single pass can remove that clutter, sometimes shaving off a noticeable
+              percentage of the total size.
+            </p>
+<p>
+              The tool is less effective on files where almost all weight comes from highly
+              detailed images, such as scanned archives or slide decks full of photos. In
+              those cases, the main driver of file size is the pixel data and compression
+              method used for each image, which cannot be radically changed without
+              recompressing the images themselves. That type of heavy-duty optimization is
+              better suited to offline tools that can devote more CPU and memory to the
+              task.
+            </p>
+<h4>Understanding the profiles you can choose</h4>
+<p>
+              The profile selector influences how aggressively the code rewrites the
+              document. The “Safe re-save” option keeps the original structure as close as
+              possible to the uploaded file. It is a good choice for highly regulated
+              documents where you want a fresh copy but do not want to risk compatibility
+              issues with very old PDF viewers.
+            </p>
+<p>
+              The “Balanced” profile aims at typical office usage. It enables object
+              deduplication and a more compact cross-reference layout while still avoiding
+              experimental settings. In many cases this is the best starting point: you get
+              a leaner file without having to understand the underlying PDF versioning
+              rules.
+            </p>
+<p>
+              The “Maximum structure clean-up” profile strips as much overhead as the
+              pdf-lib save options safely allow. It may produce the smallest results on
+              complex, heavily edited files, but it assumes that recipients open the
+              document with a reasonably modern PDF viewer. If you need to send a file to
+              legacy systems, use the balanced or safe profile first and check the output.
+            </p>
+<h4>Practical workflow ideas</h4>
+<p>
+              A practical way to use this compressor is to keep your original document as an
+              archive copy and produce a compact outgoing version each time you need to send
+              or upload it. This keeps your source material pristine while exploiting the
+              size benefits of a restructured file for day-to-day communication. You can
+              also run the same file through the tool multiple times with different
+              profiles to compare results: open the downloads folder, check file sizes and
+              dates, and keep the smallest one that still behaves correctly.
+            </p>
+</div>
+</article>
+<!-- TOOL 2: PDF MERGER (INLINE) -->
+<article class="tool-card" id="tool-merge">
+<header class="tool-header">
+<div>
+<h2 class="tool-title">Merge multiple PDFs into one</h2>
+<p class="tool-summary">
+                Combine separate PDFs into a single, ordered document. Upload several files,
+                merge them in your browser, and receive one consolidated PDF ready for
+                submission.
+              </p>
+</div>
+<span class="tool-tag">Merge</span>
+</header>
+
+<div class="article">
+<h3>Why a client-side PDF merger is useful</h3>
+<p>
+              In everyday work it is common to handle multiple small PDFs: a cover letter,
+              a certificate, an invoice, and a scan of a signed form. Many submission
+              portals expect a single combined document, which forces users to rely on
+              online services that require uploads and sometimes inject watermarks. This
+              browser-based merger solves that problem locally. You choose the file order,
+              start the merge, and your browser assembles the pages into one cohesive PDF
+              without sending them to a remote server.
+            </p>
+<p>
+              The implementation uses pdf-lib’s ability to copy entire pages between
+              documents. Internally, the script creates a new empty PDF, loops over each
+              uploaded file, and reuses the page objects from those sources. Because pages
+              are not converted to images, there is no additional loss of quality: text
+              remains selectable, vector graphics stay sharp, and embedded links can
+              continue to work when supported by the viewer.
+            </p>
+<h4>Controlling the order of your merged document</h4>
+<p>
+              The simplest way to control sequence is to select files in the order you want
+              them to appear. Most desktop file pickers let you click the first PDF, hold
+              <code>Ctrl</code> (or <code>Command</code> on macOS), and click subsequent
+              files in the desired order. The browser exposes that order through the
+              <code>FileList</code> object, which the merger respects when building the
+              combined document.
+            </p>
+<p>
+              If you accidentally pick them in the wrong order, an easy workaround is to
+              rename the files with numeric prefixes such as <code>01_cover.pdf</code>,
+              <code>02_cv.pdf</code>, and <code>03_certificate.pdf</code>. Select all at
+              once, and many systems will sort them alphabetically, effectively aligning the
+              merge order with your numbering scheme.
+            </p>
+<h4>File size and performance considerations</h4>
+<p>
+              Because merging happens in the browser memory, extremely large source files or
+              dozens of documents can push the limits of what an older machine or mobile
+              device can handle comfortably. The tool is designed primarily for typical
+              office use: a handful of PDFs up to a few tens of megabytes each. For very
+              heavy workloads, offline utilities or command-line tools provide more
+              robust handling, but they also demand more technical knowledge.
+            </p>
+<p>
+              When you notice that a merged output is significantly larger than expected,
+              the cause is usually duplicated resources such as fonts or large images that
+              appear in several input files. In many real-world cases, the increase is
+              acceptable because the consolidation benefit outweighs the extra megabytes,
+              especially if the resulting file still fits under the upload limit of the
+              target platform.
+            </p>
+<h4>Examples of practical workflows</h4>
+<p>
+              A common scenario involves university or job applications that request
+              multiple documents but provide only a single upload field. With this merger
+              you can create one combined PDF that starts with a cover note, continues with
+              your curriculum vitae, and ends with certificates or recommendation letters,
+              all delivered in a clear sequence.
+            </p>
+<p>
+              Another practical use is internal documentation. Instead of sending several
+              attachments in one email, merge related reports, charts, and appendices into a
+              single file. This reduces the risk that a recipient overlooks an important
+              attachment and simplifies file management in shared drives.
+            </p>
+</div>
+</article>
+<!-- TOOL 3: PDF SPLITTER (INLINE) -->
+<article class="tool-card" id="tool-split">
+<header class="tool-header">
+<div>
+<h2 class="tool-title">Split PDF by page range</h2>
+<p class="tool-summary">
+                Extract a selection of pages from a larger PDF. Use range syntax such as
+                “1-3, 7, 10-12”, and the tool builds a new document containing only those
+                pages.
+              </p>
+</div>
+<span class="tool-tag">Split</span>
+</header>
+
+<div class="article">
+<h3>Precise extraction of relevant pages</h3>
+<p>
+              Large PDFs often contain more material than you need to share. You might only
+              want the technical specification section, a particular annex, or the pages
+              that contain signed agreements. Sending the full document can be inefficient
+              and may expose information that should not be forwarded. This split tool gives
+              you fine-grained control by letting you specify exactly which pages to keep.
+            </p>
+<p>
+              The range parser interprets human-friendly input such as
+              <code>2-4, 7, 10-12</code>. It expands each range into a list of individual
+              page numbers, checks them against the total page count, and then copies those
+              pages into a new PDF. Internally, it relies on the same page-copying
+              mechanisms as the merger, so the resulting file preserves fonts, vector
+              graphics, and text searchability.
+            </p>
+<h4>How to define clean, predictable ranges</h4>
+<p>
+              To avoid mistakes, think of the page range as a sequence of small blocks.
+              Hyphens indicate continuous spans, while commas separate distinct blocks. For
+              example, a range of <code>1-3</code> means “include pages one, two, and
+              three”. Adding a comma and a single number, as in <code>1-3, 6</code>, tells
+              the splitter to add page six after the original three-page run.
+            </p>
+<p>
+              The script ignores spaces, so you do not have to worry about exact spacing.
+              It also removes duplicate page numbers if you accidentally list the same page
+              twice. Invalid entries, such as page zero or negative numbers, are skipped and
+              reported in the status area so you know something in the range string needs
+              correction.
+            </p>
+<h4>Common use cases where splitting saves time</h4>
+<p>
+              One scenario is sharing part of a manual with colleagues. Instead of sending a
+              two-hundred-page technical document, extract pages that describe the
+              configuration you are actually deploying. The recipient gets a concise file
+              focused on their task, and you reduce email size and confusion.
+            </p>
+<p>
+              Another scenario involves legal or administrative records. When an authority
+              asks for a signed copy of a specific agreement, it is cleaner to extract the
+              relevant pages than to send an entire dossier. The split tool allows you to
+              build a minimal, self-contained document that still looks exactly like the
+              original on those selected pages.
+            </p>
+<h4>Working with upload limits and privacy</h4>
+<p>
+              Many platforms apply strict file size and page count caps. Splitting a PDF
+              lets you assemble subsets that fit those constraints. Because the process
+              happens entirely inside the browser, you retain control over what leaves your
+              machine. The original file stays on your system; only the extracted subset is
+              saved as a new document in your downloads folder.
+            </p>
+<p>
+              As a best practice, keep a master copy of the full source document in a secure
+              location. Use the splitter to generate temporary, task-specific versions for
+              sharing. That way, if a mistake is made when selecting ranges, you can always
+              repeat the operation without losing information.
+            </p>
+</div>
+</article>
+<!-- TOOL 4: PDF REORDER (INLINE) -->
+<article class="tool-card" id="tool-reorder">
+<header class="tool-header">
+<div>
+<h2 class="tool-title">Reorder PDF pages by custom sequence</h2>
+<p class="tool-summary">
+                Rearrange the pages of an existing PDF without re-exporting from the source
+                application. Enter a new order such as “3, 1, 2, 4” and the tool reshuffles
+                the document accordingly.
+              </p>
+</div>
+<span class="tool-tag">Reorder</span>
+</header>
+
+<div class="article">
+<h3>Fixing the reading flow of existing PDFs</h3>
+<p>
+              It is easy to end up with a PDF where pages are not in a logical reading
+              order. Maybe a scanner stacked sheets incorrectly, or someone appended
+              annexes before the main body of a report. Re-exporting from the source
+              document can be complicated if you no longer have the original project files
+              or if they are scattered across different applications. This reorder tool
+              gives you a direct way to adjust page sequence at the PDF level.
+            </p>
+<p>
+              The input field accepts a simple comma-separated list of page numbers. The
+              script retrieves the total page count from the uploaded file and validates
+              that each entry falls within that range. It then creates a new PDF and inserts
+              pages following exactly the sequence you typed. Because the underlying page
+              objects are reused, there is no quality loss: you are not flattening to
+              images, just changing the order.
+            </p>
+<h4>Designing a clean sequence</h4>
+<p>
+              To avoid confusion, it helps to start by quickly reviewing the original page
+              order. Many PDF viewers display thumbnails in a side panel; use that as a
+              visual reference and write down the desired sequence on paper or in a text
+              editor. For example, you might decide that the third page should become the
+              first, followed by the title page and then the rest of the document. That
+              yields a sequence like <code>3, 1, 2, 4, 5, 6</code>.
+            </p>
+<p>
+              The reorder script expects each page number to appear at most once. If you
+              repeat a number, only the first occurrence is used and later duplicates are
+              ignored, which is reported in the status area. Skipped numbers produce a
+              warning as well, so you know the resulting PDF will have fewer pages than the
+              original and you can double-check that this was intentional.
+            </p>
+<h4>Typical scenarios where reordering helps</h4>
+<p>
+              A common use is tidying up scanned paperwork. When scanning a multi-page
+              contract, it is easy to accidentally invert two sheets. Instead of repeating
+              the entire scan, you can reorder the PDF so that the signature page returns to
+              the right position. Another scenario involves training material: you might
+              want to move summary sheets to the front, making them easier to reference
+              without scrolling through an entire slide deck.
+            </p>
+<p>
+              Reordering also helps when a document mixes sections that are only relevant to
+              certain audiences. You can create a version where the most important parts for
+              a specific group appear first, improving readability without editing the
+              underlying content.
+            </p>
+<h4>Best practices for safe use</h4>
+<p>
+              As with splitting and merging, keep an untouched master copy of the original
+              document. Use the reorder tool to produce derived versions tailored for
+              different recipients or workflows. Store the master copy with a clear name so
+              you can always reconstruct alternative sequences if requirements change later.
+              After downloading a reordered file, open it in your standard PDF viewer and
+              quickly skim the pages to confirm that everything appears where expected.
+            </p>
+</div>
+</article>
+<!-- TOOL 5: PDF TO WORD (DOCX) INLINE -->
+<article class="tool-card" id="tool-pdf-to-word">
+<header class="tool-header">
+<div>
+<h2 class="tool-title">Convert PDF to Word (DOCX)</h2>
+<p class="tool-summary">
+                Turn your PDF into an editable Word document. Text is extracted page by page in your browser and saved as clean paragraphs in a DOCX file.
+              </p>
+</div>
+<span class="tool-tag">Convert</span>
+</header>
+
+<div class="article">
+<h3>What this PDF to Word tool is designed for</h3>
+<p>
+              This converter focuses on getting the <strong>text</strong> out of your PDF and into an editable Word document.
+              It runs entirely in your browser using <code>pdf.js</code> for text extraction and the <code>docx</code> library
+              to build a standard DOCX file. No content is uploaded to any server, which makes it useful for sensitive or
+              confidential documents that you still want to edit in Word or similar editors.
+            </p>
+<h4>What converts well (and what does not)</h4>
+<p>
+              Plain reports, articles, academic papers, and contracts with mostly text tend to convert best. Each page is
+              turned into clean paragraphs in the DOCX, with a simple “Page X” separator so you can see where breaks were
+              in the original PDF. Basic bullet lists usually appear as normal text lines that you can reformat inside Word.
+            </p>
+<p>
+              Highly designed layouts (brochures, flyers, complex tables, or slide decks) may lose some structure.
+              The converter does not attempt to reproduce exact fonts, columns, or precise positioning. Images are not embedded:
+              you will see the text but graphics and charts should be reinserted manually if needed.
+            </p>
+<h4>Practical use cases</h4>
+<ul>
+<li>Editing a contract that you only have in PDF form, by turning it into a DOCX and adjusting clauses.</li>
+<li>Reusing content from academic PDFs in your own notes, literature reviews, or reports.</li>
+<li>Cleaning up scanned documents that have undergone OCR so their text is easier to work with.</li>
+</ul>
+<h4>Privacy and local processing</h4>
+<p>
+              All conversion steps happen locally: your browser loads the PDF, extracts text from each page, and builds the
+              Word document in memory. The resulting DOCX is then offered as a direct download. At no point is the PDF
+              transmitted to a third-party server from this page.
+            </p>
+</div>
+</article>
+<!-- TOOL 6: PDF TO IMAGES (PNG ZIP) INLINE -->
+<article class="tool-card" id="tool-pdf-to-images">
+<header class="tool-header">
+<div>
+<h2 class="tool-title">Export PDF pages as PNG images</h2>
+<p class="tool-summary">
+                Render each PDF page to a high-quality PNG image inside your browser and download them together as a ZIP file.
+              </p>
+</div>
+<span class="tool-tag">Images</span>
+</header>
+
+<div class="article">
+<h3>Why export PDFs as images?</h3>
+<p>
+              Some platforms accept only image files for uploads, or you may want individual pages as graphics for
+              presentations, social media, or documentation. This tool lets you convert each page of a PDF into a PNG
+              screenshot directly in your browser, then packages everything into a convenient ZIP archive for download.
+            </p>
+<h4>How the conversion works</h4>
+<p>
+              The script uses the <code>pdf.js</code> rendering engine to draw each page onto an off-screen HTML canvas.
+              That canvas is then turned into a PNG image using <code>toDataURL</code>, and the images are bundled into a ZIP
+              file using <code>JSZip</code>. All of this happens locally: the pages never leave your device.
+            </p>
+<h4>Choosing the right quality level</h4>
+<p>
+              The “Standard” scale is usually enough for on-screen viewing and quick sharing. “High” and “Very high”
+              produce sharper output by rendering at a larger resolution, which is helpful for detailed diagrams or
+              small text but will take more time and generate larger files. For very long PDFs, start with Standard and
+              increase if needed.
+            </p>
+<h4>Example workflows</h4>
+<ul>
+<li>Generate slide-ready images for a presentation from a PDF report.</li>
+<li>Create individual graphics for website articles that reference specific pages of a document.</li>
+<li>Archive visual versions of signed documents where format must remain fixed.</li>
+</ul>
+</div>
+</article>
+</section>
+</div>
+</main>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><a class="link-card" href="/tools/pdf/merge-pdf/"><div class="link-title">Merge PDF</div><p class="link-desc">Combine multiple PDFs into one clean document.</p></a><a class="link-card" href="/tools/pdf/split-pdf/"><div class="link-title">Split PDF</div><p class="link-desc">Extract ranges or split large PDFs into smaller parts.</p></a><a class="link-card" href="/tools/pdf/rotate-pdf/"><div class="link-title">Rotate PDF</div><p class="link-desc">Fix sideways pages for submissions and printing.</p></a><a class="link-card" href="/tools/pdf/reorder-pdf/"><div class="link-title">Reorder PDF</div><p class="link-desc">Re-arrange pages before you upload or sign.</p></a><a class="link-card" href="/blog/reorder-pdf-pages-for-application/"><div class="link-title">Reorder PDF Pages (Workflow)</div><p class="link-desc">Best practices + steps for portals and applications.</p></a><a class="link-card" href="/blog/compress-scanned-pdfs-clear-text-small-size/"><div class="link-title">Compress Scanned PDFs</div><p class="link-desc">Keep text legible while reducing file size.</p></a><a class="link-card" href="/tools/pdf/delete-pages/"><div class="link-title">Delete PDF Pages</div><p class="link-desc">Remove unwanted pages to cut size and clutter.</p></a><a class="link-card" href="/tools/pdf/jpg-to-pdf/"><div class="link-title">JPG to PDF</div><p class="link-desc">Convert images into a single shareable PDF.</p></a><a class="link-card" href="/tools/pdf/pdf-to-png/"><div class="link-title">PDF to PNG</div><p class="link-desc">Export pages as images for web and previews.</p></a></div></section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

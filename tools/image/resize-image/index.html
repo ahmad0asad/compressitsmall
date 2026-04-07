@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resize Image Online — Change Width/Height in Pixels | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Resize images in your browser by setting width/height (with aspect ratio lock). Download the resized JPG/PNG/WebP instantly — no upload." name="twitter:description"/><meta content="Resize Image Online — Change Width/Height in Pixels | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/tools/image/resize-image/" property="og:url"/><meta content="Resize images in your browser by setting width/height (with aspect ratio lock). Download the resized JPG/PNG/WebP instantly — no upload." property="og:description"/><meta content="Resize Image Online — Change Width/Height in Pixels | Compress It Small" property="og:title"/>
+<meta content="Resize images in your browser by setting width/height (with aspect ratio lock). Download the resized JPG/PNG/WebP instantly — no upload." name="description"/>
+<meta content="resize image, change image dimensions, image resizer online, resize jpg, resize png, resize webp, browser image tool" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/image/resize-image/" rel="canonical"/>
+<script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Resize Image",
+    "url":"https://compressitsmall.co.uk/tools/image/resize-image/",
+    "applicationCategory":"UtilityApplication",
+    "operatingSystem":"Web browser",
+    "description":"Resize images by pixels in your browser with aspect ratio lock and instant download.",
+    "offers":{"@type":"Offer","price":"0"}
+  }</script>
+<style>
+    :root { --primary:#2563eb; --primary-dark:#1d4ed8; --bg:#f4f5fb; --bg-alt:#ffffff; --text:#111827; --text-muted:#6b7280; --border:#e5e7eb; --radius-lg:16px; --radius-pill:999px; --shadow-soft:0 18px 35px rgba(15, 23, 42, 0.08); --max-width:1120px; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg-alt);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:30;backdrop-filter:blur(10px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:0.7rem 0}
+    .brand{display:flex;align-items:center;gap:0.5rem}
+    .brand-icon{width:32px;height:32px;border-radius:12px;background:radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.95rem}
+    .brand-name{font-weight:700;letter-spacing:-0.02em}
+    .nav-links{display:flex;align-items:center;gap:1rem;font-weight:600;color:var(--text-muted)}
+    .nav-links a:hover{color:var(--primary)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;border-radius:var(--radius-pill);padding:0.75rem 1rem;font-weight:700;cursor:pointer;border:1px solid transparent;background:transparent;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 12px 22px rgba(37, 99, 235, 0.18)}
+    .btn-primary:hover{background:var(--primary-dark)}
+    .btn-ghost{background:#fff;border-color:var(--border);color:var(--text)}
+    .btn-ghost:hover{border-color:rgba(37,99,235,.5);box-shadow:0 10px 20px rgba(15,23,42,.08)}
+    main{padding:2rem 0 3rem}
+    .hero{background:var(--bg-alt);border:1px solid var(--border);border-radius:calc(var(--radius-lg) + 8px);padding:2rem;box-shadow:var(--shadow-soft);margin-bottom:1.5rem}
+    .kicker{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,99,235,.1);color:var(--primary-dark);border-radius:var(--radius-pill);padding:.35rem .75rem;font-weight:800;font-size:.85rem}
+    h1{font-size:clamp(1.65rem,3vw,2.3rem);margin-top:.75rem;letter-spacing:-.03em}
+    .lead{margin-top:.75rem;color:var(--text-muted);max-width:72ch}
+    .panel{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:1.25rem}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:1.25rem}
+    @media(max-width:980px){.grid{grid-template-columns:1fr}}
+    label{display:grid;gap:.35rem;font-weight:700;font-size:.95rem}
+    select,input[type="number"]{width:100%;padding:.65rem .75rem;border-radius:12px;border:1px solid var(--border);background:#fff;font-weight:600}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+    @media(max-width:640px){.row{grid-template-columns:1fr}}
+    .status{margin-top:.75rem;padding:.85rem .9rem;border-radius:14px;border:1px solid var(--border);background:#fff;color:var(--text-muted);font-weight:600;font-size:.95rem;min-height:3.2rem}
+    .stats{display:grid;gap:.5rem;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--border)}
+    .stat{display:flex;justify-content:space-between;gap:1rem;color:var(--text-muted);font-weight:600}
+    .stat b{color:var(--text)}
+    .small{font-size:.92rem;color:var(--text-muted)}
+    footer{border-top:1px solid var(--border);padding:2.25rem 0;margin-top:2rem;color:var(--text-muted);font-weight:600}
+    footer a{color:var(--primary-dark)}
+  </style>
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<nav class="nav">
+<a class="brand" href="/"><span class="brand-icon">C</span><span class="brand-name">Compress It Small</span></a>
+<div class="nav-links">
+<a href="/tools/">Tools</a>
+<a href="/tools/image/">Images</a>
+<a href="/blog/">Blog</a>
+<a href="/contact/">Contact</a>
+</div>
+<a class="btn btn-primary" href="/tools/">Open tools</a>
+</nav>
+</div>
+</header>
+<main>
+<div class="container">
+<section class="hero">
+<span class="kicker">Images • Resizer</span>
+<h1>Resize an image by pixels (with aspect ratio lock)</h1>
+<p class="lead">If you want smaller uploads without destroying quality, resizing is usually the first step. Set a target width or height and let the tool keep proportions consistent.</p>
+</section>
+<section class="grid">
+<div class="panel">
+<h2>1) Upload and set size</h2>
+<label>
+<span>Image file</span>
+<input accept="image/*" id="imgFile" type="file"/>
+</label>
+<div class="row" style="margin-top:0.75rem;">
+<label>
+<span>Width (px)</span>
+<input id="w" min="1" placeholder="e.g., 1600" type="number"/>
+</label>
+<label>
+<span>Height (px)</span>
+<input id="h" min="1" placeholder="e.g., 1200" type="number"/>
+</label>
+</div>
+<label style="margin-top:0.75rem;">
+<span>Mode</span>
+<select id="mode">
+<option selected="" value="lock">Lock aspect ratio (recommended)</option>
+<option value="free">Free resize (may stretch)</option>
+</select>
+</label>
+<div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.75rem;">
+<button class="btn btn-primary" id="runBtn" type="button">Resize image</button>
+<button class="btn btn-ghost" id="resetBtn" type="button">Reset</button>
+</div>
+<div class="status" id="status">Choose an image to start.</div>
+<div class="stats" id="stats" style="display:none;">
+<div class="stat"><span>Original</span><b id="orig">—</b></div>
+<div class="stat"><span>New</span><b id="news">—</b></div>
+<div class="stat"><span>Dimensions</span><b id="dims">—</b></div>
+</div>
+</div>
+<aside class="panel">
+<h2>Practical presets</h2>
+<p class="small">For most portals and web uploads:</p>
+<div class="stats" style="border-top:none; padding-top:0;">
+<div class="stat"><span><b>Docs/screenshots</b></span><span>1600 px width</span></div>
+<div class="stat"><span><b>Profile/avatars</b></span><span>512 px</span></div>
+<div class="stat"><span><b>Blog inline</b></span><span>1200–1600 px</span></div>
+</div>
+<div style="margin-top:1rem; display:flex; flex-direction:column; gap:0.5rem;">
+<a class="btn btn-ghost" href="/tools/image/compress-image/">Compress Image</a>
+<a class="btn btn-ghost" href="/tools/image/convert-image/">Convert Image Format</a>
+</div>
+</aside>
+</section>
+</div>
+</main>
+<section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>Resize Image: Change Image Dimensions Online for Free</h2>
+<p>Profile photos, product listings, social media posts, email templates, and upload portals all have specific pixel dimension requirements. This tool resizes any image to exact pixel dimensions or a percentage of the original — in your browser, with no upload required.</p>
+
+<h3>How to resize an image</h3>
+<ol>
+  <li><strong>Upload your image</strong> — JPG, PNG, or WEBP.</li>
+  <li><strong>Enter new dimensions</strong> — set width and height in pixels, or choose a percentage (e.g., 50% to halve both dimensions).</li>
+  <li><strong>Toggle aspect ratio lock</strong> — keep it on to avoid stretching; turn it off to force exact dimensions regardless of proportion.</li>
+  <li><strong>Click Resize</strong> and download your resized image.</li>
+</ol>
+
+<h3>Common dimension requirements</h3>
+<ul>
+  <li><strong>Passport photos:</strong> 35×45 mm at 300 DPI (approximately 413×531 px)</li>
+  <li><strong>LinkedIn profile photo:</strong> 400×400 px minimum, 7680×4320 px maximum</li>
+  <li><strong>Twitter/X header:</strong> 1500×500 px</li>
+  <li><strong>Facebook cover:</strong> 820×312 px</li>
+  <li><strong>Instagram post:</strong> 1080×1080 px (square), 1080×1350 px (portrait)</li>
+  <li><strong>Email signature image:</strong> 300–600 px wide</li>
+  <li><strong>Web page hero image:</strong> 1280–1920 px wide, under 200 KB</li>
+</ul>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Will resizing reduce image quality?</dt>
+  <dd>Reducing size (downscaling) preserves quality well — the tool uses high-quality resampling. Enlarging an image (upscaling) will reduce sharpness because pixels are being invented rather than removed; no software can add detail that was not in the original.</dd>
+
+  <dt>What is the difference between resize and compress?</dt>
+  <dd>Resizing changes the pixel dimensions. Compressing reduces the file size while keeping the same dimensions. For web use, you often want to do both — use this tool to set the right dimensions, then use <a href="/tools/image/compress-image/">Compress Image</a> to reduce file size.</dd>
+
+  <dt>Can I resize to an exact file size?</dt>
+  <dd>File size depends on both dimensions and compression quality. Resize to the required dimensions first, then adjust compression quality in the <a href="/tools/image/compress-image/">image compressor</a> until you reach the target file size.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/image/compress-image/">Compress Image</a></li>
+  <li><a href="/tools/image/convert-image/">Convert Image Format</a></li>
+  <li><a href="/tools/image/image-cropper/">Crop Image</a></li>
+</ul>
+<h3>Understanding image dimensions and resolution</h3>
+<p>Image size has two distinct meanings that are frequently confused: pixel dimensions (width × height in pixels) and file size (kilobytes or megabytes). Resizing changes pixel dimensions; compression changes file size. To reduce how much storage or bandwidth an image consumes, you typically need to do both — resize to the right dimensions for the intended use, then compress to the target file size.</p>
+
+<p>Resolution (DPI — dots per inch) only matters for print. A 3000×2000 pixel image is identical whether it's labelled 72 DPI or 300 DPI on a screen — the number of pixels is the same, and screens display by pixel count, not by DPI. DPI only affects how large the image prints physically. For web, email, and digital submissions, ignore DPI and focus on pixel dimensions instead.</p>
+
+<h3>Choosing the right dimensions for your use case</h3>
+<p><strong>Web images:</strong> Hero banners typically display at 1280–1920 px wide; blog post images at 800–1200 px wide; thumbnails at 200–400 px. Images wider than the display area are scaled down by browsers, wasting bandwidth. Always resize to the maximum dimensions at which the image will actually be displayed.</p>
+
+<p><strong>Email images:</strong> Keep images used in email signatures and newsletters under 600 px wide. Wide images break on mobile email clients. File size should be under 100 KB per image to avoid triggering spam filters and slow rendering.</p>
+
+<p><strong>Social media:</strong> Each platform has recommended dimensions that change periodically. In general: square content (1080×1080 px) works safely across most platforms; landscape (1200×628 px) for shared links; vertical (1080×1920 px) for stories.</p>
+
+<p><strong>Document and portal uploads:</strong> Many government and institutional forms specify maximum image dimensions alongside file size limits. When in doubt, 1200 px on the longest edge with JPG compression at 80% gives a good balance of quality and small file size.</p>
+
+<h3>Aspect ratio: what happens when you resize with or without locking it</h3>
+<p>Aspect ratio is the proportional relationship between width and height. A 1920×1080 image has a 16:9 ratio. Resizing it to 1280×720 preserves this ratio (still 16:9). Resizing it to 1000×800 breaks the ratio, stretching or squishing the image. Lock the aspect ratio when you want to resize without distortion; unlock it only when you specifically need the image to fit exact dimensions regardless of how the content looks (for example, a fixed-size image slot in a template that requires exact pixel dimensions).</p>
+</section>
+<footer>
+<div class="container">
+<div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:space-between; align-items:center;">
+<span>© <span id="year"></span> Compress It Small</span>
+<span><a href="/privacy-policy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cookie-policy/">Cookies</a></span>
+</div>
+</div>
+</footer>
+<script>
+(function(){
+  const el=(id)=>document.getElementById(id);
+  const fileInput=el('imgFile');
+  const wEl=el('w');
+  const hEl=el('h');
+  const modeEl=el('mode');
+  const runBtn=el('runBtn');
+  const resetBtn=el('resetBtn');
+  const status=el('status');
+  const stats=el('stats');
+  const orig=el('orig');
+  const news=el('news');
+  const dims=el('dims');
+
+  let file=null;
+  let bmp=null;
+
+  function formatBytes(bytes){
+    const units=['B','KB','MB','GB'];
+    let i=0; let n=bytes;
+    while(n>=1024 && i<units.length-1){n/=1024;i++;}
+    return `${n.toFixed(i===0?0:2)} ${units[i]}`;
+  }
+
+  function setStatus(msg){status.textContent=msg;}
+
+  function reset(){
+    file=null; bmp=null;
+    fileInput.value='';
+    wEl.value=''; hEl.value='';
+    stats.style.display='none';
+    setStatus('Choose an image to start.');
+  }
+
+  fileInput.addEventListener('change', async (e)=>{
+    const f=(e.target.files||[])[0];
+    if(!f) return;
+    if(!String(f.type||'').startsWith('image/')){setStatus('Please choose an image file.');return;}
+    file=f;
+    setStatus('Loading…');
+    try{
+      bmp=await createImageBitmap(f);
+      wEl.value=bmp.width;
+      hEl.value=bmp.height;
+      orig.textContent=formatBytes(f.size);
+      dims.textContent=`${bmp.width}×${bmp.height}px`;
+      stats.style.display='grid';
+      setStatus('Ready. Adjust size and click Resize image.');
+    }catch(err){
+      console.error(err);
+      setStatus('Could not read this image. Try a JPG/PNG/WebP.');
+    }
+  });
+
+  function computeNewSize(){
+    let w=parseInt(wEl.value,10);
+    let h=parseInt(hEl.value,10);
+    if(!bmp) return null;
+
+    if(modeEl.value==='lock'){
+      const ar=bmp.width/bmp.height;
+      if(Number.isFinite(w) && w>0 && (!Number.isFinite(h) || h<=0)){
+        h=Math.round(w/ar);
+      } else if(Number.isFinite(h) && h>0 && (!Number.isFinite(w) || w<=0)){
+        w=Math.round(h*ar);
+      }
+    }
+
+    if(!Number.isFinite(w) || w<=0) w=bmp.width;
+    if(!Number.isFinite(h) || h<=0) h=bmp.height;
+    return {w,h};
+  }
+
+  function downloadBlob(blob, filename){
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download=filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),5000);
+  }
+
+  runBtn.addEventListener('click', async ()=>{
+    try{
+      if(!file || !bmp){setStatus('Choose an image first.');return;}
+      const size=computeNewSize();
+      if(!size){setStatus('Invalid size.');return;}
+      runBtn.disabled=true; resetBtn.disabled=true;
+      setStatus('Resizing…');
+
+      const canvas=document.createElement('canvas');
+      canvas.width=size.w; canvas.height=size.h;
+      const ctx=canvas.getContext('2d');
+      ctx.imageSmoothingEnabled=true;
+      ctx.imageSmoothingQuality='high';
+      ctx.drawImage(bmp,0,0,size.w,size.h);
+
+      const outType=file.type || 'image/jpeg';
+      const blob=await new Promise((resolve)=>canvas.toBlob(resolve,outType,0.92));
+      if(!blob){setStatus('Export failed. Try another image.');return;}
+
+      news.textContent=formatBytes(blob.size);
+      dims.textContent=`${size.w}×${size.h}px`;
+      stats.style.display='grid';
+
+      const ext=outType.includes('png')?'png':(outType.includes('webp')?'webp':'jpg');
+      const base=(file.name||'image').replace(/\.(png|jpg|jpeg|webp)$/i,'');
+      downloadBlob(blob, `${base}_resized.${ext}`);
+
+      setStatus('Done. Download started. If the file is still too big, use the Image Compressor next.');
+    }catch(err){
+      console.error(err);
+      setStatus('Resize failed. Try simpler dimensions or a different file.');
+    }finally{
+      runBtn.disabled=false; resetBtn.disabled=false;
+    }
+  });
+
+  resetBtn.addEventListener('click', reset);
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+
+</body>
+</html>

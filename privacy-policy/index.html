@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Privacy Policy | Compress It Small</title>
+<meta content="Privacy Policy for Compress It Small: how in‑browser processing works, what data we collect, cookies/analytics, and how to contact us about privacy." name="description"/>
+<meta content="compress pdf, compress image, reduce file size, online file compression, shrink pdf, compress video, compressitsmall, compress it small" name="keywords"/>
+<link href="https://compressitsmall.co.uk/privacy-policy/" rel="canonical"/>
+<!-- Basic reset & typography -->
+<style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout helpers */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 28px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-ghost {
+      background: #eef2ff;
+      color: var(--primary-dark);
+    }
+
+    .btn-ghost:hover {
+      background: #e0e7ff;
+    }
+
+    /* Header */
+    header {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      box-shadow: 0 10px 22px rgba(30, 64, 175, 0.45);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text span:first-child {
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 0.25rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--primary);
+      transition: width 0.18s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 4px 0;
+      background: #111827;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .nav-mobile a {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+
+      .nav-mobile .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-mobile.open {
+        display: flex;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      padding: 2.5rem 0 2.75rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        padding: 3.25rem 0 3.5rem;
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.22rem 0.6rem 0.22rem 0.3rem;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0f172a;
+      font-size: 0.78rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .hero-kicker-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: #0ea5e9;
+      color: #f9fafb;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.85rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at 0% 0%, #eff6ff, #ffffff);
+      border-radius: 24px;
+      padding: 1.4rem 1.4rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      color: #047857;
+      font-weight: 600;
+    }
+
+    .hero-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-card-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-chip {
+      padding: 0.45rem 0.6rem;
+      border-radius: 12px;
+      background: #eff6ff;
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.35rem;
+      align-items: center;
+    }
+
+    .hero-chip span:first-child {
+      font-weight: 500;
+    }
+
+    .hero-chip span:last-child {
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .hero-progress {
+      background: #e5e7eb;
+      border-radius: 999px;
+      height: 6px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-progress-bar {
+      width: 84%;
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+    }
+
+    .hero-progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Common section styles */
+    section {
+      padding: 2.25rem 0;
+    }
+
+    section:nth-of-type(even) {
+      background: var(--bg-alt);
+    }
+
+    .section-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .section-description {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 40rem;
+    }
+
+    /* Tools grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(148, 163, 184, 0.16);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .card-badge {
+      display: inline-flex;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #ecfeff;
+      color: #0e7490;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .card-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card-meta {
+      margin-top: 0.25rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .card-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-right: 0.8rem;
+    }
+
+    .card-meta span::before {
+      content: "•";
+      font-size: 1rem;
+      line-height: 1;
+      color: var(--primary);
+    }
+
+    .card-footer-link {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    /* How it works */
+    .how-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .how-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem 1rem;
+      align-items: flex-start;
+    }
+
+    .step-index {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 2px solid #bfdbfe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      background: #eff6ff;
+      margin-top: 0.1rem;
+    }
+
+    .step-title {
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+
+    .step-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .benefits {
+      padding: 1.1rem;
+      border-radius: var(--radius-lg);
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      font-size: 0.85rem;
+      color: #111827;
+    }
+
+    .benefits ul {
+      margin-top: 0.6rem;
+      padding-left: 1.2rem;
+    }
+
+    .benefits li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Guides / blog preview */
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .guide {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      box-shadow: 0 8px 18px rgba(148, 163, 184, 0.18);
+    }
+
+    .guide-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .guide-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .guide-excerpt {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .guide-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .guide-link {
+      margin-top: 0.15rem;
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .faq-intro {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .faq-note {
+      margin-top: 0.9rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: 12px;
+      background: #ecfdf5;
+      border: 1px solid #bbf7d0;
+      font-size: 0.8rem;
+      color: #166534;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 0.65rem 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .faq-toggle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .faq-answer {
+      padding: 0 0.9rem 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: none;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* About & contact */
+    .about-contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .about-list {
+      padding-left: 1.2rem;
+    }
+
+    .about-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1.1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 22px rgba(148, 163, 184, 0.2);
+      font-size: 0.88rem;
+    }
+
+    .contact-card form {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .field label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      padding: 0.55rem 0.65rem;
+      font-size: 0.85rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 38px;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35);
+    }
+
+    .contact-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: #020617;
+      color: #9ca3af;
+      padding: 1.5rem 0;
+      font-size: 0.8rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      margin-top: 0.5rem;
+    }
+  
+.card-btn {
+  display:inline-block;
+  background:#dc2626;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:8px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+.card-mini-btn {
+  font-size:0.85rem;
+  color:#b91c1c;
+  text-decoration:underline;
+}
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+</style>
+<!-- Simple structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Compress It Small",
+  "url": "https://compressitsmall.co.uk/",
+  "description": "Online hub for smarter file compression, tutorials, and tools to reduce PDF, image, and video size without losing quality."
+}
+</script>
+<meta content="website" property="og:type"/>
+<meta content="Compress It Small" property="og:site_name"/>
+<meta content="Privacy Policy | Compress It Small" property="og:title"/>
+<meta content="Compress It Small is your all-in-one hub for smarter online file compression. Learn how to reduce PDF, image, and video size without losing quality, with free browser-based tools and step-by-step guides." property="og:description"/>
+<meta content="https://compressitsmall.co.uk/privacy-policy/" property="og:url"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Privacy Policy | Compress It Small" name="twitter:title"/>
+<meta content="Compress It Small is your all-in-one hub for smarter online file compression. Learn how to reduce PDF, image, and video size without losing quality, with free browser-based tools and step-by-step guid" name="twitter:description"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/>
+<meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- Floating Social Share Icons -->
+<div id="social-float" style="position:fixed; bottom:20px; left:50%; transform:translateX(-50%);">
+<a href="#" onclick="shareFB()" style="background:#1877f2;color:#fff;padding:10px;border-radius:8px;">FB</a>
+<a href="#" onclick="shareTW()" style="background:#000;color:#fff;padding:10px;border-radius:8px;">X</a>
+<a href="#" onclick="shareWA()" style="background:#25d366;color:#fff;padding:10px;border-radius:8px;">WA</a>
+<a href="#" onclick="shareLN()" style="background:#0a66c2;color:#fff;padding:10px;border-radius:8px;">IN</a>
+<a href="#" onclick="copyLink()" style="background:#555;color:#fff;padding:10px;border-radius:8px;">⧉</a>
+</div>
+<script>
+function shareFB(){window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href));}
+function shareTW(){window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(location.href));}
+function shareWA(){window.open('https://wa.me/?text='+encodeURIComponent(location.href));}
+function shareLN(){window.open('https://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(location.href));}
+function copyLink(){navigator.clipboard.writeText(location.href);}
+</script>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="container">
+<div class="section-heading">
+<div class="section-kicker">Legal</div>
+<h1 class="section-title">Privacy Policy</h1>
+<p class="section-description">
+    Last Updated: 20 March 2026
+  </p>
+</div>
+<div class="about-text">
+<h2>1. Introduction</h2>
+<p>
+    At Compress It Small ("we", "us", or "our"), accessible from https://compressitsmall.co.uk/, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Compress It Small and how we use it.
+  </p>
+<p>
+    We are committed to protecting your personal data and respecting your privacy. This policy outlines our practices regarding the collection, use, and disclosure of your information when you use our services and tells you about your privacy rights and how the law protects you.
+  </p>
+<p>
+    If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in Compress It Small.
+  </p>
+<h2>2. Information We Collect</h2>
+<p>
+    We collect minimal information necessary to provide you with our file compression services and ensure a smooth user experience. The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.
+  </p>
+<h3>2.1 Information you provide to us</h3>
+<ul>
+<li><strong>Contact Information:</strong> If you contact us directly via email or our contact form, we may receive additional information about you such as your name, email address, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.</li>
+</ul>
+<h3>2.2 Information we collect automatically</h3>
+<ul>
+<li><strong>Log Files:</strong> Like many other websites, Compress It Small makes use of log files. The information collected includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.</li>
+<li><strong>Cookies and Web Beacons:</strong> We use 'cookies' to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. This information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information. Please refer to our <a href="/cookie-policy/">Cookie Policy</a> for more details.</li>
+</ul>
+<h2>3. How We Handle Your Files (Crucial Information)</h2>
+<p>
+    We understand that the files you compress may contain sensitive or personal information. Your trust is paramount to us.
+  </p>
+<ul>
+<li><strong>Client-Side Processing (Primary Method):</strong> The vast majority of our tools operate entirely within your web browser. This means your files are processed locally on your device and are <strong>never uploaded to our servers</strong>. They remain secure on your machine throughout the entire compression process.</li>
+<li><strong>Server-Side Processing (If Applicable):</strong> In rare instances where a specific tool requires server-side processing, files are uploaded securely via encrypted connections (SSL/TLS). These files are processed immediately and are strictly deleted from our servers after a short period (typically within 1 hour) to allow for download. We do not inspect, copy, or share your files.</li>
+</ul>
+<h2>4. How We Use Your Information</h2>
+<p>
+    We use the information we collect in various ways, including to:
+  </p>
+<ul>
+<li>Provide, operate, and maintain our website and services.</li>
+<li>Improve, personalize, and expand our website.</li>
+<li>Understand and analyze how you use our website to optimize performance.</li>
+<li>Develop new products, services, features, and functionality.</li>
+<li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website.</li>
+<li>Find and prevent fraud.</li>
+</ul>
+<h2>5. Sharing Your Information</h2>
+<p>
+    We do not sell, trade, or rent your personal identification information to others. We may share generic aggregated demographic information not linked to any personal identification information regarding visitors and users with our business partners, trusted affiliates, and advertisers for the purposes outlined above.
+  </p>
+<p>
+    We may employ third-party companies and individuals due to the following reasons:
+  </p>
+<ul>
+<li>To facilitate our Service (e.g., hosting providers like Netlify or Vercel);</li>
+<li>To provide the Service on our behalf;</li>
+<li>To perform Service-related services; or</li>
+<li>To assist us in analyzing how our Service is used (for example, via privacy-focused analytics or reporting tools).</li>
+</ul>
+<p>
+    These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
+Google uses cookies, including Google’s DoubleClick cookie, to serve ads on this website. Google’s use of advertising cookies enables it and its partners to serve ads based on your visit to this and other sites on the Internet. Users may opt out of personalized advertising by visiting Google’s Ads Settings.
+  </p>
+<h2>6. Data Security and Retention</h2>
+<p>
+    We implement appropriate technical and organizational security measures to protect your data against accidental or unlawful destruction, loss, change, or damage. All data transmitted between your browser and our website is encrypted using HTTPS.
+  </p>
+<p>
+    We retain personal information we collect from you where we have an ongoing legitimate business need to do so (for example, to provide you with a service you have requested). When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize it. As stated previously, user-uploaded files for server-side tools are deleted automatically and permanently after a brief processing window.
+  </p>
+<h2>7. GDPR Data Protection Rights</h2>
+<p>
+    We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:
+  </p>
+<ul>
+<li><strong>The right to access</strong> – You have the right to request copies of your personal data.</li>
+<li><strong>The right to rectification</strong> – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information you believe is incomplete.</li>
+<li><strong>The right to erasure</strong> – You have the right to request that we erase your personal data, under certain conditions.</li>
+<li><strong>The right to restrict processing</strong> – You have the right to request that we restrict the processing of your personal data, under certain conditions.</li>
+<li><strong>The right to object to processing</strong> – You have the right to object to our processing of your personal data, under certain conditions.</li>
+<li><strong>The right to data portability</strong> – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.</li>
+</ul>
+<p>
+    If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.
+  </p>
+<h2>8. CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
+<p>
+    Under the CCPA, among other rights, California consumers have the right to:
+  </p>
+<ul>
+<li>Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>
+<li>Request that a business delete any personal data about the consumer that a business has collected.</li>
+<li>Request that a business that sells a consumer's personal data, not sell the consumer's personal data.</li>
+</ul>
+<p>
+    If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.
+  </p>
+<h2>9. Children's Information</h2>
+<p>
+    Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.
+  </p>
+<p>
+    Compress It Small does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
+  </p>
+<h2>10. Changes to This Privacy Policy</h2>
+<p>
+    We may update our Privacy Policy from time to time. Thus, we advise you to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately, after they are posted on this page.
+  </p>
+<h2>11. Contact Us</h2>
+<p>
+    If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at <a href="mailto:privacy@compressitsmall.co.uk">privacy@compressitsmall.co.uk</a>.
+  </p>
+</div>
+</div>
+</section>
+</main>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/image/"><div class="link-title">Image Tools</div><p class="link-desc">Compress and resize JPG/PNG for web, forms and sharing.</p></a><a class="link-card" href="/tools/office/"><div class="link-title">Office Tools</div><p class="link-desc">Shrink Word/Excel/PowerPoint files (practical workflows).</p></a><a class="link-card" href="/tools/upload-limit-checker/"><div class="link-title">Upload Limit Checker</div><p class="link-desc">Check common file size limits for portals and emails.</p></a><a class="link-card" href="/blog/"><div class="link-title">Guides</div><p class="link-desc">Step-by-step compression guides for real upload limits.</p></a></div></div></section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a></div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+<script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    function toggleMobileNav(force) {
+      var nav = document.getElementById("nav-mobile");
+      if (typeof force === "boolean") {
+        nav.classList.toggle("open", force);
+      } else {
+        nav.classList.toggle("open");
+      }
+    }
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      var item = btn.closest(".faq-item");
+      var list = item.parentElement.querySelectorAll(".faq-item");
+      list.forEach(function (el) {
+        if (el !== item) el.classList.remove("open");
+      });
+      item.classList.toggle("open");
+    }
+  </script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

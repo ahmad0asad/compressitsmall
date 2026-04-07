@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Image Cropper Online — Crop JPG/PNG/WebP in Your Browser | Compress It Small</title>
+<meta content="Crop images online with a professional browser-based cropper. Choose aspect ratios (1:1, 16:9, 9:16) and download JPG/PNG/WebP. Secure — no upload required." name="description"/>
+<meta content="image cropper, crop image online, crop jpg, crop png, crop webp, aspect ratio cropper, secure image tools, browser based" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/image/image-cropper/" rel="canonical"/>
+<!-- pdf-lib for merging PDFs -->
+<!-- Structured Data -->
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Image Cropper",
+ "url": "https://compressitsmall.co.uk/tools/image/image-cropper/",
+ "applicationCategory": "UtilityApplication",
+ "operatingSystem": "Web browser",
+ "description": "Crop images online with a professional browser-based cropper. Choose aspect ratios (1:1, 16:9, 9:16) and download JPG/PNG/WebP. Secure \u2014 no upload required.",
+ "offers": {
+  "@type": "Offer",
+  "price": "0"
+ }
+}</script>
+<style>
+    /* SAME DESIGN SYSTEM AS COMPRESSOR PAGE */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+      --max-width: 1120px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.25rem; }
+
+    header {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 30;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.7rem 0;
+    }
+
+    .brand {
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    .brand-icon {
+      width: 32px; height: 32px; border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800;
+      box-shadow: 0 10px 22px rgba(30, 64, 175, 0.45);
+    }
+
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-text span:first-child { font-weight: 800; }
+    .brand-text span:last-child { font-size: 0.75rem; color: var(--text-muted); }
+
+    .nav-links { display: flex; gap: 1.1rem; font-size: 0.85rem; }
+    .nav-links a {
+      color: var(--text-muted); font-weight: 500; position: relative; padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      width: 0; height: 2px; background: var(--primary);
+      border-radius: var(--radius-pill); transition: width 0.16s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.6rem 1.3rem; border-radius: var(--radius-pill);
+      font-weight: 600; border: none; cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+    }
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-outline { background: #eef2ff; color: var(--primary-dark); }
+
+    /* HERO SECTION */
+    main { padding: 2.25rem 0 2.5rem; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.6rem; align-items: center;
+    }
+    @media(max-width:900px) { .hero-grid { grid-template-columns: 1fr; } }
+
+    .page-kicker {
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--primary-dark); font-weight: 700;
+    }
+
+    .page-title { font-size: 2rem; font-weight: 800; margin: 0.4rem 0; }
+    .page-description { font-size: 0.95rem; color: var(--text-muted); max-width: 40rem; }
+
+    .hero-pill {
+      background: #e0f2fe; padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem; display: inline-flex; gap: 0.35rem;
+    }
+
+    /* TOOL CARD */
+    .tool-card {
+      background: var(--bg-alt); border-radius: 20px;
+      padding: 1.2rem; margin-top: 2rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .tool-ui {
+      background: #f9fafb; border: 1px dashed #d1d5db;
+      border-radius: 14px; padding: 1rem; margin-top: 1rem;
+      display: flex; flex-direction: column; gap: 0.8rem;
+    }
+
+    .tool-status { font-size: 0.8rem; color: var(--text-muted); }
+    .tool-status.success { color: #15803d; }
+    .tool-status.error { color: #b91c1c; }
+
+    /* ARTICLE */
+    .article {
+      margin-top: 1.4rem; padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem; color: #4b5563;
+    }
+    .article h2, .article h3, .article h4 { color: #111827; margin: 0.6rem 0 0.3rem; }
+
+    footer {
+      margin-top: 2rem; padding: 1.4rem 0; background: #020617; color: #9ca3af;
+      border-top: 1px solid #1e293b; font-size: 0.78rem;
+    }
+  
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+</style>
+<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="Image Cropper Online — Crop JPG/PNG/WebP in Your Browser | Compress It Small" property="og:title"/><meta content="Crop images online with a professional browser-based cropper. Choose aspect ratios (1:1, 16:9, 9:16) and download JPG/PNG/WebP. Secure — no upload required." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/image/image-cropper/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Image Cropper Online — Crop JPG/PNG/WebP in Your Browser | Compress It Small" name="twitter:title"/><meta content="Crop images online with a professional browser-based cropper. Choose aspect ratios (1:1, 16:9, 9:16) and download JPG/PNG/WebP. Secure — no upload required." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/><link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<div class="container">
+<section style="margin-top:2rem;margin-bottom:1.5rem;">
+<h1 style="font-size:2rem;line-height:1.15;margin-bottom:.75rem;">Crop images online — precise cropping for social, web, and documents</h1>
+<p style="color:#475569;max-width:70ch;">Upload an image and crop it accurately without uploading to a server. Great for profile photos, banners, thumbnails, and preparing images for PDFs and web uploads.</p>
+</section>
+<section class="tool-card">
+<h2>Image Cropper</h2>
+<div class="tool-ui">
+<label for="imgFile">Select image (JPG/PNG/WebP)</label>
+<input accept="image/jpeg,image/png,image/webp" id="imgFile" type="file"/>
+<div class="field-row" style="margin-top:.75rem;">
+<div style="flex:1;min-width:220px;">
+<label for="aspect">Aspect ratio</label>
+<select id="aspect" onchange="setAspect()">
+<option selected="" value="free">Free</option>
+<option value="1">1:1 (Square)</option>
+<option value="1.7777778">16:9</option>
+<option value="1.3333333">4:3</option>
+<option value="0.5625">9:16 (Story)</option>
+</select>
+</div>
+<div style="flex:1;min-width:220px;">
+<label for="outFmt">Output format</label>
+<select id="outFmt">
+<option selected="" value="image/jpeg">JPG</option>
+<option value="image/png">PNG</option>
+<option value="image/webp">WebP</option>
+</select>
+</div>
+</div>
+<div class="field-row" style="margin-top:.75rem;">
+<div style="flex:1;min-width:220px;">
+<label for="outQuality">Quality (JPG/WebP)</label>
+<input id="outQuality" max="95" min="50" type="range" value="85"/>
+<div style="color:#64748b;font-size:.9rem;">Quality: <span id="outQualityVal">85</span>%</div>
+</div>
+<div style="flex:1;min-width:220px;">
+<label> </label>
+<button class="btn" onclick="downloadCropped()" type="button">Download Cropped Image</button>
+</div>
+</div>
+<div style="margin-top:1rem;border-radius:16px;overflow:hidden;border:1px solid rgba(148,163,184,0.35);background:#0b1220;">
+<img alt="Image preview for cropping" id="previewImage" style="max-width:100%;display:block;"/>
+</div>
+<p aria-live="polite" class="tool-status" id="status" role="status"></p>
+<p id="progress" style="color:#64748b;font-size:.95rem;margin-top:.25rem;"></p>
+</div>
+</section>
+<section style="margin-top:2rem;">
+<h2>How it works</h2>
+<p>Upload an image and crop it precisely in your browser using a professional cropper component. Choose an aspect ratio (or keep it free), then download the cropped result in JPG, PNG, or WebP.</p>
+<ul style="margin-top:.75rem;padding-left:1.25rem;">
+<li>For social avatars and logos, 1:1 is usually best.</li>
+<li>For thumbnails, 16:9 is common.</li>
+<li>For stories/reels, 9:16 is often required.</li>
+</ul>
+</section>
+<section style="margin-top:2rem;">
+<h2>Related tools</h2>
+<ul class="link-list"><li><a href="/tools/image/">Image compressor</a></li><li><a href="/tools/image/">Image converter</a></li><li><a href="/tools/image/">Image to PDF</a></li><li><a href="/tools/pdf/pdf-to-jpg/">PDF to JPG</a></li><li><a href="/tools/pdf/jpg-to-pdf/">JPG to PDF</a></li></ul>
+</section>
+<section style="margin-top:2rem;">
+<h2>FAQ</h2>
+<div class="faq">
+<div class="faq-item">
+<button class="faq-q" type="button">Does this upload my image?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>No. Cropping happens locally in your browser.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Why is PNG larger than JPG?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>PNG is lossless and preserves transparency, so file sizes are typically bigger. Use JPG/WebP for smaller outputs.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Can I crop multiple images?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>Yes. Select a new file and crop again.</p></div>
+</div></div>
+</section>
+</div>
+</main>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/pdf/"><div class="link-title">Compress PDF</div><p class="link-desc">Reduce PDF size for portals, email and uploads.</p></a><a class="link-card" href="/tools/pdf/split-pdf/"><div class="link-title">Split PDF</div><p class="link-desc">Extract ranges or split large PDFs into smaller parts.</p></a><a class="link-card" href="/tools/pdf/rotate-pdf/"><div class="link-title">Rotate PDF</div><p class="link-desc">Fix sideways pages for submissions and printing.</p></a><a class="link-card" href="/tools/pdf/reorder-pdf/"><div class="link-title">Reorder PDF</div><p class="link-desc">Re-arrange pages before you upload or sign.</p></a><a class="link-card" href="/tools/pdf/delete-pages/"><div class="link-title">Delete PDF Pages</div><p class="link-desc">Remove unwanted pages to cut size and clutter.</p></a><a class="link-card" href="/tools/pdf/jpg-to-pdf/"><div class="link-title">JPG to PDF</div><p class="link-desc">Convert images into a single shareable PDF.</p></a><a class="link-card" href="/blog/how-to-compress-pdf/"><div class="link-title">How to Compress PDF</div><p class="link-desc">Step-by-step PDF compression workflow.</p></a><a class="link-card" href="/blog/crop-image-to-passport-photo-size/"><div class="link-title">Crop to Passport/ID Size</div><p class="link-desc">Correct ratio + upload‑friendly size.</p></a></div></div></section>
+<section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>Crop Image: Trim and Cut Images to Any Size</h2>
+<p>Cropping removes unwanted borders, focuses on the subject, and meets the aspect ratio requirements of upload forms and social platforms. This online image cropper lets you draw a crop box manually or enter exact pixel dimensions — all processed locally in your browser.</p>
+
+<h3>How to crop an image</h3>
+<ol>
+  <li><strong>Upload your image</strong>.</li>
+  <li><strong>Drag the crop handles</strong> to frame the area you want to keep, or enter exact pixel values for a precise crop.</li>
+  <li><strong>Click Crop</strong> and download your trimmed image.</li>
+</ol>
+
+<h3>Common cropping scenarios</h3>
+<ul>
+  <li><strong>Passport and ID photos</strong> — Crop to the required head-and-shoulders framing with the correct aspect ratio (typically 35×45 mm or 2×2 inches).</li>
+  <li><strong>Product photos</strong> — Remove busy backgrounds and centre the product for e-commerce listings.</li>
+  <li><strong>Social media profile images</strong> — Crop square (1:1) for Instagram and Twitter profile photos.</li>
+  <li><strong>Removing timestamps and watermarks</strong> — Crop out automatic date stamps from camera photos.</li>
+  <li><strong>Document scans</strong> — Remove dark borders from phone or flatbed scans of documents.</li>
+</ul>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Can I crop to a specific aspect ratio?</dt>
+  <dd>Yes. Lock the crop to common ratios (1:1, 4:3, 16:9, 3:4) or enter a custom ratio in the settings.</dd>
+
+  <dt>Does cropping affect image quality?</dt>
+  <dd>No. Cropping only removes pixels outside your selection. The pixels inside your crop area remain completely unchanged in quality.</dd>
+
+  <dt>Can I undo a crop?</dt>
+  <dd>Yes — before downloading, you can adjust the crop box as many times as needed. Once downloaded, you would need to re-upload the original image.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/image/resize-image/">Resize Image</a></li>
+  <li><a href="/tools/image/compress-image/">Compress Image</a></li>
+  <li><a href="/tools/pdf/jpg-to-pdf/">JPG to PDF</a></li>
+</ul>
+</section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+<script>
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+let cropper = null;
+
+(function(){
+  const q=document.getElementById("outQuality");
+  const qv=document.getElementById("outQualityVal");
+  if(q&&qv){ q.addEventListener('input', ()=> qv.textContent=q.value); }
+})();
+
+document.getElementById("imgFile").addEventListener("change", (e)=>{
+  const file=e.target.files && e.target.files[0];
+  const status=document.getElementById("status");
+  const img=document.getElementById("previewImage");
+  if(!file){
+    status.textContent="Please select an image.";
+    status.className="tool-status error";
+    return;
+  }
+  const url=URL.createObjectURL(file);
+  img.src=url;
+  img.onload=()=>{
+    if(cropper) cropper.destroy();
+    cropper=new Cropper(img,{
+      viewMode:1,
+      autoCropArea:0.9,
+      background:false,
+      responsive:true
+    });
+    status.textContent="Ready. Adjust the crop box and download.";
+    status.className="tool-status success";
+  };
+});
+
+function setAspect(){
+  if(!cropper) return;
+  const v=document.getElementById("aspect").value;
+  if(v==="free") cropper.setAspectRatio(NaN);
+  else cropper.setAspectRatio(parseFloat(v));
+}
+
+async function downloadCropped(){
+  const status=document.getElementById("status");
+  const progress=document.getElementById("progress");
+  if(!cropper){
+    status.textContent="Select an image first.";
+    status.className="tool-status error";
+    return;
+  }
+  progress.textContent="Exporting...";
+  const fmt=document.getElementById("outFmt").value;
+  const quality=(parseInt(document.getElementById("outQuality").value||"85",10)/100);
+
+  const canvas=cropper.getCroppedCanvas();
+  if(!canvas){
+    status.textContent="Could not crop this image.";
+    status.className="tool-status error";
+    progress.textContent="";
+    return;
+  }
+
+  canvas.toBlob((blob)=>{
+    if(!blob){
+      status.textContent="Export failed.";
+      status.className="tool-status error";
+      progress.textContent="";
+      return;
+    }
+    const ext = fmt==="image/png" ? "png" : (fmt==="image/webp" ? "webp" : "jpg");
+    saveAs(blob, `cropped_image.${ext}`);
+    status.textContent="Done! Download started.";
+    status.className="tool-status success";
+    progress.textContent="";
+  }, fmt, (fmt==="image/png" ? undefined : quality));
+}
+
+</script>
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

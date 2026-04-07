@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PDF to PNG Converter — Convert PDF Pages to PNG Images Online | Compress It Small</title>
+<meta content="Free online PDF to PNG converter — extract every page as a high-quality PNG image. Fast, secure, and 100% browser-based. No upload required." name="description"/>
+<meta content="pdf to png, convert pdf to png online, extract pdf pages as png, pdf image converter, no upload pdf converter, browser based pdf tools" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/pdf/pdf-to-png/" rel="canonical"/>
+<!-- PDF.js -->
+<script id="pdfjs-lib" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js" onerror="(function(s){var f=['https://cdn.jsdelivr.net/npm/pdfjs-dist@2.14.305/build/pdf.min.js','https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.min.js'];var i=0;function n(){if(i>=f.length)return;s.src=f[i++];}s.onerror=function(){n();};n();})(this)"></script><script>(function(){
+  try {
+    if (window.pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
+      (function(){
+  var src = (document.getElementById('pdfjs-lib') && document.getElementById('pdfjs-lib').src) || '';
+  var worker = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js";
+  if (src.indexOf('cdn.jsdelivr.net') !== -1) worker = "https://cdn.jsdelivr.net/npm/pdfjs-dist@2.14.305/build/pdf.worker.min.js";
+  else if (src.indexOf('unpkg.com') !== -1) worker = "https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.worker.min.js";
+  pdfjsLib.GlobalWorkerOptions.workerSrc = worker;
+})();
+    }
+  } catch(e) {}
+})();</script>
+<!-- JSZip for ZIP creation -->
+<script id="jszip-lib" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js" onerror="(function(s){var f=['https://cdn.jsdelivr.net/npm/jszip@3.7.1/dist/jszip.min.js','https://unpkg.com/jszip@3.7.1/dist/jszip.min.js'];var i=0;function n(){if(i>=f.length)return;s.src=f[i++];}s.onerror=function(){n();};n();})(this)"></script>
+<script id="filesaver-lib" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" onerror="(function(s){var f=['https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js','https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js'];var i=0;function n(){if(i>=f.length)return;s.src=f[i++];}s.onerror=function(){n();};n();})(this)"></script>
+<!-- WebApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF to PNG Converter — Convert PDF Pages to PNG Images",
+  "url": "https://compressitsmall.co.uk/tools/pdf/pdf-to-png/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web browser",
+  "description": "Convert PDF pages to high-quality PNG images online. Fast, free, and secure — all processing happens locally with no upload.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0"
+  },
+  "featureList": [
+    "Convert PDF pages to PNG images",
+    "Download PNGs individually or as ZIP",
+    "Browser-based — no upload",
+    "High-quality conversion"
+  ]
+}
+</script>
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this PDF to PNG converter upload my files?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All processing is done locally in your browser. Nothing is uploaded or stored."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the PNG images high-quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Pages are rendered at approximately 120 DPI, offering a balanced quality suitable for documents, certificates, and research materials."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert large PDFs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Most PDFs up to 200 MB work smoothly depending on your device's memory."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will images and colors be preserved?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PNG output preserves colors, graphics, fonts, and embedded images accurately."
+      }
+    }
+  ]
+}
+</script>
+<style>
+/* DESIGN SYSTEM — Matches CompressItSmall */
+
+:root{
+ --primary:#2563eb;
+ --primary-dark:#1d4ed8;
+ --bg:#f4f5fb;
+ --bg-alt:#ffffff;
+ --text:#111827;
+ --text-muted:#6b7280;
+ --border:#e5e7eb;
+ --radius:16px;
+ --radius-pill:999px;
+ --shadow:0 18px 35px rgba(0,0,0,0.08);
+ --max-width:1120px;
+}
+
+body{margin:0;font-family:System-ui,sans-serif;background:var(--bg);color:var(--text);}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 1.2rem;}
+
+header{
+ background:var(--bg-alt);
+ border-bottom:1px solid var(--border);
+ position:sticky;top:0;z-index:40;
+ backdrop-filter:blur(10px);
+}
+
+.nav{
+ display:flex;justify-content:space-between;align-items:center;
+ padding:.8rem 0;
+}
+
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--text);}
+.brand-icon{
+ width:34px;height:34px;border-radius:12px;
+ background:radial-gradient(circle at 20% 20%,#93c5fd,#1e3a8a);
+ display:flex;align-items:center;justify-content:center;
+ color:white;font-weight:700;
+ box-shadow:0 8px 24px rgba(0,0,0,0.25);
+}
+
+.nav-links a{
+ color:var(--text-muted);
+ margin-left:1rem;
+ font-size:.88rem;
+ text-decoration:none;
+}
+
+.btn{
+ padding:.65rem 1.3rem;
+ border:none;
+ border-radius:var(--radius-pill);
+ cursor:pointer;font-weight:600;
+}
+
+.btn-primary{
+ background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+ color:white;
+ box-shadow:0 12px 28px rgba(37,99,235,0.35);
+}
+
+.tool-card{
+ background:white;
+ border-radius:20px;
+ border:1px solid var(--border);
+ padding:1.4rem;
+ margin-top:2rem;
+ box-shadow:var(--shadow);
+}
+
+.tool-ui{
+ border:1px dashed var(--border);
+ border-radius:14px;
+ background:#f9fafb;
+ padding:1rem;
+ display:flex;
+ flex-direction:column;
+ gap:.8rem;
+}
+
+input[type=file]{
+ padding:.45rem;
+ border:1px solid #d1d5db;
+ border-radius:8px;
+}
+
+.tool-status{
+ font-size:.85rem;
+ color:var(--text-muted);
+ min-height:1.1rem;
+}
+
+.tool-status.success{color:#15803d;}
+.tool-status.error{color:#b91c1c;}
+
+.progress-box{
+ margin-top:.5rem;
+ font-size:.85rem;
+ color:var(--text-muted);
+}
+
+footer{
+ margin-top:2rem;
+ padding:1.3rem 0;
+ background:#020617;
+ color:#9ca3af;
+ text-align:center;
+ font-size:.8rem;
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+</style>
+<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="PDF to PNG Converter — Convert PDF Pages to PNG Images Online | Compress It Small" property="og:title"/><meta content="Free online PDF to PNG converter — extract every page as a high-quality PNG image. Fast, secure, and 100% browser-based. No upload required." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/pdf/pdf-to-png/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="PDF to PNG Converter — Convert PDF Pages to PNG Images Online | Compress It Small" name="twitter:title"/><meta content="Free online PDF to PNG converter — extract every page as a high-quality PNG image. Fast, secure, and 100% browser-based. No upload required." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<div class="container">
+<section style="margin-top:2rem;">
+<h1 style="font-size:2rem;font-weight:800;">
+    Convert PDF to PNG — Extract Each Page as PNG Image (No Upload)
+  </h1>
+<p style="max-width:45rem;color:var(--text-muted);font-size:.95rem;">
+    Convert every page of your PDF into a high-quality PNG image.  
+    Fully private — your file never leaves your device.
+  </p>
+</section>
+<section class="tool-card">
+<h2>PDF to PNG Converter</h2>
+<div class="tool-ui">
+<label><strong>Select PDF File</strong></label>
+<input accept="application/pdf" id="pdfFile" type="file"/>
+<button class="btn btn-primary" onclick="pdfToPng()">Convert to PNG</button>
+<div class="tool-status" id="status">Choose a file to begin.</div>
+<div class="progress-box" id="progress"></div>
+</div>
+<!-- Long SEO Article -->
+<div class="article">
+<h2>How the PDF to PNG conversion works</h2>
+<p>
+When you convert a PDF to PNG, you are essentially converting each PDF page
+into an independently rendered, high-resolution image. PNG images are ideal
+for preserving sharpness, maintaining fine detail, and producing a clean
+visual representation of the page. This makes PNG a perfect format for
+academic notes, scanned documents, certificates, legal papers, and
+professional layouts.
+</p>
+<h2>Why PNG instead of JPG?</h2>
+<p>
+PNG uses lossless compression, meaning:
+</p>
+<ul>
+<li>Text remains crisp</li>
+<li>Edges remain sharp</li>
+<li>Colors are preserved accurately</li>
+<li>No artefacts appear around letters or diagrams</li>
+</ul>
+<h3>When to use PNG</h3>
+<ul>
+<li>Documents with text</li>
+<li>Scanned certificates</li>
+<li>Architectural drawings</li>
+<li>Research papers</li>
+<li>Legal contracts</li>
+<li>University submissions</li>
+</ul>
+<h2>Advantages of browser-based conversion (no upload)</h2>
+<p>
+Unlike many online converters that upload your file to a remote server,
+this tool processes the document entirely inside your browser using
+<code>pdf.js</code>. This gives you:
+</p>
+<ul>
+<li><strong>Complete privacy:</strong> nothing is transmitted</li>
+<li><strong>Instant processing:</strong> no upload delays</li>
+<li><strong>No file-size restrictions:</strong> limited only by device RAM</li>
+<li><strong>Ideal for confidential files:</strong> IDs, transcripts, financial documents</li>
+</ul>
+<h2>Common PDF-to-PNG use cases</h2>
+<h3>1. Academic use</h3>
+<p>
+Students often need screenshots or images of pages from PDFs for:
+</p>
+<ul>
+<li>Assignments</li>
+<li>Research papers</li>
+<li>PowerPoint presentations</li>
+<li>Digital notes</li>
+</ul>
+<h3>2. Professional use</h3>
+<p>
+Office workers frequently extract pages to images for:
+</p>
+<ul>
+<li>Documents with signatures</li>
+<li>Blueprint PNG exports</li>
+<li>Legal slides and annexures</li>
+<li>Marketing graphics</li>
+</ul>
+<h3>3. Social media and creative use</h3>
+<p>
+Creators convert PDF pages into PNG to:
+</p>
+<ul>
+<li>Use pages as thumbnails</li>
+<li>Share one-page posters</li>
+<li>Create presentations and animations</li>
+</ul>
+<h2>How the conversion engine works</h2>
+<p>
+This tool uses <code>pdf.js</code> — the same rendering engine used inside Firefox.
+Each page is rendered onto a canvas using a scale factor that creates a PNG
+image at approximately 120 DPI. This is the perfect balance between quality
+and performance.
+</p>
+<h3>Page rendering steps</h3>
+<ol>
+<li>Load the PDF array buffer</li>
+<li>Read page count</li>
+<li>Loop through pages</li>
+<li>Render each page onto a canvas</li>
+<li>Convert canvas to PNG</li>
+<li>Add PNG to ZIP</li>
+</ol>
+<h2>Technical benefits of using PNG output</h2>
+<ul>
+<li>No quality loss — PNG is lossless</li>
+<li>Perfect for transparent overlays</li>
+<li>Fonts remain razor-sharp</li>
+<li>Diagrams maintain grid accuracy</li>
+</ul>
+<h2>Troubleshooting</h2>
+<h3>Q: PDF is too large</h3>
+<p>Use Compress PDF first, then convert.</p>
+<h3>Q: PNGs too big?</h3>
+<p>Use Resize Image or Compress Image tools.</p>
+<h3>Q: Browser crashes?</h3>
+<p>Convert in smaller batches.</p>
+<h2>Conclusion</h2>
+<p>
+This PDF to PNG converter gives you complete privacy, outstanding balance of
+quality and file size, and instant rendering — without sending anything to a
+server. It is ideal for professionals, students, researchers, designers, and
+anyone who needs precise PNG output from PDFs.
+</p>
+</div>
+</section>
+</div>
+</main>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/pdf/"><div class="link-title">Compress PDF</div><p class="link-desc">Reduce PDF size for portals, email and uploads.</p></a><a class="link-card" href="/tools/pdf/merge-pdf/"><div class="link-title">Merge PDF</div><p class="link-desc">Combine multiple PDFs into one clean document.</p></a><a class="link-card" href="/tools/pdf/split-pdf/"><div class="link-title">Split PDF</div><p class="link-desc">Extract ranges or split large PDFs into smaller parts.</p></a><a class="link-card" href="/tools/pdf/rotate-pdf/"><div class="link-title">Rotate PDF</div><p class="link-desc">Fix sideways pages for submissions and printing.</p></a><a class="link-card" href="/tools/pdf/reorder-pdf/"><div class="link-title">Reorder PDF</div><p class="link-desc">Re-arrange pages before you upload or sign.</p></a><a class="link-card" href="/tools/pdf/delete-pages/"><div class="link-title">Delete PDF Pages</div><p class="link-desc">Remove unwanted pages to cut size and clutter.</p></a><a class="link-card" href="/blog/how-to-compress-pdf/"><div class="link-title">How to Compress PDF</div><p class="link-desc">Step-by-step PDF compression workflow.</p></a></div></div></section><section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>PDF to PNG: Convert PDF Pages to PNG Images</h2>
+<p>PNG is the preferred format when you need sharp, lossless images from PDF pages — particularly for documents with diagrams, charts, text-heavy slides, and line art. This tool converts your PDF pages to high-quality PNG files in your browser, with no server upload required.</p>
+
+<h3>When to use PDF to PNG instead of PDF to JPG</h3>
+<p>PNG is a lossless format — no visual information is lost during conversion. This makes it ideal when the source PDF contains sharp-edged content like text, technical diagrams, architectural drawings, or presentation slides. JPG compression introduces artefacts on hard edges, which look blurry or pixelated at high zoom. For photos and complex colour images with no sharp edges, <a href="/tools/pdf/pdf-to-jpg/">PDF to JPG</a> gives smaller file sizes with minimal visible quality loss.</p>
+
+<h3>How to convert PDF to PNG</h3>
+<ol>
+  <li><strong>Upload your PDF</strong>.</li>
+  <li><strong>Select the resolution</strong> — 150 DPI for web/screen use; 300 DPI for print or high-detail viewing.</li>
+  <li><strong>Click Convert</strong> — each page becomes an individual PNG file.</li>
+  <li><strong>Download</strong> individually or as a zip archive.</li>
+</ol>
+
+<h3>Common use cases</h3>
+<ul>
+  <li><strong>Slide deck images</strong> — Convert presentation PDFs to PNG for embedding in reports or web pages.</li>
+  <li><strong>Diagram extraction</strong> — Pull technical diagrams and charts from PDF reports as lossless PNG images.</li>
+  <li><strong>Document previews</strong> — Create thumbnail images of PDF pages for gallery displays.</li>
+  <li><strong>Social media infographics</strong> — Convert a designed PDF page to a shareable PNG image.</li>
+</ul>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Will text in the PNG be searchable?</dt>
+  <dd>No. Once converted to PNG, the page becomes a raster image. The text is visible but no longer digitally selectable. Use <a href="/tools/pdf/extract-text/">Extract Text</a> if you need the text content.</dd>
+
+  <dt>Does higher DPI always give better results?</dt>
+  <dd>Higher DPI gives sharper images but larger file sizes. For web display and online uploads, 150 DPI is sufficient. For printing or detailed technical review, use 300 DPI.</dd>
+
+  <dt>Is my PDF kept private?</dt>
+  <dd>Yes — all conversion is local in your browser.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/pdf/pdf-to-jpg/">PDF to JPG</a></li>
+  <li><a href="/tools/image/compress-image/">Compress Image</a></li>
+  <li><a href="/tools/pdf/extract-text/">Extract Text From PDF</a></li>
+</ul>
+</section>
+<footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a></div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+async function pdfToPng() {
+  const fileInput = document.getElementById("pdfFile");
+  const status = document.getElementById("status");
+  const progress = document.getElementById("progress");
+
+  if (!fileInput.files.length) {
+    status.textContent = "Please select a PDF file.";
+    status.className = "tool-status error";
+    return;
+  }
+
+  status.textContent = "Loading PDF...";
+  status.className = "tool-status";
+
+  const file = fileInput.files[0];
+  const arrayBuffer = await file.arrayBuffer();
+
+  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+  const pageCount = pdf.numPages;
+  status.textContent = `Found ${pageCount} pages. Converting...`;
+
+  const zip = new JSZip();
+
+  for (let i = 1; i <= pageCount; i++) {
+    const page = await pdf.getPage(i);
+
+    const viewport = page.getViewport({ scale: 1.6 }); // 110–120 DPI approx
+
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+
+    await page.render({ canvasContext: context, viewport }).promise;
+
+    const pngData = canvas.toDataURL("image/png").split(",")[1];
+
+    zip.file(`page_${i}.png`, pngData, { base64: true });
+
+    progress.textContent = `Rendering page ${i} of ${pageCount}...`;
+  }
+
+  status.textContent = "Creating ZIP...";
+  const zipBlob = await zip.generateAsync({ type: "blob" });
+
+  saveAs(zipBlob, "pdf_pages_png.zip");
+
+  status.textContent = "Done! Download started.";
+  status.className = "tool-status success";
+}
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

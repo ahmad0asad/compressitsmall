@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Image Tools – Compress, Resize, Convert &amp; Image to PDF | Compress It Small</title>
+<meta content="Use browser-based image tools to compress, resize, convert formats and turn images into PDFs. All processing happens locally using HTML canvas and JavaScript, with instant downloads." name="description"/>
+<link href="https://compressitsmall.co.uk/tools/image/" rel="canonical"/>
+<meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
+<!-- Open Graph / Social -->
+<meta content="website" property="og:type"/>
+<meta content="Compress It Small" property="og:site_name"/>
+<meta content="Image Tools – Compress, Resize, Convert &amp; Export" property="og:title"/>
+<meta content="Browser-based tools to compress, resize, and convert images locally. Fast, private, and free." property="og:description"/>
+<meta content="https://compressitsmall.co.uk/tools/image/" property="og:url"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/>
+<style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+      --max-width: 1120px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.25rem; }
+
+    /* Premium Header styling */
+    header#top{background:rgba(2,6,23,.85);border-bottom:1px solid #1f2937;backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000}
+    header#top .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;position:relative}
+    header#top .brand{display:flex;align-items:center;gap:12px;color:#e5e7eb}
+    header#top .brand-icon{width:42px;height:42px;border-radius:16px;background:radial-gradient(circle at 20% 20%,#93c5fd,#1e3a8a);display:flex;align-items:center;justify-content:center;font-weight:800}
+    header#top .brand-text span{display:block}
+    header#top .brand-text span:first-child{font-weight:800;letter-spacing:.2px}
+    header#top .brand-text span:last-child{font-size:.82rem;opacity:.85;color:#bfdbfe}
+    header#top .nav-cta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    header#top .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:800;border:1px solid transparent;text-decoration:none;transition:transform 0.12s ease,box-shadow 0.12s ease;white-space:nowrap}
+    header#top .btn-ghost{background:#020617;color:#bfdbfe;border-color:#1f2937}
+    header#top .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#ffffff;box-shadow:0 12px 24px rgba(37, 99, 235, 0.25)}
+    header#top .btn:hover{transform:translateY(-1px)}
+    header#top .nav-toggle{display:none;background:transparent;color:#e5e7eb;border:1px solid #1f2937;border-radius:12px;padding:10px 12px;cursor:pointer}
+    header#top .nav-toggle span{display:block;width:18px;height:2px;background:#e5e7eb;border-radius:999px;margin:3px 0}
+    header#top .nav-mobile{display:none;position:absolute;right:16px;top:72px;flex-direction:column;gap:10px;min-width:220px;background:rgba(2,6,23,.95);border:1px solid #1f2937;border-radius:16px;padding:12px;box-shadow:0 25px 55px rgba(0,0,0,.45)}
+    header#top .nav-mobile a{color:#e5e7eb;padding:10px 10px;border-radius:12px}
+    header#top .nav-mobile.open{display:flex}
+    @media (max-width:980px){ header#top .nav-cta{display:none} header#top .nav-toggle{display:inline-flex;align-items:center;gap:8px} }
+
+    main { padding: 2.25rem 0 2.5rem; }
+    .page-kicker { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--primary-dark); font-weight: 700; margin-bottom: 0.3rem; }
+    .page-title { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.4rem; }
+    .page-description { font-size: 0.95rem; color: var(--text-muted); max-width: 44rem; }
+
+    .tools-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+    @media (min-width: 980px) { .tools-grid { grid-template-columns: 1fr 1fr; } }
+
+    .tool-card { background: var(--bg-alt); border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 16px 32px rgba(148, 163, 184, 0.18); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.9rem; }
+    .tool-header { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; }
+    .tool-title { font-size: 1rem; font-weight: 700; }
+    .tool-tag { font-size: 0.72rem; padding: 0.2rem 0.55rem; border-radius: 999px; background: #fefce8; color: #854d0e; font-weight: 600; }
+    .tool-summary { font-size: 0.86rem; color: var(--text-muted); }
+    
+    .btn-small { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
+    .btn-outline { background: #eef2ff; color: var(--primary-dark); }
+
+    .article { font-size: 0.86rem; color: #4b5563; border-top: 1px solid #e5e7eb; padding-top: 0.75rem; margin-top: 0.25rem; }
+    .article h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .article p { margin-bottom: 0.6rem; }
+
+    /* Related Links section */
+    .related-links { margin: 34px 0 0; }
+    .related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+    .related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+    .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+    .link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff); text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06)); transition: transform .14s ease; }
+    .link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); }
+    .link-title { font-weight: 800; margin-bottom: 4px; }
+    .link-desc { font-size: .9rem; color: var(--text-muted); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); background: #020617; color: #9ca3af; padding: 1.5rem 0; font-size: 0.8rem; margin-top: 2rem; }
+    .footer-grid { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr); gap: 1.5rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-bottom: 0.5rem; }
+    .footer-links a { color: #e5e7eb; }
+    .footer-links a:hover { text-decoration: underline; }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr; } }
+</style>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (Security Fixed) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+function addFrame() {
+var doc = window.document;
+var otherCMP = !!(window.frames[TCF_LOCATOR_NAME]);
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else { setTimeout(addFrame, 5); }
+}
+return !otherCMP;
+}
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+if (!args.length) { return queue; } 
+else if (args[0] === 'ping') {
+var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+if (typeof args[2] === 'function') { args[2](retr); }
+} else { queue.push(args); }
+}
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+var payload = json.__tcfapiCall;
+if (payload) {
+window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+if (event && event.source && event.source.postMessage) { event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*'); }
+}, payload.parameter);
+}
+}
+if (!window.frames[TCF_LOCATOR_NAME]) { addFrame(); window.__tcfapi = tcfAPIHandler; window.addEventListener('message', postMessageEventHandler, false); }
+};
+makeStub();
+})();
+</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Compress It Small – Image Tools", "url": "https://compressitsmall.co.uk/tools/image/", "applicationCategory": "Utility", "operatingSystem": "Web browser", "description": "Free in-browser image tools to compress, resize, crop, watermark and convert images — no upload, no sign-up required.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}</script>  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- Floating Social Share Icons -->
+<div id="social-float" style="position:fixed; bottom:20px; left:50%; transform:translateX(-50%); z-index: 9999;">
+<a href="#" onclick="shareFB()" style="background:#1877f2;color:#fff;padding:10px;border-radius:8px;margin:0 4px;">FB</a>
+<a href="#" onclick="shareTW()" style="background:#000;color:#fff;padding:10px;border-radius:8px;margin:0 4px;">X</a>
+<a href="#" onclick="shareWA()" style="background:#25d366;color:#fff;padding:10px;border-radius:8px;margin:0 4px;">WA</a>
+<a href="#" onclick="copyLink()" style="background:#555;color:#fff;padding:10px;border-radius:8px;margin:0 4px;">⧉</a>
+</div>
+<script>
+function shareFB(){window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href));}
+function shareTW(){window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(location.href));}
+function shareWA(){window.open('https://wa.me/?text='+encodeURIComponent(location.href));}
+function copyLink(){navigator.clipboard.writeText(location.href);}
+</script>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<div class="nav-cta">
+<a class="btn btn-ghost" href="/"><span>🏠</span><span>Home</span></a>
+<a class="btn btn-ghost" href="/tools/pdf/"><span>📄</span><span>PDF Tools</span></a>
+<a class="btn btn-ghost" href="/tools/image/"><span>🖼️</span><span>Image Tools</span></a>
+<a class="btn btn-ghost" href="/tools/office/"><span>📂</span><span>Office Tools</span></a>
+<a class="btn btn-primary" href="/blog/"><span>📰</span><span>Blog</span></a>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span><span></span><span></span>
+</button>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/">Home</a>
+<a href="/tools/">Tools</a>
+<a href="/how-it-works/">How it works</a>
+<a href="/faq/">FAQ</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/blog/">Blog</a>
+</div>
+</nav>
+</div>
+</header>
+<main>
+<div class="container">
+<section class="page-heading">
+<div class="page-kicker">Image toolkit</div>
+<h1 class="page-title">Compress, resize, convert &amp; export images in your browser</h1>
+<p class="page-description">
+          Focused image utilities built around the HTML canvas element. Every operation runs locally in the browser for maximum privacy and finishes with an instant download.
+        </p>
+</section>
+<section class="tools-grid">
+<!-- TOOL 1: COMPRESSOR -->
+<article class="tool-card">
+<header class="tool-header">
+<h2 class="tool-title">Image compressor (JPEG/PNG/WebP)</h2>
+<span class="tool-tag">Compress</span>
+</header>
+<p class="tool-summary">Reduce photo or screenshot file size while keeping edges and text readable. Ideal for blog images and email attachments.</p>
+<div style="margin-top:0.75rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+<a class="btn btn-primary btn-small" href="/tools/image/compress-image/">Open Image Compressor →</a>
+<a class="btn btn-outline btn-small" href="/blog/best-compression-settings-whatsapp-email-forms/">Read best settings</a>
+</div>
+<div class="article">
+<h3>How it works</h3>
+<p>The compressor uses the HTML canvas element as a lightweight image lab. Pixels are drawn to an off-screen canvas and then re-encoded with optimized quality factors, removing redundant data without hurting legibility.</p>
+</div>
+</article>
+<!-- TOOL 2: RESIZER -->
+<article class="tool-card">
+<header class="tool-header">
+<h2 class="tool-title">Image resizer (pixels)</h2>
+<span class="tool-tag">Resize</span>
+</header>
+<p class="tool-summary">Scale an image to new dimensions. Re-sample pixels via canvas to match your web layout or upload limits.</p>
+<div style="margin-top:0.75rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+<a class="btn btn-primary btn-small" href="/tools/image/resize-image/">Open Image Resizer →</a>
+<a class="btn btn-outline btn-small" href="/tools/image/compress-image/">Then compress (optional)</a>
+</div>
+<div class="article">
+<h3>Why resize?</h3>
+<p>Most cameras capture pixels far beyond what is needed for a screen. Reducing physical dimensions is often the most effective way to lower file size significantly.</p>
+</div>
+</article>
+<!-- TOOL 3: CONVERTER -->
+<article class="tool-card">
+<header class="tool-header">
+<h2 class="tool-title">Format converter</h2>
+<span class="tool-tag">Convert</span>
+</header>
+<p class="tool-summary">Switch between JPEG, PNG and WebP. Useful for removing transparency or preparing files for legacy portals.</p>
+<div style="margin-top:0.75rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+<a class="btn btn-primary btn-small" href="/tools/image/convert-image/">Open Image Converter →</a>
+</div>
+<div class="article">
+<h3>Choosing formats</h3>
+<p>JPEG is best for complex photos, while PNG is ideal for text-heavy screenshots and logos requiring transparency.</p>
+</div>
+</article>
+<!-- TOOL 4: IMAGE TO PDF -->
+<article class="tool-card">
+<header class="tool-header">
+<h2 class="tool-title">Image to PDF</h2>
+<span class="tool-tag">Image → PDF</span>
+</header>
+<p class="tool-summary">Embed a photo or scan into a PDF container to pass strict portal validation checks.</p>
+<div style="margin-top:0.75rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+<a class="btn btn-primary btn-small" href="/tools/pdf/jpg-to-pdf/">Open Image → PDF →</a>
+</div>
+<div class="article">
+<h3>Structural Embedding</h3>
+<p>This wraps your pixels inside a PDF without changing the content—perfect for submitting signed forms captured on your phone.</p>
+</div>
+</article>
+</section>
+</div>
+</main>
+<section class="related-links">
+<div class="container">
+<h2>Explore related tools and guides</h2>
+<p>Use these internal links to complete your workflow faster and follow the most relevant guides.</p>
+<div class="link-grid">
+<a class="link-card" href="/tools/pdf/">
+<div class="link-title">PDF Tools</div>
+<p class="link-desc">Merge, split, reorder, and compress PDFs locally.</p>
+</a>
+<a class="link-card" href="/tools/office/">
+<div class="link-title">Office Tools</div>
+<p class="link-desc">Shrink Word/Excel/PowerPoint files safely.</p>
+</a>
+<a class="link-card" href="/tools/upload-limit-checker/">
+<div class="link-title">Upload Limit Checker</div>
+<p class="link-desc">Check common file size limits for portals and emails.</p>
+</a>
+<a class="link-card" href="/blog/">
+<div class="link-title">Guides &amp; Blog</div>
+<p class="link-desc">Step-by-step compression guides and tutorials.</p>
+</a>
+</div>
+</div>
+</section>
+<section style="background:#fff;margin:2rem auto;padding:2rem;max-width:1120px;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2 style="margin-top:0;">Free Online Image Tools — No Upload Required</h2>
+<p>Every image tool on this page runs entirely in your browser. Your photos, logos, and graphics never leave your device — they are processed locally using JavaScript and downloaded directly to your computer. There are no accounts, no subscriptions, and no file size limits imposed by server quotas.</p>
+
+<h3>Which image tool do you need?</h3>
+<p><strong><a href="/tools/image/compress-image/">Compress Image</a></strong> — Reduce JPG, PNG, or WEBP file size before uploading to a portal, sending by email, or publishing to a website. Typical reductions of 40–80% with no visible quality loss at standard viewing sizes.</p>
+<p><strong><a href="/tools/image/resize-image/">Resize Image</a></strong> — Change pixel dimensions to meet exact requirements. Useful for passport photos, social media profiles, email headers, and upload forms with strict dimension limits.</p>
+<p><strong><a href="/tools/image/convert-image/">Convert Image</a></strong> — Switch between JPG, PNG, and WEBP. Convert photos to JPG for smaller files, use PNG for transparency, or output WEBP for faster website loading.</p>
+<p><strong><a href="/tools/image/image-cropper/">Crop Image</a></strong> — Remove unwanted borders, focus on a subject, or trim to a required aspect ratio. Supports custom pixel crops and locked aspect ratio modes.</p>
+<p><strong><a href="/tools/image/watermark-image/">Watermark Image</a></strong> — Add a visible text watermark to photos and graphics to deter unauthorised use. Adjustable position, opacity, and font size.</p>
+
+<h3>Privacy — your images stay on your device</h3>
+<p>Unlike cloud-based tools that upload your files to a server for processing, every tool on this page uses your browser's built-in capabilities (Canvas API, FileReader API) to process images locally. No image data is ever transmitted over the internet when using these tools. This makes them safe for confidential documents, personal photos, and sensitive business graphics.</p>
+
+<h3>Common image problems solved here</h3>
+<ul style="color:#374151;margin-left:1.3rem;">
+  <li>Image too large for an email attachment or upload portal → <a href="/tools/image/compress-image/">Compress</a> or <a href="/tools/image/resize-image/">Resize</a></li>
+  <li>PNG file larger than equivalent JPG would be → <a href="/tools/image/convert-image/">Convert to JPG</a></li>
+  <li>Photo needs cropping to passport or profile dimensions → <a href="/tools/image/image-cropper/">Crop</a></li>
+  <li>Need to protect an image from unauthorised use → <a href="/tools/image/watermark-image/">Watermark</a></li>
+  <li>Image needs to be a PDF for a form or portal → <a href="/tools/pdf/jpg-to-pdf/">JPG to PDF</a></li>
+</ul>
+</section>
+<footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/tools/">Tools</a>
+<a href="/blog/">Guides</a>
+<a href="/faq/">FAQ</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
+<p style="margin-top: 0.5rem;">© <span id="year"></span> Compress It Small. All rights reserved.</p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+<script>
+(function(){
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  window.toggleMobileNav = function(force){
+    var panel = document.getElementById('nav-mobile');
+    var btn = document.getElementById('nav-toggle');
+    if (!panel || !btn) return;
+    var isOpen = panel.classList.contains('open');
+    var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+    panel.classList.toggle('open', shouldOpen);
+    btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+  };
+  document.addEventListener('click', function(e){
+    var panel = document.getElementById('nav-mobile');
+    var btn = document.getElementById('nav-toggle');
+    if (!panel || !btn) return;
+    if (!panel.classList.contains('open')) return;
+    if (panel.contains(e.target) || btn.contains(e.target)) return;
+    window.toggleMobileNav(false);
+  }, true);
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

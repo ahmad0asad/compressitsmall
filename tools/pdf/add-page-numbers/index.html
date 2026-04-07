@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Add Page Numbers to PDF (Free, Private, In-Browser) | Compress It Small</title>
+<meta content="Add page numbers to any PDF directly in your browser. Choose start number, start page, position and format. 100% private: no uploads." name="description"/>
+<meta content="add page numbers to pdf, number pdf pages, pdf page numbering, browser pdf tool, no upload pdf tool" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/pdf/add-page-numbers/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Compress It Small" property="og:site_name"/>
+<meta content="Add Page Numbers to PDF (Free, Private, In-Browser)" property="og:title"/>
+<meta content="Add page numbers to any PDF directly in your browser. Choose start number, start page, position and format. 100% private: no uploads." property="og:description"/>
+<meta content="https://compressitsmall.co.uk/tools/pdf/add-page-numbers/" property="og:url"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Add Page Numbers to PDF (Free, Private, In-Browser)" name="twitter:title"/>
+<meta content="Add page numbers to any PDF directly in your browser. Choose start number, start page, position and format. 100% private: no uploads." name="twitter:description"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/>
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<style>
+    :root{
+      --primary:#2563eb;
+      --primary-dark:#1d4ed8;
+      --bg:#f4f5fb;
+      --bg-alt:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --shadow:0 18px 35px rgba(15,23,42,.08);
+      --radius:16px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
+    header#top{
+      background:rgba(2,6,23,.85);
+      border-bottom:1px solid #1f2937;
+      backdrop-filter:blur(12px);
+      position:sticky;top:0;z-index:1000;
+    }
+    header#top .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:14px 0;position:relative;
+    }
+    header#top .brand{display:flex;align-items:center;gap:12px;color:#e5e7eb}
+    header#top .brand-icon{
+      width:42px;height:42px;border-radius:16px;
+      background:radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+      display:flex;align-items:center;justify-content:center;font-weight:800;
+      box-shadow:0 10px 22px rgba(30,64,175,.45);
+    }
+    header#top .brand-text span{display:block}
+    header#top .brand-text span:first-child{font-weight:800;letter-spacing:.2px}
+    header#top .brand-text span:last-child{font-size:.82rem;opacity:.85;color:#bfdbfe}
+
+    header#top .nav-cta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    header#top .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:800;
+      border:1px solid transparent;text-decoration:none;
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
+      white-space:nowrap;
+    }
+    header#top .btn-ghost{background:#020617;color:#bfdbfe;border-color:#1f2937}
+    header#top .btn-primary{
+      background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color:#fff;box-shadow:0 12px 24px rgba(37,99,235,.25);
+    }
+    header#top .btn:hover{transform:translateY(-1px)}
+    header#top .nav-toggle{
+      display:none;background:transparent;color:#e5e7eb;border:1px solid #1f2937;
+      border-radius:12px;padding:10px 12px;cursor:pointer;
+    }
+    header#top .nav-toggle span{display:block;width:18px;height:2px;background:#e5e7eb;border-radius:999px}
+    header#top .nav-toggle span+span{margin-top:4px}
+    header#top .nav-mobile{
+      display:none;position:absolute;right:16px;top:72px;flex-direction:column;gap:10px;
+      min-width:240px;background:rgba(2,6,23,.95);border:1px solid #1f2937;border-radius:16px;
+      padding:12px;box-shadow:0 25px 55px rgba(0,0,0,.45);
+    }
+    header#top .nav-mobile a{color:#e5e7eb;padding:10px 10px;border-radius:12px}
+    header#top .nav-mobile a:hover{background:rgba(37,99,235,.18)}
+    header#top .nav-mobile.open{display:flex}
+    @media (max-width:980px){
+      header#top .nav-cta{display:none}
+      header#top .nav-toggle{display:inline-flex;flex-direction:column;align-items:center;gap:0}
+    }
+
+    main{padding:2.25rem 0 2.5rem}
+    .hero{
+      background:var(--bg-alt);
+      border:1px solid var(--border);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      padding:1.25rem 1.25rem 1.15rem;
+      margin-top:1.25rem;
+    }
+    .kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:#1d4ed8;font-weight:800;margin-bottom:.35rem}
+    h1{font-size:1.9rem;line-height:1.15;letter-spacing:-.03em;margin-bottom:.45rem}
+    .sub{color:var(--muted);max-width:72ch}
+
+    .card{
+      background:var(--bg-alt);
+      border:1px solid var(--border);
+      border-radius:20px;
+      box-shadow:0 16px 32px rgba(148,163,184,.18);
+      padding:1.1rem 1.1rem 1.25rem;
+      margin-top:1.25rem;
+    }
+    .card h2{font-size:1.05rem;font-weight:800;margin-bottom:.6rem}
+    .tool-ui{
+      background:#f9fafb;border:1px dashed #d1d5db;border-radius:14px;
+      padding:.85rem .9rem;display:flex;flex-direction:column;gap:.7rem;
+      font-size:.92rem;
+    }
+    label{font-size:.82rem;font-weight:800;color:#374151}
+    input[type="file"], input[type="number"], input[type="text"], select{
+      width:100%;font:inherit;font-size:.92rem;padding:.55rem .65rem;
+      border-radius:10px;border:1px solid #d1d5db;background:#fff;
+    }
+    input:focus, select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 1px rgba(37,99,235,.3)}
+    .field-row{display:flex;gap:.75rem;flex-wrap:wrap}
+    .field{flex:1;min-width:220px}
+    .hint{color:#64748b;font-size:.85rem;margin-top:.35rem}
+    .action{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:.7rem 1.2rem;border-radius:999px;border:none;cursor:pointer;
+      font-weight:800;background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color:#fff;box-shadow:0 12px 24px rgba(37,99,235,.25);
+      transition:transform .12s ease, box-shadow .12s ease;
+      width:max-content;
+    }
+    .action:hover{transform:translateY(-1px);box-shadow:0 16px 28px rgba(37,99,235,.35)}
+    .tool-status{min-height:1.25rem;color:#64748b;font-size:.9rem}
+    .tool-status.success{color:#15803d}
+    .tool-status.error{color:#b91c1c}
+
+    .section{margin-top:1.6rem}
+    .section h2{font-size:1.15rem;margin-bottom:.35rem}
+    .section p{color:#4b5563}
+    .link-list{margin-top:.75rem;padding-left:1.25rem}
+    .link-list li{margin:.25rem 0}
+    .link-list a{color:var(--primary-dark);font-weight:700}
+    .link-list a:hover{text-decoration:underline}
+
+    .faq{margin-top:.75rem;display:flex;flex-direction:column;gap:.55rem}
+    .faq-item{border:1px solid var(--border);background:#fff;border-radius:16px;overflow:hidden}
+    .faq-q{
+      width:100%;text-align:left;background:#fff;border:none;cursor:pointer;
+      padding:.85rem .9rem;font-weight:900;display:flex;align-items:center;justify-content:space-between;
+    }
+    .faq-a{display:none;padding:0 .9rem .9rem;color:#4b5563}
+    .faq-item.open .faq-a{display:block}
+
+    footer{
+      border-top:1px solid var(--border);
+      background:#020617;color:#9ca3af;
+      padding:1.4rem 0;font-size:.78rem;margin-top:2rem;
+    }
+    .footer-grid{
+      display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,2fr);gap:1.4rem;
+    }
+    @media (max-width:860px){.footer-grid{grid-template-columns:1fr}}
+    .footer-links{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:.4rem}
+    .footer-links a{color:#e5e7eb}
+    .footer-links a:hover{text-decoration:underline}
+  </style>
+<!-- pdf-lib (self-hosted to avoid CDN redirect failures) -->
+<script src="/assets/js/pdf-lib.min.js"></script>
+<!-- Schema: WebApplication -->
+<script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Compress It Small – Add Page Numbers to PDF",
+    "url":"https://compressitsmall.co.uk/tools/pdf/add-page-numbers/",
+    "applicationCategory":"Utility",
+    "operatingSystem":"Web browser",
+    "description":"Add page numbers to a PDF directly in your browser. Choose start number, start page, position, and format. No file uploads.",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+    "featureList":[
+      "Add page numbers to PDF",
+      "Choose start page and start number",
+      "Select position (top/bottom, left/center/right)",
+      "Custom format with {n}",
+      "Local processing (no upload)"
+    ]
+  }
+  </script>
+<!-- Schema: FAQPage -->
+<script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Do I need to upload my PDF to add page numbers?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. The numbering runs entirely in your browser. Your PDF is not uploaded from this page."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I start numbering from page 2 or skip a cover page?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Set “Start on PDF page” to the first page that should receive a number, and choose the first “Start number” value."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I customize the page number format?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Use the “Format” field and include {n} where the number should appear (for example, “Page {n}”)."}
+      },
+      {
+        "@type":"Question",
+        "name":"Does it overwrite my original PDF?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. The tool generates a new numbered PDF for download. Your original file remains unchanged."}
+      },
+      {
+        "@type":"Question",
+        "name":"Will it work on scanned PDFs?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Page numbers are drawn as text on top of each PDF page, so it works for scanned and digital PDFs."}
+      }
+    ]
+  }
+  </script>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<div aria-label="Quick links" class="nav-cta">
+<a class="btn btn-ghost" href="/">Home</a>
+<a class="btn btn-ghost" href="/tools/pdf/">PDF Tools</a>
+<a class="btn btn-ghost" href="/tools/image/">Image Tools</a>
+<a class="btn btn-ghost" href="/tools/office/">Office Tools</a>
+<a class="btn btn-ghost" href="/tools/upload-limit-checker/">Upload Limit Checker</a>
+<a class="btn btn-primary" href="/blog/">Blog</a>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" type="button">
+<span></span><span></span><span></span>
+</button>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/">Home</a>
+<a href="/tools/pdf/">PDF Tools</a>
+<a href="/tools/image/">Image Tools</a>
+<a href="/tools/office/">Office Tools</a>
+<a href="/tools/upload-limit-checker/">Upload Limit Checker</a>
+<a href="/blog/">Blog</a>
+</div>
+</nav>
+</div>
+</header>
+<main>
+<div class="container">
+<section class="hero">
+<div class="kicker">PDF tool</div>
+<h1>Add page numbers to a PDF — professional numbering in seconds</h1>
+<p class="sub">
+          Upload a PDF, choose where the page numbers should appear, and download a new numbered PDF.
+          All processing runs locally in your browser for privacy and speed (no file uploads).
+        </p>
+</section>
+<section aria-label="Add page numbers tool" class="card">
+<h2>Add Page Numbers to PDF</h2>
+<div class="tool-ui">
+<div class="field">
+<label for="pdfFile">Select PDF</label>
+<input accept="application/pdf" id="pdfFile" type="file"/>
+</div>
+<div class="field-row">
+<div class="field">
+<label for="startNumber">Start number</label>
+<input id="startNumber" min="0" type="number" value="1"/>
+</div>
+<div class="field">
+<label for="startPage">Start on PDF page</label>
+<input id="startPage" min="1" type="number" value="1"/>
+</div>
+</div>
+<div class="field-row">
+<div class="field">
+<label for="position">Position</label>
+<select id="position">
+<option selected="" value="bottom-center">Bottom center</option>
+<option value="bottom-right">Bottom right</option>
+<option value="bottom-left">Bottom left</option>
+<option value="top-center">Top center</option>
+<option value="top-right">Top right</option>
+<option value="top-left">Top left</option>
+</select>
+</div>
+<div class="field">
+<label for="fontSize">Font size (pt)</label>
+<input id="fontSize" max="72" min="6" type="number" value="12"/>
+</div>
+</div>
+<div class="field-row">
+<div class="field">
+<label for="margin">Margin (pt)</label>
+<input id="margin" max="200" min="0" type="number" value="24"/>
+</div>
+<div class="field">
+<label for="format">Format</label>
+<input id="format" type="text" value="{n}"/>
+<div class="hint">Use <strong>{n}</strong> where the number should appear (example: <em>Page {n}</em>).</div>
+</div>
+</div>
+<button class="action" id="runBtn" type="button">Add Page Numbers</button>
+<p aria-live="polite" class="tool-status" id="status" role="status"></p>
+<p id="progress" style="color:#64748b;font-size:.95rem;"></p>
+</div>
+</section>
+<section class="section">
+<h2>How it works</h2>
+<p>
+          This tool uses <strong>pdf-lib</strong> to write a small text label on each page. You control which PDF page starts
+          receiving numbers, the first number value, and the placement. The result is a new PDF downloaded to your device.
+        </p>
+<ul class="link-list">
+<li><strong>Start on PDF page</strong> lets you skip cover pages or title pages.</li>
+<li><strong>Format</strong> supports <strong>{n}</strong> as a placeholder for the page number.</li>
+<li>All changes are applied locally in your browser. No upload required.</li>
+</ul>
+</section>
+<section class="section">
+<h2>Related tools</h2>
+<ul class="link-list">
+<li><a href="/tools/pdf/merge-pdf/">Merge PDF</a></li>
+<li><a href="/tools/pdf/split-pdf/">Split PDF</a></li>
+<li><a href="/tools/pdf/reorder-pdf/">Reorder PDF</a></li>
+<li><a href="/tools/pdf/rotate-pdf/">Rotate PDF</a></li>
+<li><a href="/tools/pdf/delete-pages/">Delete PDF Pages</a></li>
+<li><a href="/tools/pdf/pdf-signature/">Sign PDF</a></li>
+<li><a href="/tools/pdf/pdf-redactor/">PDF Redactor</a></li>
+<li><a href="/tools/pdf/pdf-to-png/">PDF to PNG</a></li>
+</ul>
+</section>
+<section class="section">
+<h2>FAQ</h2>
+<div class="faq">
+<div class="faq-item">
+<button class="faq-q" type="button">Can I skip the first page?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>Yes. Set “Start on PDF page” to 2 (or higher).</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Can I use “Page 1” style labels?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>Yes. Set the format to <strong>Page {n}</strong>.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Does it overwrite my original PDF?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>No. It creates a new numbered PDF for download. Your original file is unchanged.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Will it work on scanned PDFs?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>Yes. The tool writes numbers as text on top of each page, even if the PDF is scanned.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Is my PDF uploaded anywhere?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>No. Processing happens locally in your browser. Nothing is uploaded from this page.</p></div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>Add Page Numbers to PDF: Number Pages Automatically</h2>
+<p>Numbered pages are required by thesis guidelines, legal submissions, government applications, and professional reports. This tool adds clean page numbers to every page of your PDF — in your chosen position, size, and format — processed locally in your browser.</p>
+
+<h3>How to add page numbers</h3>
+<ol>
+  <li><strong>Upload your PDF</strong>.</li>
+  <li><strong>Choose position</strong> — bottom centre, bottom right, top right, or other corners.</li>
+  <li><strong>Set starting number</strong> — useful if this document is part of a larger set starting at a number other than 1.</li>
+  <li><strong>Choose format</strong> — plain numbers (1, 2, 3), or formatted (Page 1 of 10).</li>
+  <li><strong>Click Add Page Numbers</strong> and download.</li>
+</ol>
+
+<h3>Common use cases</h3>
+<ul>
+  <li><strong>Thesis and dissertation submission</strong> — Most university guidelines require specific page numbering with a set starting page.</li>
+  <li><strong>Legal documents and court bundles</strong> — Court submissions must have sequential page numbers for reference during hearings.</li>
+  <li><strong>Business reports and proposals</strong> — Professional documents need numbered pages for navigation and referencing.</li>
+  <li><strong>Manuals and guides</strong> — Multi-page instruction documents are easier to reference with clear page numbers.</li>
+</ul>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Can I start numbering from a page other than 1?</dt>
+  <dd>Yes. Set the starting number to any value. This is useful for documents where the first few pages are a title and table of contents counted separately from the main body.</dd>
+
+  <dt>Can I skip numbering the first page (cover page)?</dt>
+  <dd>Yes — choose a starting page offset so that numbering begins from the second or third page while the cover remains unnumbered.</dd>
+
+  <dt>Is my file private?</dt>
+  <dd>Yes — all processing is local in your browser.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/pdf/merge-pdf/">Merge PDF</a></li>
+  <li><a href="/tools/pdf/compress-pdf/">Compress PDF</a></li>
+  <li><a href="/tools/pdf/reorder-pdf/">Reorder PDF Pages</a></li>
+</ul>
+
+<h3>Page numbering conventions for different document types</h3>
+<p><strong>Academic theses:</strong> Preliminary sections (abstract, table of contents) use Roman numerals (i, ii, iii). The main body starts at Arabic numeral 1. Most universities specify placement — bottom centre or bottom right — in their formatting guidelines. Always check your institution's thesis manual before finalising.</p>
+<p><strong>Legal documents:</strong> Court bundles are paginated continuously from cover to last page, often in "Page X of Y" format so completeness can be verified quickly. Always confirm with the specific court or tribunal's filing requirements.</p>
+<p><strong>Business reports:</strong> Executive summaries and cover pages are typically unnumbered or use Roman numerals. The body starts at 1. Page numbers appear at bottom right in most corporate report templates.</p>
+<h3>Technical considerations</h3>
+<p>Page numbers added by this tool appear as a content layer on top of the existing page without affecting the underlying text or layout. After adding numbers, verify that the chosen position does not overlap with existing content such as headers or footers already present in the original PDF. If your document has a visual footer, choose a position that sits outside that area — many documents leave the bottom edge clear precisely to accommodate page numbers added at the final stage.</p>
+<h3>Starting numbers at a custom value</h3>
+<p>If this document is part of a larger set, page numbers may need to continue from where the previous document ended — for example, starting at page 47 rather than 1. Set the starting number before generating to ensure continuous numbering across the complete set. This is particularly important for thesis appendices, legal exhibit bundles, and multi-volume reports.</p>
+</section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/tools/pdf/">PDF Tools</a>
+<a href="/blog/">Blog</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
+<p>© <span id="year"></span> Compress It Small. All rights reserved.</p>
+</div>
+<div>
+<p>
+          This site provides practical utilities and educational guidance. Always verify critical workflows with the official
+          instructions of the institution or service you are using.
+        </p>
+</div>
+</div>
+</footer>
+<script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile nav
+    (function(){
+      const btn = document.getElementById("nav-toggle");
+      const panel = document.getElementById("nav-mobile");
+      if (!btn || !panel) return;
+
+      function setOpen(open){
+        panel.classList.toggle("open", open);
+        btn.setAttribute("aria-expanded", String(open));
+        panel.setAttribute("aria-hidden", String(!open));
+      }
+
+      btn.addEventListener("click", function(){
+        setOpen(!panel.classList.contains("open"));
+      });
+
+      document.addEventListener("click", function(e){
+        if (!panel.classList.contains("open")) return;
+        if (panel.contains(e.target) || btn.contains(e.target)) return;
+        setOpen(false);
+      }, true);
+
+      window.toggleMobileNav = function(forceState){ setOpen(!!forceState); };
+    })();
+
+    // FAQ accordion
+    document.querySelectorAll(".faq-item .faq-q").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item");
+        item.classList.toggle("open");
+      });
+    });
+
+    // PDF numbering
+    const { PDFDocument, StandardFonts, rgb } = PDFLib;
+
+    function downloadBlob(blob, filename){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename || "download.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function getAnchor(position, w, h, margin, fontSize){
+      const yBottom = margin;
+      const yTop = h - margin - fontSize;
+      switch(position){
+        case "bottom-right": return { x: w - margin, y: yBottom, align:"right" };
+        case "bottom-left": return { x: margin, y: yBottom, align:"left" };
+        case "top-center": return { x: w/2, y: yTop, align:"center" };
+        case "top-right": return { x: w - margin, y: yTop, align:"right" };
+        case "top-left": return { x: margin, y: yTop, align:"left" };
+        case "bottom-center":
+        default: return { x: w/2, y: yBottom, align:"center" };
+      }
+    }
+
+    async function addPageNumbers(){
+      const fileInput = document.getElementById("pdfFile");
+      const status = document.getElementById("status");
+      const progress = document.getElementById("progress");
+      const runBtn = document.getElementById("runBtn");
+
+      status.className = "tool-status";
+      progress.textContent = "";
+
+      if(!fileInput.files || !fileInput.files.length){
+        status.textContent = "Please select a PDF file first.";
+        status.classList.add("error");
+        return;
+      }
+
+      const startNumber = parseInt(document.getElementById("startNumber").value || "1", 10);
+      const startPage = parseInt(document.getElementById("startPage").value || "1", 10);
+      const position = document.getElementById("position").value;
+      const margin = Math.max(0, parseFloat(document.getElementById("margin").value || "24"));
+      const fontSize = Math.max(6, parseFloat(document.getElementById("fontSize").value || "12"));
+      const format = (document.getElementById("format").value || "{n}").trim();
+
+      runBtn.disabled = true;
+      runBtn.style.opacity = "0.75";
+      runBtn.style.cursor = "not-allowed";
+
+      try{
+        status.textContent = "Loading PDF…";
+        const buf = await fileInput.files[0].arrayBuffer();
+        const pdfDoc = await PDFDocument.load(buf);
+        const pages = pdfDoc.getPages();
+        const total = pages.length;
+
+        if(!Number.isFinite(startPage) || startPage < 1 || startPage > total){
+          status.textContent = `Invalid start page. Enter a value between 1 and ${total}.`;
+          status.classList.add("error");
+          return;
+        }
+
+        const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+        const firstIndex = startPage - 1;
+
+        for(let i = firstIndex; i < total; i++){
+          const page = pages[i];
+          const { width:w, height:h } = page.getSize();
+
+          const labelNumber = (Number.isFinite(startNumber) ? startNumber : 1) + (i - firstIndex);
+          const label = format
+            .replaceAll("{n}", String(labelNumber))
+            .replaceAll("{total}", String(total));
+
+          const anchor = getAnchor(position, w, h, margin, fontSize);
+          const textWidth = font.widthOfTextAtSize(label, fontSize);
+
+          let drawX = anchor.x;
+          if(anchor.align === "center") drawX = anchor.x - (textWidth / 2);
+          if(anchor.align === "right") drawX = anchor.x - textWidth;
+
+          page.drawText(label, {
+            x: drawX,
+            y: anchor.y,
+            size: fontSize,
+            font,
+            color: rgb(0,0,0),
+            opacity: 0.75
+          });
+
+          progress.textContent = `Numbering page ${i + 1} of ${total}…`;
+        }
+
+        status.textContent = "Preparing download…";
+        const outBytes = await pdfDoc.save();
+
+        const originalName = fileInput.files[0].name || "document.pdf";
+        const baseName = originalName.replace(/\.pdf$/i, "");
+        const outName = `${baseName}_page-numbered.pdf`;
+
+        downloadBlob(new Blob([outBytes], { type: "application/pdf" }), outName);
+
+        status.textContent = "Done. Your numbered PDF has been downloaded.";
+        status.classList.add("success");
+        progress.textContent = "";
+      } catch(err){
+        console.error(err);
+        status.textContent = "Failed to add page numbers. Please try another PDF.";
+        status.classList.add("error");
+      } finally {
+        runBtn.disabled = false;
+        runBtn.style.opacity = "";
+        runBtn.style.cursor = "";
+      }
+    }
+
+    document.getElementById("runBtn").addEventListener("click", addPageNumbers);
+  </script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

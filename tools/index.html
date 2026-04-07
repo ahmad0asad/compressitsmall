@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>All Tools | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Browse the main tool categories and start your workflow in seconds." name="twitter:description"/><meta content="All Tools | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/tools/" property="og:url"/><meta content="Browse the main tool categories and start your workflow in seconds." property="og:description"/><meta content="All Tools | Compress It Small" property="og:title"/>
+<meta content="Browse the main tool categories and start your workflow in seconds." name="description"/>
+<link href="https://compressitsmall.co.uk/tools/" rel="canonical"/>
+<meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --accent: #22c55e;
+  --bg: #f4f5fb;
+  --bg-alt: #ffffff;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+  --max-width: 1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+a{color:inherit;text-decoration:none}
+.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.25rem}
+main{padding:2.25rem 0 2.5rem}
+h1{font-size:1.9rem;letter-spacing:-.03em;margin:.2rem 0 .5rem}
+h2{font-size:1.25rem;margin:1.4rem 0 .55rem}
+p{color:var(--text-muted);max-width:80ch;margin:.35rem 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:800;border:1px solid transparent;text-decoration:none;transition:transform .12s ease,box-shadow .12s ease,background .12s ease,border-color .12s ease;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;box-shadow:0 12px 24px rgba(37,99,235,.25)}
+.btn-ghost{background:#020617;color:#bfdbfe;border-color:#1f2937}
+.card{background:var(--bg-alt);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-soft);padding:1rem 1.1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px}
+.small{font-size:.9rem}
+.kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--primary-dark);font-weight:800}
+hr{border:none;border-top:1px solid var(--border);margin:1.4rem 0}
+footer{border-top:1px solid var(--border);background:#020617;color:#9ca3af;padding:1.4rem 0;font-size:.78rem;margin-top:2rem}
+.footer-links{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:.4rem}
+.footer-links a{color:#e5e7eb}
+.footer-links a:hover{text-decoration:underline}
+/* header toolbar (same visual language) */
+header#top{background:rgba(2,6,23,.85);border-bottom:1px solid #1f2937;backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000}
+header#top .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;position:relative}
+header#top .brand{display:flex;align-items:center;gap:12px;color:#e5e7eb}
+header#top .brand-icon{width:42px;height:42px;border-radius:16px;background:radial-gradient(circle at 20% 20%,#93c5fd,#1e3a8a);display:flex;align-items:center;justify-content:center;font-weight:800}
+header#top .brand-text span{display:block}
+header#top .brand-text span:first-child{font-weight:800;letter-spacing:.2px}
+header#top .brand-text span:last-child{font-size:.82rem;opacity:.85;color:#bfdbfe}
+header#top .nav-cta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+header#top .nav-toggle{display:none;background:transparent;color:#e5e7eb;border:1px solid #1f2937;border-radius:12px;padding:10px 12px;cursor:pointer}
+header#top .nav-toggle span{display:block;width:18px;height:2px;background:#e5e7eb;border-radius:999px;margin:3px 0}
+header#top .nav-mobile{display:none;position:absolute;right:16px;top:72px;flex-direction:column;gap:10px;min-width:220px;background:rgba(2,6,23,.95);border:1px solid #1f2937;border-radius:16px;padding:12px;box-shadow:0 25px 55px rgba(0,0,0,.45)}
+header#top .nav-mobile a{color:#e5e7eb;padding:10px 10px;border-radius:12px}
+header#top .nav-mobile a:hover{background:rgba(37,99,235,.18)}
+header#top .nav-mobile.open{display:flex}
+@media (max-width:980px){
+  header#top .nav-cta{display:none}
+  header#top .nav-toggle{display:inline-flex;align-items:center;gap:8px}
+}
+</style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "All Tools | Compress It Small",
+  "url": "https://compressitsmall.co.uk/tools/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Compress It Small",
+    "url": "https://compressitsmall.co.uk/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Browser-based file utilities"
+  }
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Compress It Small",
+  "url": "https://compressitsmall.co.uk/",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://compressitsmall.co.uk/contact/"
+    }
+  ]
+}</script>
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<div class="nav-cta">
+<a class="btn btn-ghost" href="/"><span>🏠</span><span>Home</span></a>
+<a class="btn btn-ghost" href="/tools/pdf/"><span>📄</span><span>PDF Tools</span></a>
+<a class="btn btn-ghost" href="/tools/image/"><span>🖼️</span><span>Image Tools</span></a>
+<a class="btn btn-ghost" href="/tools/office/"><span>📂</span><span>Office Tools</span></a>
+<a class="btn btn-primary" href="/blog/"><span>📰</span><span>Blog</span></a>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span><span></span><span></span>
+</button>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/">Home</a>
+<a href="/tools/">Tools</a>
+<a href="/how-it-works/">How it works</a>
+<a href="/faq/">FAQ</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/blog/">Blog</a>
+</div>
+</nav>
+</div>
+</header>
+<main>
+<div class="container">
+<div class="kicker">Tool hub</div>
+<h1>All Tools</h1>
+<p>Browse the main tool categories and start your workflow in seconds.</p>
+<div class="grid">
+<a class="card" href="/tools/pdf/"><div class="kicker">Category</div><h2>PDF Tools</h2><p class="small">Compress, merge, split, reorder, redact, sign, compare, and convert — fully in your browser.</p></a>
+<a class="card" href="/tools/image/"><div class="kicker">Category</div><h2>Image Tools</h2><p class="small">Compress and convert images, crop/resize, and prepare assets for web posting.</p></a>
+<a class="card" href="/tools/office/"><div class="kicker">Category</div><h2>Office Tools</h2><p class="small">Simple helpers for documents and workflows (privacy-first where possible).</p></a>
+<a class="card" href="/tools/upload-limit-checker/"><div class="kicker">Category</div><h2>Upload Limit Checker</h2><p class="small">Calculate exactly how much you need to shrink a file (e.g., from 12.4 MB to 2 MB) before you compress or split.</p></a>
+</div>
+<hr/>
+<div class="card">
+<h2>Privacy-first processing</h2>
+<p class="small">Where supported, tools run locally in your browser. Your files are not uploaded to our servers from these pages.</p>
+<p class="small">Some tools may rely on third-party libraries loaded from CDNs; review your browser settings and our privacy policy for details.</p>
+</div>
+<hr/>
+<div class="grid">
+<div class="card">
+<h2>Start with these common workflows</h2>
+<p class="small">If you are not sure which tool to use, pick a workflow below and follow the steps. These are the scenarios we see most: uploads to portals, email attachments, and preparing clean files for printing.</p>
+<p class="small"><strong>1) “My PDF is too large to upload”</strong> → <a href="/tools/pdf/compress-pdf/">Compress PDF</a> → if still large, try <a href="/tools/pdf/extract-pages/">Extract pages</a> to submit only the required pages.</p>
+<p class="small"><strong>2) “I must send multiple PDFs as one file”</strong> → <a href="/tools/pdf/merge-pdf/">Merge PDF</a> → then <a href="/tools/pdf/add-page-numbers/">Add page numbers</a> for long packets.</p>
+<p class="small"><strong>3) “I need text from a PDF”</strong> → <a href="/tools/pdf/extract-text/">Extract text</a> → or open <a href="/tools/pdf/#tool-pdf-to-word">PDF to Word (DOCX)</a> on the PDF Tools page.</p>
+<p class="small"><strong>4) “My image is too big for a form”</strong> → <a href="/tools/image/">Image tools</a> → crop first, then compress for best quality.</p>
+</div>
+<div class="card">
+<h2>How to choose the right tool (quick guide)</h2>
+<p class="small"><strong>Compression</strong> reduces file size. It is best when you must meet a limit (e.g., 2MB / 10MB).</p>
+<p class="small"><strong>Conversion</strong> changes format (e.g., JPG→PDF). Do this when a portal requires a specific type.</p>
+<p class="small"><strong>Editing</strong> changes the document structure (merge/split/reorder/delete pages). Do this when the recipient needs fewer pages or a specific order.</p>
+<p class="small"><strong>Tip:</strong> A scanned PDF behaves like a stack of images. For the biggest savings, reduce scan resolution at the source (scanner/export settings) and only then compress.</p>
+<p class="small">For detailed guidance, see: <a href="/blog/pdf-too-large-to-upload-size-limits/">PDF size limits</a> and <a href="/blog/how-to-compress-pdf/">how to compress without blur</a>.</p>
+</div>
+</div>
+<div class="card" style="margin-top:14px;">
+<h2>Quality and transparency</h2>
+<p class="small">Each tool page explains what it does, what it cannot do, and how your file is handled. If a workflow requires a specific browser capability or third-party library, that is stated on the page. This helps you make an informed choice before you process documents.</p>
+<p class="small">If you discover a broken link or a tool that does not behave as described, please report it via <a href="/contact/">Contact</a> with the exact URL and your browser version.</p>
+</div>
+</div>
+</main>
+<section class="container" style="background:#fff;margin-top:2rem;padding:1.75rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);">
+<h2 style="margin-top:0;">How Compress It Small Works: Local Processing, Clear Workflows, Better Upload Success</h2>
+<p>
+  Compress It Small is built to help you pass strict file upload limits with a clean user experience. Most tools run <strong>locally in your browser</strong>
+  when technically possible.
+</p>
+<h3>Choose a category</h3>
+<ul>
+<li><a href="/tools/pdf/">PDF tools</a></li>
+<li><a href="/tools/image/">Image tools</a></li>
+<li><a href="/tools/office/">Office tools</a></li>
+</ul>
+<h3>Recommended workflow</h3>
+<ol>
+<li>Check the limit with <a href="/tools/upload-limit-checker/">Upload Limit Checker</a>.</li>
+<li>Reduce content first (remove/extract pages, crop images).</li>
+<li>Compress last to keep quality readable.</li>
+<li>Verify the final size.</li>
+</ol>
+</section>
+<section style="background:#fff;margin:2rem auto;padding:2rem;max-width:1120px;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2 style="margin-top:0;">All Free Online File Tools — Privacy-First, No Upload Required</h2>
+<p>Every tool on this site runs inside your browser. Your files are processed locally — they are never uploaded to our servers, never stored in a database, and never accessible to anyone except you. Close the browser tab and all traces of your file disappear from memory automatically.</p>
+
+<h3>PDF tools</h3>
+<p>The most-used category: <a href="/tools/pdf/compress-pdf/">compress</a>, <a href="/tools/pdf/merge-pdf/">merge</a>, <a href="/tools/pdf/split-pdf/">split</a>, <a href="/tools/pdf/rotate-pdf/">rotate</a>, <a href="/tools/pdf/extract-pages/">extract pages</a>, <a href="/tools/pdf/delete-pages/">delete pages</a>, <a href="/tools/pdf/reorder-pdf/">reorder pages</a>, <a href="/tools/pdf/add-page-numbers/">add page numbers</a>, <a href="/tools/pdf/watermark-pdf/">watermark</a>, and <a href="/tools/pdf/pdf-redactor/">redact</a>. Also convert between formats: <a href="/tools/pdf/pdf-to-jpg/">PDF to JPG</a>, <a href="/tools/pdf/pdf-to-png/">PDF to PNG</a>, <a href="/tools/pdf/jpg-to-pdf/">JPG to PDF</a>, and <a href="/tools/pdf/extract-text/">extract text from PDF</a>.</p>
+
+<h3>Image tools</h3>
+<p><a href="/tools/image/compress-image/">Compress</a>, <a href="/tools/image/resize-image/">resize</a>, <a href="/tools/image/convert-image/">convert</a>, <a href="/tools/image/image-cropper/">crop</a>, and <a href="/tools/image/watermark-image/">watermark</a> images — JPG, PNG, and WEBP all supported.</p>
+
+<h3>Office and data tools</h3>
+<p>Convert between office formats: <a href="/tools/office/text-to-docx/">text to DOCX</a>, <a href="/tools/office/text-to-pdf/">text to PDF</a>, <a href="/tools/office/excel-to-csv/">Excel to CSV</a>, <a href="/tools/office/csv-to-excel/">CSV to Excel</a>, <a href="/tools/office/csv-to-json/">CSV to JSON</a>, <a href="/tools/office/json-to-csv/">JSON to CSV</a>, and <a href="/tools/office/json-formatter/">format/validate JSON</a>.</p>
+
+<h3>Built for real submission and upload workflows</h3>
+<p>These tools exist because file size limits, format requirements, and portal restrictions are genuine friction points — in PhD applications, visa submissions, job applications, scholarship forms, and everyday document sharing. Each tool is designed for the specific task it performs, with clear outputs and no unnecessary steps. If a task cannot be done reliably in-browser, the tool will say so explicitly rather than produce unreliable results.</p>
+</section>
+<footer>
+<div class="container">
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/tools/">Tools</a>
+<a href="/tools/pdf/">PDF Tools</a>
+<a href="/blog/">Guides</a><a href="/checklists/">Checklists</a>
+<a href="/faq/">FAQ</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
+<p>© <span id="year"></span> Compress It Small. All rights reserved.</p>
+</div>
+</footer>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav
+  window.toggleMobileNav = function(force){
+    var panel = document.getElementById('nav-mobile');
+    var btn = document.getElementById('nav-toggle');
+    if (!panel || !btn) return;
+    var isOpen = panel.classList.contains('open');
+    var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+    panel.classList.toggle('open', shouldOpen);
+    btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+  };
+  document.addEventListener('click', function(e){
+    var panel = document.getElementById('nav-mobile');
+    var btn = document.getElementById('nav-toggle');
+    if (!panel || !btn) return;
+    if (!panel.classList.contains('open')) return;
+    if (panel.contains(e.target) || btn.contains(e.target)) return;
+    window.toggleMobileNav(false);
+  }, true);
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

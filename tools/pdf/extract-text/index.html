@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Extract Text From PDF — Copy or Download PDF Text Online | Compress It Small</title>
+<meta content="Extract text from a PDF in your browser. Copy the output or download a TXT file. Fast, secure, and 100% local processing — no upload required." name="description"/>
+<meta content="extract text from pdf, pdf text extractor, copy text from pdf online, pdf to text, secure pdf tools, browser pdf extractor, no upload" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/pdf/extract-text/" rel="canonical"/>
+<!-- PDF.js -->
+<script id="pdfjs-lib" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js" onerror="(function(s){var f=['https://cdn.jsdelivr.net/npm/pdfjs-dist@2.14.305/build/pdf.min.js','https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.min.js'];var i=0;function n(){if(i>=f.length)return;s.src=f[i++];}s.onerror=function(){n();};n();})(this)"></script>
+<!-- JSZip for ZIP creation -->
+<script id="jszip-lib" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js" onerror="(function(s){var f=['https://cdn.jsdelivr.net/npm/jszip@3.7.1/dist/jszip.min.js','https://unpkg.com/jszip@3.7.1/dist/jszip.min.js'];var i=0;function n(){if(i>=f.length)return;s.src=f[i++];}s.onerror=function(){n();};n();})(this)"></script>
+<script id="filesaver-lib" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" onerror="(function(s){var f=['https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js','https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js'];var i=0;function n(){if(i>=f.length)return;s.src=f[i++];}s.onerror=function(){n();};n();})(this)"></script>
+<!-- WebApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF Text Extractor",
+  "url": "https://compressitsmall.co.uk/tools/pdf/extract-text/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web browser",
+  "description": "Extract text from a PDF in your browser. Copy the output or download a TXT file. Fast, secure, and 100% local processing — no upload required.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0"
+  },
+  "featureList": [
+    "PDF Text Extractor",
+    "100% browser-based processing (no upload)",
+    "Fast downloads with ZIP when multiple files are generated"
+  ]
+}
+</script>
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this PDF to PNG converter upload my files?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All processing is done locally in your browser. Nothing is uploaded or stored."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the PNG images high-quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Pages are rendered at approximately 120 DPI, offering a balanced quality suitable for documents, certificates, and research materials."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert large PDFs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Most PDFs up to 200 MB work smoothly depending on your device's memory."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will images and colors be preserved?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PNG output preserves colors, graphics, fonts, and embedded images accurately."
+      }
+    }
+  ]
+}
+</script>
+<style>
+/* DESIGN SYSTEM — Matches CompressItSmall */
+
+:root{
+ --primary:#2563eb;
+ --primary-dark:#1d4ed8;
+ --bg:#f4f5fb;
+ --bg-alt:#ffffff;
+ --text:#111827;
+ --text-muted:#6b7280;
+ --border:#e5e7eb;
+ --radius:16px;
+ --radius-pill:999px;
+ --shadow:0 18px 35px rgba(0,0,0,0.08);
+ --max-width:1120px;
+}
+
+body{margin:0;font-family:System-ui,sans-serif;background:var(--bg);color:var(--text);}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 1.2rem;}
+
+header{
+ background:var(--bg-alt);
+ border-bottom:1px solid var(--border);
+ position:sticky;top:0;z-index:40;
+ backdrop-filter:blur(10px);
+}
+
+.nav{
+ display:flex;justify-content:space-between;align-items:center;
+ padding:.8rem 0;
+}
+
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--text);}
+.brand-icon{
+ width:34px;height:34px;border-radius:12px;
+ background:radial-gradient(circle at 20% 20%,#93c5fd,#1e3a8a);
+ display:flex;align-items:center;justify-content:center;
+ color:white;font-weight:700;
+ box-shadow:0 8px 24px rgba(0,0,0,0.25);
+}
+
+.nav-links a{
+ color:var(--text-muted);
+ margin-left:1rem;
+ font-size:.88rem;
+ text-decoration:none;
+}
+
+.btn{
+ padding:.65rem 1.3rem;
+ border:none;
+ border-radius:var(--radius-pill);
+ cursor:pointer;font-weight:600;
+}
+
+.btn-primary{
+ background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+ color:white;
+ box-shadow:0 12px 28px rgba(37,99,235,0.35);
+}
+
+.tool-card{
+ background:white;
+ border-radius:20px;
+ border:1px solid var(--border);
+ padding:1.4rem;
+ margin-top:2rem;
+ box-shadow:var(--shadow);
+}
+
+.tool-ui{
+ border:1px dashed var(--border);
+ border-radius:14px;
+ background:#f9fafb;
+ padding:1rem;
+ display:flex;
+ flex-direction:column;
+ gap:.8rem;
+}
+
+input[type=file]{
+ padding:.45rem;
+ border:1px solid #d1d5db;
+ border-radius:8px;
+}
+
+.tool-status{
+ font-size:.85rem;
+ color:var(--text-muted);
+ min-height:1.1rem;
+}
+
+.tool-status.success{color:#15803d;}
+.tool-status.error{color:#b91c1c;}
+
+.progress-box{
+ margin-top:.5rem;
+ font-size:.85rem;
+ color:var(--text-muted);
+}
+
+footer{
+ margin-top:2rem;
+ padding:1.3rem 0;
+ background:#020617;
+ color:#9ca3af;
+ text-align:center;
+ font-size:.8rem;
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+</style>
+<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="Extract Text From PDF — Copy or Download PDF Text Online | Compress It Small" property="og:title"/><meta content="Extract text from a PDF in your browser. Copy the output or download a TXT file. Fast, secure, and 100% local processing — no upload required." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/pdf/extract-text/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Extract Text From PDF — Copy or Download PDF Text Online | Compress It Small" name="twitter:title"/><meta content="Extract text from a PDF in your browser. Copy the output or download a TXT file. Fast, secure, and 100% local processing — no upload required." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<div class="container">
+<section style="margin-top:2rem;margin-bottom:1.5rem;">
+<h1 style="font-size:2rem;line-height:1.15;margin-bottom:.75rem;">Extract text from a PDF — copy, download, and search your content</h1>
+<p style="color:#475569;max-width:70ch;">Upload a PDF and extract readable text from all pages or a selected range. Perfect for pulling content from reports, forms, and documents when you need to reuse text quickly.</p>
+</section>
+<section class="tool-card">
+<h2>PDF Text Extractor</h2>
+<div class="tool-ui">
+<label for="pdfFile">Select PDF</label>
+<input accept="application/pdf" id="pdfFile" type="file"/>
+<div class="field-row" style="margin-top:.75rem;">
+<div style="flex:1;min-width:220px;">
+<label for="pageRange">Page range (optional)</label>
+<input id="pageRange" placeholder="e.g., 1-3, 7, 10-12" type="text"/>
+<div style="color:#64748b;font-size:.85rem;">Leave empty to extract text from all pages.</div>
+</div>
+<div style="flex:1;min-width:220px;">
+<label> </label>
+<button class="btn" onclick="extractPdfText()" type="button">Extract Text</button>
+</div>
+</div>
+<label for="output" style="margin-top:1rem;">Extracted text</label>
+<textarea id="output" rows="10" style="width:100%;padding:.8rem;border-radius:12px;border:1px solid rgba(148,163,184,0.35);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;"></textarea>
+<div class="field-row" style="margin-top:.75rem;">
+<button class="btn secondary" onclick="copyText()" type="button">Copy</button>
+<button class="btn secondary" onclick="downloadTxt()" type="button">Download TXT</button>
+</div>
+<p aria-live="polite" class="tool-status" id="status" role="status"></p>
+<p id="progress" style="color:#64748b;font-size:.95rem;margin-top:.25rem;"></p>
+</div>
+</section>
+<section style="margin-top:2rem;">
+<h2>How it works</h2>
+<p>This tool uses PDF.js to read your document locally and reconstruct text from each page. It works well for digital PDFs and many scanned documents that already contain embedded OCR text.</p>
+<ul style="margin-top:.75rem;padding-left:1.25rem;">
+<li>If you get very little output from a scanned PDF, the file probably contains only images (no OCR layer).</li>
+<li>Use a page range to speed up extraction on large documents.</li>
+<li>Spacing and line breaks can differ from the original layout because PDFs store text in positioned fragments.</li>
+</ul>
+</section>
+<section style="margin-top:2rem;">
+<h2>Related tools</h2>
+<ul class="link-list"><li><a href="/tools/pdf/pdf-to-jpg/">PDF to JPG</a></li><li><a href="/tools/pdf/pdf-to-png/">PDF to PNG</a></li><li><a href="/tools/pdf/split-pdf/">Split PDF</a></li><li><a href="/tools/pdf/delete-pages/">Delete or extract pages</a></li><li><a href="/tools/pdf/">Compress PDF</a></li></ul>
+</section>
+<section style="margin-top:2rem;">
+<h2>FAQ</h2>
+<div class="faq">
+<div class="faq-item">
+<button class="faq-q" type="button">Does this work on scanned PDFs?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>Only if the scanned PDF contains an OCR text layer. If it is image-only, you will get little or no text.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Is the PDF uploaded?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>No. All processing happens in your browser.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Can I extract a few pages only?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>Yes. Use the page range field (e.g., 2-5, 9, 12-13).</p></div>
+</div></div>
+</section>
+</div>
+</main>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/pdf/"><div class="link-title">Compress PDF</div><p class="link-desc">Reduce PDF size for portals, email and uploads.</p></a><a class="link-card" href="/tools/pdf/merge-pdf/"><div class="link-title">Merge PDF</div><p class="link-desc">Combine multiple PDFs into one clean document.</p></a><a class="link-card" href="/tools/pdf/split-pdf/"><div class="link-title">Split PDF</div><p class="link-desc">Extract ranges or split large PDFs into smaller parts.</p></a><a class="link-card" href="/tools/pdf/rotate-pdf/"><div class="link-title">Rotate PDF</div><p class="link-desc">Fix sideways pages for submissions and printing.</p></a><a class="link-card" href="/tools/pdf/reorder-pdf/"><div class="link-title">Reorder PDF</div><p class="link-desc">Re-arrange pages before you upload or sign.</p></a><a class="link-card" href="/tools/pdf/delete-pages/"><div class="link-title">Delete PDF Pages</div><p class="link-desc">Remove unwanted pages to cut size and clutter.</p></a><a class="link-card" href="/blog/how-to-compress-pdf/"><div class="link-title">How to Compress PDF</div><p class="link-desc">Step-by-step PDF compression workflow.</p></a><a class="link-card" href="/blog/extract-text-from-pdf-copy-download/"><div class="link-title">Extract Text Guide</div><p class="link-desc">Copy and download PDF text safely.</p></a></div></div></section>
+<section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>Extract Text From PDF: Copy Text Content to Plain Text</h2>
+<p>Not all PDFs allow text selection — scanned documents, locked files, and PDFs from some applications make copy-pasting impossible. This tool extracts all readable text from a PDF and delivers it as plain text you can copy, edit, and repurpose — in your browser, privately.</p>
+
+<h3>How to extract text from a PDF</h3>
+<ol>
+  <li><strong>Upload your PDF</strong>.</li>
+  <li><strong>Click Extract Text</strong>.</li>
+  <li><strong>Copy the output</strong> or download it as a <code>.txt</code> file.</li>
+</ol>
+
+<h3>When to extract text from PDF</h3>
+<ul>
+  <li><strong>Editing locked content</strong> — Extract text from a PDF that does not allow in-document editing, then reformat in Word.</li>
+  <li><strong>Data analysis</strong> — Extract tables and numbers from reports for processing in Excel or Python.</li>
+  <li><strong>Content repurposing</strong> — Extract text from a published PDF to create a blog post, summary, or translated version.</li>
+  <li><strong>Accessibility</strong> — Extract text from PDFs that screen readers struggle with.</li>
+  <li><strong>Search and indexing</strong> — Extract text for full-text search systems or documentation databases.</li>
+</ul>
+
+<h3>Text-based vs scanned PDFs</h3>
+<p>This tool extracts text that is digitally embedded in the PDF — created by Word, Google Docs, or PDF export tools. Scanned PDFs are images of text and cannot be extracted using this method; they require OCR (optical character recognition). If your PDF is a scan and extraction returns empty or garbled results, the document needs OCR processing first.</p>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Why is the extracted text garbled or out of order?</dt>
+  <dd>Complex multi-column layouts, tables, and PDFs with non-standard text encoding sometimes extract in reading order rather than visual order. The content is correct but may need manual reordering.</dd>
+
+  <dt>Can I extract text from a password-protected PDF?</dt>
+  <dd>Only if you know the password and unlock the PDF first. Password-protected documents block all content access including extraction.</dd>
+
+  <dt>Is my document kept private?</dt>
+  <dd>Yes. All processing is local in your browser — your PDF is never sent anywhere.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/office/text-to-docx/">Text to DOCX</a> — Convert extracted text to a Word file</li>
+  <li><a href="/tools/office/text-to-pdf/">Text to PDF</a></li>
+  <li><a href="/tools/pdf/compress-pdf/">Compress PDF</a></li>
+</ul>
+</section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a></div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+<script>
+
+document.getElementById("year").textContent = new Date().getFullYear();
+(function(){
+  var src = (document.getElementById('pdfjs-lib') && document.getElementById('pdfjs-lib').src) || '';
+  var worker = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js";
+  if (src.indexOf('cdn.jsdelivr.net') !== -1) worker = "https://cdn.jsdelivr.net/npm/pdfjs-dist@2.14.305/build/pdf.worker.min.js";
+  else if (src.indexOf('unpkg.com') !== -1) worker = "https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.worker.min.js";
+  pdfjsLib.GlobalWorkerOptions.workerSrc = worker;
+})();
+
+function parsePageRange(input, totalPages){
+  if(!input) return null;
+  input = input.replace(/\s+/g,'');
+  if(!input) return null;
+  const parts = input.split(',');
+  const pages = new Set();
+  for(const part of parts){
+    if(!part) continue;
+    if(part.includes('-')){
+      const [a,b]=part.split('-').map(n=>parseInt(n,10));
+      if(!a || !b) return null;
+      const start=Math.min(a,b), end=Math.max(a,b);
+      for(let i=start;i<=end;i++) if(i>=1 && i<=totalPages) pages.add(i);
+    }else{
+      const p=parseInt(part,10);
+      if(!p) return null;
+      if(p>=1 && p<=totalPages) pages.add(p);
+    }
+  }
+  return Array.from(pages).sort((x,y)=>x-y);
+}
+
+async function extractPdfText(){
+  const fileInput=document.getElementById('pdfFile');
+  const status=document.getElementById('status');
+  const progress=document.getElementById('progress');
+  const output=document.getElementById('output');
+  const range=document.getElementById('pageRange').value;
+
+  output.value='';
+  if(!fileInput.files.length){
+    status.textContent='Please select a PDF file.';
+    status.className='tool-status error';
+    return;
+  }
+  status.textContent='Loading PDF...';
+  status.className='tool-status';
+  progress.textContent='';
+
+  const buf=await fileInput.files[0].arrayBuffer();
+  const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+  const total=pdf.numPages;
+
+  const selected=parsePageRange(range,total) || Array.from({length:total},(_,i)=>i+1);
+
+  if(selected.length>200){
+    status.textContent='Large range selected ('+selected.length+' pages). Consider extracting fewer pages for best performance.';
+    status.className='tool-status error';
+    return;
+  }
+
+  status.textContent='Extracting text...';
+  let combined='';
+  for(let idx=0; idx<selected.length; idx++){
+    const pno=selected[idx];
+    progress.textContent=`Reading page ${idx+1} of ${selected.length} (PDF page ${pno})...`;
+    const page=await pdf.getPage(pno);
+    const tc=await page.getTextContent();
+    const text=tc.items.map(it=>it.str).join(' ');
+    combined += `\n\n--- Page ${pno} ---\n\n` + text;
+  }
+
+  output.value=combined.trim();
+  status.textContent='Done.';
+  status.className='tool-status success';
+  progress.textContent='';
+}
+
+function copyText(){
+  const output=document.getElementById('output');
+  if(!output.value) return;
+  output.select();
+  output.setSelectionRange(0, output.value.length);
+  document.execCommand('copy');
+  const status=document.getElementById('status');
+  status.textContent='Copied to clipboard.';
+  status.className='tool-status success';
+}
+
+function downloadTxt(){
+  const output=document.getElementById('output').value || '';
+  if(!output.trim()){
+    const status=document.getElementById('status');
+    status.textContent='Nothing to download — extract text first.';
+    status.className='tool-status error';
+    return;
+  }
+  const blob=new Blob([output], {type:'text/plain;charset=utf-8'});
+  saveAs(blob, 'extracted_text.txt');
+  const status=document.getElementById('status');
+  status.textContent='TXT download started.';
+  status.className='tool-status success';
+}
+
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Cloudflare Pages _headers
+# Security + caching headers for compressitsmall.co.uk
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cmp.inmobi.com https://pagead2.googlesyndication.com https://partner.googleadservices.com https://securepubads.g.doubleclick.net https://www.googletagservices.com https://fundingchoicesmessages.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://fundingchoicesmessages.google.com; connect-src 'self' https://cmp.inmobi.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net;
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600

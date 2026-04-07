@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign PDF Online — Draw, Type, or Upload Signature | Compress It Small</title>
+<meta content="Sign PDF documents online for free. Draw your signature, type it in 15+ fonts, or upload a signature image. Drag, resize, and place signatures anywhere on your PDF. No upload — private and secure." name="description"/>
+<link href="https://compressitsmall.co.uk/tools/pdf/pdf-signature/" rel="canonical"/>
+<!-- Import Google Fonts for Signature Typography -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&amp;family=Great+Vibes&amp;family=Pacifico&amp;family=Alex+Brush&amp;family=Allura&amp;family=Parisienne&amp;family=Satisfy&amp;family=Cookie&amp;family=Marck+Script&amp;family=Monsieur+La+Doulaise&amp;family=Yellowtail&amp;family=Homemade+Apple&amp;family=Kalam:wght@300;400&amp;family=Gochi+Hand&amp;family=Reenie+Beanie&amp;display=swap" rel="stylesheet"/>
+<!-- PDF.js -->
+<script id="pdfjs-lib" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js" onerror="(function(s){var f=['https://cdn.jsdelivr.net/npm/pdfjs-dist@2.14.305/build/pdf.min.js','https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.min.js'];var i=0;function n(){if(i>=f.length)return;s.src=f[i++];}s.onerror=function(){n();};n();})(this)"></script><script>(function(){
+  try {
+    if (window.pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
+      (function(){
+  var src = (document.getElementById('pdfjs-lib') && document.getElementById('pdfjs-lib').src) || '';
+  var worker = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js";
+  if (src.indexOf('cdn.jsdelivr.net') !== -1) worker = "https://cdn.jsdelivr.net/npm/pdfjs-dist@2.14.305/build/pdf.worker.min.js";
+  else if (src.indexOf('unpkg.com') !== -1) worker = "https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.worker.min.js";
+  pdfjsLib.GlobalWorkerOptions.workerSrc = worker;
+})();
+    }
+  } catch(e) {}
+})();</script>
+<!-- pdf-lib -->
+<script src="/assets/js/pdf-lib.min.js"></script>
+<style>
+
+/* ---------------------------------------------------------
+   GLOBAL DESIGN SYSTEM — Matches Compress It Small
+----------------------------------------------------------- */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --bg: #f4f5fb;
+  --bg-alt: #ffffff;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --radius: 16px;
+  --radius-pill: 999px;
+  --shadow: 0 18px 35px rgba(0,0,0,0.08);
+  --max-width: 1400px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ---------------------------------------------------------
+   HEADER
+----------------------------------------------------------- */
+header {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(10px);
+}
+
+.nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .8rem 0;
+}
+
+.brand {
+  display: flex; align-items: center; gap: .5rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand-icon {
+  width: 34px; height: 34px;
+  border-radius: 12px;
+  background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+  display: flex; justify-content: center; align-items: center;
+  color: #fff; font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  margin-left: 1rem;
+  text-decoration: none;
+  font-size: .88rem;
+}
+
+/* ---------------------------------------------------------
+   MAIN LAYOUT
+----------------------------------------------------------- */
+.main-flex {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.sidebar {
+  width: 320px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+}
+
+.pdf-area {
+  flex: 1;
+  background: var(--bg-alt);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* ---------------------------------------------------------
+   PDF VIEWER + OVERLAY
+----------------------------------------------------------- */
+#pdfViewerWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.pdf-page {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.signature-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.signature-element {
+  position: absolute;
+  cursor: move;
+  border: 1px dashed #2563eb;
+  background: transparent;
+  padding: 4px;
+  pointer-events: auto;
+}
+
+.signature-element img,
+.signature-element canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.resize-handle {
+  width: 14px;
+  height: 14px;
+  background: var(--primary);
+  border-radius: 4px;
+  position: absolute;
+  right: -7px; bottom: -7px;
+  cursor: se-resize;
+}
+
+/* ---------------------------------------------------------
+   SIDEBAR SECTIONS
+----------------------------------------------------------- */
+.sidebar-section {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-section h3 {
+  margin-bottom: .5rem;
+  font-size: 1rem;
+}
+
+input[type="file"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: .5rem .6rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: .9rem;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 8px;
+  padding: .6rem;
+  border: 1px solid #d1d5db;
+}
+
+.btn {
+  padding: .65rem 1.3rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  margin-top: .6rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  box-shadow: 0 12px 28px rgba(37,99,235,0.35);
+}
+
+.size-slider {
+  width: 100%;
+}
+
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+</style>
+<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="Sign PDF Online — Draw, Type, or Upload Signature | Compress It Small" property="og:title"/><meta content="Sign PDF documents online for free. Draw your signature, type it in 15+ fonts, or upload a signature image. Drag, resize, and place signatures anywhere on your PDF. No upload — private and secure." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/pdf/pdf-signature/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Sign PDF Online — Draw, Type, or Upload Signature | Compress It Small" name="twitter:title"/><meta content="Sign PDF documents online for free. Draw your signature, type it in 15+ fonts, or upload a signature image. Drag, resize, and place signatures anywhere on your PDF. No upload — private and secure." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<div class="container">
+<h1 style="font-size:2rem;font-weight:800;margin-top:2rem;">
+  Sign PDF Online — Draw, Type, or Upload Your Signature
+</h1>
+<p style="max-width:45rem;color:var(--text-muted);font-size:.95rem;">
+  Sign your PDF documents directly in your browser. Drag and drop your signature
+  anywhere, resize with handles or slider, place multiple signatures, and export
+  a fully signed PDF — all without uploading your file.
+</p>
+<div class="main-flex">
+<!-- ---------------------------------------------------------
+     SIDEBAR — Signature Tools
+----------------------------------------------------------- -->
+<div class="sidebar">
+<div class="sidebar-section">
+<h3>1. Upload PDF</h3>
+<input accept="application/pdf" id="pdfUpload" type="file"/>
+</div>
+<div class="sidebar-section">
+<h3>2. Add Signature</h3>
+<button class="btn btn-primary" onclick="activateDrawMode()">
+      Draw Signature
+    </button>
+<button class="btn btn-primary" onclick="activateTypeMode()">
+      Type Signature
+    </button>
+<input accept="image/*" id="uploadSignatureInput" onchange="uploadSignatureImage()" style="margin-top:.6rem;" type="file"/>
+</div>
+<div class="sidebar-section">
+<h3>Signature Size</h3>
+<input class="size-slider" id="signatureSizeSlider" max="300" min="20" oninput="resizeActiveSignature()" type="range" value="150"/>
+</div>
+<div class="sidebar-section">
+<h3>Undo</h3>
+<button class="btn btn-primary" onclick="undoLastSignature()">Undo Last Signature</button>
+</div>
+<div class="sidebar-section">
+<h3>Export</h3>
+<button class="btn btn-primary" onclick="exportSignedPDF()">Download Signed PDF</button>
+</div>
+</div>
+<!-- ---------------------------------------------------------
+     PDF VIEWER + OVERLAY SIGNATURE LAYER
+----------------------------------------------------------- -->
+<div class="pdf-area">
+<div id="pageNavigation" style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem;">
+<button class="btn btn-primary" onclick="prevPage()" style="width:auto;padding:.5rem 1rem;">Prev</button>
+<span id="pageInfo">Page 1 / 1</span>
+<button class="btn btn-primary" onclick="nextPage()" style="width:auto;padding:.5rem 1rem;">Next</button>
+</div>
+<div id="pdfViewerWrapper"></div>
+</div>
+</div> <!-- end main-flex -->
+</div>
+</main>
+<script>
+/* ---------------------------------------------------------
+   GLOBAL VARIABLES
+----------------------------------------------------------- */
+let pdfDoc = null;
+let currentPage = 1;
+let totalPages = 1;
+let scale = 1.3;
+
+let signatures = [];         // All signatures placed
+let activeSignature = null;  // Currently selected signature element
+let drawCanvasActive = false;
+
+/* ---------------------------------------------------------
+   LOAD PDF INTO VIEWER
+----------------------------------------------------------- */
+document.getElementById("pdfUpload").addEventListener("change", async function() {
+  const file = this.files[0];
+  if (!file) return;
+
+  const arrayBuffer = await file.arrayBuffer();
+  const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+
+  pdfDoc = await loadingTask.promise;
+  totalPages = pdfDoc.numPages;
+
+  currentPage = 1;
+  renderAllPages();
+
+  updatePageInfo();
+});
+
+/* ---------------------------------------------------------
+   RENDER ALL PDF PAGES
+----------------------------------------------------------- */
+async function renderAllPages() {
+  const wrapper = document.getElementById("pdfViewerWrapper");
+  wrapper.innerHTML = "";
+
+  for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+    const page = await pdfDoc.getPage(pageNumber);
+    const viewport = page.getViewport({ scale });
+
+    const pageContainer = document.createElement("div");
+    pageContainer.className = "pdf-page";
+    pageContainer.style.position = "relative";
+
+    const canvas = document.createElement("canvas");
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+
+    const ctx = canvas.getContext("2d");
+
+    await page.render({ canvasContext: ctx, viewport }).promise;
+
+    // Overlay Layer
+    const overlay = document.createElement("div");
+    overlay.className = "signature-overlay";
+    overlay.dataset.pageNumber = pageNumber;
+    overlay.style.width = viewport.width + "px";
+    overlay.style.height = viewport.height + "px";
+
+    overlay.addEventListener("mousedown", () => {
+      activeSignature = null; // Clicking blank area deselects signatures
+    });
+
+    pageContainer.appendChild(canvas);
+    pageContainer.appendChild(overlay);
+    wrapper.appendChild(pageContainer);
+  }
+}
+
+/* ---------------------------------------------------------
+   PAGE NAVIGATION
+----------------------------------------------------------- */
+function updatePageInfo() {
+  document.getElementById("pageInfo").innerText = 
+    `Page ${currentPage} / ${totalPages}`;
+}
+
+function scrollToPage() {
+  const pages = document.querySelectorAll(".pdf-page");
+  if (pages[currentPage - 1]) {
+    pages[currentPage - 1].scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+function nextPage() {
+  if (currentPage < totalPages) {
+    currentPage++;
+    updatePageInfo();
+    scrollToPage();
+  }
+}
+
+function prevPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    updatePageInfo();
+    scrollToPage();
+  }
+}
+
+/* ---------------------------------------------------------
+   CREATE SIGNATURE ELEMENT IN OVERLAY
+----------------------------------------------------------- */
+function createSignatureElement(content) {
+  const overlay = [...document.querySelectorAll(".signature-overlay")]
+    .find(el => parseInt(el.dataset.pageNumber) === currentPage);
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "signature-element";
+  wrapper.style.left = "50px";
+  wrapper.style.top = "50px";
+
+  // Insert content (img or canvas or text)
+  wrapper.appendChild(content);
+
+  // Resize handle
+  const resizeHandle = document.createElement("div");
+  resizeHandle.className = "resize-handle";
+  wrapper.appendChild(resizeHandle);
+
+  overlay.appendChild(wrapper);
+
+  enableDrag(wrapper);
+  enableResize(wrapper, resizeHandle);
+
+  activeSignature = wrapper;
+  signatures.push(wrapper);
+}
+
+/* ---------------------------------------------------------
+   DRAG FUNCTIONALITY
+----------------------------------------------------------- */
+function enableDrag(el) {
+  let offsetX, offsetY, isDragging = false;
+
+  el.addEventListener("mousedown", function(e) {
+    if (e.target.classList.contains("resize-handle")) return;
+
+    activeSignature = el;
+    isDragging = true;
+
+    const rect = el.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+
+    el.style.zIndex = 1000;
+  });
+
+  document.addEventListener("mousemove", function(e) {
+    if (!isDragging) return;
+
+    el.style.left = e.clientX - offsetX + "px";
+    el.style.top = e.clientY - offsetY + "px";
+  });
+
+  document.addEventListener("mouseup", function() {
+    isDragging = false;
+  });
+}
+
+/* ---------------------------------------------------------
+   RESIZE FUNCTIONALITY (CORNER HANDLE)
+----------------------------------------------------------- */
+function enableResize(el, handle) {
+  let isResizing = false;
+
+  handle.addEventListener("mousedown", function(e) {
+    e.stopPropagation();
+    isResizing = true;
+  });
+
+  document.addEventListener("mousemove", function(e) {
+    if (!isResizing) return;
+
+    const rect = el.getBoundingClientRect();
+    const newWidth = e.clientX - rect.left;
+    const newHeight = e.clientY - rect.top;
+
+    if (newWidth > 20) el.style.width = newWidth + "px";
+    if (newHeight > 20) el.style.height = newHeight + "px";
+  });
+
+  document.addEventListener("mouseup", function() {
+    isResizing = false;
+  });
+}
+
+/* ---------------------------------------------------------
+   SLIDER RESIZE
+----------------------------------------------------------- */
+function resizeActiveSignature() {
+  if (!activeSignature) return;
+  const scaleValue = document.getElementById("signatureSizeSlider").value;
+  activeSignature.style.transform = `scale(${scaleValue / 150})`;
+}
+
+/* ---------------------------------------------------------
+   DRAW SIGNATURE MODE
+----------------------------------------------------------- */
+function activateDrawMode() {
+  const canvas = document.createElement("canvas");
+  canvas.width = 400; canvas.height = 150;
+  canvas.style.border = "1px solid #ccc";
+  canvas.style.background = "white";
+
+  const ctx = canvas.getContext("2d");
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = 2;
+
+  let drawing = false;
+
+  canvas.addEventListener("mousedown", () => { drawing = true; });
+  canvas.addEventListener("mouseup", () => { drawing = false; ctx.beginPath(); });
+  canvas.addEventListener("mousemove", function(e) {
+    if (!drawing) return;
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
+  });
+
+  createSignatureElement(canvas);
+}
+
+/* ---------------------------------------------------------
+   TYPE SIGNATURE MODE
+----------------------------------------------------------- */
+function activateTypeMode() {
+  const text = prompt("Enter your signature text:");
+  if (!text) return;
+
+  const fontList = [
+    "Dancing Script", "Great Vibes", "Pacifico", "Alex Brush", "Allura",
+    "Parisienne", "Satisfy", "Cookie", "Marck Script", "Monsieur La Doulaise",
+    "Yellowtail", "Homemade Apple", "Kalam", "Gochi Hand", "Reenie Beanie"
+  ];
+
+  const chosenFont = fontList[Math.floor(Math.random() * fontList.length)];
+
+  const span = document.createElement("span");
+  span.innerText = text;
+  span.style.fontFamily = chosenFont;
+  span.style.fontSize = "48px";
+  span.style.whiteSpace = "nowrap";
+
+  createSignatureElement(span);
+}
+
+/* ---------------------------------------------------------
+   UPLOAD SIGNATURE IMAGE
+----------------------------------------------------------- */
+function uploadSignatureImage() {
+  const file = document.getElementById("uploadSignatureInput").files[0];
+  if (!file) return;
+
+  const img = document.createElement("img");
+  img.src = URL.createObjectURL(file);
+  img.onload = () => URL.revokeObjectURL(img.src);
+
+  img.style.width = "200px";
+
+  createSignatureElement(img);
+}
+
+/* ---------------------------------------------------------
+   UNDO LAST SIGNATURE
+----------------------------------------------------------- */
+function undoLastSignature() {
+  const last = signatures.pop();
+  if (last) last.remove();
+  activeSignature = null;
+}
+
+/* ---------------------------------------------------------
+   EXPORT SIGNED PDF (pdf-lib)
+----------------------------------------------------------- */
+async function exportSignedPDF() {
+  const existingPdfBytes = await pdfDoc.getData();
+
+  const pdf = await PDFLib.PDFDocument.load(existingPdfBytes);
+  const pages = pdf.getPages();
+
+  for (let sig of signatures) {
+    const rect = sig.getBoundingClientRect();
+
+    const canvasRect = sig.closest(".pdf-page").querySelector("canvas").getBoundingClientRect();
+
+    const pageNumber = parseInt(sig.parentElement.dataset.pageNumber) - 1;
+    const page = pages[pageNumber];
+
+    const x = rect.left - canvasRect.left;
+    const y = canvasRect.bottom - rect.bottom;
+    const width = rect.width;
+    const height = rect.height;
+
+    let pngBytes;
+
+    if (sig.querySelector("canvas")) {
+      pngBytes = sig.querySelector("canvas").toDataURL().split(",")[1];
+    } else if (sig.querySelector("img")) {
+      const img = sig.querySelector("img");
+      const tempCanvas = document.createElement("canvas");
+      tempCanvas.width = img.width;
+      tempCanvas.height = img.height;
+      tempCanvas.getContext("2d").drawImage(img, 0, 0);
+      pngBytes = tempCanvas.toDataURL().split(",")[1];
+    } else {
+      // Text signature: convert to image
+      const span = sig.querySelector("span");
+      const tempCanvas = document.createElement("canvas");
+      const ctx = tempCanvas.getContext("2d");
+      ctx.font = window.getComputedStyle(span).font;
+      const metrics = ctx.measureText(span.innerText);
+      tempCanvas.width = metrics.width + 20;
+      tempCanvas.height = 80;
+      ctx.font = window.getComputedStyle(span).font;
+      ctx.fillText(span.innerText, 10, 50);
+
+      pngBytes = tempCanvas.toDataURL().split(",")[1];
+    }
+
+    const pngImage = await pdf.embedPng(Uint8Array.from(atob(pngBytes), c => c.charCodeAt(0)));
+
+    page.drawImage(pngImage, { x, y, width, height });
+  }
+
+  const pdfBytes = await pdf.save();
+  const blob = new Blob([pdfBytes], { type: "application/pdf" });
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "signed.pdf";
+  link.click();
+}
+
+</script>
+<section class="seo-article" style="margin-top:3rem; line-height:1.7; font-size:1rem; color:var(--text);">
+<h2 style="font-size:1.8rem; font-weight:800;">Sign PDF Online — Complete Guide to Drawing, Typing, and Uploading Your Signature</h2>
+<p>
+Signing documents in digital format has become an essential part of modern life. Whether you are a student submitting
+university documents, a professional reviewing contracts, an international applicant completing embassy forms, or 
+a freelancer signing NDAs and agreements, the ability to <strong>sign a PDF online instantly</strong> is no longer optional — it is a requirement.
+</p>
+<p>
+This tool was designed to solve one of the biggest frustrations users face: most PDF signing platforms require 
+file uploads, charge fees, watermark documents, or impose usage limits. By contrast, the 
+<strong>Compress It Small PDF Signature Tool</strong> works entirely inside your browser. Your PDF never leaves your device, 
+your signature is never transmitted, and the entire signing operation is fully offline and private.
+</p>
+<h2>Why Signing a PDF Online Matters</h2>
+<p>
+The world has shifted toward digital workflows. In the past, signing a document involved printing it, signing it with 
+a pen, scanning it back into a computer, and emailing it again. This manual workflow wastes time, paper, and results 
+in low-quality scans. Online signing solves these problems by allowing you to add a legally valid electronic signature 
+without printing anything.
+</p>
+<p>
+Digital signing is now widely accepted by:
+</p>
+<ul>
+<li>Government offices</li>
+<li>Immigration departments</li>
+<li>Universities and scholarship committees</li>
+<li>Banks and financial institutions</li>
+<li>Real estate agencies</li>
+<li>Corporate HR departments</li>
+<li>Freelance platforms and clients</li>
+</ul>
+<p>
+Because the signature is added directly to the PDF, it becomes an integrated part of the document — just like a 
+physical signature on paper.
+</p>
+<h2>Three Ways to Sign a PDF Using This Tool</h2>
+<p>
+This tool supports the three most popular signature types that users need for documents:
+</p>
+<h3>1. Draw Your Signature</h3>
+<p>
+The drawing mode lets you create a realistically handwritten signature using your mouse, trackpad, tablet, 
+or touchscreen. This option is excellent for users who prefer a natural look or need a signature similar to 
+what appears on their passport, ID, or bank card.
+</p>
+<p>
+Your drawn signature is added to the PDF as a high-quality transparent PNG image. You can resize it, 
+drag it around the page, and place it precisely where needed.
+</p>
+<h3>2. Type Your Signature in Beautiful Handwriting Fonts</h3>
+<p>
+Some users prefer clean, elegant, and professional-looking signatures. For these users the 
+<strong>typed signature mode</strong> offers more than 15 beautiful handwriting and calligraphy fonts including:
+</p>
+<ul>
+<li>Dancing Script</li>
+<li>Great Vibes</li>
+<li>Pacifico</li>
+<li>Parisienne</li>
+<li>Alex Brush</li>
+<li>Allura</li>
+<li>Satisfy</li>
+<li>Cookie</li>
+<li>Gochi Hand</li>
+<li>Kalam</li>
+</ul>
+<p>
+This type of signature mimics the stylish signatures used by professionals in business documents. 
+Because the fonts have a natural, handwritten aesthetic, the signature appears visually realistic while 
+remaining clean and sharp. Typed signatures are ideal for:
+</p>
+<ul>
+<li>Company contracts</li>
+<li>Scholarship documents</li>
+<li>Recommendation letters</li>
+<li>Reports and official forms</li>
+</ul>
+<h3>3. Upload a Signature Image</h3>
+<p>
+If you already have a scanned signature — such as a transparent PNG from previous digital paperwork — you can 
+upload it directly. The tool preserves transparency, image clarity, and resolution. This ensures the signature 
+looks real when placed on the PDF.
+</p>
+<h2>Drag, Drop, Resize, and Position Your Signature Anywhere</h2>
+<p>
+One of the biggest advantages of this tool is the <strong>drag-and-drop overlay system</strong> that sits on top of the PDF viewer.
+Unlike traditional PDF editors that require separate windows, coordinate input, or complicated settings screens, this
+tool lets you click and drag your signature naturally, just like moving an image in a design editor.
+</p>
+<p>
+Two resizing methods are available:
+</p>
+<ul>
+<li><strong>Corner Resize Handles</strong> — drag the blue corner square to adjust size</li>
+<li><strong>Slider Resize</strong> — use the sidebar slider for precise scaling</li>
+</ul>
+<p>
+This hybrid resizing system provides both convenience and precision. It is extremely useful for:
+</p>
+<ul>
+<li>Aligning signature size with text on the page</li>
+<li>Matching exact signature proportions used in traditional documents</li>
+<li>Avoiding legal rejection caused by oversized digital signatures</li>
+</ul>
+<h2>Multiple Signatures on Multiple Pages</h2>
+<p>
+Documents such as contracts and agreements often require signatures on multiple pages. This tool allows unlimited
+signatures on any page. Each signature is treated as an independent object, which means you can:
+</p>
+<ul>
+<li>Place several signatures on the same page</li>
+<li>Add initials in the margins</li>
+<li>Sign different sections of long documents</li>
+<li>Undo or remove one signature without affecting others</li>
+</ul>
+<h2>Signing PDFs Without Uploading — Why Privacy Matters</h2>
+<p>
+Most popular PDF signing services like DocuSign, Adobe Sign, SmallPDF, and iLovePDF upload your PDF to their servers.
+This may cause concerns for users handling confidential documents. By contrast, this tool is fully private:
+</p>
+<ul>
+<li>No file is uploaded</li>
+<li>No data is stored on servers</li>
+<li>No signatures are transmitted</li>
+<li>No document content leaves your device</li>
+</ul>
+<p>
+Everything happens in your browser using JavaScript APIs and secure canvas rendering.
+</p>
+<h2>What Types of PDFs Can You Sign?</h2>
+<p>
+This signature tool supports virtually all PDF types including:
+</p>
+<ul>
+<li>Scanned PDFs</li>
+<li>Digitally created PDFs</li>
+<li>Encrypted PDFs (if unlocked first)</li>
+<li>Text-based PDFs</li>
+<li>Image-based PDFs</li>
+<li>Multi-page documents</li>
+<li>High-resolution certificates</li>
+</ul>
+<p>
+For locked PDFs, you can use the “Unlock PDF” tool first, then return here to sign.
+</p>
+<h2>Who Uses Online PDF Signature Tools?</h2>
+<p>
+Millions of users across many industries rely on online PDF signing every day. This includes:
+</p>
+<h3>Students and Researchers</h3>
+<ul>
+<li>Scholarship forms</li>
+<li>Internship contracts</li>
+<li>Housing agreements</li>
+<li>Research collaboration documents</li>
+</ul>
+<h3>Professionals and Businesses</h3>
+<ul>
+<li>Work contracts</li>
+<li>NDA agreements</li>
+<li>Invoices and PO documents</li>
+<li>Client onboarding forms</li>
+</ul>
+<h3>Immigration &amp; Government Applications</h3>
+<ul>
+<li>Visa documents</li>
+<li>Residency declarations</li>
+<li>Bank statements with certified signature</li>
+<li>Official request letters</li>
+</ul>
+<h3>Freelancers</h3>
+<ul>
+<li>Client contracts</li>
+<li>Partnership agreements</li>
+<li>Release forms</li>
+</ul>
+<h2>Is an Online Signature Legally Valid?</h2>
+<p>
+In many jurisdictions, electronic signatures are recognized as legally binding under laws such as:
+</p>
+<ul>
+<li><strong>eIDAS (European Union)</strong></li>
+<li><strong>ESIGN Act (United States)</strong></li>
+<li><strong>UETA (United States Uniform Electronic Transactions Act)</strong></li>
+<li><strong>Electronic Communications Act (UK)</strong></li>
+</ul>
+<p>
+However, certain legal documents still require <strong>wet ink signatures</strong>, such as:
+</p>
+<ul>
+<li>Property transfer deeds</li>
+<li>Some notarized documents</li>
+<li>Certain high-security legal contracts</li>
+</ul>
+<p>
+Always check local regulations before submitting important documents.
+</p>
+<h2>Step-by-Step Instructions: How to Sign a PDF</h2>
+<h3>Step 1: Upload Your PDF</h3>
+<p>
+Click “Upload PDF” and choose the document you want to sign. The tool loads all pages using a high-quality 
+on-screen PDF viewer.
+</p>
+<h3>Step 2: Choose Your Signature Method</h3>
+<ul>
+<li><strong>Draw</strong> for handwritten signatures</li>
+<li><strong>Type</strong> for clean, elegant signatures</li>
+<li><strong>Upload</strong> for scanned or prepared signatures</li>
+</ul>
+<h3>Step 3: Drag the Signature to the Correct Location</h3>
+<p>
+Move the signature around the page using your mouse or touch input. Place it exactly where required.
+</p>
+<h3>Step 4: Resize Using Handles or Slider</h3>
+<p>
+Use the interactive corner handle to drag-resize, or adjust the sidebar slider for precise control.
+</p>
+<h3>Step 5: Save the Signed PDF</h3>
+<p>
+Once satisfied, click “Download Signed PDF”. Your signature becomes permanently embedded in the document.
+</p>
+<h2>Troubleshooting &amp; FAQs</h2>
+<h3>Why can’t I place the signature on a certain page?</h3>
+<p>
+Ensure you scroll to the page or use the Page Navigation buttons.
+</p>
+<h3>My signature appears too large or too small.</h3>
+<p>
+Use the sidebar slider for precision resizing.
+</p>
+<h3>Will the signature appear correctly when printed?</h3>
+<p>
+Yes — the signature is embedded as a high-resolution image and will print clearly.
+</p>
+<h3>Does the tool store my signature?</h3>
+<p>
+No. Everything happens locally inside your browser.
+</p>
+<h2>Conclusion — The Easiest and Most Secure Way to Sign PDFs Online</h2>
+<p>
+This advanced PDF signing tool offers a professional, elegant, and private way to sign documents in seconds. 
+Whether you’re handling academic paperwork, business contracts, legal documents, visa submissions, or daily 
+office forms, this tool provides everything you need — without uploading anything, without paying fees, and 
+without creating an account.
+</p>
+<p>
+Drag, resize, type, draw, and save — signing PDFs has never been easier.
+</p>
+</section>
+<!-- JSON-LD WebApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Free PDF Signature Tool",
+  "url": "https://compressitsmall.co.uk/tools/pdf/pdf-signature/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "description": "Sign PDF documents online for free. Draw, type, or upload a signature. Drag, resize, and place signatures anywhere. 100% browser-based.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0"
+  }
+}
+</script>
+<!-- JSON-LD FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this PDF signing tool free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The tool is completely free with no limits and no watermark."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my documents uploaded or stored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Everything is processed inside your browser. No files are uploaded to any server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I draw my signature?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can draw, type, or upload a signature image."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the signature legally valid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In most countries, electronic signatures are legally binding. Always verify your specific document requirements."
+      }
+    }
+  ]
+}
+</script>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/pdf/"><div class="link-title">Compress PDF</div><p class="link-desc">Reduce PDF size for portals, email and uploads.</p></a><a class="link-card" href="/tools/pdf/merge-pdf/"><div class="link-title">Merge PDF</div><p class="link-desc">Combine multiple PDFs into one clean document.</p></a><a class="link-card" href="/tools/pdf/split-pdf/"><div class="link-title">Split PDF</div><p class="link-desc">Extract ranges or split large PDFs into smaller parts.</p></a><a class="link-card" href="/tools/pdf/rotate-pdf/"><div class="link-title">Rotate PDF</div><p class="link-desc">Fix sideways pages for submissions and printing.</p></a><a class="link-card" href="/tools/pdf/reorder-pdf/"><div class="link-title">Reorder PDF</div><p class="link-desc">Re-arrange pages before you upload or sign.</p></a><a class="link-card" href="/tools/pdf/delete-pages/"><div class="link-title">Delete PDF Pages</div><p class="link-desc">Remove unwanted pages to cut size and clutter.</p></a><a class="link-card" href="/blog/how-to-compress-pdf/"><div class="link-title">How to Compress PDF</div><p class="link-desc">Step-by-step PDF compression workflow.</p></a><a class="link-card" href="/blog/sign-pdf-online-free-secure/"><div class="link-title">Sign a PDF Online</div><p class="link-desc">A no‑printing signing workflow.</p></a></div></div></section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a></div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body></html>

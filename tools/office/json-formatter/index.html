@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JSON Formatter — Format, Minify &amp; Validate JSON Online | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Format, minify, and validate JSON in your browser. Paste JSON, prettify with indentation, copy output, or download a clean .json file. No upload required." name="twitter:description"/><meta content="JSON Formatter — Format, Minify &amp; Validate JSON Online | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/tools/office/json-formatter/" property="og:url"/><meta content="Format, minify, and validate JSON in your browser. Paste JSON, prettify with indentation, copy output, or download a clean .json file. No upload required." property="og:description"/><meta content="JSON Formatter — Format, Minify &amp; Validate JSON Online | Compress It Small" property="og:title"/>
+<meta content="Format, minify, and validate JSON in your browser. Paste JSON, prettify with indentation, copy output, or download a clean .json file. No upload required." name="description"/>
+<meta content="json formatter, format json, minify json, validate json, online json formatter" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/office/json-formatter/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON Formatter",
+    "url": "https://compressitsmall.co.uk/tools/office/json-formatter/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web browser",
+    "description": "Format, minify, and validate JSON in your browser. Paste JSON, prettify with indentation, copy output, or download a clean .json file. No upload required.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+  }
+  </script>
+<style>
+    :root{--primary:#2563eb;--primary-dark:#1d4ed8;--bg:#f4f5fb;--bg-alt:#ffffff;--text:#111827;--muted:#6b7280;--border:#e5e7eb;--radius:16px;--pill:999px;--shadow:0 18px 35px rgba(15,23,42,.08);--max:1120px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg-alt);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:40;backdrop-filter:blur(10px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0}
+    .brand{display:flex;align-items:center;gap:.5rem}
+    .brand-icon{width:34px;height:34px;border-radius:12px;background:radial-gradient(circle at 20% 20%,#93c5fd,#1e3a8a);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;box-shadow:0 10px 22px rgba(30,64,175,.45)}
+    .brand-text{display:flex;flex-direction:column;line-height:1.1}
+    .brand-text span:first-child{font-weight:900;font-size:1.05rem}
+    .brand-text span:last-child{font-size:.75rem;color:var(--muted)}
+    .nav-links{display:flex;gap:1.1rem;font-size:.9rem}
+    .nav-links a{color:var(--muted);font-weight:700}
+    @media(max-width:820px){.nav-links{display:none}}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1.15rem;border-radius:var(--pill);font-weight:800;font-size:.95rem;border:1px solid transparent;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;box-shadow:0 12px 24px rgba(37,99,235,.35)}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 16px 28px rgba(37,99,235,.4)}
+    .btn-ghost{background:#eef2ff;color:var(--primary-dark);border-color:#e0e7ff}
+    .btn-ghost:hover{background:#e0e7ff}
+    .hero{padding:2rem 0 1rem}
+    .kicker{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,99,235,.1);padding:.35rem .8rem;border-radius:var(--pill);font-weight:900;color:var(--primary-dark);font-size:.85rem}
+    h1{margin:.85rem 0 .55rem;font-size:2.05rem;line-height:1.12}
+    .lead{color:var(--muted);max-width:70ch}
+    .grid{display:grid;grid-template-columns:1fr;gap:1rem}
+    .card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
+    .controls{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.75rem 0}
+    label{font-weight:800;font-size:.9rem}
+    select,input,textarea{width:100%;border:1px solid var(--border);border-radius:12px;padding:.7rem .85rem;background:#fff;font:inherit}
+    textarea{min-height:220px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;font-size:.92rem}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media(max-width:920px){.two{grid-template-columns:1fr}}
+    .status{margin-top:.6rem;color:var(--muted);font-size:.95rem}
+    .hint{margin-top:.4rem;color:var(--muted);font-size:.9rem}
+    footer{border-top:1px solid var(--border);background:var(--bg-alt);padding:1.4rem 0;margin-top:1.25rem}
+    footer p{color:var(--muted);font-size:.9rem}
+  </style>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<nav class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<div class="nav-links">
+<a href="/tools/pdf/">PDF</a>
+<a href="/tools/image/">Image</a>
+<a href="/tools/office/">Office</a>
+<a href="/blog/">Blog</a>
+</div>
+</nav>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="container">
+<div class="kicker">Office utility</div>
+<h1>JSON Formatter — format, minify, and validate JSON</h1>
+<p class="lead">Paste JSON on the left, format or minify it, then copy or download the cleaned output. This runs locally in your browser (no uploads).</p>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="card">
+<div class="controls">
+<div style="min-width:220px;max-width:260px;flex:1;">
+<label for="indent">Indentation</label>
+<select id="indent">
+<option value="2">2 spaces</option>
+<option value="4">4 spaces</option>
+<option value="0">Minify (no spaces)</option>
+</select>
+</div>
+<button class="btn btn-primary" id="btnFormat" type="button">Format</button>
+<button class="btn btn-ghost" id="btnMinify" type="button">Minify</button>
+<button class="btn btn-ghost" id="btnValidate" type="button">Validate</button>
+<button class="btn btn-ghost" id="btnCopy" type="button">Copy output</button>
+<button class="btn btn-ghost" id="btnDownload" type="button">Download .json</button>
+</div>
+<div class="two">
+<div>
+<label for="jsonIn">Input JSON</label>
+<textarea id="jsonIn" placeholder="Paste JSON here (object or array)"></textarea>
+<div class="hint">Tip: if your JSON came from logs or an API, validate first to locate errors quickly.</div>
+</div>
+<div>
+<label for="jsonOut">Output</label>
+<textarea id="jsonOut" placeholder="Formatted/minified JSON output" readonly=""></textarea>
+<div class="status" id="status">Ready.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="card">
+<h2 style="font-size:1.2rem;margin:0 0 .35rem;">Common uses</h2>
+<p class="muted">Clean JSON before analysis, convert to CSV, or share readable payloads in reports.</p>
+<ul style="margin:.6rem 0 0;padding-left:1.15rem;color:var(--muted)">
+<li>Validate JSON before converting with <a href="/tools/office/json-to-csv/" style="color:#2563eb;text-decoration:underline;">JSON to CSV</a>.</li>
+<li>Fix broken indentation and remove trailing commas introduced by copy/paste.</li>
+<li>Minify payloads before submitting to APIs or storing in a database.</li>
+</ul>
+</div>
+</div>
+</section>
+</main>
+<section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>JSON Formatter: Validate, Format and Beautify JSON</h2>
+<p>Minified JSON from APIs, broken JSON from copy-paste errors, and unreadable single-line data are all common frustrations. This JSON formatter validates your JSON for syntax errors, beautifies it with proper indentation, and minifies it back when needed — entirely in your browser.</p>
+
+<h3>How to format JSON</h3>
+<ol>
+  <li><strong>Paste your JSON</strong> into the input area.</li>
+  <li><strong>Click Format/Beautify</strong> — the output shows properly indented, readable JSON.</li>
+  <li><strong>Or click Minify</strong> to compress it back into a single line for use in code or APIs.</li>
+  <li><strong>Copy</strong> the output or download as a <code>.json</code> file.</li>
+</ol>
+
+<h3>Common use cases</h3>
+<ul>
+  <li><strong>API debugging</strong> — Paste a raw API response to read it clearly and spot unexpected fields.</li>
+  <li><strong>Configuration file editing</strong> — Beautify minified config files for editing, then minify again before deployment.</li>
+  <li><strong>Finding JSON syntax errors</strong> — The validator highlights exactly where a comma, bracket, or quote is missing.</li>
+  <li><strong>Code review</strong> — Format JSON payloads in pull request comments for readability.</li>
+</ul>
+
+<h3>Common JSON errors and fixes</h3>
+<ul>
+  <li><strong>Trailing commas</strong> — JSON does not allow a comma after the last item in an array or object. Remove it.</li>
+  <li><strong>Single quotes</strong> — JSON requires double quotes for all strings and keys. Replace all single quotes.</li>
+  <li><strong>Unescaped special characters</strong> — Backslashes, newlines, and tabs inside strings must be escaped (<code>\n</code>, <code>\t</code>).</li>
+  <li><strong>Missing quotes around keys</strong> — Unlike JavaScript objects, JSON requires all keys to be in double quotes.</li>
+</ul>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Does this tool fix errors automatically?</dt>
+  <dd>The formatter validates and flags errors but does not auto-correct them, because automated correction could change the meaning of your data. It tells you exactly where the error is so you can fix it intentionally.</dd>
+
+  <dt>Is there a size limit?</dt>
+  <dd>The tool handles large JSON files limited only by your browser's memory. Files up to 10 MB format reliably on any modern computer.</dd>
+
+  <dt>Is my JSON data private?</dt>
+  <dd>Yes — everything runs locally in your browser. API keys, tokens, and sensitive data in your JSON never leave your device.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/office/csv-to-json/">CSV to JSON</a></li>
+  <li><a href="/tools/office/json-to-csv/">JSON to CSV</a></li>
+</ul>
+
+<h3>JSON syntax rules every developer should know</h3>
+<p>JSON is strictly defined — a single misplaced character makes an entire file invalid. The most common issues: <strong>strings must use double quotes</strong> (not single quotes); <strong>no trailing commas</strong> after the last item in an array or object; <strong>no comments</strong> (JSON5 supports comments, standard JSON does not); <strong>booleans and null are unquoted</strong> (<code>true</code> not <code>"true"</code>); and <strong>all keys must be quoted strings</strong>.</p>
+<h3>When to minify vs beautify</h3>
+<p><strong>Minify when:</strong> sending JSON over a network in API requests (smaller payload = faster transfer), storing in databases or config files where human readability is not needed, embedding in HTML or JavaScript bundles.</p>
+<p><strong>Beautify when:</strong> debugging API responses, reviewing configuration files before editing, sharing JSON in documentation or code reviews. Beautifully indented JSON is far easier to read, audit, and modify correctly than a single-line blob.</p>
+<h3>JSON in real-world workflows</h3>
+<p>JSON is used in virtually every modern web application. REST APIs return JSON responses; web application configurations (package.json, tsconfig.json, .eslintrc) are written in JSON; cloud services like AWS Lambda, Netlify Functions, and Firebase use JSON for event payloads and configuration. Being able to quickly validate and format JSON is a core productivity skill for developers, data analysts, and anyone working with APIs or configuration systems.</p>
+</section><footer>
+<div class="container">
+<p><strong>Compress It Small</strong> — explore <a href="/tools/office/" style="color:#2563eb;text-decoration:underline;">Office tools</a> or browse the <a href="/blog/" style="color:#2563eb;text-decoration:underline;">blog</a>. · <a href="/privacy-policy/" style="color:#2563eb;text-decoration:underline;">Privacy Policy</a> · <a href="/terms/" style="color:#2563eb;text-decoration:underline;">Terms</a> · <a href="/cookie-policy/" style="color:#2563eb;text-decoration:underline;">Cookie Policy</a></p>
+</div>
+</footer>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const inEl = $('jsonIn');
+  const outEl = $('jsonOut');
+  const statusEl = $('status');
+
+  function setStatus(msg, ok=true){
+    statusEl.textContent = msg;
+    statusEl.style.color = ok ? '#6b7280' : '#b91c1c';
+  }
+
+  function parseJson(){
+    const raw = inEl.value.trim();
+    if(!raw){
+      setStatus('Paste JSON into the input box first.', false);
+      return None;
+    }
+    try{
+      return JSON.parse(raw);
+    }catch(err){
+      setStatus('Invalid JSON: ' + err.message, false);
+      return null;
+    }
+  }
+
+  function stringify(value, spaces){
+    try{
+      return JSON.stringify(value, null, spaces);
+    }catch(err){
+      setStatus('Could not stringify JSON: ' + err.message, false);
+      return null;
+    }
+  }
+
+  function downloadText(text, filename){
+    const blob = new Blob([text], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  $('btnFormat').addEventListener('click', () => {
+    const obj = parseJson();
+    if(!obj) return;
+    const spaces = parseInt($('indent').value, 10);
+    const text = stringify(obj, spaces === 0 ? 2 : spaces);
+    if(text == null) return;
+    outEl.value = text;
+    setStatus('Formatted JSON generated.');
+  });
+
+  $('btnMinify').addEventListener('click', () => {
+    const obj = parseJson();
+    if(!obj) return;
+    const text = stringify(obj, 0);
+    if(text == null) return;
+    outEl.value = text;
+    setStatus('Minified JSON generated.');
+  });
+
+  $('btnValidate').addEventListener('click', () => {
+    const obj = parseJson();
+    if(!obj) return;
+    setStatus('JSON is valid.');
+    const spaces = parseInt($('indent').value, 10);
+    outEl.value = stringify(obj, spaces);
+  });
+
+  $('btnCopy').addEventListener('click', async () => {
+    if(!outEl.value.trim()){
+      setStatus('Nothing to copy yet. Format or minify first.', false);
+      return;
+    }
+    try{
+      await navigator.clipboard.writeText(outEl.value);
+      setStatus('Copied output to clipboard.');
+    }catch(err){
+      setStatus('Copy failed. Select text and copy manually.', false);
+    }
+  });
+
+  $('btnDownload').addEventListener('click', () => {
+    if(!outEl.value.trim()){
+      setStatus('Nothing to download yet. Format or minify first.', false);
+      return;
+    }
+    downloadText(outEl.value, 'formatted.json');
+    setStatus('Downloaded formatted.json.');
+  });
+</script>
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+
+</body>
+</html>

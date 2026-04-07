@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How It Works | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Learn how Compress It Small processes files in your browser, what happens to your data, and how to get the best results. Includes quick links to PDF, image, and office tools." name="twitter:description"/><meta content="How It Works | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/how-it-works/" property="og:url"/><meta content="Learn how Compress It Small processes files in your browser, what happens to your data, and how to get the best results. Includes quick links to PDF, image, and office tools." property="og:description"/><meta content="How It Works | Compress It Small" property="og:title"/>
+<meta content="Learn how Compress It Small processes files in your browser, what happens to your data, and how to get the best results. Includes quick links to PDF, image, and office tools." name="description"/>
+<link href="https://compressitsmall.co.uk/how-it-works/" rel="canonical"/>
+<meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --accent: #22c55e;
+  --bg: #f4f5fb;
+  --bg-alt: #ffffff;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+  --max-width: 1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+a{color:inherit;text-decoration:none}
+.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.25rem}
+main{padding:2.25rem 0 2.5rem}
+h1{font-size:1.9rem;letter-spacing:-.03em;margin:.2rem 0 .5rem}
+h2{font-size:1.25rem;margin:1.4rem 0 .55rem}
+p{color:var(--text-muted);max-width:80ch;margin:.35rem 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:800;border:1px solid transparent;text-decoration:none;transition:transform .12s ease,box-shadow .12s ease,background .12s ease,border-color .12s ease;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;box-shadow:0 12px 24px rgba(37,99,235,.25)}
+.btn-ghost{background:#020617;color:#bfdbfe;border-color:#1f2937}
+.card{background:var(--bg-alt);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-soft);padding:1rem 1.1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px}
+.small{font-size:.9rem}
+.kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--primary-dark);font-weight:800}
+hr{border:none;border-top:1px solid var(--border);margin:1.4rem 0}
+footer{border-top:1px solid var(--border);background:#020617;color:#9ca3af;padding:1.4rem 0;font-size:.78rem;margin-top:2rem}
+.footer-links{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:.4rem}
+.footer-links a{color:#e5e7eb}
+.footer-links a:hover{text-decoration:underline}
+/* header toolbar (same visual language) */
+header#top{background:rgba(2,6,23,.85);border-bottom:1px solid #1f2937;backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000}
+header#top .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;position:relative}
+header#top .brand{display:flex;align-items:center;gap:12px;color:#e5e7eb}
+header#top .brand-icon{width:42px;height:42px;border-radius:16px;background:radial-gradient(circle at 20% 20%,#93c5fd,#1e3a8a);display:flex;align-items:center;justify-content:center;font-weight:800}
+header#top .brand-text span{display:block}
+header#top .brand-text span:first-child{font-weight:800;letter-spacing:.2px}
+header#top .brand-text span:last-child{font-size:.82rem;opacity:.85;color:#bfdbfe}
+header#top .nav-cta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+header#top .nav-toggle{display:none;background:transparent;color:#e5e7eb;border:1px solid #1f2937;border-radius:12px;padding:10px 12px;cursor:pointer}
+header#top .nav-toggle span{display:block;width:18px;height:2px;background:#e5e7eb;border-radius:999px;margin:3px 0}
+header#top .nav-mobile{display:none;position:absolute;right:16px;top:72px;flex-direction:column;gap:10px;min-width:220px;background:rgba(2,6,23,.95);border:1px solid #1f2937;border-radius:16px;padding:12px;box-shadow:0 25px 55px rgba(0,0,0,.45)}
+header#top .nav-mobile a{color:#e5e7eb;padding:10px 10px;border-radius:12px}
+header#top .nav-mobile a:hover{background:rgba(37,99,235,.18)}
+header#top .nav-mobile.open{display:flex}
+@media (max-width:980px){
+  header#top .nav-cta{display:none}
+  header#top .nav-toggle{display:inline-flex;align-items:center;gap:8px}
+}
+
+/* extra components (keeps same visual language) */
+.toc a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:14px;border:1px solid var(--border);background:linear-gradient(180deg,#fff,#fafafa)}
+.toc a:hover{border-color:#cbd5e1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:var(--radius-pill);border:1px solid var(--border);background:#fff;font-weight:800;font-size:.78rem;color:var(--text)}
+.list{margin:.55rem 0 .2rem 1.1rem;color:var(--text-muted)}
+.list li{margin:.22rem 0}
+.note{border-left:4px solid var(--primary);padding:.7rem .85rem;border-radius:14px;background:#eff6ff;border:1px solid #dbeafe}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.links a{border:1px solid var(--border);background:#fff;border-radius:14px;padding:10px 12px}
+.links a:hover{border-color:#cbd5e1}
+
+</style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "How It Works | Compress It Small",
+  "url": "https://compressitsmall.co.uk/how-it-works/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Compress It Small",
+    "url": "https://compressitsmall.co.uk/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Browser-based file utilities"
+  }
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Compress It Small",
+  "url": "https://compressitsmall.co.uk/",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://compressitsmall.co.uk/contact/"
+    }
+  ]
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to upload my files to use Compress It Small?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most tools are designed to process your file inside your browser session and then download the output to your device. If a tool requires an upload step, it should be clear in the interface before anything leaves your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does compressing a scanned PDF take longer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Scanned PDFs are typically image-heavy and can contain large, high-resolution pages. Processing time depends on page count, image complexity, and your device performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do if the output looks blurry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Blurriness usually happens when images are compressed too aggressively. Try a lighter compression target, reduce pages before compressing, or split the file and compress smaller parts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which tools should I use for strict upload limits like 1MB or 2MB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with Compress PDF, then remove unnecessary pages, and split the file if needed. Follow the ‘Make any file under 1MB’ guide for a practical workflow."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I find help if something fails?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Check the FAQ page for common fixes and contact support with your browser, device, and the tool you used for faster troubleshooting."
+      }
+    }
+  ]
+}</script>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<div class="nav-cta">
+<a class="btn btn-ghost" href="/"><span>🏠</span><span>Home</span></a>
+<a class="btn btn-ghost" href="/tools/pdf/"><span>📄</span><span>PDF Tools</span></a>
+<a class="btn btn-ghost" href="/tools/image/"><span>🖼️</span><span>Image Tools</span></a>
+<a class="btn btn-ghost" href="/tools/office/"><span>📂</span><span>Office Tools</span></a>
+<a class="btn btn-primary" href="/blog/"><span>📰</span><span>Blog</span></a>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span><span></span><span></span>
+</button>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/">Home</a>
+<a href="/tools/">Tools</a>
+<a href="/how-it-works/">How it works</a>
+<a href="/faq/">FAQ</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/blog/">Blog</a>
+</div>
+</nav>
+</div>
+</header>
+<main>
+<div class="container">
+<div class="kicker">How it works</div>
+<h1>How It Works</h1>
+<p>Understand how in-browser tools process files and what to expect in terms of privacy and performance.</p>
+<div class="card">
+<h2>How the tools work</h2>
+<p class="small">Many tools load your file into your browser tab, process it using JavaScript, and then download the result to your device.</p>
+<p class="small">This design is intended to reduce friction and support privacy-sensitive workflows where uploading documents to third-party servers is not acceptable.</p>
+</div>
+<div class="grid">
+<div class="card">
+<h2>Step 1 — Choose a tool</h2>
+<p class="small">Start from the Tools hub or directly open PDF Tools, Image Tools, or Office Tools.</p>
+</div>
+<div class="card">
+<h2>Step 2 — Load your file</h2>
+<p class="small">Select a file from your device. Processing happens in your browser session.</p>
+</div>
+<div class="card">
+<h2>Step 3 — Download output</h2>
+<p class="small">When complete, the tool generates a file and triggers a download. Your original remains on your device.</p>
+</div>
+</div>
+<hr/>
+<div class="card">
+<h2>Performance notes</h2>
+<p class="small">Large PDFs (many pages or large scans) may take longer depending on your device. If a tool stalls, try a smaller file or a modern desktop browser.</p>
+</div>
+<hr id="quick-start"/>
+<div class="card">
+<div class="kicker">Quick start</div>
+<h2>Jump straight to the most-used tools</h2>
+<p class="small">Use these shortcuts if you already know what you need. For a full index of utilities, open the <a href="/tools/"><strong>Tools hub</strong></a>.</p>
+<div class="grid" style="margin-top:12px">
+<div class="card">
+<div class="badge">📄 PDF essentials</div>
+<ul class="list">
+<li><a href="/tools/pdf/merge-pdf/">Merge PDF</a> (combine files into one)</li>
+<li><a href="/tools/pdf/split-pdf/">Split PDF</a> (separate pages quickly)</li>
+<li><a href="/tools/pdf/jpg-to-pdf/">JPG to PDF</a> (photos and scans → PDF)</li>
+<li><a href="/tools/pdf/reorder-pdf/">Reorder pages</a> and <a href="/tools/pdf/rotate-pdf/">Rotate pages</a></li>
+</ul>
+</div>
+<div class="card">
+<div class="badge">🔒 Privacy &amp; cleanup</div>
+<ul class="list">
+<li><a href="/tools/pdf/pdf-redactor/">Redact PDF</a> (hide sensitive text before sharing)</li>
+<li><a href="/tools/pdf/watermark-pdf/">Watermark PDF</a> (stamp “Draft” or your name)</li>
+<li><a href="/tools/pdf/extract-text/">Extract text</a> (copy content without retyping)</li>
+<li><a href="/blog/remove-hidden-data-from-documents/">Guide: remove hidden data</a></li>
+</ul>
+</div>
+<div class="card">
+<div class="badge">🖼️ Image essentials</div>
+<ul class="list">
+<li><a href="/tools/image/image-cropper/">Crop image</a> (resize/crop for forms and web)</li>
+<li><a href="/tools/image/watermark-image/">Watermark image</a> (branding &amp; protection)</li>
+<li><a href="/blog/reduce-image-size-for-web-without-losing-quality/">Guide: reduce image size</a></li>
+</ul>
+</div>
+<div class="card">
+<div class="badge">📂 Office &amp; data</div>
+<ul class="list">
+<li><a href="/tools/office/text-to-pdf/">Text to PDF</a> and <a href="/tools/office/text-to-docx/">Text to DOCX</a></li>
+<li><a href="/tools/office/json-formatter/">JSON Formatter</a> (clean + readable JSON)</li>
+<li><a href="/tools/office/csv-to-excel/">CSV to Excel</a> and <a href="/tools/office/excel-to-csv/">Excel to CSV</a></li>
+</ul>
+</div>
+</div>
+</div>
+<hr id="privacy"/>
+<div class="card">
+<div class="kicker">Privacy &amp; security</div>
+<h2>What happens to your files?</h2>
+<p class="small">Compress It Small is built around a browser-first workflow. In practice, that means your file is loaded into your browser tab, processed during your session, and the output is downloaded back to your device.</p>
+<div class="note" style="margin-top:12px">
+<p class="small"><strong>Important:</strong> If a tool ever needs an upload step for processing, it should be obvious in the interface before anything leaves your device. If you are working with highly sensitive documents, use a trusted device and consider redaction first.</p>
+</div>
+<ul class="list">
+<li><strong>Your originals stay yours:</strong> tools do not need access to your device beyond the file you select.</li>
+<li><strong>Results download to you:</strong> outputs are saved using your browser’s download mechanism.</li>
+<li><strong>Shared computer?</strong> clear downloads/history and avoid saving files to public desktops.</li>
+</ul>
+<p class="small">For legal details, see <a href="/privacy-policy/"><strong>Privacy Policy</strong></a>, <a href="/terms/"><strong>Terms</strong></a>, and <a href="/disclaimer/"><strong>Disclaimer</strong></a>.</p>
+</div>
+<hr id="performance"/>
+<div class="card">
+<div class="kicker">Best results</div>
+<h2>How to get faster, smaller, cleaner outputs</h2>
+<p class="small">Performance depends on file size, page count, embedded images, and your device. These tips usually improve outcomes immediately:</p>
+<ul class="list">
+<li><strong>For scans:</strong> start with and if it’s still heavy, try splitting into smaller parts using <a href="/tools/pdf/split-pdf/">Split PDF</a>.</li>
+<li><strong>For uploads with strict limits:</strong> follow the step-by-step guide <a href="/blog/make-any-file-under-1mb/">Make any file under 1MB</a>.</li>
+<li><strong>If text becomes blurry:</strong> use a lighter compression target (or compress in two passes with moderation).</li>
+<li><strong>For multi-file workflows:</strong> merge first (<a href="/tools/pdf/merge-pdf/">Merge PDF</a>), then compress.</li>
+</ul>
+<div class="links">
+<a href="/blog/pdf-too-large-to-upload-size-limits/"><strong>PDF upload limits</strong><br/><span class="small">Common portals and what to do</span></a>
+<a href="/blog/compress-scanned-pdfs-clear-text-small-size/"><strong>Scanned PDF compression</strong><br/><span class="small">Keep text readable</span></a>
+<a href="/blog/compress-pdf-email-job-portals/"><strong>Email &amp; job portals</strong><br/><span class="small">Practical compression workflow</span></a>
+</div>
+</div>
+<hr id="troubleshooting"/>
+<div class="card">
+<div class="kicker">Troubleshooting</div>
+<h2>If a tool is slow or not working</h2>
+<p class="small">Most issues are caused by very large files, older browsers, or limited device memory. </p>
+<ul class="list">
+<li>Refresh the page and retry with the same file once.</li>
+<li>Try a modern browser (Chrome, Edge, or Firefox) and close unused tabs.</li>
+<li>Reduce the workload: split the PDF (<a href="/tools/pdf/split-pdf/">Split</a>) or delete unneeded pages (<a href="/tools/pdf/delete-pages/">Delete pages</a>) before compressing.</li>
+<li>If the file is a photo-heavy scan, compressing may take longer—use a desktop browser.</li>
+</ul>
+<p class="small">Still stuck? Check the <a href="/faq/"><strong>FAQ</strong></a> or contact us via the <a href="/contact/"><strong>Contact</strong></a> page with your browser/device details and what tool you used.</p>
+</div>
+<hr id="guides"/>
+<div class="card">
+<div class="kicker">Recommended reading</div>
+<h2>Guides that solve real upload problems</h2>
+<p class="small">If your goal is “get this file accepted by a portal”, these guides are the fastest way to finish the job:</p>
+<div class="grid" style="margin-top:12px">
+<div class="card">
+<h2 style="margin-top:.2rem">Under 1MB workflow</h2>
+<p class="small">A practical sequence for reducing file size without breaking quality.</p>
+<p class="small"><a href="/blog/make-any-file-under-1mb/"><strong>Open guide →</strong></a></p>
+</div>
+<div class="card">
+<h2 style="margin-top:.2rem">Why files get huge</h2>
+<p class="small">Understand the real causes: image DPI, embedded fonts, and bloated exports.</p>
+<p class="small"><a href="/blog/why-images-are-so-big-how-to-fix/"><strong>Open guide →</strong></a></p>
+</div>
+<div class="card">
+<h2 style="margin-top:.2rem">WhatsApp &amp; email limits</h2>
+<p class="small">Choose settings that keep files readable while staying under limits.</p>
+<p class="small"><a href="/blog/best-compression-settings-whatsapp-email-forms/"><strong>Open guide →</strong></a></p>
+</div>
+<div class="card">
+<h2 style="margin-top:.2rem">Remove hidden data</h2>
+<p class="small">Metadata and embedded content can leak information and inflate size.</p>
+<p class="small"><a href="/blog/remove-hidden-data-from-documents/"><strong>Open guide →</strong></a></p>
+</div>
+</div>
+<p class="small" style="margin-top:10px">Browse all guides in the <a href="/blog/"><strong>Blog</strong></a>.</p>
+</div>
+<hr/>
+<div class="card">
+<h2>On this page</h2>
+<p class="small">Use the table of contents to jump to a section.</p>
+<div class="grid toc" style="margin-top:12px">
+<a href="#quick-start"><span><strong>Quick start links</strong></span><span class="small">→</span></a>
+<a href="#privacy"><span><strong>Privacy &amp; security</strong></span><span class="small">→</span></a>
+<a href="#performance"><span><strong>Best results</strong></span><span class="small">→</span></a>
+<a href="#troubleshooting"><span><strong>Troubleshooting</strong></span><span class="small">→</span></a>
+<a href="#guides"><span><strong>Recommended guides</strong></span><span class="small">→</span></a>
+</div>
+</div>
+</div>
+</main>
+<footer>
+<div class="container">
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/tools/">Tools</a>
+<a href="/tools/pdf/">PDF Tools</a>
+<a href="/blog/">Guides</a>
+<a href="/faq/">FAQ</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
+<p>© <span id="year"></span> Compress It Small. All rights reserved.</p>
+</div>
+</footer>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav
+  window.toggleMobileNav = function(force){
+    var panel = document.getElementById('nav-mobile');
+    var btn = document.getElementById('nav-toggle');
+    if (!panel || !btn) return;
+    var isOpen = panel.classList.contains('open');
+    var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+    panel.classList.toggle('open', shouldOpen);
+    btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+  };
+  document.addEventListener('click', function(e){
+    var panel = document.getElementById('nav-mobile');
+    var btn = document.getElementById('nav-toggle');
+    if (!panel || !btn) return;
+    if (!panel.classList.contains('open')) return;
+    if (panel.contains(e.target) || btn.contains(e.target)) return;
+    window.toggleMobileNav(false);
+  }, true);
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

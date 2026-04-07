@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Watermark PDF — Stamp "Draft" or Name on Every Page | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content='Add a text watermark to a PDF in your browser. Stamp "DRAFT", a name, or a label across each page. Local processing, no upload.' name="twitter:description"/><meta content='Watermark PDF — Stamp "Draft" or Name on Every Page | Compress It Small' name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/tools/pdf/watermark-pdf/" property="og:url"/><meta content='Add a text watermark to a PDF in your browser. Stamp "DRAFT", a name, or a label across each page. Local processing, no upload.' property="og:description"/><meta content='Watermark PDF — Stamp "Draft" or Name on Every Page | Compress It Small' property="og:title"/>
+<meta content='Add a text watermark to a PDF in your browser. Stamp "DRAFT", a name, or a label across each page. Local processing, no upload.' name="description"/>
+<meta content="watermark pdf, add watermark to pdf, stamp draft pdf, pdf watermark online" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/pdf/watermark-pdf/" rel="canonical"/>
+<script src="/assets/js/pdf-lib.min.js"></script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Watermark PDF",
+    "url": "https://compressitsmall.co.uk/tools/pdf/watermark-pdf/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web browser",
+    "description": "Add a text watermark to a PDF in your browser. Stamp a label like DRAFT across each page with local processing and no upload.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+  }
+  </script>
+<style>
+    :root{--primary:#2563eb;--primary-dark:#1d4ed8;--bg:#f4f5fb;--bg-alt:#ffffff;--text:#111827;--muted:#6b7280;--border:#e5e7eb;--radius:16px;--pill:999px;--shadow:0 18px 35px rgba(15,23,42,.08);--max:1120px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg-alt);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:40;backdrop-filter:blur(10px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0}
+    .brand{display:flex;align-items:center;gap:.5rem}
+    .brand-icon{width:34px;height:34px;border-radius:12px;background:radial-gradient(circle at 20% 20%,#93c5fd,#1e3a8a);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;box-shadow:0 10px 22px rgba(30,64,175,.45)}
+    .brand-text{display:flex;flex-direction:column;line-height:1.1}
+    .brand-text span:first-child{font-weight:900;font-size:1.05rem}
+    .brand-text span:last-child{font-size:.75rem;color:var(--muted)}
+    .nav-links{display:flex;gap:1.1rem;font-size:.9rem}
+    .nav-links a{color:var(--muted);font-weight:700}
+    @media(max-width:820px){.nav-links{display:none}}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1.15rem;border-radius:var(--pill);font-weight:800;font-size:.95rem;border:1px solid transparent;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;box-shadow:0 12px 24px rgba(37,99,235,.35)}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 16px 28px rgba(37,99,235,.4)}
+    .btn-ghost{background:#eef2ff;color:var(--primary-dark);border-color:#e0e7ff}
+    .btn-ghost:hover{background:#e0e7ff}
+    .hero{padding:2rem 0 1rem}
+    .kicker{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,99,235,.1);padding:.35rem .8rem;border-radius:var(--pill);font-weight:900;color:var(--primary-dark);font-size:.85rem}
+    h1{margin:.85rem 0 .55rem;font-size:2.05rem;line-height:1.12}
+    .lead{color:var(--muted);max-width:75ch}
+    .grid{display:grid;grid-template-columns:1fr;gap:1rem}
+    .card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media(max-width:920px){.row{grid-template-columns:1fr}}
+    label{font-weight:900;font-size:.9rem;display:block;margin:.25rem 0}
+    input,select{width:100%;border:1px solid var(--border);border-radius:12px;padding:.65rem .85rem;background:#fff;font:inherit}
+    .actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.85rem}
+    .status{margin-top:.6rem;color:var(--muted)}
+    .ok{color:#14532d}
+    .bad{color:#7f1d1d}
+    footer{border-top:1px solid var(--border);background:var(--bg-alt);padding:1.4rem 0;margin-top:1.25rem}
+    footer p{color:var(--muted);font-size:.9rem}
+  </style>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<nav class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text"><span>Compress It Small</span><span>Smart online compression hub</span></div>
+</a>
+<div class="nav-links">
+<a href="/tools/pdf/">PDF tools</a>
+<a href="/tools/image/">Image tools</a>
+<a href="/tools/office/">Office tools</a>
+<a href="/blog/">Blog</a>
+</div>
+</nav>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="container">
+<div class="kicker">PDF watermark</div>
+<h1>Watermark a PDF — stamp “DRAFT” or your name on every page</h1>
+<p class="lead">Add a diagonal text watermark (for example, DRAFT, CONFIDENTIAL, or your name) across each page. Processing happens locally in your browser—no upload required.</p>
+<div class="actions" style="margin-top:1rem;">
+<a class="btn btn-ghost" href="/tools/pdf/">Back to PDF tools</a>
+<a class="btn btn-ghost" href="/blog/">View guides</a>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="grid">
+<div class="card">
+<div class="row">
+<div>
+<label for="file">1) Select PDF</label>
+<input accept="application/pdf" id="file" type="file"/>
+</div>
+<div>
+<label for="text">2) Watermark text</label>
+<input id="text" placeholder="Example: DRAFT" type="text" value="DRAFT"/>
+</div>
+</div>
+<div class="row" style="margin-top: .75rem;">
+<div>
+<label for="size">Font size</label>
+<input id="size" max="200" min="8" type="number" value="48"/>
+<div class="status">Tip: 36–64 works well on A4/Letter.</div>
+</div>
+<div>
+<label for="opacity">Opacity (0.05–0.6)</label>
+<input id="opacity" max="0.6" min="0.05" step="0.05" type="number" value="0.2"/>
+<div class="status">Lower opacity keeps text readable underneath.</div>
+</div>
+</div>
+<div class="row" style="margin-top: .75rem;">
+<div>
+<label for="rotate">Rotation (degrees)</label>
+<input id="rotate" max="90" min="-90" type="number" value="-35"/>
+</div>
+<div>
+<label for="position">Position</label>
+<select id="position">
+<option selected="" value="center">Centered (diagonal)</option>
+<option value="top">Top</option>
+<option value="bottom">Bottom</option>
+</select>
+</div>
+</div>
+<div class="actions">
+<button class="btn btn-primary" id="run" type="button">Watermark &amp; download</button>
+<button class="btn btn-ghost" id="clear" type="button">Reset</button>
+</div>
+<div class="status" id="status">Choose a PDF, set options, then apply watermark.</div>
+</div>
+<div class="card">
+<h2 style="font-size:1.1rem;margin:0 0 .5rem;">Best practice notes</h2>
+<ul style="padding-left:1.1rem;color:var(--muted)">
+<li><strong>Use watermark for drafts:</strong> add DRAFT/CONFIDENTIAL before sharing early versions.</li>
+<li><strong>Do not rely on watermark for access control:</strong> a watermark does not encrypt or restrict copying.</li>
+<li><strong>Submit clean copies:</strong> many portals and reviewers prefer no watermark unless required.</li>
+<li><strong>After watermarking:</strong> if your file becomes large, use <a href="/tools/pdf/" style="color:#2563eb;text-decoration:underline;">Compress PDF</a>.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</main>
+<section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>Watermark PDF: Add Text Watermarks to PDF Documents</h2>
+<p>Watermarks protect confidential documents from unauthorised redistribution, mark draft versions clearly, and brand PDFs before sharing externally. This tool adds fully customisable text watermarks to every page of your PDF — locally in your browser with no server upload.</p>
+
+<h3>How to watermark a PDF</h3>
+<ol>
+  <li><strong>Upload your PDF</strong>.</li>
+  <li><strong>Enter your watermark text</strong> — e.g. "CONFIDENTIAL", "DRAFT", "NOT FOR DISTRIBUTION", or your company name.</li>
+  <li><strong>Adjust font size, opacity, angle, and position</strong>.</li>
+  <li><strong>Click Apply Watermark</strong> and download the protected PDF.</li>
+</ol>
+
+<h3>Common use cases</h3>
+<ul>
+  <li><strong>Draft documents</strong> — Mark documents sent for review so recipients know the version is not final.</li>
+  <li><strong>Confidential reports</strong> — Add "CONFIDENTIAL" across all pages before sharing financial or legal documents.</li>
+  <li><strong>Client proposals</strong> — Brand proposals with your company name before sending to prospects.</li>
+  <li><strong>Academic work</strong> — Mark submitted assignments "SAMPLE" or "FOR REVIEW" when sharing with study groups.</li>
+  <li><strong>Preventing redistribution</strong> — Personalise PDFs for each recipient so unauthorised sharing is traceable.</li>
+</ul>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Can the watermark be removed?</dt>
+  <dd>A flat text watermark baked into the PDF is difficult to remove without visible damage to the underlying content. PDF editing software can remove some watermarks, but a well-placed, semi-transparent watermark across the body text is the most resistant option.</dd>
+
+  <dt>Can I watermark only specific pages?</dt>
+  <dd>The tool applies the watermark to all pages by default. For selective watermarking, extract the relevant pages first using <a href="/tools/pdf/extract-pages/">Extract Pages</a>, watermark them, then merge back with the originals.</dd>
+
+  <dt>Is my PDF kept private?</dt>
+  <dd>Yes — all processing runs locally in your browser. Your document is never uploaded to our servers.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/image/watermark-image/">Watermark Image</a></li>
+  <li><a href="/tools/pdf/compress-pdf/">Compress PDF</a></li>
+  <li><a href="/tools/pdf/merge-pdf/">Merge PDF</a></li>
+</ul>
+
+<h3>Choosing the right watermark settings</h3>
+<p>The effectiveness of a watermark depends on placement, opacity, and text choice. A watermark that is too faint is easy to overlook or remove digitally; one that is too opaque makes the underlying document hard to read. The goal is visibility without obscuring important content.</p>
+<p><strong>Opacity:</strong> 20–40% opacity is suitable for documents where readability matters — contracts, reports, academic submissions. 50–70% is better for draft documents where you want to prevent the content being used as if it were final. Full opacity is appropriate only for "VOID" or "CANCELLED" stamps on invalid documents.</p>
+<p><strong>Position:</strong> Centre-of-page diagonal watermarks are hardest to remove because they cross over important content throughout the document. Corner watermarks are easiest to crop out. For maximum deterrence, use a diagonal watermark running from corner to corner across the full page.</p>
+<p><strong>Text choice:</strong> Common watermark text includes: CONFIDENTIAL, DRAFT, SAMPLE, NOT FOR DISTRIBUTION, FOR REVIEW ONLY, COPY, and VOID. For personalised tracking (to identify which recipient shared a document), include the recipient's name and date: "Sent to [Name] on [Date]".</p>
+<h3>Watermarking for professional contexts</h3>
+<p><strong>Legal and compliance:</strong> Law firms watermark privileged communications before discovery. Academic researchers watermark preprints shared with peer reviewers with "PREPUBLICATION DRAFT — DO NOT CITE". Business proposals marked CONFIDENTIAL signal that pricing and strategic information should not be shared externally.</p>
+<p><strong>Digital vs visual watermarks:</strong> Visual watermarks (like those this tool creates) are immediately visible and serve as deterrents. Digital steganographic watermarks are invisible markers in the file data. For most practical purposes — drafts, confidential documents, client materials — a visible watermark is more effective because it communicates intent clearly to human readers.</p>
+</section><footer>
+<div class="container">
+<p><strong>Compress It Small</strong> — free, privacy-first file tools. Explore <a href="/tools/pdf/" style="color:#2563eb;text-decoration:underline;">PDF tools</a> or browse the <a href="/blog/" style="color:#2563eb;text-decoration:underline;">blog</a>. · <a href="/privacy-policy/" style="color:#2563eb;text-decoration:underline;">Privacy Policy</a> · <a href="/terms/" style="color:#2563eb;text-decoration:underline;">Terms</a> · <a href="/cookie-policy/" style="color:#2563eb;text-decoration:underline;">Cookie Policy</a></p>
+</div>
+</footer>
+<script>
+  const { PDFDocument, rgb, degrees, StandardFonts } = PDFLib;
+
+  const $ = (id) => document.getElementById(id);
+  const statusEl = $('status');
+
+  function setStatus(msg, ok=true){
+    statusEl.textContent = msg;
+    statusEl.className = 'status ' + (ok ? 'ok' : 'bad');
+  }
+
+  function downloadBytes(bytes, filename){
+    const blob = new Blob([bytes], {type: 'application/pdf'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  $('clear').addEventListener('click', () => {
+    $('file').value = '';
+    $('text').value = 'DRAFT';
+    $('size').value = 48;
+    $('opacity').value = 0.2;
+    $('rotate').value = -35;
+    $('position').value = 'center';
+    setStatus('Reset. Choose a PDF, set options, then apply watermark.');
+  });
+
+  $('run').addEventListener('click', async () => {
+    const file = $('file').files && $('file').files[0];
+    if(!file){
+      setStatus('Please select a PDF first.', false);
+      return;
+    }
+    const text = ($('text').value || '').trim();
+    if(!text){
+      setStatus('Please enter watermark text (e.g., DRAFT).', false);
+      return;
+    }
+
+    const size = Math.max(8, Math.min(200, parseInt($('size').value || '48', 10)));
+    const opacity = Math.max(0.05, Math.min(0.6, parseFloat($('opacity').value || '0.2')));
+    const rot = parseFloat($('rotate').value || '-35');
+    const position = $('position').value;
+
+    try{
+      setStatus('Loading PDF...');
+      const bytes = new Uint8Array(await file.arrayBuffer());
+      const pdf = await PDFDocument.load(bytes);
+      const font = await pdf.embedFont(StandardFonts.HelveticaBold);
+
+      const pages = pdf.getPages();
+      for(const page of pages){
+        const { width, height } = page.getSize();
+
+        // Place watermark roughly centered; adjust based on position.
+        let x = width / 2;
+        let y = height / 2;
+        if(position === 'top') y = height * 0.85;
+        if(position === 'bottom') y = height * 0.15;
+
+        // Measure text to center it.
+        const textWidth = font.widthOfTextAtSize(text, size);
+        const textHeight = font.heightAtSize(size);
+
+        page.drawText(text, {
+          x: x - textWidth / 2,
+          y: y - textHeight / 2,
+          size,
+          font,
+          color: rgb(0.2, 0.2, 0.2),
+          opacity,
+          rotate: degrees(rot)
+        });
+      }
+
+      setStatus('Creating watermarked PDF...');
+      const out = await pdf.save();
+      const outName = file.name.replace(/\.pdf$/i, '') + '_watermarked.pdf';
+      downloadBytes(out, outName);
+      setStatus('Done. Download should start automatically.');
+    }catch(err){
+      setStatus('Could not watermark this PDF: ' + (err && err.message ? err.message : String(err)), false);
+    }
+  });
+</script>
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+
+</body>
+</html>

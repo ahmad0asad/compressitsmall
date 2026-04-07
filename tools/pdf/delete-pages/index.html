@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Delete Pages From PDF or Extract Selected Pages — Free &amp; Secure | Compress It Small</title>
+<meta content="Delete pages from a PDF or extract selected pages into a new file — all processed locally in your browser with no upload. Safe, private, fast PDF page tools." name="description"/>
+<meta content="delete pdf pages, remove pages from pdf, pdf page remover, extract pages pdf, select pages pdf, pdf tools no upload" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/pdf/delete-pages/" rel="canonical"/>
+<!-- pdf-lib -->
+<script src="/assets/js/pdf-lib.min.js"></script>
+<!-- WebApplication schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Delete Pages From PDF or Extract Selected Pages",
+  "url": "https://compressitsmall.co.uk/tools/pdf/delete-pages/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web browser",
+  "description": "Delete unwanted pages from a PDF or extract selected pages into a new PDF. No upload, fully private browser-based processing.",
+  "featureList": [
+    "Delete PDF pages",
+    "Extract only selected pages",
+    "Dual-mode PDF page processing",
+    "Complete privacy — no upload",
+    "Fast and secure browser-based PDF rebuild"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "0"
+  }
+}
+</script>
+<!-- FAQPage schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to upload my PDF to delete pages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This tool processes your PDF entirely in your browser. No data is uploaded or stored externally."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I extract only the pages I want?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Use Select Pages mode to choose the pages you want to keep. The tool will generate a new PDF containing only those pages."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does deleting pages reduce quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Pages are copied exactly using pdf-lib without recompression or quality loss."
+      }
+    }
+  ]
+}
+</script>
+<style>
+    :root {
+      --primary:#2563eb;
+      --primary-dark:#1d4ed8;
+      --accent:#22c55e;
+      --bg:#f4f5fb;
+      --bg-alt:#ffffff;
+      --text:#111827;
+      --text-muted:#6b7280;
+      --border:#e5e7eb;
+      --radius-pill:999px;
+      --radius:16px;
+      --shadow:0 18px 35px rgba(15,23,42,0.08);
+      --max-width:1120px;
+    }
+    body { margin:0; background:var(--bg); font-family:system-ui,sans-serif; }
+    * { box-sizing:border-box; }
+
+    header {
+      background:var(--bg-alt);
+      border-bottom:1px solid var(--border);
+      position:sticky; top:0; z-index:40;
+      backdrop-filter:blur(10px);
+    }
+    .container { max-width:var(--max-width); margin:0 auto; padding:0 1.25rem; }
+    .nav { display:flex; justify-content:space-between; align-items:center; padding:.7rem 0; }
+    .brand { display:flex; align-items:center; gap:.5rem; text-decoration:none; color:var(--text); }
+    .brand-icon {
+      width:32px; height:32px;
+      border-radius:12px;
+      background:radial-gradient(circle at 20% 20%,#93c5fd,#1e3a8a);
+      display:flex; justify-content:center; align-items:center;
+      color:#fff; font-weight:700; font-size:.95rem;
+      box-shadow:0 8px 22px rgba(0,0,0,0.2);
+    }
+    .nav-links a {
+      padding:0 .4rem;
+      font-size:.85rem;
+      font-weight:500;
+      color:var(--text-muted);
+      text-decoration:none;
+    }
+
+    .btn {
+      padding:.6rem 1.2rem;
+      border-radius:var(--radius-pill);
+      border:none;
+      cursor:pointer;
+      font-weight:600;
+      font-size:.86rem;
+    }
+
+    .btn-primary {
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      color:white;
+      box-shadow:0 12px 24px rgba(37,99,235,.35);
+    }
+
+    .tool-card {
+      background:var(--bg-alt);
+      padding:1.2rem;
+      border-radius:20px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin-top:2.4rem;
+    }
+
+    .tool-ui {
+      margin-top:1rem;
+      padding:1rem;
+      border-radius:14px;
+      border:1px dashed var(--border);
+      background:#f9fafb;
+      display:flex;
+      flex-direction:column;
+      gap:.7rem;
+    }
+
+    .tool-status {
+      font-size:.8rem;
+      color:var(--text-muted);
+      min-height:1rem;
+    }
+    .tool-status.success { color:#15803d; }
+    .tool-status.error { color:#b91c1c; }
+
+    input[type="file"], input[type="text"] {
+      padding:.45rem .55rem;
+      border:1px solid #d1d5db;
+      border-radius:8px;
+      font-size:.86rem;
+      width:100%;
+    }
+
+    select {
+      padding:.45rem .6rem;
+      border-radius:8px;
+      border:1px solid #d1d5db;
+      font-size:.86rem;
+    }
+
+    .article {
+      margin-top:1.6rem;
+      padding-top:1rem;
+      border-top:1px solid var(--border);
+      color:#444;
+      font-size:.88rem;
+      line-height:1.65;
+    }
+    .article h2, .article h3, .article h4 {
+      color:#111; margin:.7rem 0 .4rem;
+    }
+    .article ul { padding-left:1.2rem; }
+    .article code {
+      background:#e5e7eb;
+      padding:.05rem .3rem; border-radius:4px;
+      font-size:.8rem;
+    }
+
+    footer {
+      margin-top:2rem;
+      background:#020617; color:#9ca3af;
+      padding:1.4rem 0;
+      font-size:.78rem;
+    }
+
+  
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+</style>
+<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="Delete Pages From PDF or Extract Selected Pages — Free &amp; Secure | Compress It Small" property="og:title"/><meta content="Delete pages from a PDF or extract selected pages into a new file — all processed locally in your browser with no upload. Safe, private, fast PDF page tools." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/pdf/delete-pages/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Delete Pages From PDF or Extract Selected Pages — Free &amp; Secure | Compress It Small" name="twitter:title"/><meta content="Delete pages from a PDF or extract selected pages into a new file — all processed locally in your browser with no upload. Safe, private, fast PDF page tools." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<div class="container">
+<!-- HERO -->
+<section style="margin-top:2rem;">
+<h1 style="font-size:2rem;font-weight:800;">
+        Delete pages from a PDF or extract only selected pages — fully private, no upload
+      </h1>
+<p style="max-width:45rem;color:var(--text-muted);font-size:.95rem;">
+        Choose which pages to keep or remove, then download a clean, rebuilt PDF.
+        This dual-mode PDF tool lets you delete pages you don’t need — or extract
+        only the pages you want — all inside your browser for maximum privacy.
+      </p>
+<div style="margin-top:.9rem;">
+<span style="background:#e0f2fe;padding:.25rem .6rem;border-radius:999px;font-size:.78rem;margin-right:.3rem;">
+          ✓ Delete unwanted pages instantly
+        </span>
+<span style="background:#e0f2fe;padding:.25rem .6rem;border-radius:999px;font-size:.78rem;margin-right:.3rem;">
+          ✓ Extract selected pages only
+        </span>
+<span style="background:#e0f2fe;padding:.25rem .6rem;border-radius:999px;font-size:.78rem;">
+          ✓ No upload — your PDF never leaves your device
+        </span>
+</div>
+</section>
+<!-- TOOL SECTION -->
+<section class="tool-card">
+<h2>Delete Pages or Select Pages Tool</h2>
+<p style="color:var(--text-muted);">
+        Use Delete Pages to remove pages you don’t need.  
+        Use Select Pages to build a PDF containing only the pages you choose.
+      </p>
+<div class="tool-ui">
+<label>Select PDF file</label>
+<input accept="application/pdf" id="pdfFile" type="file"/>
+<label>Choose mode</label>
+<select id="mode">
+<option value="delete">Delete Pages</option>
+<option value="select">Select Pages Only</option>
+</select>
+<label>Enter pages</label>
+<input id="pagesInput" placeholder="Examples: 1,3,5 or 2-6 or 1,2,7-10" type="text"/>
+<p class="tool-help" style="font-size:.8rem;color:var(--text-muted);">
+          • Use commas for individual pages: <code>1,3,5</code><br/>
+          • Use ranges for consecutive pages: <code>2-6</code><br/>
+          • You can mix both: <code>1,4,7-10</code>
+</p>
+<button class="btn btn-primary" onclick="runDeleteSelect()">Apply &amp; Download</button>
+<div class="tool-status" id="toolStatus">Choose a file and enter pages</div>
+</div>
+<!-- LONG ARTICLE -->
+<div class="article">
+<h2>How this Delete Pages &amp; Select Pages PDF tool works</h2>
+<p>
+          PDF page control is one of the most essential features for preparing documents
+          for scholarship applications, university submissions, job portals, government
+          systems, and professional workflows. Unfortunately, traditional tools often
+          require uploading the PDF to a server, exposing potentially sensitive
+          information such as identity documents, certificates, financial records,
+          or contracts.
+        </p>
+<p>
+          This tool solves that problem by running entirely inside your browser using
+          <code>pdf-lib</code>. Nothing is uploaded, nothing leaves your device, and no
+          file is ever stored on a server. This makes it ideal for confidential documents
+          or official records that should never be transmitted to third-party servers.
+        </p>
+<h2>Two tools combined into one powerful PDF editor</h2>
+<p>
+          This page contains two functions in a single interface:
+        </p>
+<h3>1. Delete Pages</h3>
+<p>
+          Allows you to remove specific pages from a PDF.  
+          Example:  
+          <code>1,3,5</code> removes pages 1, 3, and 5 and keeps all others.
+        </p>
+<h3>2. Select Pages Only</h3>
+<p>
+          Lets you choose the pages you want to keep.  
+          Example:  
+          <code>1,4,7-10</code> builds a new PDF containing only those pages.
+        </p>
+<p>This dual structure replaces the need for multiple separate tools.</p>
+<h2>Use cases for Delete Pages</h2>
+<ul>
+<li>Removing blank scanner pages</li>
+<li>Deleting cover or advertisement pages</li>
+<li>Removing duplicated content</li>
+<li>Removing ID pages you don’t want to send</li>
+<li>Cleaning documents before uploading to online portals</li>
+<li>Reducing file size before compression</li>
+</ul>
+<h2>Use cases for Select Pages</h2>
+<ul>
+<li>Extracting only relevant pages from a long PDF</li>
+<li>Sending selected transcript pages</li>
+<li>Creating a compact summary PDF</li>
+<li>Extracting only signature pages from a contract</li>
+<li>Preparing annex documents for government applications</li>
+</ul>
+<h2>Understanding the page input format</h2>
+<p>You can enter pages in various ways:</p>
+<h3>Single pages</h3>
+<code>1,3,7</code>
+<h3>Page ranges</h3>
+<code>5-9</code> meaning pages 5 through 9.
+
+        <h3>Combination of both</h3>
+<code>1,4,7-10,15</code>
+<h3>Deleting vs Selecting</h3>
+<ul>
+<li><strong>Delete mode:</strong> the pages you enter are removed.</li>
+<li><strong>Select mode:</strong> the pages you enter are kept.</li>
+</ul>
+<h2>Why this tool is safer than server-based PDF editors</h2>
+<p>
+          Almost all “free PDF tools” upload your file to a remote server, process it,
+          and then return a new file. Even if they promise auto-deletion, your document
+          still exists on their server temporarily.
+        </p>
+<p>
+          With this tool:
+        </p>
+<ul>
+<li>Your PDF stays on your device only.</li>
+<li>No upload. No transmission. No external storage.</li>
+<li>Processing happens in RAM inside your browser.</li>
+<li>Closing the browser tab clears everything automatically.</li>
+</ul>
+<h2>Examples: deleting &amp; extracting PDF pages</h2>
+<h3>Example 1 — Remove pages 1 and 5</h3>
+<code>1,5</code>
+<h3>Example 2 — Remove pages 2–6</h3>
+<code>2-6</code>
+<h3>Example 3 — Select only transcript pages</h3>
+<code>3-7</code>
+<h3>Example 4 — Extract first and last pages only</h3>
+<code>1,12</code>
+<h2>Advanced use: duplicate pages</h2>
+<p>
+          In Select Pages mode, repeating a page number duplicates it:
+        </p>
+<code>1,1,3</code>  
+        Page 1 appears twice.
+
+        <h2>Frequently Asked Questions</h2>
+<h3>Does this tool reduce PDF quality?</h3>
+<p>No. It copies page objects exactly from the original PDF.</p>
+<h3>Can I delete multiple non-sequential pages?</h3>
+<p>Yes, simply enter them separated by commas.</p>
+<h3>What happens if I mistype a page number?</h3>
+<p>The tool will show an error and prevent downloading an invalid PDF.</p>
+<h3>Is there a page limit?</h3>
+<p>
+          Browser memory is the only limit. Most PDFs up to 150–200 MB work smoothly.
+        </p>
+<h2>Conclusion</h2>
+<p>
+          This combined Delete Pages + Select Pages tool gives you full control over
+          your PDF page structure without uploading anything. It is ideal for students,
+          researchers, applicants, professionals, administrators, and anyone working
+          with sensitive or official documents.
+        </p>
+</div>
+</section>
+</div>
+</main>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/pdf/"><div class="link-title">Compress PDF</div><p class="link-desc">Reduce PDF size for portals, email and uploads.</p></a><a class="link-card" href="/tools/pdf/merge-pdf/"><div class="link-title">Merge PDF</div><p class="link-desc">Combine multiple PDFs into one clean document.</p></a><a class="link-card" href="/tools/pdf/split-pdf/"><div class="link-title">Split PDF</div><p class="link-desc">Extract ranges or split large PDFs into smaller parts.</p></a><a class="link-card" href="/tools/pdf/rotate-pdf/"><div class="link-title">Rotate PDF</div><p class="link-desc">Fix sideways pages for submissions and printing.</p></a><a class="link-card" href="/tools/pdf/reorder-pdf/"><div class="link-title">Reorder PDF</div><p class="link-desc">Re-arrange pages before you upload or sign.</p></a><a class="link-card" href="/tools/pdf/jpg-to-pdf/"><div class="link-title">JPG to PDF</div><p class="link-desc">Convert images into a single shareable PDF.</p></a><a class="link-card" href="/blog/how-to-compress-pdf/"><div class="link-title">How to Compress PDF</div><p class="link-desc">Step-by-step PDF compression workflow.</p></a></div></div></section><section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>Delete PDF Pages: Remove Unwanted Pages From a PDF</h2>
+<p>Confidential pages, blank fillers, cover pages meant for printing only, and irrelevant appendices often end up in documents that need to be submitted or shared. This tool removes specific pages from a PDF and downloads the cleaned version — processed locally with no server upload.</p>
+
+<h3>How to delete pages from a PDF</h3>
+<ol>
+  <li><strong>Upload your PDF</strong>.</li>
+  <li><strong>Enter the page numbers to delete</strong> — e.g. "1, 3, 7" or a range like "10–15".</li>
+  <li><strong>Click Delete Pages</strong> — the tool rebuilds the PDF without the specified pages.</li>
+  <li><strong>Download</strong> the cleaned file.</li>
+</ol>
+
+<h3>Common reasons to delete PDF pages</h3>
+<ul>
+  <li><strong>Removing confidential sections</strong> — Delete pages with sensitive financial data before sharing a report externally.</li>
+  <li><strong>Stripping cover pages</strong> — Remove printer-formatted covers that are unnecessary for digital submissions.</li>
+  <li><strong>Cleaning exported documents</strong> — Word-to-PDF exports often generate a blank final page; delete it for a clean submission.</li>
+  <li><strong>Reducing file size</strong> — Removing unnecessary pages directly reduces file size without compression.</li>
+  <li><strong>Preparing exhibit bundles</strong> — Remove pages that are not relevant to a specific submission or review.</li>
+</ul>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Can I preview which pages I am deleting?</dt>
+  <dd>The tool shows page thumbnails to help you identify the correct pages before confirming the deletion.</dd>
+
+  <dt>Is this reversible?</dt>
+  <dd>No — once downloaded, the pages are gone from the output file. Your original file on your device is unaffected. Always keep a copy of the original before deleting pages.</dd>
+
+  <dt>Is my document private?</dt>
+  <dd>Yes. All processing happens locally in your browser.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/pdf/extract-pages/">Extract Pages</a></li>
+  <li><a href="/tools/pdf/split-pdf/">Split PDF</a></li>
+  <li><a href="/tools/pdf/merge-pdf/">Merge PDF</a></li>
+</ul>
+</section>
+<footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a></div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function parsePages(input, totalPages) {
+  if (!input) return null;
+
+  input = input.replace(/\s+/g, "");
+
+  const tokens = input.split(",");
+  const output = [];
+
+  for (let token of tokens) {
+    if (!token) continue;
+
+    if (token.includes("-")) {
+      const [start, end] = token.split("-").map(Number);
+      if (!start || !end || start > end || start < 1 || end > totalPages)
+        return null;
+      for (let i = start; i <= end; i++) output.push(i - 1);
+    } else {
+      const page = Number(token);
+      if (!page || page < 1 || page > totalPages) return null;
+      output.push(page - 1);
+    }
+  }
+  return output.length ? output : null;
+}
+
+async function runDeleteSelect() {
+  const status = document.getElementById("toolStatus");
+  status.textContent = "Processing...";
+  status.className = "tool-status";
+
+  const file = document.getElementById("pdfFile").files[0];
+  const mode = document.getElementById("mode").value;
+  const pagesInput = document.getElementById("pagesInput").value.trim();
+
+  if (!file) {
+    status.textContent = "Select a PDF first.";
+    status.classList.add("error");
+    return;
+  }
+
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+    const totalPages = pdfDoc.getPageCount();
+
+    const pages = parsePages(pagesInput, totalPages);
+    if (!pages) {
+      status.textContent = "Invalid page numbers.";
+      status.classList.add("error");
+      return;
+    }
+
+    let pagesToCopy = [];
+
+    if (mode === "delete") {
+      let deletedSet = new Set(pages);
+      for (let i = 0; i < totalPages; i++) {
+        if (!deletedSet.has(i)) pagesToCopy.push(i);
+      }
+    } else {
+      pagesToCopy = pages;
+    }
+
+    const newPdf = await PDFLib.PDFDocument.create();
+    const copied = await newPdf.copyPages(pdfDoc, pagesToCopy);
+    copied.forEach(p => newPdf.addPage(p));
+
+    const out = await newPdf.save();
+    const blob = new Blob([out], { type: "application/pdf" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = (mode === "delete" ? "deleted_pages.pdf" : "selected_pages.pdf");
+    a.click();
+
+    status.textContent = "Done! Your PDF has been processed.";
+    status.classList.add("success");
+
+  } catch (err) {
+    console.error(err);
+    status.textContent = "Error processing PDF.";
+    status.classList.add("error");
+  }
+}
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

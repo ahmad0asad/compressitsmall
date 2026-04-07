@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Compress Images Online (JPG/PNG/WebP) — Private Browser Image Compressor | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Compress and resize JPG/PNG/WebP images locally in your browser. Choose output format and quality, see size before/after, and download instantly — no upload." name="twitter:description"/><meta content="Compress Images Online (JPG/PNG/WebP) — Private Browser Image Compressor | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/tools/image/compress-image/" property="og:url"/><meta content="Compress and resize JPG/PNG/WebP images locally in your browser. Choose output format and quality, see size before/after, and download instantly — no upload." property="og:description"/><meta content="Compress Images Online (JPG/PNG/WebP) — Private Browser Image Compressor | Compress It Small" property="og:title"/>
+<meta content="Compress and resize JPG/PNG/WebP images locally in your browser. Choose output format and quality, see size before/after, and download instantly — no upload." name="description"/>
+<meta content="image compressor, compress jpg, compress png, compress webp, reduce image size, resize image, browser image compression, no upload" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/image/compress-image/" rel="canonical"/>
+<script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Compress Image",
+    "url":"https://compressitsmall.co.uk/tools/image/compress-image/",
+    "applicationCategory":"UtilityApplication",
+    "operatingSystem":"Web browser",
+    "description":"Compress and resize images locally in your browser with quality controls and instant download.",
+    "offers":{"@type":"Offer","price":"0"}
+  }</script>
+<style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+      --max-width: 1120px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    header {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+    }
+
+    .brand { display: flex; align-items: center; gap: 0.5rem; }
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .brand-name { font-weight: 700; letter-spacing: -0.02em; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color: var(--primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: var(--radius-pill);
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: transparent;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 12px 22px rgba(37, 99, 235, 0.18); }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-ghost { background: #fff; border-color: var(--border); color: var(--text); }
+    .btn-ghost:hover { border-color: rgba(37, 99, 235, 0.5); box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08); }
+
+    main { padding: 2rem 0 3rem; }
+
+    .hero {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius-lg) + 8px);
+      padding: 2rem;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary-dark);
+      border-radius: var(--radius-pill);
+      padding: 0.35rem 0.75rem;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    h1 { font-size: clamp(1.65rem, 3vw, 2.3rem); margin-top: 0.75rem; letter-spacing: -0.03em; }
+    .lead { margin-top: 0.75rem; color: var(--text-muted); max-width: 72ch; }
+
+    .grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1.25rem; }
+    @media (max-width: 980px) { .grid { grid-template-columns: 1fr; } }
+
+    .panel {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 1.25rem;
+    }
+
+    .panel h2 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+
+    label { display: grid; gap: 0.35rem; font-weight: 700; font-size: 0.95rem; }
+    select, input[type="number"], input[type="range"] {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-weight: 600;
+    }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    @media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
+
+    .status {
+      margin-top: 0.75rem;
+      padding: 0.85rem 0.9rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      min-height: 3.2rem;
+    }
+
+    .stats { display: grid; gap: 0.5rem; margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px solid var(--border); }
+    .stat { display:flex; justify-content:space-between; gap:1rem; color: var(--text-muted); font-weight:600; }
+    .stat b { color: var(--text); }
+
+    .preview {
+      margin-top: 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #fff;
+    }
+    .preview img { width: 100%; display:block; max-height: 320px; object-fit: contain; background: #f8fafc; }
+    .small { font-size: 0.92rem; color: var(--text-muted); }
+
+    footer { border-top: 1px solid var(--border); padding: 2.25rem 0; margin-top: 2rem; color: var(--text-muted); font-weight: 600; }
+    footer a { color: var(--primary-dark); }
+  </style>
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<nav class="nav">
+<a class="brand" href="/">
+<span class="brand-icon">C</span>
+<span class="brand-name">Compress It Small</span>
+</a>
+<div class="nav-links">
+<a href="/tools/">Tools</a>
+<a href="/tools/image/">Images</a>
+<a href="/blog/">Blog</a>
+<a href="/checklists/">Checklists</a>
+<a href="/contact/">Contact</a>
+</div>
+<a class="btn btn-primary" href="/tools/">Open tools</a>
+</nav>
+</div>
+</header>
+<main>
+<div class="container">
+<section class="hero">
+<span class="kicker">Images • Compressor</span>
+<h1>Compress an image with realistic settings (like you’d do before a submission)</h1>
+<p class="lead">
+        I built this around the same routine I use when a form rejects an upload: check size, reduce dimensions if they’re excessive,
+        and then re-encode with a sensible quality level so text and charts stay readable. Everything runs locally in your browser.
+      </p>
+<p class="small" style="margin-top:0.6rem;">Tip: PNGs with transparency rarely shrink much unless you convert them to JPEG/WebP.</p>
+</section>
+<section class="grid">
+<div class="panel">
+<h2>1) Choose an image and settings</h2>
+<label>
+<span>Image file</span>
+<input accept="image/*" id="imgFile" type="file"/>
+</label>
+<div class="row" style="margin-top:0.75rem;">
+<label>
+<span>Output format</span>
+<select id="outFormat">
+<option selected="" value="keep">Keep original</option>
+<option value="image/jpeg">JPEG (best for photos)</option>
+<option value="image/webp">WebP (modern, often smaller)</option>
+<option value="image/png">PNG (lossless)</option>
+</select>
+</label>
+<label>
+<span>Quality (JPEG/WebP)</span>
+<input id="quality" max="95" min="40" type="range" value="82"/>
+<span class="small">Current: <b id="qLabel">0.82</b></span>
+</label>
+</div>
+<div class="row" style="margin-top:0.75rem;">
+<label>
+<span>Max width (px) — optional</span>
+<input id="maxW" min="1" placeholder="e.g., 1600" type="number"/>
+</label>
+<label>
+<span>Max height (px) — optional</span>
+<input id="maxH" min="1" placeholder="e.g., 1200" type="number"/>
+</label>
+</div>
+<div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.75rem;">
+<button class="btn btn-primary" id="runBtn" type="button">Compress image</button>
+<button class="btn btn-ghost" id="resetBtn" type="button">Reset</button>
+</div>
+<div class="status" id="status">Choose an image to start.</div>
+<div class="stats" id="stats" style="display:none;">
+<div class="stat"><span>Original</span><b id="orig">—</b></div>
+<div class="stat"><span>Compressed</span><b id="comp">—</b></div>
+<div class="stat"><span>Saved</span><b id="saved">—</b></div>
+<div class="stat"><span>Dimensions</span><b id="dims">—</b></div>
+</div>
+<div class="preview" id="preview" style="display:none;">
+<img alt="Preview" id="previewImg"/>
+</div>
+</div>
+<aside class="panel">
+<h2>Quick guidance (human workflow)</h2>
+<p class="small">
+          If your upload limit is strict (e.g., 200 KB–2 MB), the fastest win is usually resizing. Many phone images are 3000–6000 px wide — far beyond what a portal needs.
+          For photos, try JPEG/WebP at 0.78–0.86. For screenshots with text, stay nearer 0.86–0.92.
+        </p>
+<div style="margin-top:1rem; display:flex; flex-direction:column; gap:0.5rem;">
+<a class="btn btn-ghost" href="/blog/best-compression-settings-whatsapp-email-forms/">Guide: Best compression settings</a>
+<a class="btn btn-ghost" href="/tools/image/watermark-image/">Add Watermark</a>
+<a class="btn btn-ghost" href="/tools/image/image-cropper/">Crop Image</a>
+</div>
+</aside>
+</section>
+</div>
+</main>
+<section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>Compress Image: Reduce Image File Size Without Visible Quality Loss</h2>
+<p>Large images slow down websites, get rejected by upload portals, and fill storage unnecessarily. This image compressor reduces JPG, PNG, and WEBP file sizes using intelligent quality reduction algorithms — all inside your browser, with no server upload.</p>
+
+<h3>How to compress an image</h3>
+<ol>
+  <li><strong>Upload your image</strong> — JPG, PNG, or WEBP.</li>
+  <li><strong>Set the quality level</strong> — 80% is ideal for web use; 60% gives maximum size reduction with acceptable quality; 90%+ for print-quality output.</li>
+  <li><strong>Click Compress</strong> — compare the before/after file sizes displayed.</li>
+  <li><strong>Download</strong> the compressed image.</li>
+</ol>
+
+<h3>When to compress images</h3>
+<ul>
+  <li><strong>Website and blog uploads</strong> — Large images dramatically slow page load times. Google PageSpeed and Core Web Vitals penalise heavy images in search rankings.</li>
+  <li><strong>Email attachments</strong> — Most email clients cap attachments at 10–25 MB. A portfolio of product photos can be shared easily after compression.</li>
+  <li><strong>WhatsApp and messaging</strong> — Messaging apps re-compress images automatically, often at low quality. Pre-compressing ensures your image looks exactly as intended.</li>
+  <li><strong>Google Forms and LMS platforms</strong> — Educational platforms like Moodle and Canvas limit upload sizes. Compress images before submitting assignments.</li>
+  <li><strong>E-commerce product images</strong> — Compressed product photos load faster and improve conversion rates without visibly affecting quality.</li>
+</ul>
+
+<h3>Understanding compression quality levels</h3>
+<p><strong>90–100% quality:</strong> Minimal compression; suitable for printing and professional photography archives. Files remain large.<br>
+<strong>70–85% quality:</strong> The "sweet spot" for web use — visually indistinguishable from the original for most images at normal viewing sizes, with 40–70% size reduction.<br>
+<strong>50–65% quality:</strong> Noticeable compression artefacts at high zoom; suitable for thumbnails and social media previews where fine detail is not critical.<br>
+<strong>Below 50%:</strong> Significant quality loss; use only when maximum file-size reduction is more important than image fidelity.</p>
+
+<h3>JPG vs PNG compression behaviour</h3>
+<p>JPG uses lossy compression — each save reduces quality slightly in exchange for significant size savings. It works best for photos and images with gradients. PNG uses lossless compression — reducing size by eliminating redundant colour data without affecting appearance. PNGs with simple graphics, logos, and text benefit most from PNG compression. For photographic content, converting PNG to JPG often gives far greater size reductions than PNG compression alone.</p>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>How much can I reduce an image's file size?</dt>
+  <dd>Typical reductions are 40–80% for JPG at 80% quality. PNG compression is less dramatic — usually 20–50% — because PNG is already a compressed format. Converting a large PNG photo to JPG at 80% quality can reduce size by 80–90%.</dd>
+
+  <dt>Will anyone be able to tell the image was compressed?</dt>
+  <dd>At 75–85% quality, most people cannot detect compression artefacts when viewing images at normal screen resolution. The difference is mainly visible when zooming in to 200%+ on areas with fine detail or sharp edges.</dd>
+
+  <dt>Does compression affect transparency in PNG files?</dt>
+  <dd>PNG compression preserves transparency. If you need transparent images, keep them as PNG rather than converting to JPG, which does not support transparency.</dd>
+
+  <dt>Can I compress multiple images at once?</dt>
+  <dd>Currently, the tool processes one image at a time. For batch compression of many images, desktop tools like Squoosh, ImageMagick, or Photoshop's Export for Web feature may be more efficient.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/image/resize-image/">Resize Image</a> — Reduce dimensions as well as file size</li>
+  <li><a href="/tools/image/convert-image/">Convert Image</a> — Change format (PNG to JPG, WEBP, etc.)</li>
+  <li><a href="/tools/pdf/jpg-to-pdf/">JPG to PDF</a> — Convert compressed images to PDF</li>
+</ul>
+</section>
+<footer>
+<div class="container">
+<div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:space-between; align-items:center;">
+<span>© <span id="year"></span> Compress It Small</span>
+<span>
+<a href="/privacy-policy/">Privacy</a> ·
+        <a href="/terms/">Terms</a> ·
+        <a href="/cookie-policy/">Cookies</a>
+</span>
+</div>
+</div>
+</footer>
+<script>
+(function(){
+  const el = (id) => document.getElementById(id);
+  const fileInput = el('imgFile');
+  const outFormat = el('outFormat');
+  const quality = el('quality');
+  const qLabel = el('qLabel');
+  const maxW = el('maxW');
+  const maxH = el('maxH');
+  const runBtn = el('runBtn');
+  const resetBtn = el('resetBtn');
+  const status = el('status');
+  const stats = el('stats');
+  const orig = el('orig');
+  const comp = el('comp');
+  const saved = el('saved');
+  const dims = el('dims');
+  const preview = el('preview');
+  const previewImg = el('previewImg');
+
+  let currentFile = null;
+  let currentBitmap = null;
+
+  function formatBytes(bytes){
+    if (!Number.isFinite(bytes)) return '—';
+    const units = ['B','KB','MB','GB'];
+    let i = 0;
+    let n = bytes;
+    while (n >= 1024 && i < units.length - 1){ n /= 1024; i++; }
+    return `${n.toFixed(i === 0 ? 0 : 2)} ${units[i]}`;
+  }
+
+  function setStatus(msg){ status.textContent = msg; }
+
+  function reset(){
+    currentFile = null;
+    currentBitmap = null;
+    fileInput.value = '';
+    setStatus('Choose an image to start.');
+    stats.style.display = 'none';
+    preview.style.display = 'none';
+    previewImg.src = '';
+  }
+
+  function clamp(n, lo, hi){ return Math.min(hi, Math.max(lo, n)); }
+
+  function getQuality(){
+    return clamp((parseInt(quality.value, 10) || 82) / 100, 0.4, 0.95);
+  }
+
+  function updateQualityLabel(){
+    qLabel.textContent = getQuality().toFixed(2);
+  }
+
+  quality.addEventListener('input', updateQualityLabel);
+  updateQualityLabel();
+
+  outFormat.addEventListener('change', () => {
+    const v = outFormat.value;
+    quality.disabled = !(v === 'image/jpeg' || v === 'image/webp' || v === 'keep');
+    updateQualityLabel();
+  });
+
+  async function loadBitmap(file){
+    const url = URL.createObjectURL(file);
+    try {
+      const bmp = await createImageBitmap(file);
+      return { bmp, url };
+    } catch {
+      // fallback
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          createImageBitmap(canvas).then(bmp => resolve({ bmp, url })).catch(reject);
+        };
+        img.onerror = reject;
+        img.src = url;
+      });
+    }
+  }
+
+  fileInput.addEventListener('change', async (e) => {
+    const f = (e.target.files || [])[0];
+    if (!f) return;
+    if (!String(f.type || '').startsWith('image/')) { setStatus('Please choose an image file.'); return; }
+
+    currentFile = f;
+    setStatus('Loading image…');
+    try {
+      const { bmp, url } = await loadBitmap(f);
+      currentBitmap = bmp;
+      URL.revokeObjectURL(url);
+
+      orig.textContent = formatBytes(f.size);
+      dims.textContent = `${bmp.width}×${bmp.height}px`;
+      stats.style.display = 'grid';
+      previewImg.src = URL.createObjectURL(f);
+      preview.style.display = 'block';
+      setStatus(`Ready: ${f.name}`);
+    } catch (err){
+      console.error(err);
+      setStatus('Could not read this image. Try a standard JPG/PNG/WebP.');
+    }
+  });
+
+  function computeTargetSize(w, h){
+    const mw = parseInt(maxW.value, 10);
+    const mh = parseInt(maxH.value, 10);
+    let tw = w;
+    let th = h;
+
+    if (Number.isFinite(mw) && mw > 0 && tw > mw){
+      const ratio = mw / tw;
+      tw = Math.round(tw * ratio);
+      th = Math.round(th * ratio);
+    }
+    if (Number.isFinite(mh) && mh > 0 && th > mh){
+      const ratio = mh / th;
+      tw = Math.round(tw * ratio);
+      th = Math.round(th * ratio);
+    }
+    return { tw, th };
+  }
+
+  function decideOutType(){
+    const v = outFormat.value;
+    if (v === 'keep') return (currentFile && currentFile.type) ? currentFile.type : 'image/jpeg';
+    return v;
+  }
+
+  function downloadBlob(blob, filename){
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+  }
+
+  runBtn.addEventListener('click', async () => {
+    try {
+      if (!currentFile || !currentBitmap){ setStatus('Choose an image first.'); return; }
+      runBtn.disabled = true;
+      resetBtn.disabled = true;
+      setStatus('Compressing…');
+
+      const { tw, th } = computeTargetSize(currentBitmap.width, currentBitmap.height);
+      const canvas = document.createElement('canvas');
+      canvas.width = tw;
+      canvas.height = th;
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(currentBitmap, 0, 0, tw, th);
+
+      const outType = decideOutType();
+      const q = getQuality();
+
+      const blob = await new Promise((resolve) => {
+        if (outType === 'image/png') {
+          canvas.toBlob(resolve, outType);
+        } else {
+          canvas.toBlob(resolve, outType, q);
+        }
+      });
+
+      if (!blob){ setStatus('Failed to export the image. Try a different format.'); return; }
+
+      comp.textContent = formatBytes(blob.size);
+      const s = Math.max(0, currentFile.size - blob.size);
+      saved.textContent = `${formatBytes(s)} (${currentFile.size ? Math.round((s/currentFile.size)*100) : 0}%)`;
+      dims.textContent = `${tw}×${th}px`;
+      stats.style.display = 'grid';
+
+      const ext = outType === 'image/png' ? 'png' : (outType === 'image/webp' ? 'webp' : 'jpg');
+      const base = (currentFile.name || 'image').replace(/\.(png|jpg|jpeg|webp)$/i, '');
+      downloadBlob(blob, `${base}_compressed.${ext}`);
+
+      setStatus('Done. Download started. If the portal still rejects it, try lowering max width or using WebP.');
+    } catch (err){
+      console.error(err);
+      setStatus('Compression failed. Try a different format (JPEG/WebP) or resize smaller.');
+    } finally {
+      runBtn.disabled = false;
+      resetBtn.disabled = false;
+    }
+  });
+
+  resetBtn.addEventListener('click', reset);
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+
+</body>
+</html>

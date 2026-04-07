@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSV to Excel Converter — Convert CSV to XLSX Online | Compress It Small</title>
+<meta content="Convert CSV files to Excel (XLSX) in your browser. Supports delimiter auto-detect, semicolons, and tabs. Secure, fast, and no upload required." name="description"/>
+<meta content="csv to excel, csv to xlsx, convert csv to excel online, semicolon csv, secure office tools, browser based converter" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/office/csv-to-excel/" rel="canonical"/>
+<!-- pdf-lib for merging PDFs -->
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CSV to Excel Converter",
+  "url": "https://compressitsmall.co.uk/tools/office/csv-to-excel/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web browser",
+  "description": "Convert CSV files to Excel (XLSX) in your browser. Supports delimiter auto-detect, semicolons, and tabs. Secure, fast, and no upload required.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0"
+  }
+}
+</script>
+<style>
+    /* SAME DESIGN SYSTEM AS COMPRESSOR PAGE */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+      --max-width: 1120px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.25rem; }
+
+    header {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 30;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.7rem 0;
+    }
+
+    .brand {
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    .brand-icon {
+      width: 32px; height: 32px; border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800;
+      box-shadow: 0 10px 22px rgba(30, 64, 175, 0.45);
+    }
+
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-text span:first-child { font-weight: 800; }
+    .brand-text span:last-child { font-size: 0.75rem; color: var(--text-muted); }
+
+    .nav-links { display: flex; gap: 1.1rem; font-size: 0.85rem; }
+    .nav-links a {
+      color: var(--text-muted); font-weight: 500; position: relative; padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      width: 0; height: 2px; background: var(--primary);
+      border-radius: var(--radius-pill); transition: width 0.16s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.6rem 1.3rem; border-radius: var(--radius-pill);
+      font-weight: 600; border: none; cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+    }
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-outline { background: #eef2ff; color: var(--primary-dark); }
+
+    /* HERO SECTION */
+    main { padding: 2.25rem 0 2.5rem; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.6rem; align-items: center;
+    }
+    @media(max-width:900px) { .hero-grid { grid-template-columns: 1fr; } }
+
+    .page-kicker {
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--primary-dark); font-weight: 700;
+    }
+
+    .page-title { font-size: 2rem; font-weight: 800; margin: 0.4rem 0; }
+    .page-description { font-size: 0.95rem; color: var(--text-muted); max-width: 40rem; }
+
+    .hero-pill {
+      background: #e0f2fe; padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem; display: inline-flex; gap: 0.35rem;
+    }
+
+    /* TOOL CARD */
+    .tool-card {
+      background: var(--bg-alt); border-radius: 20px;
+      padding: 1.2rem; margin-top: 2rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .tool-ui {
+      background: #f9fafb; border: 1px dashed #d1d5db;
+      border-radius: 14px; padding: 1rem; margin-top: 1rem;
+      display: flex; flex-direction: column; gap: 0.8rem;
+    }
+
+    .tool-status { font-size: 0.8rem; color: var(--text-muted); }
+    .tool-status.success { color: #15803d; }
+    .tool-status.error { color: #b91c1c; }
+
+    /* ARTICLE */
+    .article {
+      margin-top: 1.4rem; padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem; color: #4b5563;
+    }
+    .article h2, .article h3, .article h4 { color: #111827; margin: 0.6rem 0 0.3rem; }
+
+    footer {
+      margin-top: 2rem; padding: 1.4rem 0; background: #020617; color: #9ca3af;
+      border-top: 1px solid #1e293b; font-size: 0.78rem;
+    }
+  
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+</style>
+<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="CSV to Excel Converter — Convert CSV to XLSX Online | Compress It Small" property="og:title"/><meta content="Convert CSV files to Excel (XLSX) in your browser. Supports delimiter auto-detect, semicolons, and tabs. Secure, fast, and no upload required." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/office/csv-to-excel/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="CSV to Excel Converter — Convert CSV to XLSX Online | Compress It Small" name="twitter:title"/><meta content="Convert CSV files to Excel (XLSX) in your browser. Supports delimiter auto-detect, semicolons, and tabs. Secure, fast, and no upload required." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/><script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<div class="container">
+<section style="margin-top:2rem;margin-bottom:1.5rem;">
+<h1 style="font-size:2rem;line-height:1.15;margin-bottom:.75rem;">Convert CSV to Excel — fast XLSX conversion in your browser</h1>
+<p style="color:#475569;max-width:70ch;">Turn CSV exports into Excel spreadsheets for analysis and sharing. Works with comma- and semicolon-separated files and keeps your data private with local processing.</p>
+</section>
+<section class="tool-card">
+<h2>CSV to Excel Converter</h2>
+<div class="tool-ui">
+<label for="csvFile">Select CSV file</label>
+<input accept=".csv,text/csv" id="csvFile" type="file"/>
+<div class="field-row" style="margin-top:.75rem;">
+<div style="flex:1;min-width:220px;">
+<label for="delimiter">Delimiter</label>
+<select id="delimiter">
+<option selected="" value="auto">Auto-detect</option>
+<option value=",">Comma (,)</option>
+<option value=";">Semicolon (;)</option>
+<option value="\t">Tab</option>
+</select>
+</div>
+<div style="flex:1;min-width:220px;">
+<label for="sheetName">Sheet name</label>
+<input id="sheetName" type="text" value="Sheet1"/>
+</div>
+</div>
+<button class="btn" onclick="csvToExcel()" style="margin-top:1rem;" type="button">Convert CSV to Excel (XLSX)</button>
+<p aria-live="polite" class="tool-status" id="status" role="status"></p>
+<p id="progress" style="color:#64748b;font-size:.95rem;margin-top:.25rem;"></p>
+</div>
+</section>
+<section style="margin-top:2rem;">
+<h2>How it works</h2>
+<p>This tool reads your CSV locally, parses rows and columns, and then generates an Excel (.xlsx) file using SheetJS. It works well for exports from databases, portals, and reporting systems, including Italian datasets that often use semicolon delimiters.</p>
+<ul style="margin-top:.75rem;padding-left:1.25rem;">
+<li>Use <strong>Auto-detect</strong> first; switch delimiter if columns look wrong.</li>
+<li>Large CSV files can take longer to parse — consider filtering rows before converting.</li>
+<li>Your data stays in the browser. No upload is required.</li>
+</ul>
+</section>
+<section style="margin-top:2rem;">
+<h2>Related tools</h2>
+<ul class="link-list"><li><a href="/tools/office/excel-to-csv/">Excel to CSV</a></li><li><a href="/tools/office/csv-to-json/">CSV to JSON</a></li><li><a href="/tools/office/json-to-csv/">JSON to CSV</a></li><li><a href="/tools/office/text-to-pdf/">Text to PDF</a></li><li><a href="/tools/pdf/">PDF compressor</a></li></ul>
+</section>
+<section style="margin-top:2rem;">
+<h2>FAQ</h2>
+<div class="faq">
+<div class="faq-item">
+<button class="faq-q" type="button">Does this preserve formulas?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>CSV files contain values only (no formulas). The Excel file will contain the same values and columns from the CSV.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Is my CSV uploaded?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>No. Conversion happens in your browser.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">My CSV uses semicolons, what should I do?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>Select the semicolon delimiter (;), which is common for European exports.</p></div>
+</div></div>
+</section>
+</div>
+</main>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/pdf/"><div class="link-title">Compress PDF</div><p class="link-desc">Reduce PDF size for portals, email and uploads.</p></a><a class="link-card" href="/tools/pdf/split-pdf/"><div class="link-title">Split PDF</div><p class="link-desc">Extract ranges or split large PDFs into smaller parts.</p></a><a class="link-card" href="/tools/pdf/rotate-pdf/"><div class="link-title">Rotate PDF</div><p class="link-desc">Fix sideways pages for submissions and printing.</p></a><a class="link-card" href="/tools/pdf/reorder-pdf/"><div class="link-title">Reorder PDF</div><p class="link-desc">Re-arrange pages before you upload or sign.</p></a><a class="link-card" href="/tools/pdf/delete-pages/"><div class="link-title">Delete PDF Pages</div><p class="link-desc">Remove unwanted pages to cut size and clutter.</p></a><a class="link-card" href="/tools/pdf/jpg-to-pdf/"><div class="link-title">JPG to PDF</div><p class="link-desc">Convert images into a single shareable PDF.</p></a><a class="link-card" href="/blog/how-to-compress-pdf/"><div class="link-title">How to Compress PDF</div><p class="link-desc">Step-by-step PDF compression workflow.</p></a><a class="link-card" href="/blog/csv-to-excel-clean-formatting/"><div class="link-title">CSV to Excel Guide</div><p class="link-desc">Avoid broken columns and lost zeros.</p></a></div></div></section>
+<section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>CSV to Excel: Convert CSV Files to XLSX Format</h2>
+<p>CSV files from databases, exports, and data tools need to be opened in Excel for analysis, presentation, and sharing with non-technical colleagues. This converter turns any CSV into a properly structured <code>.xlsx</code> Excel file — in your browser with no server upload.</p>
+
+<h3>How to convert CSV to Excel</h3>
+<ol>
+  <li><strong>Upload your CSV file</strong>.</li>
+  <li><strong>Click Convert to Excel</strong>.</li>
+  <li><strong>Download the XLSX file</strong> and open in Microsoft Excel or LibreOffice Calc.</li>
+</ol>
+
+<h3>Common use cases</h3>
+<ul>
+  <li><strong>E-commerce reports</strong> — Sales exports from Shopify, WooCommerce, or Amazon in CSV format opened in Excel for analysis.</li>
+  <li><strong>Bank statement analysis</strong> — Many banks export transactions as CSV. Convert to Excel to apply filters, formulas, and pivot tables.</li>
+  <li><strong>Survey data</strong> — Google Forms and Typeform export responses as CSV for further analysis in Excel.</li>
+  <li><strong>CRM exports</strong> — Contact lists exported from Salesforce or HubSpot as CSV, reformatted in Excel for management review.</li>
+</ul>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Will column widths and formatting be applied?</dt>
+  <dd>Basic column structure is preserved. Cell formatting (colours, fonts, borders) is not present in CSV and therefore cannot be carried over — you apply formatting in Excel after conversion.</dd>
+
+  <dt>What delimiter does the converter expect?</dt>
+  <dd>Standard commas are used by default. If your file uses semicolons or tabs as delimiters, the tool attempts to detect this automatically.</dd>
+
+  <dt>Is my data kept private?</dt>
+  <dd>Yes. Processing happens entirely in your browser — your data is never sent to our servers.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/office/excel-to-csv/">Excel to CSV</a></li>
+  <li><a href="/tools/office/csv-to-json/">CSV to JSON</a></li>
+  <li><a href="/tools/office/json-to-csv/">JSON to CSV</a></li>
+</ul>
+</section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a></div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+<script>
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function detectDelimiter(sample){
+  const candidates=[",",";","\t","|"];
+  let best=",", bestCount=-1;
+  for(const c of candidates){
+    const count=(sample.split(c).length-1);
+    if(count>bestCount){ bestCount=count; best=c; }
+  }
+  return best;
+}
+
+async function csvToExcel(){
+  const fileInput=document.getElementById("csvFile");
+  const status=document.getElementById("status");
+  const progress=document.getElementById("progress");
+  if(!fileInput.files.length){
+    status.textContent="Please select a CSV file.";
+    status.className="tool-status error";
+    return;
+  }
+
+  status.textContent="Reading CSV...";
+  status.className="tool-status";
+  progress.textContent="";
+
+  try{
+    const file=fileInput.files[0];
+    const text=await file.text();
+    const delimiterSel=document.getElementById("delimiter").value;
+    const delimiter=(delimiterSel==="auto") ? detectDelimiter(text.slice(0, 5000)) : (delimiterSel==="\\t" ? "\t" : delimiterSel);
+
+    progress.textContent="Parsing rows...";
+    const parsed=Papa.parse(text, { delimiter, skipEmptyLines:true });
+    if(parsed.errors && parsed.errors.length){
+      console.warn(parsed.errors);
+    }
+    const data=parsed.data;
+
+    if(!data || !data.length){
+      status.textContent="No data found in CSV.";
+      status.className="tool-status error";
+      progress.textContent="";
+      return;
+    }
+
+    progress.textContent="Building XLSX...";
+    const ws=XLSX.utils.aoa_to_sheet(data);
+    const wb=XLSX.utils.book_new();
+    const sheetName=(document.getElementById("sheetName").value||"Sheet1").substring(0, 31);
+    XLSX.utils.book_append_sheet(wb, ws, sheetName);
+
+    const out=XLSX.write(wb, { bookType:"xlsx", type:"array" });
+    const blob=new Blob([out], { type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    const baseName=(file.name||"converted").replace(/\.[^/.]+$/,"");
+    saveAs(blob, `${baseName}.xlsx`);
+
+    status.textContent="Done! XLSX download started.";
+    status.className="tool-status success";
+    progress.textContent="";
+  }catch(err){
+    console.error(err);
+    status.textContent="Could not convert this CSV. Try a smaller file or check delimiter settings.";
+    status.className="tool-status error";
+    progress.textContent="";
+  }
+}
+
+</script>
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

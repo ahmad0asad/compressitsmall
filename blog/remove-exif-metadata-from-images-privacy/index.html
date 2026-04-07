@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Remove EXIF Metadata from Images (Privacy Checklist Before Sharing)</title>
+<meta content="Remove EXIF Metadata from Images (Privacy Checklist: Resize and compress images for uploads without losing readability—format tips, privacy checks, and fast…" name="description"/>
+<meta content="compress pdf, compress image, reduce file size, online file compression, shrink pdf, compress video, compressitsmall, compress it small" name="keywords"/>
+<link href="https://compressitsmall.co.uk/blog/remove-exif-metadata-from-images-privacy/" rel="canonical"/>
+<!-- Basic reset & typography -->
+<style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout helpers */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 28px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-ghost {
+      background: #eef2ff;
+      color: var(--primary-dark);
+    }
+
+    .btn-ghost:hover {
+      background: #e0e7ff;
+    }
+
+    /* Header */
+    header {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      box-shadow: 0 10px 22px rgba(30, 64, 175, 0.45);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text span:first-child {
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 0.25rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--primary);
+      transition: width 0.18s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 4px 0;
+      background: #111827;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 0.75rem 0 1rem;
+      }
+
+      .nav-mobile a {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+
+      .nav-mobile .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-mobile.open {
+        display: flex;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      padding: 2.5rem 0 2.75rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        padding: 3.25rem 0 3.5rem;
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.22rem 0.6rem 0.22rem 0.3rem;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0f172a;
+      font-size: 0.78rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .hero-kicker-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: #0ea5e9;
+      color: #f9fafb;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.85rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at 0% 0%, #eff6ff, #ffffff);
+      border-radius: 24px;
+      padding: 1.4rem 1.4rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      color: #047857;
+      font-weight: 600;
+    }
+
+    .hero-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-card-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-chip {
+      padding: 0.45rem 0.6rem;
+      border-radius: 12px;
+      background: #eff6ff;
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.35rem;
+      align-items: center;
+    }
+
+    .hero-chip span:first-child {
+      font-weight: 500;
+    }
+
+    .hero-chip span:last-child {
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .hero-progress {
+      background: #e5e7eb;
+      border-radius: 999px;
+      height: 6px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-progress-bar {
+      width: 84%;
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+    }
+
+    .hero-progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Common section styles */
+    section {
+      padding: 2.25rem 0;
+    }
+
+    section:nth-of-type(even) {
+      background: var(--bg-alt);
+    }
+
+    .section-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .section-description {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 40rem;
+    }
+
+    /* Tools grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(148, 163, 184, 0.16);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .card-badge {
+      display: inline-flex;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #ecfeff;
+      color: #0e7490;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .card-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card-meta {
+      margin-top: 0.25rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .card-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-right: 0.8rem;
+    }
+
+    .card-meta span::before {
+      content: "•";
+      font-size: 1rem;
+      line-height: 1;
+      color: var(--primary);
+    }
+
+    .card-footer-link {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    /* How it works */
+    .how-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .how-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem 1rem;
+      align-items: flex-start;
+    }
+
+    .step-index {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 2px solid #bfdbfe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      background: #eff6ff;
+      margin-top: 0.1rem;
+    }
+
+    .step-title {
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+
+    .step-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .benefits {
+      padding: 1.1rem;
+      border-radius: var(--radius-lg);
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      font-size: 0.85rem;
+      color: #111827;
+    }
+
+    .benefits ul {
+      margin-top: 0.6rem;
+      padding-left: 1.2rem;
+    }
+
+    .benefits li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Guides / blog preview */
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .guide {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      box-shadow: 0 8px 18px rgba(148, 163, 184, 0.18);
+    }
+
+    .guide-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .guide-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .guide-excerpt {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .guide-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .guide-link {
+      margin-top: 0.15rem;
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .faq-intro {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .faq-note {
+      margin-top: 0.9rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: 12px;
+      background: #ecfdf5;
+      border: 1px solid #bbf7d0;
+      font-size: 0.8rem;
+      color: #166534;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 0.65rem 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .faq-toggle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .faq-answer {
+      padding: 0 0.9rem 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: none;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* About & contact */
+    .about-contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .about-list {
+      padding-left: 1.2rem;
+    }
+
+    .about-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1.1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 22px rgba(148, 163, 184, 0.2);
+      font-size: 0.88rem;
+    }
+
+    .contact-card form {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .field label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      padding: 0.55rem 0.65rem;
+      font-size: 0.85rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 38px;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35);
+    }
+
+    .contact-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: #020617;
+      color: #9ca3af;
+      padding: 1.5rem 0;
+      font-size: 0.8rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      margin-top: 0.5rem;
+    }
+  
+.card-btn {
+  display:inline-block;
+  background:#dc2626;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:8px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+.card-mini-btn {
+  font-size:0.85rem;
+  color:#b91c1c;
+  text-decoration:underline;
+}
+
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+</style>
+<!-- Simple structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Compress It Small",
+  "url": "https://compressitsmall.co.uk/",
+  "description": "Online hub for smarter file compression, tutorials, and tools to reduce PDF, image, and video size without losing quality."
+}
+</script>
+<meta content="article" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="Simple File Size Checklist Before Sending Any Large File" property="og:title"/><meta content="Follow this simple checklist before sending or uploading large files so you avoid rejections and unnecessary delays." property="og:description"/><meta content="https://compressitsmall.co.uk/blog/remove-exif-metadata-from-images-privacy/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Simple File Size Checklist Before Sending Any Large File" name="twitter:title"/><meta content="Follow this simple checklist before sending or uploading large files so you avoid rejections and unnecessary delays." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+</head><body>
+<!-- Floating Support Button (replaces social share widget) -->
+<script>
+(function(){
+  var wrap = document.getElementById("support-float");
+  if (!wrap) return;
+
+  function adjust(){
+    var link = wrap.querySelector("a");
+    if (!link) return;
+
+    // If a cookie banner pushes content, float above it by toggling body.has-cookie-banner
+    var hasBanner = document.body.classList.contains("has-cookie-banner");
+    wrap.style.bottom = hasBanner ? "110px" : "20px";
+
+    // Compact on very small screens
+    if (window.innerWidth <= 420) {
+      link.style.fontSize = "0.80rem";
+      link.style.padding = "8px 12px";
+    } else {
+      link.style.fontSize = "0.85rem";
+      link.style.padding = "8px 14px";
+    }
+  }
+
+  adjust();
+  window.addEventListener("resize", adjust);
+
+  try {
+    var obs = new MutationObserver(adjust);
+    obs.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  } catch(e) {}
+})();
+</script>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="container">
+<div class="section-heading">
+<div class="section-kicker">Guide</div>
+<h1>Remove EXIF Metadata from Images (Privacy Checklist)</h1>
+<p class="hero-subtitle">Remove EXIF Metadata from Images (Privacy Checklist: Resize and compress images for uploads without losing readability—format tips, privacy checks, and fast…</p>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text"><div style="background:#fffbe6;border-left:4px solid #f59e0b;padding:12px 16px;margin-bottom:24px;border-radius:4px;font-size:0.875rem;color:#444;">
+<strong>Affiliate disclosure:</strong> This page contains Amazon affiliate links. If you purchase through them, I may earn a small commission at no extra cost to you.
+</div><p><strong>You email a document that looks perfect on your laptop, then the recipient says it won’t open on their phone—or it’s unreadably blurry.</strong> Think of it like packing a suitcase: you don’t squeeze harder—you remove what you don’t need and fold what you keep efficiently.</p>
+<p>In this image guide—<strong>Remove EXIF Metadata from Images (Privacy Checklist Before Sharing)</strong>—you’ll learn what makes files large, which changes deliver the biggest savings, and how to keep the result readable and portal-friendly. The steps are designed for strict upload validators and real deadlines.</p>
+<p>When you’re ready, use <a href="/tools/image/" style="color:#2563eb;">Image tools</a> (and the related tools listed below). The approach is: <strong>clean first → optimise once → verify</strong>.</p>
+<h2>Strip metadata before sharing</h2>
+<p>Images can contain EXIF like location and device details. For personal documents, it’s usually safer to share a clean exported copy without metadata.</p>
+<h2>Workflow</h2>
+<ol>
+<li>Crop away sensitive areas (<a href="/tools/image/image-cropper/" style="color:#2563eb;">Image Cropper</a>).</li>
+<li>Export a clean image for sharing.</li>
+<li>If converting to PDF, rebuild cleanly with <a href="/tools/pdf/jpg-to-pdf/" style="color:#2563eb;">JPG to PDF</a>.</li>
+</ol><div style="background:#f0f7ff;border:1px solid #bfdbfe;border-radius:8px;padding:16px 20px;margin:28px 0;font-size:0.9rem;">
+<p style="margin:0 0 8px 0;">💡 <strong>Helpful gear for this task:</strong> EXIF data is one privacy concern — your phone's location signal is another. A Faraday bag blocks all signals when you need complete location privacy.</p>
+<a href="https://www.amazon.com/s?k=Faraday+bag+phone+signal+blocking&amp;tag=ad0adphd-20" rel="nofollow sponsored noopener" style="display:inline-block;background:#FF9900;color:#111;font-weight:700;padding:8px 18px;border-radius:5px;text-decoration:none;font-size:0.875rem;" target="_blank">🛒 Search on Amazon — Faraday Bag for Phone</a>
+<span style="display:block;margin-top:6px;font-size:0.75rem;color:#888;">Opens Amazon search · Affiliate link · No extra cost to you</span>
+</div>
+<h2>Extra privacy note</h2>
+<p>Remember that screenshots can reveal window titles and file paths. A crop can remove more private data than you expect.</p>
+<div class="highlight">
+<strong>Quick tool path:</strong>
+<ul>
+<li>Start here: <a href="/tools/image/" style="color:#2563eb;">Image tools</a></li>
+<li><a href="/tools/pdf/jpg-to-pdf/" style="color:#2563eb;">JPG to PDF</a></li><li><a href="/tools/pdf/pdf-to-jpg/" style="color:#2563eb;">PDF to JPG</a></li><li><a href="/tools/image/watermark-image/" style="color:#2563eb;">Watermark Image</a></li><li><a href="/tools/upload-limit-checker/" style="color:#2563eb;">Upload Limit Checker</a></li><li><a href="/tools/pdf/pdf-to-png/" style="color:#2563eb;">PDF to PNG</a></li><li><a href="/tools/image/image-cropper/" style="color:#2563eb;">Image Cropper</a></li>
+</ul>
+</div>
+<h2>If you’re in a hurry</h2>
+<ul>
+<li>Split the file instead of destroying quality.</li><li>Keep scanned pages grayscale when colour isn’t required.</li><li>Resize photos before embedding them in documents.</li><li>Do a quick test upload if the portal allows it.</li>
+</ul>
+<p>Most “stuck” cases are solved by the first two steps. Once the file is structurally clean, optimisation becomes predictable.</p>
+<h2>Quality check before you hit “Submit”</h2>
+<p>Don’t trust the thumbnail preview—open the file properly and verify the details.</p>
+<ul>
+<li><strong>Open at 100% zoom</strong> and check the smallest text (names, dates, serial numbers).</li>
+<li><strong>Scroll every page</strong> for rotation, missing pages, and blank pages created by exports.</li>
+<li><strong>Confirm file size</strong> against the true limit (some portals count after upload).</li>
+<li><strong>Test on mobile</strong> if the recipient opens it on a phone.</li>
+<li><strong>Do a test upload</strong> if possible; validators can reject encryption or unusual PDF structures.</li>
+</ul>
+<h2>Troubleshooting by error message</h2>
+<p>Portals fail for different reasons. Start with the message, then choose the right fix.</p>
+<ul>
+<li><strong>“File too large”:</strong> Reduce size by removing pages, resizing images, or splitting. Start with <a href="/tools/pdf/split-pdf/" style="color:#2563eb;">Split PDF</a> if the limit is strict.</li>
+<li><strong>“File can’t be processed / invalid”:</strong> Re-export a clean copy and avoid encryption. A single clean pass via <a href="/tools/pdf/" style="color:#2563eb;">PDF tools</a> often resolves validator errors.</li>
+<li><strong>“Upload failed” (but size is ok):</strong> try smaller parts or a lighter file (timeouts are common).</li>
+<li><strong>“Security settings / password protected”:</strong> portals often reject encrypted files—use an unencrypted export.</li>
+</ul>
+<h2>Real-world examples (what “good” looks like)</h2>
+<p>Use these ranges as guidance, not strict rules—content type matters.</p>
+<ul>
+<li><strong>1–3 page form:</strong> commonly under 500KB–2MB (depends on scans/photos).</li>
+<li><strong>10–20 page text report:</strong> often 1–5MB when exported cleanly and images optimised.</li>
+<li><strong>Scanned pages:</strong> biggest wins come from grayscale + sensible DPI (~150–200).</li>
+</ul>
+<h2>On mobile: what changes</h2>
+<p>Mobile uploads fail more often due to timeouts. If a portal keeps failing, try smaller parts or a lighter file and upload over stable Wi‑Fi.</p>
+<h2>Common mistakes</h2>
+<ul>
+<li>Exporting via “Print to PDF” (often flattens text into images).</li><li>Compressing five times in a row instead of doing one clean export.</li><li>Using PNG for photos when JPG would be much smaller.</li><li>Repeated re-saving that adds incremental-save history and duplicate resources.</li><li>Keeping full‑colour scans when grayscale is acceptable.</li><li>Uploading the wrong format (PNG instead of JPG; PPTX instead of PDF).</li><li>Pasting huge screenshots/photos (4000–8000px) when 1500–2500px is enough.</li>
+</ul>
+<h2>FAQ</h2>
+<h3>Is it safe for private documents?</h3><p>Prefer tools that process locally in the browser and keep a clean local copy. For highly sensitive files, avoid unknown uploaders.</p><h3>Why did the file get bigger after editing?</h3><p>Some editors add incremental-save history and duplicated resources. A clean export + one optimisation pass usually fixes it.</p><h3>Why does my image look blurry?</h3><p>Either it was resized too small or JPEG quality was set too low. Keep a sensible pixel size and check text at 100% zoom.</p><h3>How do I get even smaller without blur?</h3><p>Prefer splitting, grayscale for scans, and resizing images before export. Extreme compression is what creates blur.</p><h3>What should I do on mobile?</h3><p>Do the final check on the same device you’ll submit from. Mobile viewers can reveal issues (blurry text, missing fonts) you won’t notice on desktop.</p>
+<h2>Related guides you can use next</h2>
+<ul>
+<li><a href="/blog/compress-images-for-google-forms-lms/" style="color:#2563eb;">Compress Images for Google Forms, Moodle and LMS Uploads Without Ruining Text</a></li><li><a href="/blog/image-compression-for-web/" style="color:#2563eb;">The Complete Guide to Image Compression for Web, Social Media &amp; Email (2025 Edition)</a></li><li><a href="/blog/pdf-to-jpg-small-size-for-forms/" style="color:#2563eb;">Convert PDF to JPG for Online Forms (Small Size, Clear Text)</a></li><li><a href="/blog/png-transparency-vs-file-size-when-to-use/" style="color:#2563eb;">PNG Transparency vs File Size: When to Use PNG and When to Switch to JPG</a></li><li><a href="/blog/pdf-to-png-jpg-for-forms-and-web/" style="color:#2563eb;">PDF to PNG or JPG: Best Export Settings for Forms, Websites and Social Media</a></li><li><a href="/blog/crop-image-to-passport-photo-size/" style="color:#2563eb;">Crop an Image to Passport/ID Photo Size (Without Stretching or Blurry Text)</a></li>
+</ul>
+<h2>Final takeaways</h2>
+<p>For most submissions, the winning pattern is consistent: <strong>clean first → optimise once → verify</strong>. That keeps quality high and reduces portal errors.</p>
+<p>Next step: run <a href="/tools/image/" style="color:#2563eb;">Image tools</a> and use the checklist above before you upload or send.</p></article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>Preflight checklist (5 minutes) before sending any file</h2>
+<p>Use this preflight checklist whenever you are about to send an important document by email, upload it to a portal, or share it over messaging. It prevents the two most common problems: files that are too large and files that look unprofessional after compression.</p>
+<h3>Step A — Clean the content</h3>
+<ul>
+<li>Remove duplicates, blank pages, and irrelevant attachments with <a href="/tools/pdf/delete-pages/">Delete PDF Pages</a>.</li>
+<li>Split large submissions into logical parts using <a href="/tools/pdf/split-pdf/">Split PDF</a> if allowed.</li>
+<li>Reorder pages so the document reads correctly with <a href="/tools/pdf/reorder-pdf/">Reorder PDF</a>.</li>
+</ul>
+<h3>Step B — Optimize the heavy components</h3>
+<ul>
+<li>If it is a PDF, compress with <a href="/tools/pdf/">PDF Compressor</a>.</li>
+<li>If it is image-heavy, compress images first using <a href="/tools/image/">Image Tools</a> and then rebuild the PDF with <a href="/tools/pdf/jpg-to-pdf/">JPG to PDF</a>.</li>
+<li>If it is an Office file, clean it and export to PDF, then compress.</li>
+</ul>
+<h3>Step C — Quality control</h3>
+<ul>
+<li>Open the final file and zoom to 200% to confirm readability.</li>
+<li>Check page order and missing pages after merge/split.</li>
+<li>Confirm you are sending the right version; use <a href="/tools/pdf/compare-pdf/">Compare PDF</a> when in doubt.</li>
+</ul>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>Common size caps and how to prepare without panic</h2>
+<p>Different channels impose different limits. Email and messaging apps may limit attachment sizes, and portals often set strict per-file caps. The goal is not to memorize every number—it is to be ready with a fast workflow.</p>
+<ul>
+<li><strong>When the cap is very low (1–2MB):</strong> remove pages, compress, and consider splitting.</li>
+<li><strong>When the cap is moderate (5–10MB):</strong> compress and verify; most PDFs can be made portal-friendly.</li>
+<li><strong>When you need to send quickly:</strong> choose speed over perfection and use a repeatable preset workflow.</li>
+</ul>
+<p>If you are specifically fighting upload limits, read <a href="/blog/pdf-too-large-to-upload-size-limits/">PDF too large to upload?</a> and apply the portal-ready steps.</p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>Recommended internal links to keep at your fingertips</h2>
+<p>Keep these pages bookmarked so you can solve most file-size problems in minutes:</p>
+<ul>
+<li><a href="/blog/how-to-compress-pdf/">How to compress a PDF without making it blurry</a></li>
+<li><a href="/blog/compress-scanned-pdfs-clear-text-small-size/">Compress scanned PDFs: clear text, small size</a></li>
+<li><a href="/blog/reduce-image-size-for-web-without-losing-quality/">Reduce image size for web without losing quality</a></li>
+<li><a href="/blog/remove-hidden-data-from-documents/">Remove hidden data from documents</a></li>
+</ul>
+<p>Then, use the tools directly: <a href="/tools/pdf/">PDF Compressor</a>, <a href="/tools/pdf/split-pdf/">Split PDF</a>, <a href="/tools/pdf/merge-pdf/">Merge PDF</a>, and <a href="/tools/image/">Image Tools</a>.</p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>Diagnose your PDF before you compress it</h2>
+<p>The fastest way to reduce PDF size without destroying quality is to diagnose what the PDF is made of. A “digital” PDF (exported from Word/LaTeX/Google Docs) typically contains <em>vector text</em> and a few embedded images. A scanned PDF is usually nothing but page images wrapped inside a PDF container. The best settings are different for each type.</p>
+<ul>
+<li><strong>Digital PDFs:</strong> keep text as text; compress only embedded images.</li>
+<li><strong>Scanned PDFs:</strong> treat the entire document as images; control resolution and color.</li>
+<li><strong>Mixed PDFs:</strong> compress attachments/pages differently and then reassemble with <a href="/tools/pdf/merge-pdf/">Merge PDF</a> and <a href="/tools/pdf/reorder-pdf/">Reorder PDF</a>.</li>
+</ul>
+<p>On CompressItSmall, start with <a href="/tools/pdf/">PDF Compressor</a>. If you are also reorganizing pages, use <a href="/tools/pdf/delete-pages/">Delete PDF Pages</a>, <a href="/tools/pdf/split-pdf/">Split PDF</a>, and <a href="/tools/pdf/reorder-pdf/">Reorder PDF</a> before your final compression pass.</p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>A repeatable compression workflow (professional quality, smaller size)</h2>
+<p>When you need consistent results, use a repeatable workflow instead of guessing settings each time:</p>
+<ol>
+<li><strong>Remove what you do not need:</strong> delete blanks, duplicates, and irrelevant appendices with <a href="/tools/pdf/delete-pages/">Delete PDF Pages</a>.</li>
+<li><strong>Split if the destination allows multiple files:</strong> use <a href="/tools/pdf/split-pdf/">Split PDF</a> for large applications and upload parts separately.</li>
+<li><strong>Compress:</strong> run the cleaned file through <a href="/tools/pdf/">PDF Compressor</a>.</li>
+<li><strong>Verify:</strong> check readability at 100% and 200%, and confirm it is the right version with <a href="/tools/pdf/compare-pdf/">Compare PDF</a>.</li>
+</ol>
+<p>This approach almost always beats “maximum compression,” because it keeps important content intact while reducing size in a controlled way.</p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>Image size has two components: pixels and format</h2>
+<p>When an image file is “too big,” it is usually because of (1) too many pixels and/or (2) the wrong format. A 4000×3000 photo is excellent for printing, but it is overkill for a website hero image or an email attachment. The same image saved as PNG can be several times larger than JPG because PNG is lossless.</p>
+<p>Start by choosing the correct format using the decision logic from <a href="/blog/jpg-vs-png-smallest-file-size/">JPG vs PNG</a> and then reduce dimensions for your actual use-case. If you need a quick, guided workflow, use <a href="/tools/image/">Image Tools</a> and keep your output targeted for screens.</p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>A practical workflow for “small but sharp” images</h2>
+<ol>
+<li><strong>Resize first:</strong> set a realistic width for the target (blog, portfolio, product listing).</li>
+<li><strong>Choose the right format:</strong> use JPG for photos, PNG for simple graphics that need transparency.</li>
+<li><strong>Compress gradually:</strong> reduce quality in small steps and check at 100% zoom.</li>
+<li><strong>Strip unnecessary data:</strong> metadata is not always huge, but removing it improves privacy and can reduce size.</li>
+</ol>
+<p>After optimizing images, you can convert them into a lightweight PDF using <a href="/tools/pdf/jpg-to-pdf/">JPG to PDF</a>—useful for portfolios, forms, and multi-photo uploads.</p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>Why Office files grow (and why “Save As” is not enough)</h2>
+<p>Word, Excel, and PowerPoint files become large for the same reasons PDFs do: high-resolution images, embedded media, and hidden history. A single uncompressed screenshot pasted into PowerPoint can add megabytes. If the file includes multiple revisions, embedded fonts, or copied objects from other documents, size can grow without you noticing.</p>
+<p>If you are sending the file externally, the most reliable approach is often to export to PDF and then optimize the result using <a href="/tools/pdf/">PDF Compressor</a>. For presentations, consider removing unused slides and then re-exporting, or splitting into parts before distribution.</p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>Fast “shrink and share” workflow</h2>
+<ol>
+<li><strong>Clean the source:</strong> remove unused images/slides, clear hidden content, and delete embedded media if not needed.</li>
+<li><strong>Export to PDF:</strong> PDFs are more portable and predictable for uploads.</li>
+<li><strong>Compress the PDF:</strong> use <a href="/tools/pdf/">PDF Compressor</a> and confirm readability.</li>
+<li><strong>Split or merge:</strong> use <a href="/tools/pdf/split-pdf/">Split PDF</a> / <a href="/tools/pdf/merge-pdf/">Merge PDF</a> depending on submission rules.</li>
+</ol>
+<p>For an expanded office-specific guide, see <a href="/blog/shrink-word-excel-powerpoint-files/">how to shrink Word, Excel and PowerPoint files</a>.</p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>A repeatable routine you can reuse</h2>
+<p>Most file-size problems repeat. If you build a simple routine and keep the right tools bookmarked, you can solve almost any “too large” error in minutes. Start by identifying whether the file is PDF, image, or Office; remove unnecessary content; then compress in a controlled way.</p>
+<p>For PDFs, your core toolkit is <a href="/tools/pdf/">PDF Compressor</a>, <a href="/tools/pdf/delete-pages/">Delete PDF Pages</a>, <a href="/tools/pdf/split-pdf/">Split PDF</a>, and <a href="/tools/pdf/merge-pdf/">Merge PDF</a>. For images, start with <a href="/tools/image/">Image Tools</a>. For Office documents, export to PDF and then compress.</p>
+<p>Always verify the final output: check readability, page order, and whether you are submitting the correct version. When in doubt, compare versions with <a href="/tools/pdf/compare-pdf/">Compare PDF</a>.</p>
+<p>To build a complete mental model, read <a href="/blog/all-tools-explained-2026/">the full compression toolset guide</a> and keep <a href="/blog/file-size-checklist/">the file-size checklist</a> as your preflight step.</p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>Common pitfalls and quick fixes</h2>
+<p>To build a complete mental model, read <a href="/blog/all-tools-explained-2026/">the full compression toolset guide</a> and keep <a href="/blog/file-size-checklist/">the file-size checklist</a> as your preflight step.</p>
+</article>
+</div>
+</section>
+<section>
+<div class="container">
+<article class="about-text">
+<h2>Quality checks before you send</h2>
+<p>To build a complete mental model, read <a href="/blog/all-tools-explained-2026/">the full compression toolset guide</a> and keep <a href="/blog/file-size-checklist/">the file-size checklist</a> as your preflight step.</p>
+</article>
+</div>
+</section>
+</main>
+<section class="related-links"><div class="container content"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/pdf/"><div class="link-title">Compress PDF</div><p class="link-desc">Reduce PDF size for portals, email and uploads.</p></a><a class="link-card" href="/tools/pdf/merge-pdf/"><div class="link-title">Merge PDF</div><p class="link-desc">Combine multiple PDFs into one clean document.</p></a><a class="link-card" href="/blog/"><div class="link-title">Guides</div><p class="link-desc">Step-by-step compression guides for real upload limits.</p></a><a class="link-card" href="/blog/how-to-compress-pdf/"><div class="link-title">How to Compress PDF</div><p class="link-desc">Step-by-step PDF compression workflow.</p></a><a class="link-card" href="/blog/pdf-too-large-to-upload-size-limits/"><div class="link-title">PDF Too Large to Upload?</div><p class="link-desc">Common portal limits and fixes.</p></a><a class="link-card" href="/blog/make-any-file-under-1mb/"><div class="link-title">Make Any File Under 1MB</div><p class="link-desc">Practical strategies that work.</p></a><a class="link-card" href="/blog/best-compression-settings-whatsapp-email-forms/"><div class="link-title">Best Settings for WhatsApp &amp; Email</div><p class="link-desc">Recommended targets and quality tips.</p></a><a class="link-card" href="/blog/image-compression-for-web/"><div class="link-title">Image Compression for Web</div><p class="link-desc">Speed + quality best practices.</p></a><a class="link-card" href="/blog/redact-pdf-before-sharing-private-data/"><div class="link-title">Redact a PDF Properly</div><p class="link-desc">Remove sensitive info so it can’t be recovered.</p></a><a class="link-card" href="/blog/sign-pdf-online-free-secure/"><div class="link-title">Sign a PDF Online</div><p class="link-desc">Sign without printing; keep files submission-ready.</p></a><a class="link-card" href="/blog/compare-two-pdfs-find-changes/"><div class="link-title">Compare Two PDFs</div><p class="link-desc">Spot changes and missing pages fast.</p></a></div></div></section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a></div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+<script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    function toggleMobileNav(force) {
+      var nav = document.getElementById("nav-mobile");
+      if (typeof force === "boolean") {
+        nav.classList.toggle("open", force);
+      } else {
+        nav.classList.toggle("open");
+      }
+    }
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      var item = btn.closest(".faq-item");
+      var list = item.parentElement.querySelectorAll(".faq-item");
+      list.forEach(function (el) {
+        if (el !== item) el.classList.remove("open");
+      });
+      item.classList.toggle("open");
+    }
+  </script>
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

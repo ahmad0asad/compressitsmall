@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Upload Limit Checker – Know Exactly How Much to Shrink Your File | Compress It Small</title>
+<meta content="Drop any file to instantly check its size, see common upload limits (email, scholarship portals, job forms), and get a clear plan to shrink it using the right Compress It Small tools. Runs locally in your browser." name="description"/>
+<link href="https://compressitsmall.co.uk/tools/upload-limit-checker/" rel="canonical"/>
+<style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --max-width: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    header {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 22px rgba(30, 64, 175, 0.45);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text span:first-child {
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--primary);
+      transition: width 0.16s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.3rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.88rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      box-shadow: 0 12px 24px rgba(220, 38, 38, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 28px rgba(220, 38, 38, 0.4);
+    }
+
+    .btn-outline {
+      background: #fee2e2;
+      color: var(--primary-dark);
+    }
+
+    .btn-small {
+      padding: 0.4rem 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    main {
+      padding: 2.25rem 0 2.5rem;
+    }
+
+    .page-heading {
+      margin-bottom: 1.5rem;
+    }
+
+    .page-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .page-title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+    }
+
+    .page-description {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 48rem;
+    }
+
+    .context-card {
+      margin-top: 1.3rem;
+      margin-bottom: 1.6rem;
+      background: var(--bg-alt);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 1rem 1.1rem 1.1rem;
+      box-shadow: 0 16px 30px rgba(148, 163, 184, 0.22);
+    }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+      .context-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.15rem;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea,
+    select {
+      width: 100%;
+      font: inherit;
+      font-size: 0.84rem;
+      padding: 0.45rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      min-width: 0;
+    }
+
+    input[type="password"] {
+      letter-spacing: 0.12em;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.3);
+    }
+
+    .context-note {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.4rem;
+      margin-top: 1.2rem;
+    }
+
+    @media (min-width: 980px) {
+      .tools-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: flex-start;
+      }
+    }
+
+    .tool-card {
+      background: var(--bg-alt);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 32px rgba(148, 163, 184, 0.18);
+      padding: 1.1rem 1.1rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .tool-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .tool-title {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .tool-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #fee2e2;
+      color: #991b1b;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .tool-summary {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .tool-ui {
+      margin-top: 0.2rem;
+      padding: 0.65rem 0.7rem;
+      border-radius: 14px;
+      background: #f9fafb;
+      border: 1px dashed #d1d5db;
+      font-size: 0.86rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .tool-ui-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .tool-textarea {
+      width: 100%;
+      font: inherit;
+      font-size: 0.82rem;
+      padding: 0.45rem 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      min-height: 90px;
+      resize: vertical;
+      white-space: pre-wrap;
+    }
+
+    .tool-status {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      min-height: 1.1rem;
+    }
+
+    .tool-status.success {
+      color: #15803d;
+    }
+
+    .tool-status.error {
+      color: #b91c1c;
+    }
+
+    .note-text {
+      font-size: 0.76rem;
+      color: #6b7280;
+    }
+
+    .article {
+      font-size: 0.86rem;
+      color: #4b5563;
+      margin-top: 0.15rem;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 0.65rem;
+    }
+
+    .article h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .article h4 {
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-top: 0.55rem;
+      margin-bottom: 0.22rem;
+    }
+
+    .article p {
+      margin-bottom: 0.35rem;
+    }
+
+    .article ul {
+      padding-left: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .article li {
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #020617;
+      color: #9ca3af;
+      padding: 1.4rem 0;
+      font-size: 0.78rem;
+      margin-top: 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 1.4rem;
+    }
+
+    @media (max-width: 860px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+/* Upload Limit Checker components */
+.hero { padding: 2.4rem 0 1.4rem; }
+.hero-grid { display:grid; grid-template-columns: 1.2fr 0.8fr; gap: 1.4rem; align-items: start; }
+.pill{ display:inline-flex; align-items:center; gap:.4rem; background:#eef2ff; color: var(--primary-dark); border-radius:999px; padding:.35rem .75rem; font-weight:700; font-size:.8rem; }
+.hero-copy h1{ font-size: 2.2rem; line-height:1.12; margin:.7rem 0 .6rem; }
+.lead{ color: var(--text-muted); font-size:1.02rem; }
+.hero-actions{ display:flex; gap:.75rem; margin: 1.1rem 0 1.1rem; flex-wrap:wrap; }
+.trust-row{ display:grid; grid-template-columns: repeat(3,1fr); gap:.7rem; margin-top: .8rem; }
+.trust-item{ background: var(--bg-alt); border:1px solid var(--border); border-radius: 14px; padding:.75rem; }
+.trust-item strong{ display:block; font-size:.95rem; }
+.trust-item span{ color: var(--text-muted); font-size:.85rem; }
+.hero-card .card{ background: var(--bg-alt); border:1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem; box-shadow: var(--shadow-soft); }
+.limit-list{ margin:.7rem 0 0; padding:0; list-style:none; display:grid; gap:.6rem; }
+.limit-list li{ display:flex; justify-content:space-between; gap:1rem; padding:.55rem .7rem; border:1px solid var(--border); border-radius: 12px; background:#fafafa; }
+.section{ padding: 1.6rem 0; }
+.panel{ background: var(--bg-alt); border:1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-soft); }
+.drop{ margin-top: 1rem; border:2px dashed #c7d2fe; border-radius: var(--radius-lg); padding: 1.2rem; background:#f8fafc; position: relative; cursor:pointer; }
+.drop.drag{ background:#eef2ff; }
+.drop input{ position:absolute; inset:0; opacity:0; cursor:pointer; }
+.drop-inner{ text-align:center; padding: 1.2rem .6rem; }
+.drop-title{ font-weight:800; font-size:1.05rem; }
+.drop-sub{ color: var(--text-muted); font-size:.92rem; margin-top:.25rem; }
+.result{ margin-top: 1rem; }
+.result-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:.8rem; }
+.result-item{ background:#fafafa; border:1px solid var(--border); border-radius: 14px; padding:.8rem; }
+.label{ color: var(--text-muted); font-size:.8rem; }
+.value{ font-weight:800; margin-top:.2rem; overflow-wrap:anywhere; }
+select{ width:100%; padding:.55rem .6rem; border-radius: 10px; border:1px solid var(--border); background:white; font-weight:700; }
+.plan{ margin-top: 1rem; border-top:1px solid var(--border); padding-top: 1rem; }
+.plan-text{ color: var(--text-muted); margin:.35rem 0 .7rem; }
+.plan-links{ display:flex; flex-wrap:wrap; gap:.5rem; }
+.pill-link{ display:inline-flex; background:#eef2ff; color: var(--primary-dark); padding:.35rem .65rem; border-radius:999px; font-weight:700; font-size:.85rem; }
+.faq{ margin-top: .9rem; border:1px solid var(--border); border-radius: 14px; padding:.75rem; background:#fafafa; }
+.faq summary{ font-weight:800; cursor:pointer; }
+.faq-body{ margin-top:.6rem; color: var(--text-muted); }
+.hub-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap: .9rem; margin-top: .8rem; }
+.hub{ background: var(--bg-alt); border:1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem; box-shadow: var(--shadow-soft); }
+.hub strong{ display:block; font-size: 1rem; }
+.hub span{ display:block; color: var(--text-muted); margin-top: .25rem; font-size:.9rem; }
+@media (max-width: 960px){ .hero-grid{ grid-template-columns: 1fr; } .trust-row{ grid-template-columns: 1fr; } .result-grid{ grid-template-columns: 1fr 1fr; } .hub-grid{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px){ .result-grid{ grid-template-columns: 1fr; } .hub-grid{ grid-template-columns: 1fr; } }
+</style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Upload Limit Checker Tool",
+  "url": "https://compressitsmall.co.uk/tools/upload-limit-checker/",
+  "image": "https://compressitsmall.co.uk/assets/yt-seo.png",
+  "applicationCategory": "Utility",
+  "operatingSystem": "Web browser",
+  "description": "Check exact file size, common upload limits, and how much to shrink your PDF/images before uploading.",
+  "featureList": [
+    "Keyword generator",
+    "Title optimization",
+    "SEO score analysis",
+    "Hashtag recommendations"
+  ],
+  "about": "Free Upload Limit Checker tool for creators to improve ranking and visibility.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}</script>
+<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="Upload Limit Checker – Know Exactly How Much to Shrink Your File | Compress It Small" property="og:title"/><meta content="Drop any file to instantly check its size, see common upload limits (email, scholarship portals, job forms), and get a clear plan to shrink it using the right Compress It Small tools. Runs locally in your browser." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/upload-limit-checker/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Upload Limit Checker – Know Exactly How Much to Shrink Your File | Compress It Small" name="twitter:title"/><meta content="Drop any file to check its size, choose a target limit (2 MB, 1 MB, 500 KB), and get an exact plan to shrink it using the right tools—locally in your browser." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
+<div class="nav-links" style="display:none;"></div>
+<!-- Modern toolbar-style CTA with icons -->
+<div class="nav-cta">
+<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🏠</span><span>Home</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📄</span><span>PDF Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🖼️</span><span>Image Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📂</span><span>Office Tools</span>
+</button>
+<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>🎯</span><span>Upload Limit Checker</span>
+</button>
+<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
+<span>📰</span><span>Blog</span>
+</button>
+</div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="container hero-grid">
+<div class="hero-copy">
+<span class="pill">Free • Local processing</span>
+<h1>Upload Limit Checker</h1>
+<p class="lead">
+          Not sure why your PDF/image won’t upload? Drop the file below to see its exact size,
+          how far over common limits you are, and which <strong>specific Compress It Small tools</strong> to use next.
+        </p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#checker">Check a file size →</a>
+<a class="btn btn-ghost" href="/blog/">Read compression guides</a>
+</div>
+<div class="trust-row">
+<div class="trust-item"><strong>No uploads</strong><span>Runs in your browser</span></div>
+<div class="trust-item"><strong>Clear plan</strong><span>Exact reduction needed</span></div>
+<div class="trust-item"><strong>Fast</strong><span>Works on phone &amp; desktop</span></div>
+</div>
+</div>
+<div class="hero-card">
+<div class="card">
+<h2>Common limits (quick reference)</h2>
+<ul class="limit-list">
+<li><span>Email attachment (typical)</span><strong>25 MB</strong></li>
+<li><span>Job / scholarship portals (common)</span><strong>2–10 MB</strong></li>
+<li><span>Visa / admissions forms (common)</span><strong>1–2 MB</strong></li>
+<li><span>Strict upload widgets</span><strong>200–500 KB</strong></li>
+</ul>
+<p class="muted" style="margin-top:10px;">Limits vary by portal — this tool tells you exactly what to target.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="checker">
+<div class="container">
+<div class="panel">
+<h2>1) Drop a file to check its size</h2>
+<p class="muted">We only read the file metadata to calculate size. Nothing is uploaded.</p>
+<div class="drop" id="drop">
+<input id="file" type="file"/>
+<div class="drop-inner">
+<div class="drop-title">Drag &amp; drop a file here</div>
+<div class="drop-sub">or tap to select (PDF, JPG/PNG, DOCX, PPTX, etc.)</div>
+</div>
+</div>
+<div class="result" id="result" style="display:none;">
+<div class="result-grid">
+<div class="result-item">
+<div class="label">File</div>
+<div class="value" id="fileName">—</div>
+</div>
+<div class="result-item">
+<div class="label">Size</div>
+<div class="value" id="fileSize">—</div>
+</div>
+<div class="result-item">
+<div class="label">Target limit</div>
+<div class="value">
+<select id="target">
+<option value="25">25 MB (Email typical)</option>
+<option value="10">10 MB (Portals common)</option>
+<option value="5">5 MB (Portals common)</option>
+<option selected="" value="2">2 MB (Scholarship/Visa common)</option>
+<option value="1">1 MB (Strict forms)</option>
+<option value="0.5">500 KB (Very strict)</option>
+<option value="0.2">200 KB (Extreme)</option>
+</select>
+</div>
+</div>
+<div class="result-item">
+<div class="label">Reduction needed</div>
+<div class="value" id="reduction">—</div>
+</div>
+</div>
+<div class="plan">
+<h3>2) Recommended next step</h3>
+<p class="plan-text" id="planText"></p>
+<div class="plan-links" id="planLinks"></div>
+</div>
+<details class="faq">
+<summary>Why do portals reject files even when the file “looks small”?</summary>
+<div class="faq-body">
+<ul>
+<li>Some portals count <strong>base64 overhead</strong> (embedded upload widgets).</li>
+<li>Scanned PDFs can contain huge images; the file “looks” like text but is image-heavy.</li>
+<li>PowerPoint/Word may embed original media even after you resize it.</li>
+</ul>
+<p class="muted">Use our guides to choose the correct workflow for your file type.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<h2>Popular tool hubs</h2>
+<div class="hub-grid">
+<a class="hub" href="/tools/pdf/"><strong>PDF Tools</strong><span>merge, split, rotate, extract, watermark</span></a>
+<a class="hub" href="/tools/image/"><strong>Image Tools</strong><span>compress, crop, watermark, convert</span></a>
+<a class="hub" href="/tools/office/"><strong>Office Tools</strong><span>CSV/JSON converters + text to PDF/DOCX</span></a>
+<a class="hub" href="/blog/"><strong>Guides</strong><span>step-by-step fixes for real upload limits</span></a>
+</div>
+</div>
+</section>
+<script>
+  (function(){
+    const fileInput = document.getElementById('file');
+    const drop = document.getElementById('drop');
+    const result = document.getElementById('result');
+    const fileNameEl = document.getElementById('fileName');
+    const fileSizeEl = document.getElementById('fileSize');
+    const targetEl = document.getElementById('target');
+    const reductionEl = document.getElementById('reduction');
+    const planText = document.getElementById('planText');
+    const planLinks = document.getElementById('planLinks');
+
+    function fmtMB(bytes){
+      const mb = bytes / (1024*1024);
+      if(mb >= 1) return mb.toFixed(2) + " MB";
+      const kb = bytes / 1024;
+      if(kb >= 1) return kb.toFixed(0) + " KB";
+      return bytes + " B";
+    }
+
+    function ext(name){
+      const i = name.lastIndexOf('.');
+      return i>=0 ? name.slice(i+1).toLowerCase() : "";
+    }
+
+    function renderPlan(file, targetMB){
+      const sizeMB = file.size / (1024*1024);
+      const over = sizeMB - targetMB;
+      const needPct = (1 - (targetMB/sizeMB)) * 100;
+
+      reductionEl.textContent = over <= 0
+        ? "✅ Already under the limit"
+        : (fmtMB(file.size - targetMB*1024*1024) + " (" + needPct.toFixed(0) + "% smaller)");
+
+      const e = ext(file.name);
+      planLinks.innerHTML = "";
+
+      function addLink(href, label){
+        const a = document.createElement('a');
+        a.href = href;
+        a.className = "pill-link";
+        a.textContent = label;
+        planLinks.appendChild(a);
+      }
+
+      if(over <= 0){
+        planText.textContent = "You're already under the selected limit. If the portal still rejects it, try converting format or splitting pages.";
+        addLink("/tools/pdf/split-pdf/", "Split PDF");
+        addLink("/tools/pdf/extract-pages/", "Extract pages");
+        addLink("/blog/pdf-too-large-to-upload-size-limits/", "Guide: upload limits");
+        return;
+      }
+
+      if(["pdf"].includes(e)){
+        planText.textContent = "For PDFs, the fastest fix is usually removing extra pages, splitting, or exporting images. If it’s scanned, reduce image-heavy pages first.";
+        addLink("/tools/pdf/split-pdf/", "Split PDF to fit limit");
+        addLink("/tools/pdf/extract-pages/", "Extract only required pages");
+        addLink("/blog/compress-scanned-pdfs-clear-text-small-size/", "Guide: scanned PDFs");
+        addLink("/blog/make-pdf-under-2mb-for-scholarship-visa/", "Guide: under 2 MB");
+        return;
+      }
+
+      if(["jpg","jpeg","png","webp","heic"].includes(e)){
+        planText.textContent = "For images, compress or convert to JPG, then crop/resize if needed. PNG is usually bigger unless you need transparency.";
+        addLink("/tools/image/", "Open Image Tools hub");
+        addLink("/tools/image/image-cropper/", "Crop image");
+        addLink("/blog/jpg-vs-png-smallest-file-size/", "Guide: JPG vs PNG");
+        addLink("/blog/reduce-image-size-for-web-without-losing-quality/", "Guide: reduce size");
+        return;
+      }
+
+      if(["ppt","pptx","doc","docx","xls","xlsx"].includes(e)){
+        planText.textContent = "Office files become huge mainly because of embedded images and media. Remove hidden data, compress images, or export to PDF when possible.";
+        addLink("/tools/office/text-to-pdf/", "Export text to PDF");
+        addLink("/blog/reduce-powerpoint-size-embedded-video/", "Guide: shrink PowerPoint");
+        addLink("/blog/shrink-word-excel-powerpoint-files/", "Guide: shrink Office");
+        return;
+      }
+
+      planText.textContent = "Choose a workflow based on what’s inside the file. If it contains images, reduce image dimensions/quality first, then re-export.";
+      addLink("/blog/file-size-checklist/", "Checklist");
+      addLink("/tools/pdf/", "PDF Tools");
+      addLink("/tools/image/", "Image Tools");
+    }
+
+    function handle(file){
+      if(!file) return;
+      fileNameEl.textContent = file.name;
+      fileSizeEl.textContent = fmtMB(file.size);
+      result.style.display = "block";
+      renderPlan(file, parseFloat(targetEl.value));
+      targetEl.onchange = () => renderPlan(file, parseFloat(targetEl.value));
+    }
+
+    drop.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e)=> handle(e.target.files && e.target.files[0]));
+    drop.addEventListener('dragover', (e)=>{ e.preventDefault(); drop.classList.add('drag'); });
+    drop.addEventListener('dragleave', ()=> drop.classList.remove('drag'));
+    drop.addEventListener('drop', (e)=>{
+      e.preventDefault(); drop.classList.remove('drag');
+      const f = e.dataTransfer.files && e.dataTransfer.files[0];
+      handle(f);
+    });
+  })();
+  </script>
+</main>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/upload-limit-checker/"><div class="link-title">Upload Limit Checker</div><p class="link-desc">Check file size, limits, and the best next tool.</p></a><a class="link-card" href="/blog/"><div class="link-title">Guides</div><p class="link-desc">Step-by-step compression guides for real upload limits.</p></a><a class="link-card" href="/tools/image/"><div class="link-title">Image Tools</div><p class="link-desc">Compress and resize JPG/PNG for web, forms and sharing.</p></a><a class="link-card" href="/tools/office/"><div class="link-title">Office Tools</div><p class="link-desc">Shrink Word/Excel/PowerPoint files (practical workflows).</p></a></div></div></section>
+<section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>Upload Limit Checker: Instantly See If Your File Meets Portal Size Requirements</h2>
+<p>Nothing is more frustrating than completing a long application form, attaching your documents, clicking Submit — and getting a file size error. This tool checks your file size against common upload limits instantly, before you attempt an upload anywhere.</p>
+
+<h3>How to use the upload limit checker</h3>
+<ol>
+  <li><strong>Drop your file</strong> into the checker — it reads only the file size metadata, never the file content.</li>
+  <li><strong>See the file size</strong> displayed instantly in KB and MB.</li>
+  <li><strong>Compare against common limits</strong> — the tool shows whether your file passes the most common portal thresholds.</li>
+  <li><strong>If it fails</strong> — use the linked tools to compress, split, or convert your file to bring it under the limit.</li>
+</ol>
+
+<h3>Common upload size limits by platform type</h3>
+<ul>
+  <li><strong>University and scholarship portals:</strong> 2 MB, 5 MB, or 10 MB per file (varies by institution)</li>
+  <li><strong>Visa and embassy applications:</strong> 1 MB or 2 MB per document (strict enforcement)</li>
+  <li><strong>Job application portals:</strong> 2 MB to 10 MB (some accept up to 25 MB)</li>
+  <li><strong>Gmail email attachment:</strong> 25 MB total per message</li>
+  <li><strong>WhatsApp document:</strong> 100 MB</li>
+  <li><strong>Google Drive:</strong> 5 TB (but links in emails can't exceed 25 MB before requiring Drive)</li>
+  <li><strong>Government portals (HMRC, NHS, Home Office):</strong> typically 2 MB to 10 MB</li>
+</ul>
+
+<h3>What to do if your file is too large</h3>
+<ul>
+  <li><strong>PDF too large?</strong> → <a href="/tools/pdf/compress-pdf/">Compress PDF</a></li>
+  <li><strong>Image too large?</strong> → <a href="/tools/image/compress-image/">Compress Image</a></li>
+  <li><strong>Need to split the file?</strong> → <a href="/tools/pdf/split-pdf/">Split PDF</a></li>
+  <li><strong>Need to remove unnecessary pages?</strong> → <a href="/tools/pdf/delete-pages/">Delete Pages</a></li>
+  <li><strong>Word document too large?</strong> → See our <a href="/blog/word-document-too-large-fix/">Word document size fix guide</a></li>
+</ul>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Does this tool upload my file?</dt>
+  <dd>No. The file size is read entirely by your browser without the file ever leaving your device. This tool accesses only the file's metadata, not its content.</dd>
+
+  <dt>Why do portals reject files that are close to the limit?</dt>
+  <dd>Many portals enforce limits on the raw binary file size, not the size shown in your operating system (which may use base-10 MB). A file showing 9.9 MB in Windows may exceed a "10 MB" limit on a portal using binary measurement. Aim to keep files 5–10% under the stated limit to be safe.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/pdf/compress-pdf/">Compress PDF</a></li>
+  <li><a href="/tools/image/compress-image/">Compress Image</a></li>
+  <li><a href="/blog/pdf-too-large-to-upload-size-limits/">Why your PDF is too large and how to fix it</a></li>
+</ul>
+</section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/#top">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/#guides">Guides</a>
+<a href="/#faq">FAQ</a>
+<a href="/#contact">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a></div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+<script>
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Mobile nav (shared pattern)
+  function toggleMobileNav(force) {
+    var nav = document.getElementById("nav-mobile");
+    var btn = document.getElementById("nav-toggle");
+    if(!nav || !btn) return;
+    var isOpen = nav.classList.contains("open");
+    var next = (typeof force === "boolean") ? force : !isOpen;
+    nav.classList.toggle("open", next);
+    btn.setAttribute("aria-expanded", next ? "true" : "false");
+    nav.setAttribute("aria-hidden", next ? "false" : "true");
+  }
+</script>
+<p style="font-size:0.9rem;color:#444;margin-top:1rem;">This page includes detailed SEO-friendly information explaining how this tool works, recommended settings, and optimization workflows for best results.</p><p style="font-size:0.9rem;color:#444;margin-top:1rem;">These tools are part of the wider Compress It Small hub, so you can jump back to the homepage at any time to discover image, office, and workflow guides that complement your PDF tasks.</p>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+</html>

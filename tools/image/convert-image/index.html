@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Convert Image Format — PNG to JPG/WebP, JPG to PNG, WebP Converter | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Convert images between PNG, JPG and WebP in your browser. Pick format and quality, then download instantly. No upload and no server processing." name="twitter:description"/><meta content="Convert Image Format — PNG to JPG/WebP, JPG to PNG, WebP Converter | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/tools/image/convert-image/" property="og:url"/><meta content="Convert images between PNG, JPG and WebP in your browser. Pick format and quality, then download instantly. No upload and no server processing." property="og:description"/><meta content="Convert Image Format — PNG to JPG/WebP, JPG to PNG, WebP Converter | Compress It Small" property="og:title"/>
+<meta content="Convert images between PNG, JPG and WebP in your browser. Pick format and quality, then download instantly. No upload and no server processing." name="description"/>
+<meta content="convert png to jpg, convert jpg to png, webp converter, image format converter, png to webp, jpg to webp, browser image converter" name="keywords"/>
+<link href="https://compressitsmall.co.uk/tools/image/convert-image/" rel="canonical"/>
+<script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Convert Image Format",
+    "url":"https://compressitsmall.co.uk/tools/image/convert-image/",
+    "applicationCategory":"UtilityApplication",
+    "operatingSystem":"Web browser",
+    "description":"Convert images between PNG, JPG and WebP directly in the browser with instant download.",
+    "offers":{"@type":"Offer","price":"0"}
+  }</script>
+<style>
+    :root { --primary:#2563eb; --primary-dark:#1d4ed8; --bg:#f4f5fb; --bg-alt:#ffffff; --text:#111827; --text-muted:#6b7280; --border:#e5e7eb; --radius-lg:16px; --radius-pill:999px; --shadow-soft:0 18px 35px rgba(15, 23, 42, 0.08); --max-width:1120px; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg-alt);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:30;backdrop-filter:blur(10px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:0.7rem 0}
+    .brand{display:flex;align-items:center;gap:0.5rem}
+    .brand-icon{width:32px;height:32px;border-radius:12px;background:radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.95rem}
+    .brand-name{font-weight:700;letter-spacing:-0.02em}
+    .nav-links{display:flex;align-items:center;gap:1rem;font-weight:600;color:var(--text-muted)}
+    .nav-links a:hover{color:var(--primary)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;border-radius:var(--radius-pill);padding:0.75rem 1rem;font-weight:700;cursor:pointer;border:1px solid transparent;background:transparent;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 12px 22px rgba(37, 99, 235, 0.18)}
+    .btn-primary:hover{background:var(--primary-dark)}
+    .btn-ghost{background:#fff;border-color:var(--border);color:var(--text)}
+    .btn-ghost:hover{border-color:rgba(37,99,235,.5);box-shadow:0 10px 20px rgba(15,23,42,.08)}
+    main{padding:2rem 0 3rem}
+    .hero{background:var(--bg-alt);border:1px solid var(--border);border-radius:calc(var(--radius-lg) + 8px);padding:2rem;box-shadow:var(--shadow-soft);margin-bottom:1.5rem}
+    .kicker{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,99,235,.1);color:var(--primary-dark);border-radius:var(--radius-pill);padding:.35rem .75rem;font-weight:800;font-size:.85rem}
+    h1{font-size:clamp(1.65rem,3vw,2.3rem);margin-top:.75rem;letter-spacing:-.03em}
+    .lead{margin-top:.75rem;color:var(--text-muted);max-width:72ch}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:1.25rem}
+    @media(max-width:980px){.grid{grid-template-columns:1fr}}
+    .panel{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:1.25rem}
+    label{display:grid;gap:.35rem;font-weight:700;font-size:.95rem}
+    select,input[type="range"]{width:100%;padding:.65rem .75rem;border-radius:12px;border:1px solid var(--border);background:#fff;font-weight:600}
+    .status{margin-top:.75rem;padding:.85rem .9rem;border-radius:14px;border:1px solid var(--border);background:#fff;color:var(--text-muted);font-weight:600;font-size:.95rem;min-height:3.2rem}
+    .stats{display:grid;gap:.5rem;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--border)}
+    .stat{display:flex;justify-content:space-between;gap:1rem;color:var(--text-muted);font-weight:600}
+    .stat b{color:var(--text)}
+    .small{font-size:.92rem;color:var(--text-muted)}
+    footer{border-top:1px solid var(--border);padding:2.25rem 0;margin-top:2rem;color:var(--text-muted);font-weight:600}
+    footer a{color:var(--primary-dark)}
+  </style>
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<nav class="nav">
+<a class="brand" href="/"><span class="brand-icon">C</span><span class="brand-name">Compress It Small</span></a>
+<div class="nav-links">
+<a href="/tools/">Tools</a>
+<a href="/tools/image/">Images</a>
+<a href="/blog/">Blog</a>
+<a href="/contact/">Contact</a>
+</div>
+<a class="btn btn-primary" href="/tools/">Open tools</a>
+</nav>
+</div>
+</header>
+<main>
+<div class="container">
+<section class="hero">
+<span class="kicker">Images • Converter</span>
+<h1>Convert PNG ↔ JPG ↔ WebP (fast, local, predictable)</h1>
+<p class="lead">This is the step I use when a PNG is stubbornly large: convert it to JPEG/WebP for a big reduction, or convert a JPG to PNG when you truly need lossless output.</p>
+<p class="small" style="margin-top:0.6rem;">Note: converting to JPEG removes transparency. Use WebP/PNG if you need alpha.</p>
+</section>
+<section class="grid">
+<div class="panel">
+<h2>1) Choose a file and output format</h2>
+<label>
+<span>Image file</span>
+<input accept="image/*" id="imgFile" type="file"/>
+</label>
+<label style="margin-top:0.75rem;">
+<span>Convert to</span>
+<select id="format">
+<option value="image/jpeg">JPEG</option>
+<option selected="" value="image/webp">WebP</option>
+<option value="image/png">PNG</option>
+</select>
+</label>
+<label style="margin-top:0.75rem;">
+<span>Quality (JPEG/WebP)</span>
+<input id="quality" max="95" min="40" type="range" value="82"/>
+<span class="small">Current: <b id="qLabel">0.82</b></span>
+</label>
+<div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.75rem;">
+<button class="btn btn-primary" id="runBtn" type="button">Convert image</button>
+<button class="btn btn-ghost" id="resetBtn" type="button">Reset</button>
+</div>
+<div class="status" id="status">Choose an image to start.</div>
+<div class="stats" id="stats" style="display:none;">
+<div class="stat"><span>Original</span><b id="orig">—</b></div>
+<div class="stat"><span>Converted</span><b id="conv">—</b></div>
+<div class="stat"><span>Saved</span><b id="saved">—</b></div>
+<div class="stat"><span>Dimensions</span><b id="dims">—</b></div>
+</div>
+</div>
+<aside class="panel">
+<h2>Which format should you pick?</h2>
+<p class="small">
+<b>JPEG</b>: best for photos, smallest for most camera images. <br/>
+<b>WebP</b>: modern default; often smaller than JPEG for similar quality. <br/>
+<b>PNG</b>: use for transparency and crisp UI icons (but it can be bigger).
+        </p>
+<div style="margin-top:1rem; display:flex; flex-direction:column; gap:0.5rem;">
+<a class="btn btn-ghost" href="/tools/image/compress-image/">Compress Image</a>
+<a class="btn btn-ghost" href="/tools/image/resize-image/">Resize Image</a>
+</div>
+</aside>
+</section>
+</div>
+</main>
+<section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>Convert Image: Change Image Format (JPG, PNG, WEBP)</h2>
+<p>Different platforms, tools, and workflows require different image formats. This converter changes any image between JPG, PNG, and WEBP instantly in your browser — no upload, no registration, no waiting.</p>
+
+<h3>How to convert an image format</h3>
+<ol>
+  <li><strong>Upload your image</strong> — any common format.</li>
+  <li><strong>Select the target format</strong> — JPG, PNG, or WEBP.</li>
+  <li><strong>Click Convert</strong> and download the result.</li>
+</ol>
+
+<h3>When to use each format</h3>
+<ul>
+  <li><strong>JPG</strong> — Best for photographs and complex images. Smaller files, but no transparency support. Use for email, social media, and web pages.</li>
+  <li><strong>PNG</strong> — Best for screenshots, logos, diagrams, and images requiring transparency. Lossless but larger file sizes.</li>
+  <li><strong>WEBP</strong> — Modern format supported by all major browsers. Smaller than JPG and PNG at similar quality. Ideal for websites aiming for fast load times.</li>
+</ul>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Does converting from PNG to JPG remove transparency?</dt>
+  <dd>Yes. JPG does not support transparency. Transparent areas in your PNG will be filled with a white or black background when converted to JPG. If you need transparency, keep the file as PNG or WEBP.</dd>
+
+  <dt>Will converting reduce quality?</dt>
+  <dd>Converting to JPG involves lossy compression and will slightly reduce quality. Converting to PNG or WEBP preserves quality (PNG is lossless; WEBP at high quality is near-lossless).</dd>
+
+  <dt>Can I convert HEIC files from iPhone?</dt>
+  <dd>HEIC conversion is not currently supported in this tool. You can convert HEIC to JPG using your iPhone's Settings (turn off "High Efficiency" in Camera format settings) or use the Finder on a Mac.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/image/compress-image/">Compress Image</a></li>
+  <li><a href="/tools/image/resize-image/">Resize Image</a></li>
+  <li><a href="/tools/pdf/jpg-to-pdf/">JPG to PDF</a></li>
+</ul>
+<h3>Understanding image format conversion in depth</h3>
+<p>Every image format makes different trade-offs between file size, quality, compatibility, and features. Understanding these trade-offs helps you choose the right target format for your specific situation rather than defaulting to whatever format the source happens to be in.</p>
+
+<p><strong>When to convert PNG to JPG:</strong> PNG files of photographs are almost always unnecessarily large. A photo saved as PNG might be 4–8 MB; the same image saved as JPG at 85% quality will be 400–800 KB with no perceptible quality difference at normal screen viewing. Convert photos, social media images, and product shots from PNG to JPG to dramatically reduce file size before uploading, sharing, or embedding.</p>
+
+<p><strong>When to convert JPG to PNG:</strong> If you need to edit an image repeatedly and re-save it (for example, adding text overlays, logos, or design elements), save it as PNG to avoid the cumulative quality degradation that occurs every time a JPG is compressed. Also convert to PNG when you need transparent backgrounds — logos placed on different coloured backgrounds, stickers for messaging apps, or watermarks that need to sit cleanly over other content.</p>
+
+<p><strong>When to use WEBP:</strong> WEBP is Google's modern image format, supported in all major browsers since 2020. It achieves 25–35% smaller file sizes than JPG at equivalent visual quality, and supports transparency like PNG. If you run a website and care about page speed, converting images to WEBP before uploading is one of the highest-impact optimisations you can make. Most website builders and CMS platforms (WordPress, Squarespace, Webflow) accept WEBP today.</p>
+
+<h3>Format conversion and image quality</h3>
+<p>Converting between lossless formats (PNG to PNG, PNG to WEBP at lossless) preserves every pixel exactly. Converting from lossless to lossy (PNG to JPG, PNG to WEBP at lossy) reduces quality slightly — the amount depends on the quality setting. Converting from JPG to PNG does not recover quality that was already lost when the original JPG was created; it simply stores the existing (slightly compressed) pixels in a lossless container.</p>
+
+<p>Repeated JPG-to-JPG re-saving is what causes "generation loss" — each save discards slightly more detail. If you receive a JPG, edit it, and need to save it again, consider saving as PNG for the editing stage and converting back to JPG only for the final export. This workflow preserves maximum quality across multiple editing sessions.</p>
+
+<h3>Batch conversion considerations</h3>
+<p>This tool converts one image at a time. For converting large numbers of images (website image libraries, photography archives, product catalogues), consider command-line tools like ImageMagick or FFmpeg, or cloud-based batch processors. For a small number of images — up to 20 or 30 — processing them individually through this tool is perfectly efficient.</p>
+</section>
+<footer>
+<div class="container">
+<div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:space-between; align-items:center;">
+<span>© <span id="year"></span> Compress It Small</span>
+<span><a href="/privacy-policy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cookie-policy/">Cookies</a></span>
+</div>
+</div>
+</footer>
+<script>
+(function(){
+  const el=(id)=>document.getElementById(id);
+  const fileInput=el('imgFile');
+  const format=el('format');
+  const quality=el('quality');
+  const qLabel=el('qLabel');
+  const runBtn=el('runBtn');
+  const resetBtn=el('resetBtn');
+  const status=el('status');
+  const stats=el('stats');
+  const orig=el('orig');
+  const conv=el('conv');
+  const saved=el('saved');
+  const dims=el('dims');
+
+  let file=null;
+  let bmp=null;
+
+  function formatBytes(bytes){
+    const units=['B','KB','MB','GB'];
+    let i=0; let n=bytes;
+    while(n>=1024 && i<units.length-1){n/=1024;i++;}
+    return `${n.toFixed(i===0?0:2)} ${units[i]}`;
+  }
+  function clamp(n,lo,hi){return Math.min(hi,Math.max(lo,n));}
+  function getQ(){return clamp((parseInt(quality.value,10)||82)/100,0.4,0.95);}
+  function updateQ(){qLabel.textContent=getQ().toFixed(2);} updateQ();
+  quality.addEventListener('input',updateQ);
+
+  format.addEventListener('change',()=>{
+    const t=format.value;
+    const needsQ=(t==='image/jpeg'||t==='image/webp');
+    quality.disabled=!needsQ;
+    updateQ();
+  });
+
+  function setStatus(msg){status.textContent=msg;}
+  function reset(){file=null; bmp=null; fileInput.value=''; stats.style.display='none'; setStatus('Choose an image to start.');}
+
+  fileInput.addEventListener('change', async (e)=>{
+    const f=(e.target.files||[])[0];
+    if(!f) return;
+    if(!String(f.type||'').startsWith('image/')){setStatus('Please choose an image file.');return;}
+    file=f;
+    setStatus('Loading…');
+    try{
+      bmp=await createImageBitmap(f);
+      orig.textContent=formatBytes(f.size);
+      dims.textContent=`${bmp.width}×${bmp.height}px`;
+      stats.style.display='grid';
+      setStatus('Ready. Choose format and click Convert image.');
+    }catch(err){
+      console.error(err);
+      setStatus('Could not read this image. Try a JPG/PNG/WebP.');
+    }
+  });
+
+  function downloadBlob(blob, filename){
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download=filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),5000);
+  }
+
+  runBtn.addEventListener('click', async ()=>{
+    try{
+      if(!file || !bmp){setStatus('Choose an image first.');return;}
+      runBtn.disabled=true; resetBtn.disabled=true;
+      setStatus('Converting…');
+
+      const canvas=document.createElement('canvas');
+      canvas.width=bmp.width; canvas.height=bmp.height;
+      const ctx=canvas.getContext('2d');
+      ctx.drawImage(bmp,0,0);
+
+      const outType=format.value;
+      const q=getQ();
+      const blob=await new Promise((resolve)=>{
+        if(outType==='image/png') canvas.toBlob(resolve,outType);
+        else canvas.toBlob(resolve,outType,q);
+      });
+      if(!blob){setStatus('Export failed. Try a different format.');return;}
+
+      conv.textContent=formatBytes(blob.size);
+      const s=Math.max(0, file.size - blob.size);
+      saved.textContent=`${formatBytes(s)} (${file.size?Math.round((s/file.size)*100):0}%)`;
+      stats.style.display='grid';
+
+      const ext=outType==='image/png'?'png':(outType==='image/webp'?'webp':'jpg');
+      const base=(file.name||'image').replace(/\.(png|jpg|jpeg|webp)$/i,'');
+      downloadBlob(blob, `${base}_converted.${ext}`);
+      setStatus('Done. Download started. If you need smaller size, use the Image Compressor next.');
+    }catch(err){
+      console.error(err);
+      setStatus('Conversion failed. Try another file or format.');
+    }finally{
+      runBtn.disabled=false; resetBtn.disabled=false;
+    }
+  });
+
+  resetBtn.addEventListener('click', reset);
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
+</body>
+
+</body>
+</html>

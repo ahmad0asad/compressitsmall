@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Prevent duplicate parameter-based URLs
+Disallow: /*?utm_
+Disallow: /*?ref=
+Disallow: /*?session=
+Disallow: /*?s=
+
+# Do not crawl internal code folders
+Disallow: /backend/
+Disallow: /node_modules/
+
+Sitemap: https://compressitsmall.co.uk/sitemap.xml
