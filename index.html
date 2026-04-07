@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="google-adsense-account" content="ca-pub-1910641763417240">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CompressItSmall | Free PDF &amp; File Tools — Compress, Merge, Reorder</title>
+<meta content="CompressItSmall is a privacy-first toolkit to compress PDFs and files, reorder PDF pages, merge/split documents, convert formats, and prepare uploads for portals and email — directly in your browser." name="description"/>
+<meta content="website" property="og:type"/>
+<meta content="Compress It Small" property="og:site_name"/>
+<meta content="CompressItSmall | Free PDF &amp; File Tools (Private)" property="og:title"/>
+<meta content="Compress PDFs and files, reorder pages, merge/split, convert formats, and prepare documents for upload limits — all in your browser." property="og:description"/>
+<meta content="https://compressitsmall.co.uk/" property="og:url"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="CompressItSmall | Free PDF &amp; File Tools (Private)" name="twitter:title"/>
+<meta content="Compress PDFs and files, reorder pages, merge/split, convert formats, and prepare documents for upload limits — all in your browser." name="twitter:description"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/>
+<meta content="compress pdf online, free pdf compressor, merge pdf, split pdf, pdf to word, word to pdf, pdf to jpg, jpg to pdf, redact pdf, pdf redaction tool, reduce file size, online file compression, compress scanned pdf, image compressor, Upload Limit Checker tools" name="keywords"/>
+<link href="https://compressitsmall.co.uk/" rel="canonical"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "CompressItSmall",
+  "alternateName": ["Compress It Small", "Compress It"],
+  "url": "https://compressitsmall.co.uk/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CompressItSmall",
+  "url": "https://compressitsmall.co.uk/",
+  "logo": "https://compressitsmall.co.uk/favicon_192x192.png"
+}
+</script>
+<link href="/favicon_32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon_48x48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon_64x64.png" rel="icon" sizes="64x64" type="image/png"/>
+<link href="/favicon_180x180.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/favicon_192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/favicon.ico" rel="shortcut icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --accent: #22c55e;
+    --bg: #f4f5fb;
+    --bg-alt: #ffffff;
+    --text: #111827;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+    --radius-lg: 16px;
+    --radius-pill: 999px;
+    --max-width: 1120px;
+  }
+/* ============================= */
+/* SYSTEM DARK MODE SUPPORT */
+/* ============================= */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: radial-gradient(circle at top, #020617, #000000);
+    color: #e5e7eb;
+  }
+
+  header {
+    background: rgba(2, 6, 23, 0.85);
+    border-bottom-color: #1f2937;
+    backdrop-filter: blur(12px);
+  }
+
+  section:nth-of-type(even) {
+    background: transparent;
+  }
+
+  .hero-card,
+  .card,
+  .guide,
+  .step,
+  .faq-item,
+  .contact-card {
+    background: linear-gradient(180deg, #020617, #020617);
+    border-color: #1f2937;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6);
+  }
+
+  .hero-kicker {
+    background: rgba(14, 165, 233, 0.15);
+    color: #e5e7eb;
+  }
+
+  .hero-chip {
+    background: #020617;
+    border: 1px solid #1f2937;
+  }
+
+  .btn-ghost {
+    background: #020617;
+    color: #bfdbfe;
+    border: 1px solid #1f2937;
+  }
+
+  footer {
+    background: #000000;
+    color: #9ca3af;
+  }
+}
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Layout helpers */
+  .container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease,
+      background 0.12s ease;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #ffffff;
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+  }
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
+  );
+  transform: translateX(-100%);
+}
+
+.btn-primary:hover::after {
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+}
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 28px rgba(37, 99, 235, 0.4);
+  }
+
+  .btn-ghost {
+    background: #eef2ff;
+    color: var(--primary-dark);
+  }
+
+  .btn-ghost:hover {
+    background: #e0e7ff;
+  }
+
+  /* Header */
+  header {
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.05rem;
+    box-shadow: 0 10px 22px rgba(30, 64, 175, 0.45);
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .brand-text span:first-child {
+    font-weight: 800;
+    font-size: 1.1rem;
+  }
+
+  .brand-text span:last-child {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 0.25rem;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--primary);
+    transition: width 0.18s ease;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* Mobile nav */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 4px 0;
+    background: #111827;
+    border-radius: 999px;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links,
+    .nav-cta {
+      display: none;
+    }
+
+    .nav-toggle {
+      display: block;
+    }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0.75rem 0 1rem;
+    }
+
+    .nav-mobile a {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav-mobile .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .nav-mobile.open {
+      display: flex;
+    }
+  }
+
+  /* Hero */
+  .hero {
+    padding: 2.5rem 0 2.75rem;
+  }
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 420px at 10% -10%, rgba(37,99,235,0.14), transparent),
+    radial-gradient(700px 360px at 90% 10%, rgba(34,197,94,0.12), transparent);
+  pointer-events: none;
+}
+
+  @media (min-width: 900px) {
+    .hero {
+      padding: 3.25rem 0 3.5rem;
+    }
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.22rem 0.6rem 0.22rem 0.3rem;
+    border-radius: 999px;
+    background: #e0f2fe;
+    color: #0f172a;
+    font-size: 0.78rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .hero-kicker-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    background: #0ea5e9;
+    color: #f9fafb;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.85rem;
+  }
+
+  @media (min-width: 900px) {
+    .hero-title {
+      font-size: 2.8rem;
+    }
+  }
+
+  .hero-title span {
+    background: linear-gradient(135deg, #2563eb, #22c55e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-subtitle {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    max-width: 32rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 0.83rem;
+    color: var(--text-muted);
+  }
+
+  .hero-meta strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .hero-card {
+    background: radial-gradient(circle at 0% 0%, #eff6ff, #ffffff);
+    border-radius: 24px;
+    padding: 1.4rem 1.4rem 1.5rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+.hero-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-6px);
+}
+
+  .hero-card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.12);
+    color: #047857;
+    font-weight: 600;
+  }
+
+  .hero-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-card-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1.1rem;
+  }
+
+  .hero-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .hero-chip {
+    padding: 0.45rem 0.6rem;
+    border-radius: 12px;
+    background: #eff6ff;
+    font-size: 0.78rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.35rem;
+    align-items: center;
+  }
+
+  .hero-chip span:first-child {
+    font-weight: 500;
+  }
+
+  .hero-chip span:last-child {
+    color: var(--primary-dark);
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  .hero-progress {
+    background: #e5e7eb;
+    border-radius: 999px;
+    height: 6px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-progress-bar {
+    width: 84%;
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+  }
+
+  .hero-progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* Common section styles */
+  section {
+    padding: 2.25rem 0;
+  }
+
+  section:nth-of-type(even) {
+    background: var(--bg-alt);
+  }
+
+  .section-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-kicker {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--primary-dark);
+    font-weight: 700;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .section-description {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 40rem;
+  }
+
+ /* ============================= */
+/* TOOLS GRID – PREMIUM CARDS */
+/* ============================= */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.4rem;
+}
+
+.card {
+  background: linear-gradient(180deg, #ffffff, #f9fafb);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem 1.15rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.14);
+}
+
+.card-badge {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ecfeff, #cffafe);
+  color: #0369a1;
+  font-weight: 700;
+}
+
+.card-title {
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.card-text {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.card-meta {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.card-meta span::before {
+  content: "●";
+  color: var(--primary);
+  margin-right: 0.3rem;
+}
+
+.card-footer-link {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+
+/* ============================= */
+/* HOW IT WORKS – STRUCTURED */
+/* ============================= */
+
+.how-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.8fr);
+  gap: 2.4rem;
+}
+
+@media (max-width: 900px) {
+  .how-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.step {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 0.95rem 1.05rem;
+  border: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem 1.1rem;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.step-index {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #2563eb, #22c55e);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.step-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.benefits {
+  padding: 1.25rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #eef2ff, #ffffff);
+  border: 1px solid #c7d2fe;
+  font-size: 0.86rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+
+/* ============================= */
+/* GUIDES / BLOG PREVIEW */
+/* ============================= */
+
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+
+.guide {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.1);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.guide:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16);
+}
+
+.guide-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--primary-dark);
+  font-weight: 800;
+}
+
+.guide-title {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.guide-excerpt {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.guide-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.guide-link {
+  margin-top: auto;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+
+/* ============================= */
+/* FAQ – CLEAN ACCORDION */
+/* ============================= */
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+  gap: 1.8rem;
+}
+
+@media (max-width: 900px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.faq-intro {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.faq-note {
+  margin-top: 0.9rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ecfdf5, #ffffff);
+  border: 1px solid #bbf7d0;
+  font-size: 0.82rem;
+  color: #166534;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.faq-item {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.faq-toggle {
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.faq-answer {
+  padding: 0 1rem 0.9rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  display: none;
+}
+
+.faq-item.open .faq-answer {
+  display: block;
+}
+
+
+/* ============================= */
+/* ABOUT & CONTACT */
+/* ============================= */
+
+.about-contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
+  gap: 1.8rem;
+}
+
+@media (max-width: 900px) {
+  .about-contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.about-list {
+  padding-left: 1.2rem;
+}
+
+.about-list li {
+  margin-bottom: 0.4rem;
+}
+
+.contact-card {
+  background: linear-gradient(180deg, #ffffff, #f9fafb);
+  border-radius: 20px;
+  padding: 1.3rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12);
+  font-size: 0.88rem;
+}
+
+.contact-card form {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.field label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.field input,
+.field textarea {
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+.contact-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    background: #020617;
+    color: #9ca3af;
+    padding: 1.5rem 0;
+    font-size: 0.8rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+
+  .footer-links a {
+    color: #e5e7eb;
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-note {
+    margin-top: 0.5rem;
+  }
+
+ .card-btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#dc2626,#b91c1c);
+  color:#fff;
+  padding:9px 16px;
+  border-radius:10px;
+  font-weight:700;
+  transition:transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card-btn:hover {
+  transform:translateY(-2px);
+  box-shadow:0 12px 22px rgba(220,38,38,0.45);
+}
+
+
+  /* Hide floating social widget on small screens */
+  @media (max-width: 500px) {
+    #social-float {
+      display: none !important;
+    }
+  }
+
+  /* Optional: shrink widget on tablets */
+  @media (min-width: 501px) and (max-width: 768px) {
+    #social-float > div {
+      padding: 6px 8px;
+      gap: 8px;
+      transform: scale(0.85);
+    }
+  }
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .cookie-banner {
+    background: rgba(2, 6, 23, 0.92);
+    border-top-color: #1f2937;
+    box-shadow: 0 -16px 34px rgba(0, 0, 0, 0.55);
+  }
+  .cookie-banner .cookie-text { color: #9ca3af; }
+  .cookie-banner .cookie-actions .btn-outline {
+    border-color: #374151;
+    color: #e5e7eb;
+  }
+  .cookie-banner .cookie-actions .btn-secondary {
+    background: rgba(99, 102, 241, 0.12);
+    color: #bfdbfe;
+    border: 1px solid #1f2937;
+  }
+}
+
+/* Prevent overlap with the floating social share */
+body.has-cookie-banner #social-float {
+  bottom: 92px !important;
+}
+
+
+
+  /* Lovable-style dropdown + tool picker (homepage) */
+  .nav-links { gap: 0.85rem !important; }
+  .nav-link { color: var(--text-muted); font-weight: 600; font-size: 0.95rem; padding: 0.35rem 0.5rem; border-radius: 10px; }
+  .nav-link:hover { background: rgba(37,99,235,0.07); color: var(--text); }
+
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-btn {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #fff;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .nav-dropdown-btn::after { content: "▾"; font-size: 0.85rem; color: var(--text-muted); }
+  .nav-dropdown[open] .nav-dropdown-btn { border-color: rgba(37,99,235,0.35); box-shadow: 0 8px 24px rgba(17,24,39,0.08); }
+  .nav-dropdown-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 520px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: #fff;
+    box-shadow: 0 20px 55px rgba(17,24,39,0.14);
+    z-index: 50;
+  }
+  .dd-cols { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+  .dd-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px; }
+  .dd-col a { display:block; padding: 7px 10px; border-radius: 12px; color: var(--text); font-weight: 650; font-size: 0.95rem; }
+  .dd-col a:hover { background: rgba(37,99,235,0.07); }
+  .dd-footer { margin-top: 10px; border-top: 1px solid var(--border); padding-top: 10px; display:flex; justify-content:flex-end; }
+  .dd-all { font-weight: 800; color: var(--primary); padding: 8px 10px; border-radius: 12px; }
+  .dd-all:hover { background: rgba(37,99,235,0.08); }
+
+  @media (max-width: 980px) {
+    .nav-dropdown-panel { min-width: 92vw; right: -10px; }
+    .dd-cols { grid-template-columns: 1fr; }
+  }
+
+  .home-tool-picker {
+    margin-top: 18px;
+    padding: 16px 16px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 18px 45px rgba(17,24,39,0.08);
+  }
+  .picker-head { display:flex; align-items:baseline; gap:10px; margin-bottom: 10px; }
+  .picker-head .muted { color: var(--text-muted); font-size: 0.92rem; font-weight: 600; }
+  .picker-row { display:grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items:end; }
+  .picker-field { display:flex; flex-direction:column; gap:6px; }
+  .picker-field span { font-size: 0.85rem; color: var(--text-muted); font-weight: 700; }
+  .picker-field select {
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: #fff;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .picker-btn { height: 44px; border-radius: 14px; }
+  .picker-quick { display:flex; flex-wrap:wrap; gap:8px; margin-top: 12px; }
+  .chip {
+    display:inline-flex; align-items:center; gap:6px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: #fff;
+    font-weight: 800;
+    color: var(--text);
+    font-size: 0.92rem;
+  }
+  .chip:hover { border-color: rgba(37,99,235,0.35); box-shadow: 0 10px 22px rgba(17,24,39,0.08); }
+  .picker-note { margin-top: 10px; color: var(--text-muted); font-size: 0.95rem; }
+  @media (max-width: 860px) {
+    .picker-row { grid-template-columns: 1fr; }
+    .picker-btn { width: 100%; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Compress It Small",
+  "url": "https://compressitsmall.co.uk/",
+  "description": "Compress PDF, image and office files directly in your browser with privacy-first tools and clear guides.",
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Compress It Small",
+  "url": "https://compressitsmall.co.uk/",
+  "logo": "https://compressitsmall.co.uk/favicon.png",
+  "description": "An independent, privacy-first project offering browser-based tools to compress PDFs, images and office files, plus Upload Limit Checker utilities.",
+  "founder": {
+    "@type": "Person",
+    "name": "Ahmad Asad"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "email": "support@compressitsmall.co.uk",
+    "availableLanguage": [
+      "English"
+    ]
+  }}
+</script>
+<meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<meta content="#2563eb" name="theme-color"/>
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
+  }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
+
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
+
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
+
+makeStub();
+
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
+
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
+
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
+
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
+
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
+
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+</head>
+<body>
+<header id="top">
+<div class="container">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="#top">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
+</div>
+</a>
+<div class="nav-links" style="display:flex; align-items:center; gap:0.75rem;"><details class="nav-dropdown"><summary class="nav-dropdown-btn">Tools</summary><div class="nav-dropdown-panel">
+<div class="dd-cols">
+<div class="dd-col">
+<h4>PDF</h4>
+<a href="/tools/pdf/merge-pdf/">Merge PDF</a>
+<a href="/tools/pdf/split-pdf/">Split PDF</a>
+<a href="/tools/pdf/reorder-pdf/">Reorder PDF</a>
+<a href="/tools/pdf/rotate-pdf/">Rotate PDF</a>
+<a href="/tools/pdf/watermark-pdf/">Watermark PDF</a>
+<a href="/tools/pdf/pdf-to-jpg/">PDF → JPG</a>
+<a href="/tools/pdf/jpg-to-pdf/">JPG → PDF</a>
+</div>
+<div class="dd-col">
+<h4>Images</h4>
+<a href="/tools/image/image-cropper/">Image Cropper</a>
+<a href="/tools/image/watermark-image/">Watermark Image</a>
+<h4 style="margin-top:12px;">Upload</h4>
+<a href="/tools/upload-limit-checker/">Upload Limit Checker</a>
+</div>
+<div class="dd-col">
+<h4>Office</h4>
+<a href="/tools/office/json-formatter/">JSON Formatter</a>
+<a href="/tools/office/csv-to-json/">CSV → JSON</a>
+<a href="/tools/office/json-to-csv/">JSON → CSV</a>
+<a href="/tools/office/csv-to-excel/">CSV → Excel</a>
+<a href="/tools/office/excel-to-csv/">Excel → CSV</a>
+<a href="/tools/office/text-to-pdf/">Text → PDF</a>
+</div>
+</div>
+<div class="dd-footer">
+<a class="dd-all" href="/tools/">View all tools →</a>
+</div>
+</div></details><a class="nav-link" href="/blog/">Blog</a><a class="nav-link" href="/checklists/">Checklists</a><a class="nav-link" href="/faq/">FAQ</a><a class="nav-link" href="/contact/">Contact</a></div>
+<div class="nav-cta"><a class="btn btn-primary" href="/tools/">Open tools</a></div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="#tools" onclick="toggleMobileNav(false)">Tools</a>
+<a href="#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
+<a href="#guides" onclick="toggleMobileNav(false)">Guides</a>
+<a href="#faq" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<div class="hero-kicker"><span class="hero-kicker-pill">New</span> Simple, privacy-first tools for PDFs, images, and office files — built for real-world upload limits.</div>
+<h1 class="hero-title">Free browser tools for <span>PDF • Image • Office</span></h1>
+<p class="hero-subtitle">Pick a tool and work locally in your browser — merge, split, reorder, convert, watermark, format JSON/CSV, and check upload limits. No sign-up, no server processing.</p><div aria-label="Tool launcher" class="home-tool-picker">
+<div class="picker-head">
+<strong>Start here</strong>
+<span class="muted">Choose a tool and open it instantly</span>
+</div>
+<div class="picker-row">
+<label class="picker-field">
+<span>Category</span>
+<select aria-label="Tool category" id="toolCategory"></select>
+</label>
+<label class="picker-field">
+<span>Tool</span>
+<select aria-label="Tool selection" id="toolSelect"></select>
+</label>
+<button class="btn btn-primary picker-btn" id="openToolBtn" type="button">Open tool</button>
+</div>
+<div class="picker-quick">
+<a class="chip" href="/tools/pdf/compress-pdf/">Compress PDF</a>
+<a class="chip" href="/tools/image/compress-image/">Compress Image</a>
+<a class="chip" href="/tools/pdf/merge-pdf/">Merge PDF</a>
+<a class="chip" href="/tools/pdf/split-pdf/">Split PDF</a>
+<a class="chip" href="/tools/pdf/reorder-pdf/">Reorder PDF</a>
+<a class="chip" href="/tools/pdf/pdf-to-jpg/">PDF → JPG</a>
+<a class="chip" href="/tools/pdf/watermark-pdf/">Watermark PDF</a>
+<a class="chip" href="/tools/office/json-formatter/">JSON Formatter</a>
+<a class="chip" href="/tools/upload-limit-checker/">Upload Limit Checker</a>
+</div>
+<p class="picker-note">Tip: most tools keep your files on-device. For PDF → image conversions we use well-known libraries (PDF.js) in the browser.</p>
+</div>
+<div class="hero-actions">
+<button class="btn btn-primary" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'});">
+            Explore all PDF &amp; image tools
+          </button>
+<button class="btn btn-ghost" onclick="document.getElementById('guides').scrollIntoView({behavior:'smooth'});">
+            Read step-by-step guides
+          </button>
+</div>
+<div class="hero-meta">
+<span><strong>Online PDF tools:</strong> compress, merge, split, convert, redact and reorder PDFs entirely in your browser – ideal for email and portal uploads.</span>
+<span><strong>Privacy-first design:</strong> wherever possible, files are processed locally using JavaScript instead of being sent to remote servers.</span>
+</div>
+</div>
+<aside aria-label="At-a-glance overview" class="hero-card">
+<div class="hero-card-badge">Fast, safe &amp; simple</div>
+<div class="hero-card-title">What you can do here</div>
+<div class="hero-card-sub">
+          Compress It Small is a dedicated knowledge hub plus toolset for <strong>PDF compression</strong>,
+          image optimisation and document preparation. You get focused utilities and clear explanations
+          tailored to different file types – not just a single generic “compress” button.
+        </div>
+<div class="hero-card-grid">
+<div class="hero-chip">
+<span>Compress PDF</span>
+<span>Up to ~70%*</span>
+</div>
+<div class="hero-chip">
+<span>Image compressor</span>
+<span>Web-ready</span>
+</div>
+<div class="hero-chip">
+<span>Office files</span>
+<span>Lean slides</span>
+</div>
+<div class="hero-chip">
+<span>Upload Limit Checker</span>
+<span>Smarter metadata</span>
+</div>
+</div>
+<div aria-hidden="true" class="hero-progress">
+<div class="hero-progress-bar"></div>
+</div>
+<div class="hero-progress-text">
+<span>Typical space saved with carefully tuned settings</span>
+<span>~60–80%*</span>
+</div>
+<p style="font-size: 0.7rem; color: #6b7280; margin-top: 0.5rem;">
+          *Example ranges based on typical office PDFs and images. Actual results depend on
+          resolution, scan quality and how the file was created in the first place.
+        </p>
+<p style="font-size:0.75rem;color:#4b5563;margin-top:0.45rem;">
+          A practical workflow is to keep one high-quality “master copy” for your own records and generate
+          lighter, optimised versions for email, scholarship portals, journal submissions and public
+          administration platforms.
+        </p>
+</aside>
+</div>
+</section>
+<section id="tools">
+<div class="container">
+<div class="section-heading">
+<div class="section-kicker">Tools overview</div>
+<h2 class="section-title">Core PDF tools, image tools and optimisation utilities</h2>
+<p class="section-description">
+          Each tool lives on its own dedicated page with clear instructions, practical
+          examples and notes about when a particular approach is appropriate. The aim
+          is not only to “make files smaller”, but to help you submit documents that
+          are accepted by portals, remain readable and meet institutional requirements.
+        </p>
+</div>
+<div class="cards-grid">
+<article class="card">
+<div class="card-badge">PDF</div>
+<h3 class="card-title">PDF tools (merge, split, reorder, convert &amp; watermark)</h3>
+<p class="card-text">
+            Use targeted <strong>PDF tools</strong> to handle everyday tasks: 
+             <a class="card-mini-btn" href="/tools/pdf/compress-pdf/">compress PDF</a> for portal/email limits, <a class="card-mini-btn" href="/tools/pdf/merge-pdf/">merge multiple PDFs</a> into one,
+            <a class="card-mini-btn" href="/tools/pdf/split-pdf/">split PDFs</a> into separate files,
+            <a class="card-mini-btn" href="/tools/pdf/reorder-pdf/">reorder pages</a>,
+            convert <a class="card-mini-btn" href="/tools/pdf/pdf-to-png/">PDF to Image</a>,
+            create PDFs from images via <a class="card-mini-btn" href="/tools/pdf/jpg-to-pdf/">JPG to PDF</a>,
+            and securely clean sensitive content with the dedicated
+            <a class="card-mini-btn" href="/tools/pdf/pdf-redactor/">PDF redactor</a>.
+            Everything runs in your browser for maximum privacy.
+          </p>
+<div class="card-meta">
+<span>Keeps fonts &amp; layout intact</span>
+<span>Ideal for email, portals &amp; archives</span>
+</div>
+<div class="card-footer-link">
+<a class="card-btn" href="/tools/pdf/">Open all PDF tools →</a>
+</div>
+</article>
+<article class="card">
+<div class="card-badge">Images</div>
+<h3 class="card-title">Image compressor (JPG/PNG/WebP)</h3>
+<p class="card-text">
+            Optimise photos, screenshots and diagrams for web pages, scholarship portals,
+            job applications and messaging apps. The <strong>image compressor</strong> helps you
+            reduce file size while keeping text overlays and charts readable – perfect
+            for WhatsApp, email attachments and online forms that enforce strict limits.
+            You can also resize images, switch between JPG, PNG and WebP, or export
+            images to PDF for easy submission.
+          </p>
+<div class="card-meta">
+<span>Ideal for blogs, e-commerce &amp; e-submission</span>
+<span>Balances visual quality with loading speed</span>
+</div>
+<div class="card-footer-link">
+<a class="card-btn" href="/tools/image/">Open Image tools →</a>
+</div>
+</article>
+<article class="card">
+<div class="card-badge">Office</div>
+<h3 class="card-title">Office file optimiser (Word, PowerPoint &amp; more)</h3>
+<p class="card-text">
+            Many oversized Word, PowerPoint and Excel files are caused by uncompressed images,
+            embedded fonts and hidden revision data. The office tools provide a structured
+            checklist to <strong>convert DOCX to PDF</strong>, clean up pasted text, strip
+            sensitive metadata and keep your slides, manuscripts and spreadsheets light
+            and professional, without breaking their layout.
+          </p>
+<div class="card-meta">
+<span>Step-by-step workflows for DOCX &amp; PPTX</span>
+<span>Focus on safe, reversible changes</span>
+</div>
+<div class="card-footer-link">
+<a class="card-btn" href="/tools/office/">Open Office tools →</a>
+</div>
+</article>
+<article class="card">
+<div class="card-badge">Upload Limit Checker</div>
+<h3 class="card-title">Upload limit checker and submission helpers</h3>
+<p class="card-text">
+            Check common <strong>portal and email limits</strong> before you upload. Use the Upload Limit Checker to
+            compare attachment caps (email), web-form limits, and typical requirements for visas, scholarships and
+            university systems. It also includes small helpers to validate file size, naming, and basic formatting so you
+            submit once — not five times.
+        </p>
+<div class="card-meta">
+<span>Practical limits + checklists</span>
+<span>Built for real submissions</span>
+</div>
+<div class="card-footer-link">
+<a class="card-btn" href="/tools/upload-limit-checker/">Open Upload Limit Checker →</a>
+</div>
+</article>
+</div>
+<p class="section-description" style="margin-top:1.5rem;">
+        Popular PDF tools:
+         <a href="/tools/pdf/compress-pdf/" style="color:#2563eb;text-decoration:underline;">Compress PDF</a>, <a href="/tools/pdf/merge-pdf/" style="color:#2563eb;text-decoration:underline;">Merge PDF</a>,
+        <a href="/tools/pdf/split-pdf/" style="color:#2563eb;text-decoration:underline;">Split PDF</a>,
+        <a href="/tools/pdf/reorder-pdf/" style="color:#2563eb;text-decoration:underline;">Reorder PDF pages</a> (<a href="/blog/reorder-pdf-pages-for-application/" style="color:#2563eb;text-decoration:underline;">workflow</a>),
+        <a href="/tools/pdf/pdf-to-png/" style="color:#2563eb;text-decoration:underline;">PDF to PNG</a>,
+        <a href="/tools/pdf/jpg-to-pdf/" style="color:#2563eb;text-decoration:underline;">JPG to PDF</a>,
+        <a href="/tools/pdf/pdf-redactor/" style="color:#2563eb;text-decoration:underline;">PDF redactor</a>.
+      </p>
+</div>
+</section>
+<section id="how-it-works">
+<div class="container">
+<div class="section-heading">
+<div class="section-kicker">How it works</div>
+<h2 class="section-title">A simple, repeatable workflow from upload to download</h2>
+<p class="section-description">
+          Whether you use the browser-based tools (for PDFs and images) or follow the
+          recommended desktop workflows (for very large video and office projects), the
+          overall pattern is intentionally consistent: import the file, choose a level
+          of compression that matches your goal, inspect the result, and only then save
+          or submit the optimised version.
+        </p>
+</div>
+<div class="how-grid">
+<div aria-label="Compression steps" class="steps">
+<div class="step">
+<div class="step-index">1</div>
+<div>
+<div class="step-title">Upload or drag-and-drop your file</div>
+<p class="step-text">
+                On each live tool page you will see a clearly labelled upload area,
+                designed to be easy to recognise even on smaller screens. There is no
+                requirement to create an account, subscribe to a mailing list or provide
+                personal information just to
+                compress a PDF
+                or reduce the size of an image or document.
+              </p>
+</div>
+</div>
+<div class="step">
+<div class="step-index">2</div>
+<div>
+<div class="step-title">Select a compression level aligned with your use case</div>
+<p class="step-text">
+                For materials that must remain highly legible – such as contracts,
+                academic articles or official certificates – lighter or “balanced”
+                profiles are usually appropriate. For quick previews or informal sharing,
+                stronger compression may be acceptable. Each tool page explains these
+                trade-offs in detail, so you can make informed decisions instead of
+                working by trial and error.
+              </p>
+</div>
+</div>
+<div class="step">
+<div class="step-index">3</div>
+<div>
+<div class="step-title">Review the outcome and, if needed, adjust settings</div>
+<p class="step-text">
+                When feasible, tools indicate size before and after compression and may
+                highlight typical ranges for similar documents. You can repeat the
+                process with alternative settings until you reach a balance between file
+                size and visual quality that is appropriate for your specific platform or
+                deadline – for example, a scholarship portal, thesis submission system
+                or online exam form.
+              </p>
+</div>
+</div>
+<div class="step">
+<div class="step-index">4</div>
+<div>
+<div class="step-title">Use guides to build a personal “compression checklist”</div>
+<p class="step-text">
+                The articles and guides are written to be reusable. Over time, you can
+                adopt a short checklist – for example, for scholarship applications,
+                journal submissions or teaching materials – so that compressing and
+                preparing files becomes a predictable part of your workflow rather than
+                a last-minute emergency.
+              </p>
+</div>
+</div>
+</div>
+<aside class="benefits">
+<strong>Why this site differs from generic “online compressor” pages</strong>
+<ul>
+<li>Each tool is contextualised with detailed notes, not just a single sentence and a button.</li>
+<li>Layout is intentionally minimal to reduce confusion between genuine actions and advertising.</li>
+<li>Educational content focuses on underlying concepts (resolution, bit-rate, vector vs raster) rather than opaque “magic” sliders.</li>
+<li>Recommendations are written with academic, administrative and professional use cases in mind.</li>
+</ul>
+<p style="margin-top: 0.5rem;">
+            In practice this means you can compress files confidently, document your
+            process when needed (for example, in institutional guidelines), and avoid
+            common pitfalls such as over-compression of important records or sending
+            files that are too large for online systems to accept.
+          </p>
+</aside>
+</div>
+</div>
+</section>
+<section id="guides">
+<div class="container">
+<div class="section-heading">
+<div class="section-kicker">Guides &amp; articles</div>
+<h2 class="section-title">In-depth articles on file size, visual quality and digital workflows</h2>
+<p class="section-description">
+          The guides on Compress It Small are written to be more than quick answers.
+          They are structured resources that you can return to when preparing
+          applications, theses, learning materials or professional documentation,
+          with clear examples and recommended parameter ranges.
+        </p>
+</div>
+<div class="guides-grid">
+<article class="guide">
+<div class="guide-tag">PDF</div>
+<h3 class="guide-title">How to Compress a PDF Without Making It Blurry</h3>
+<p class="guide-excerpt">
+            Many people scan documents as images and then wonder why their PDF is 50 MB
+            or more. This guide explains the difference between text-based and
+            image-based PDFs, outlines safe resolution ranges for common scenarios, and
+            shows how to obtain smaller files while preserving legibility for printing
+            and long-term storage.
+          </p>
+<p class="guide-meta">Estimated reading time: 8–10 minutes · Includes annotated screenshots</p>
+<a class="guide-link" href="/blog/how-to-compress-pdf/">Full article →</a>
+</article>
+<article class="guide">
+<div class="guide-tag">Images</div>
+<h3 class="guide-title">Best Compression Settings for WhatsApp, Email, and Online Forms</h3>
+<p class="guide-excerpt">
+            Large photos can slow websites, overload email attachments and cause
+            submissions to be rejected by online forms. This article summarises
+            recommended pixel dimensions, compression levels and formats for everyday
+            communication, with a focus on keeping text and technical diagrams readable
+            on mobile devices.
+          </p>
+<p class="guide-meta">Estimated reading time: 7–9 minutes · Includes ready-to-use presets</p>
+<a class="guide-link" href="/blog/best-compression-settings-whatsapp-email-forms/">Full article →</a>
+</article>
+<article class="guide">
+<div class="guide-tag">Workflow</div>
+<h3 class="guide-title">How to Compress Scanned PDFs: Best Settings and Common Mistakes</h3>
+<p class="guide-excerpt">
+            Scanned archives, handwritten forms and historical documents pose specific
+            challenges. This guide walks through a balanced approach to scanning,
+            compressing and storing such materials, with emphasis on preserving essential
+            information while remaining within typical upload limits used by universities,
+            funding bodies and public institutions.
+          </p>
+<p class="guide-meta">Estimated reading time: 6–8 minutes · Includes checklists for repeated use</p>
+<a class="guide-link" href="/blog/compress-scanned-pdfs-clear-text-small-size/">Full article →</a>
+</article>
+</div>
+</div>
+</section>
+<section id="faq">
+<div class="container">
+<div class="section-heading">
+<div class="section-kicker">FAQ</div>
+<h2 class="section-title">Frequently asked questions about file compression</h2>
+<p class="section-description">
+          These questions summarise concerns that appear regularly when people start
+          compressing PDFs, images and office documents for online submission and
+          long-term storage.
+        </p>
+</div>
+<div class="faq-grid">
+<div>
+<p class="faq-intro">
+            The intention behind Compress It Small is to be transparent about what is
+            technically feasible and what is advisable. Rather than promising
+            unrealistic “99% reductions with no downside”, the site emphasises pragmatic
+            improvements, informed choices and documentation of the steps you apply to
+            your files.
+          </p>
+<div class="faq-note">
+<strong>Important:</strong> Always keep an original, uncompressed copy of
+            critical documents (such as certificates, legal agreements, research data or
+            signed forms) stored safely, even if you routinely work with lighter
+            derivatives for sharing and uploads.
+          </div>
+</div>
+<div aria-label="Compression FAQs" class="faq-list">
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+<span>Are the online PDF tools safe to use with personal documents?</span>
+<span class="faq-toggle">+</span>
+</button>
+<div class="faq-answer">
+              In the browser-based tools – for example when you
+              <a href="/tools/pdf/pdf-redactor/" style="color:#2563eb;text-decoration:underline;">redact a PDF</a> – your file is processed locally on your device.
+              It does not need to be uploaded to an external server. This can be advantageous for
+              sensitive material, though you should still avoid processing confidential files on
+              shared or unmanaged devices.
+            </div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+<span>Will compression change the content of my document?</span>
+<span class="faq-toggle">+</span>
+</button>
+<div class="faq-answer">
+              In most workflows described on this site, compression affects how data is
+              stored, not the logical content of your document. Text, headings and
+              structure remain the same, but embedded images and graphical elements may
+              be stored more efficiently. Extremely aggressive compression, however, can
+              make small fonts, fine lines or subtle colour differences harder to
+              perceive. That is why the guides highlight safe everyday reductions
+              versus scenarios where you should keep a higher-quality version.
+            </div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+<span>Why do some websites reject my file even after I compress it?</span>
+<span class="faq-toggle">+</span>
+</button>
+<div class="faq-answer">
+              Platforms apply not only size limits but also constraints on dimensions,
+              page count, number of attachments and accepted formats. A file may be
+              small enough in megabytes but still rejected because it is in the wrong
+              format or exceeds a page limit. Where possible, the guides reference
+              typical constraints (for example, for scholarship portals, government
+              applications and journal submission systems) and suggest conservative
+              targets that are more likely to be accepted on the first attempt.
+            </div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)" type="button">
+<span>Do I have to install any software to use these tools?</span>
+<span class="faq-toggle">+</span>
+</button>
+<div class="faq-answer">
+              Many of the core tools – especially for PDFs and images – run directly in
+              your browser and can be used without installing additional software. For
+              very large projects, such as long video recordings or complex slide decks,
+              the guides may recommend well-known desktop applications with stable
+              behaviour and transparent settings. In each case, the article explains
+              why a particular tool is suggested and how to replicate the workflow step
+              by step.
+            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="contact">
+<div class="container">
+<div class="section-heading">
+<div class="section-kicker">About &amp; contact</div>
+<h2 class="section-title">Who is behind Compress It Small?</h2>
+<p class="section-description">
+          Compress It Small is a small, independent project developed with a focus on
+          academic, administrative and professional reality: people often work under
+          deadlines, with strict upload limits and limited technical support. The aim
+          is to provide tools and explanations that respect those constraints.
+        </p>
+</div>
+<div class="about-contact-grid">
+<div class="about-text">
+<p>
+            Compress It Small is an independent, privacy-focused project created to make file
+            compression simple, transparent and reliable. Many websites offer “online
+            compressors” but provide almost no explanation, are full of confusing ads, or upload
+            your files to unknown servers. This project was built explicitly to provide a calmer,
+            more educational alternative.
+          </p>
+<p>Here is what you can expect from this website:</p>
+<ul class="about-list">
+<li>Dedicated tool pages with explanations, annotated examples and suggestions for best results.</li>
+<li>Long-form guides that are suitable as references for students, researchers and practitioners.</li>
+<li>A privacy-first approach: tools aim to process files in your browser whenever technically feasible.</li>
+<li>Clear labelling of actions and buttons – no fake “download now” banners disguised as interface elements.</li>
+</ul>
+<p>
+            Compress It Small was created by a researcher/developer who has repeatedly needed to
+            prepare PDFs, images and documents for academic submissions, scholarship applications,
+            teaching materials and administrative procedures. That experience informs the
+            recommendations: they are grounded in real platforms and constraints, not purely
+            theoretical examples.
+          </p>
+<p>
+            If you have suggestions, identify an outdated explanation, or would like to see a new
+            workflow covered (for example, a specific scholarship portal or institutional upload
+            system), you are encouraged to reach out using the contact form. Feedback directly
+            shapes what is prioritised in future updates.
+          </p>
+</div>
+<aside class="contact-card">
+<h3 style="font-size: 0.98rem; font-weight: 700; margin-bottom: 0.3rem;">
+            Contact &amp; feedback
+          </h3>
+<p>
+            Use the form below to propose new topics, report an issue with a guide, or
+            suggest an improvement to a tool. Short, concrete descriptions are very
+            helpful – for example, mention the type of file, the platform you are
+            working with, and what you are trying to achieve.
+          </p>
+<form data-netlify="true" method="POST" name="contact" netlify-honeypot="bot-field">
+<input name="form-name" type="hidden" value="contact"/>
+<p style="display:none;">
+<label>
+                Don’t fill this out if you’re human:
+                <input name="bot-field"/>
+</label>
+</p>
+<div class="field">
+<label for="name">Name (optional)</label>
+<input id="name" name="name" type="text"/>
+</div>
+<div class="field">
+<label for="email">Email (for reply)</label>
+<input id="email" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div class="field">
+<label for="message">How can we help?</label>
+<textarea id="message" name="message" placeholder="For example: I need to upload a PDF to a specific website and it keeps rejecting it…" required="" rows="4"></textarea>
+</div>
+<button class="btn btn-primary" type="submit">
+              Send message
+            </button>
+<p class="contact-meta">
+              Messages are read manually. Please avoid including highly sensitive
+              personal information; wherever possible, describe the context in general
+              terms rather than sharing full documents or identifiers.
+            </p>
+</form>
+</aside>
+</div>
+</div>
+</section>
+</main>
+<section style="padding:1.5rem 0;">
+<div class="container">
+<p style="font-size:0.85rem;color:#4b5563;">
+      Popular tools:
+      <a href="/tools/pdf/merge-pdf/" style="color:#bfdbfe;text-decoration:underline;">Merge PDF</a> ·
+      <a href="/tools/pdf/split-pdf/" style="color:#bfdbfe;text-decoration:underline;">Split PDF</a> ·
+      <a href="/tools/pdf/reorder-pdf/" style="color:#bfdbfe;text-decoration:underline;">Reorder PDF pages</a> ·
+      <a href="/tools/pdf/pdf-to-png/" style="color:#bfdbfe;text-decoration:underline;">PDF to Image</a> ·
+      <a href="/tools/pdf/jpg-to-pdf/" style="color:#bfdbfe;text-decoration:underline;">JPG to PDF</a> ·
+      <a href="/tools/pdf/pdf-redactor/" style="color:#bfdbfe;text-decoration:underline;">PDF redactor</a> ·
+      <a href="/tools/image/" style="color:#bfdbfe;text-decoration:underline;">Image compressor</a> ·
+      <a href="/tools/office/" style="color:#bfdbfe;text-decoration:underline;">Office file optimiser</a>.
+    </p>
+</div>
+</section>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/image/"><div class="link-title">Image Tools</div><p class="link-desc">Compress and resize JPG/PNG for web, forms and sharing.</p></a><a class="link-card" href="/tools/office/"><div class="link-title">Office Tools</div><p class="link-desc">Shrink Word/Excel/PowerPoint files (practical workflows).</p></a><a class="link-card" href="/tools/upload-limit-checker/"><div class="link-title">Upload Limit Checker</div><p class="link-desc">Check file size, limits, and the best next tool.</p></a><a class="link-card" href="/blog/"><div class="link-title">Guides</div><p class="link-desc">Step-by-step compression guides for real upload limits.</p></a></div></div></section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/tools/">Tools</a>
+<a href="/blog/">Blog</a>
+<a href="/how-it-works/">How it works</a>
+<a href="/faq/">FAQ</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
+<p class="footer-note">
+        © <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
+</footer>
+<script>
+  // Set current year in footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Mobile nav toggle
+  function toggleMobileNav(force) {
+    var nav = document.getElementById("nav-mobile");
+    if (typeof force === "boolean") {
+      nav.classList.toggle("open", force);
+    } else {
+      nav.classList.toggle("open");
+    }
+  }
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    var item = btn.closest(".faq-item");
+    var list = item.parentElement.querySelectorAll(".faq-item");
+    list.forEach(function (el) {
+      if (el !== item) {
+        el.classList.remove("open");
+        var b = el.querySelector(".faq-question");
+        if (b) b.setAttribute("aria-expanded", "false");
+      }
+    });
+    var willOpen = !item.classList.contains("open");
+    item.classList.toggle("open");
+    btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+  };
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Improve FAQ accessibility (IDs + ARIA wiring) without changing the visual design
+  const faqItems = document.querySelectorAll(".faq-item");
+  faqItems.forEach(function(item, i) {
+    const btn = item.querySelector(".faq-question");
+    const ans = item.querySelector(".faq-answer");
+    if (!btn || !ans) return;
+    const qId = "faq-question-" + (i+1);
+    const aId = "faq-answer-" + (i+1);
+    btn.id = btn.id || qId;
+    ans.id = ans.id || aId;
+    btn.setAttribute("aria-controls", ans.id);
+    btn.setAttribute("aria-expanded", item.classList.contains("open") ? "true" : "false");
+    ans.setAttribute("role", "region");
+    ans.setAttribute("aria-labelledby", btn.id);
+  });
+});
+</script>
+<script>
+(function(){
+  // Register service worker (optional). Safe no-op if /sw.js is not present.
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('/sw.js').catch(function(){});
+    });
+  }
+})();
+</script>
+<div class="cookie-inner">
+<div>
+<div class="cookie-title">Cookies &amp; privacy</div>
+<div class="cookie-text">
+        We use essential cookies to keep this site running properly. With your permission, we may also use optional cookies for analytics and advertising.
+        You can read more in our <a href="/cookie-policy/" style="color:var(--primary,#2563eb);text-decoration:underline;">Cookie Policy</a>.
+      </div>
+</div>
+<div class="cookie-actions">
+<button class="btn btn-outline" id="cookieDecline" type="button">Decline</button>
+<button class="btn btn-secondary" id="cookiePreferences" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="btn btn-primary" id="cookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  const CATALOG = [
+    { name: "PDF", tools: [
+      { label: "Compress PDF", url: "/tools/pdf/compress-pdf/" },
+      { label: "Merge PDF", url: "/tools/pdf/merge-pdf/" },
+      { label: "Split PDF", url: "/tools/pdf/split-pdf/" },
+      { label: "Reorder PDF pages", url: "/tools/pdf/reorder-pdf/" },
+      { label: "Rotate PDF", url: "/tools/pdf/rotate-pdf/" },
+      { label: "Watermark PDF", url: "/tools/pdf/watermark-pdf/" },
+      { label: "PDF → JPG", url: "/tools/pdf/pdf-to-jpg/" },
+      { label: "PDF → PNG", url: "/tools/pdf/pdf-to-png/" },
+      { label: "JPG → PDF", url: "/tools/pdf/jpg-to-pdf/" },
+      { label: "Extract pages", url: "/tools/pdf/extract-pages/" },
+      { label: "Delete pages", url: "/tools/pdf/delete-pages/" },
+      { label: "Compare PDFs", url: "/tools/pdf/compare-pdf/" },
+      { label: "Extract text", url: "/tools/pdf/extract-text/" },
+      { label: "Sign PDF", url: "/tools/pdf/pdf-signature/" },
+      { label: "Redact PDF (flattened)", url: "/tools/pdf/pdf-redactor/" }
+    ]},
+    { name: "Images", tools: [
+      { label: "Compress Image", url: "/tools/image/compress-image/" },
+      { label: "Resize Image", url: "/tools/image/resize-image/" },
+      { label: "Convert Image", url: "/tools/image/convert-image/" },
+      { label: "Image Cropper", url: "/tools/image/image-cropper/" },
+      { label: "Watermark Image", url: "/tools/image/watermark-image/" }
+    ]},
+    { name: "Office", tools: [
+      { label: "JSON Formatter", url: "/tools/office/json-formatter/" },
+      { label: "CSV → JSON", url: "/tools/office/csv-to-json/" },
+      { label: "JSON → CSV", url: "/tools/office/json-to-csv/" },
+      { label: "CSV → Excel", url: "/tools/office/csv-to-excel/" },
+      { label: "Excel → CSV", url: "/tools/office/excel-to-csv/" },
+      { label: "Text → PDF", url: "/tools/office/text-to-pdf/" },
+      { label: "Text → DOCX", url: "/tools/office/text-to-docx/" }
+    ]},
+    { name: "Upload", tools: [
+      { label: "Upload Limit Checker", url: "/tools/upload-limit-checker/" }
+    ]}
+  ];
+
+  const catSel = document.getElementById("toolCategory");
+  const toolSel = document.getElementById("toolSelect");
+  const openBtn = document.getElementById("openToolBtn");
+  if (!catSel || !toolSel || !openBtn) return;
+
+  function fillCategories(){
+    catSel.innerHTML = "";
+    CATALOG.forEach((c, i) => {
+      const opt = document.createElement("option");
+      opt.value = String(i);
+      opt.textContent = c.name;
+      catSel.appendChild(opt);
+    });
+  }
+
+  function fillTools(catIndex){
+    const c = CATALOG[catIndex] || CATALOG[0];
+    toolSel.innerHTML = "";
+    c.tools.forEach((t) => {
+      const opt = document.createElement("option");
+      opt.value = t.url;
+      opt.textContent = t.label;
+      toolSel.appendChild(opt);
+    });
+  }
+
+  function openSelected(){
+    const url = toolSel.value;
+    if (!url) return;
+    window.location.href = url;
+  }
+
+  fillCategories();
+  fillTools(0);
+
+  catSel.addEventListener("change", () => {
+    const idx = parseInt(catSel.value, 10);
+    fillTools(isNaN(idx) ? 0 : idx);
+  });
+
+  openBtn.addEventListener("click", openSelected);
+})();
+</script></body>
+</html>
