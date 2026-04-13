@@ -45,7 +45,7 @@
 /tools/pdf/pdf-compressor/    /tools/pdf/compress-pdf/    301
 
 # ------------------------------------------------
-# 3. GHOST PAGES → nearest relevant page
+# 3. GHOST PAGES & DEAD TOOLS → nearest relevant page
 # ------------------------------------------------
 /presets/                      /tools/                   301
 /presets/university-2mb/       /tools/pdf/compress-pdf/  301
@@ -64,11 +64,54 @@
 /tools/unlock-pdf/             /tools/pdf/               301
 /blog/future-of-digital-docs   /blog/                    301
 /blog/future-of-digital-docs/  /blog/                    301
+/blog/why-pdf-still-matters    /blog/                    301
+/blog/why-pdf-still-matters/   /blog/                    301
 /reorder-pdf-pages             /tools/pdf/reorder-pdf/   301
 /reorder-pdf-pages/            /tools/pdf/reorder-pdf/   301
 /assets/logo.png               /favicon_192x192.png      301
+/tools/ppt-to-pdf              /tools/pdf/               301
+/tools/ppt-to-pdf/             /tools/pdf/               301
+/tools/excel-to-pdf            /tools/pdf/               301
+/tools/excel-to-pdf/           /tools/pdf/               301
+/tools/html-to-pdf             /tools/pdf/               301
+/tools/html-to-pdf/            /tools/pdf/               301
+/tools/upload-limit-checker    /tools/                   301
+/tools/upload-limit-checker/   /tools/                   301
 
 # ------------------------------------------------
-# 4. CUSTOM 404
+# 4. LEGACY .html PAGES → canonical clean slugs
+# ------------------------------------------------
+/cookie-policy.html            /cookie-policy/           301
+/contact.html                  /contact/                 301
+/tools.html                    /tools/                   301
+/index.html                    /                         301
+/privacy-policy.html           /privacy-policy/          301
+/terms.html                    /terms/                   301
+/about.html                    /about/                   301
+
+# ------------------------------------------------
+# 5. LEGACY SLUG VARIANTS → canonical
+# ------------------------------------------------
+/privacy                       /privacy-policy/          301
+/privacy/                      /privacy-policy/          301
+
+# ------------------------------------------------
+# 6. OLD FLAT TOOL SLUGS → canonical paths
+# ------------------------------------------------
+/tools/merge-pdf               /tools/pdf/merge-pdf/         301
+/tools/merge-pdf/              /tools/pdf/merge-pdf/         301
+/tools/rotate-pdf              /tools/pdf/rotate-pdf/        301
+/tools/rotate-pdf/             /tools/pdf/rotate-pdf/        301
+/tools/jpg-to-pdf              /tools/pdf/jpg-to-pdf/        301
+/tools/jpg-to-pdf/             /tools/pdf/jpg-to-pdf/        301
+/tools/edit-pdf                /tools/pdf/                   301
+/tools/edit-pdf/               /tools/pdf/                   301
+/tools/compress-pdf            /tools/pdf/compress-pdf/      301
+/tools/compress-pdf/           /tools/pdf/compress-pdf/      301
+/tools/compress-image          /tools/image/compress-image/  301
+/tools/compress-image/         /tools/image/compress-image/  301
+
+# ------------------------------------------------
+# 7. CUSTOM 404
 # ------------------------------------------------
 /*    /404.html    404
