@@ -60,6 +60,7 @@
 /tools/repair-pdf/             /tools/pdf/               301
 /checklists/scholarship-submission/  /blog/scholarship-upload-limits-compress-pdf/  301
 /tools/pdf/index%20(2).html    /tools/pdf/               301
+/tools/pdf/index (2).html      /tools/pdf/               301
 /tools/unlock-pdf              /tools/pdf/               301
 /tools/unlock-pdf/             /tools/pdf/               301
 /blog/future-of-digital-docs   /blog/                    301
@@ -94,6 +95,8 @@
 # ------------------------------------------------
 /privacy                       /privacy-policy/          301
 /privacy/                      /privacy-policy/          301
+/about                         /about/                   301
+/contact                       /contact/                 301
 
 # ------------------------------------------------
 # 6. OLD FLAT TOOL SLUGS → canonical paths
