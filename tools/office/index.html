@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Office Tools – DOCX to PDF, Text Cleaner, Metadata Remover | Compress It Small</title>
-<meta content="Browser-based office tools to convert DOCX to PDF, clean text, remove DOCX metadata, and analyse DOCX/PPTX/XLSX file size structure. All processing happens locally using JavaScript and ZIP parsing." name="description"/>
+<meta content="Browser-based office tools to convert DOCX to PDF, clean text, remove DOCX metadata, format JSON, convert CSV and Excel files. All processing happens locally in your browser." name="description"/>
 <link href="https://compressitsmall.co.uk/tools/office/" rel="canonical"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -18,13 +18,16 @@
   "operatingSystem": "Web browser",
   "description": "Reduce DOCX, PPTX and XLSX file size by cleaning metadata and compressing embedded media. Perfect for submissions and email.",
   "featureList": [
-    "DOCX compression",
-    "PPTX compression",
-    "XLSX optimization",
-    "Metadata cleaning",
-    "Image size reduction inside documents"
+    "DOCX to PDF conversion",
+    "Text to PDF",
+    "JSON formatter",
+    "JSON to CSV",
+    "CSV to JSON",
+    "CSV to Excel",
+    "Excel to CSV",
+    "DOCX metadata cleaning",
+    "Office file size analyser"
   ],
-  "about": "Browser-based tool to optimize office documents without compromising layout.",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -32,1336 +35,555 @@
   }
 }
 </script>
-<style>
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --accent: #22c55e;
-      --bg: #f4f5fb;
-      --bg-alt: #ffffff;
-      --text: #111827;
-      --text-muted: #6b7280;
-      --border: #e5e7eb;
-      --radius-lg: 16px;
-      --radius-pill: 999px;
-      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
-      --max-width: 1120px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    header {
-      background: var(--bg-alt);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      backdrop-filter: blur(10px);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.7rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .brand-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 12px;
-      background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 0.95rem;
-      box-shadow: 0 10px 22px rgba(30, 64, 175, 0.45);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .brand-text span:first-child {
-      font-weight: 800;
-      font-size: 1rem;
-    }
-
-    .brand-text span:last-child {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.1rem;
-      font-size: 0.85rem;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      font-weight: 500;
-      position: relative;
-      padding-bottom: 0.2rem;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: var(--primary);
-      transition: width 0.16s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.6rem 1.3rem;
-      border-radius: var(--radius-pill);
-      font-weight: 600;
-      font-size: 0.88rem;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease,
-      background 0.12s ease;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #ffffff;
-      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 28px rgba(37, 99, 235, 0.4);
-    }
-
-    .btn-outline {
-      background: #eef2ff;
-      color: var(--primary-dark);
-    }
-
-    .btn-small {
-      padding: 0.4rem 0.9rem;
-      font-size: 0.8rem;
-    }
-
-    main {
-      padding: 2.25rem 0 2.5rem;
-    }
-
-    .page-heading {
-      margin-bottom: 1.8rem;
-    }
-
-    .page-kicker {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--primary-dark);
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-    }
-
-    .page-title {
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.4rem;
-    }
-
-    .page-description {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      max-width: 44rem;
-    }
-
-    .tools-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    @media (min-width: 980px) {
-      .tools-grid {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        align-items: flex-start;
-      }
-    }
-
-    .tool-card {
-      background: var(--bg-alt);
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      box-shadow: 0 16px 32px rgba(148, 163, 184, 0.18);
-      padding: 1.1rem 1.1rem 1.3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }
-
-    .tool-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 0.75rem;
-    }
-
-    .tool-title {
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .tool-tag {
-      font-size: 0.72rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      background: #e0f2fe;
-      color: #0369a1;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .tool-summary {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-    }
-
-    .tool-ui {
-      margin-top: 0.2rem;
-      padding: 0.75rem 0.8rem;
-      border-radius: 14px;
-      background: #f9fafb;
-      border: 1px dashed #d1d5db;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      font-size: 0.86rem;
-    }
-
-    .field-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      align-items: center;
-    }
-
-    .field-row label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #374151;
-      margin-right: 0.45rem;
-    }
-
-    input[type="file"],
-    input[type="text"],
-    input[type="number"],
-    select,
-    textarea {
-      font: inherit;
-      font-size: 0.84rem;
-      padding: 0.4rem 0.55rem;
-      border-radius: 8px;
-      border: 1px solid #d1d5db;
-      background: #ffffff;
-      min-width: 0;
-    }
-
-    input[type="file"] {
-      padding: 0.3rem;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    input[type="text"]:focus,
-    input[type="number"]:focus,
-    select:focus,
-    textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
-    }
-
-    .tool-status {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      min-height: 1.1rem;
-    }
-
-    .tool-status.success {
-      color: #15803d;
-    }
-
-    .tool-status.error {
-      color: #b91c1c;
-    }
-
-    .note-text {
-      font-size: 0.76rem;
-      color: #6b7280;
-    }
-
-    .article {
-      font-size: 0.86rem;
-      color: #4b5563;
-      margin-top: 0.25rem;
-      border-top: 1px solid #e5e7eb;
-      padding-top: 0.75rem;
-    }
-
-    .article h3 {
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-
-    .article h4 {
-      font-size: 0.86rem;
-      font-weight: 700;
-      margin-top: 0.55rem;
-      margin-bottom: 0.22rem;
-    }
-
-    .article p {
-      margin-bottom: 0.4rem;
-    }
-
-    .article ul {
-      padding-left: 1.1rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .article li {
-      margin-bottom: 0.25rem;
-    }
-
-    .analyzer-output {
-      width: 100%;
-      min-height: 120px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
-      font-size: 0.78rem;
-      padding: 0.4rem 0.55rem;
-      border-radius: 8px;
-      border: 1px solid #d1d5db;
-      background: #f9fafb;
-      resize: vertical;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      background: #020617;
-      color: #9ca3af;
-      padding: 1.4rem 0;
-      font-size: 0.78rem;
-      margin-top: 2rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
-      gap: 1.4rem;
-    }
-
-    @media (max-width: 860px) {
-      .nav-links {
-        display: none;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .footer-links a {
-      color: #e5e7eb;
-    }
-
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
-  
-
-/* --- Internal linking blocks (SEO + UX) --- */
-.related-links { margin: 34px 0 0; }
-.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
-.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
-.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
-.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
-  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
-  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
-}
-.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
-.link-title { font-weight: 800; margin: 0 0 6px; }
-.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
-
-
-/* --- Shared toolbar styling (match homepage) --- */
-header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
-header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
-header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
-header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
-header#top .brand-text span { display: block; }
-header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
-header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
-
-header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
-header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
-header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
-header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
-header#top .btn:hover { transform: translateY(-1px); }
-
-header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
-header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
-header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
-header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
-header#top .nav-mobile.open { display: flex; }
-
-/* Responsive toolbar */
-@media (max-width: 980px) {
-  header#top .nav-cta { display: none; }
-  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
-  header#top .nav { position: relative; }
-}
-
-
-/* --- Internal linking blocks (SEO + UX) --- */
-.related-links { margin: 34px 0 0; }
-.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
-.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
-.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
-.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
-  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
-  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
-}
-.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
-.link-title { font-weight: 800; margin: 0 0 6px; }
-.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
-</style>
-<!-- pdf-lib & JSZip from CDN -->
-
-
-<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="Office Tools – DOCX to PDF, Text Cleaner, Metadata Remover | Compress It Small" property="og:title"/><meta content="Browser-based office tools to convert DOCX to PDF, clean text, remove DOCX metadata, and analyse DOCX/PPTX/XLSX file size structure. All processing happens locally using JavaScript and ZIP parsing." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/office/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Office Tools – DOCX to PDF, Text Cleaner, Metadata Remover | Compress It Small" name="twitter:title"/><meta content="Browser-based office tools to convert DOCX to PDF, clean text, remove DOCX metadata, and analyse DOCX/PPTX/XLSX file size structure. All processing happens locally using JavaScript and ZIP parsing." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
-<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<meta content="website" property="og:type"/>
+<meta content="Compress It Small" property="og:site_name"/>
+<meta content="Office Tools – DOCX to PDF, Text Cleaner, Metadata Remover | Compress It Small" property="og:title"/>
+<meta content="Browser-based office tools to convert DOCX to PDF, clean text, remove DOCX metadata, and analyse DOCX/PPTX/XLSX file size structure. All processing happens locally." property="og:description"/>
+<meta content="https://compressitsmall.co.uk/tools/office/" property="og:url"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Office Tools – DOCX to PDF, Text Cleaner, Metadata Remover | Compress It Small" name="twitter:title"/>
+<meta content="Browser-based office tools to convert DOCX to PDF, clean text, remove DOCX metadata, and analyse DOCX/PPTX/XLSX file size structure. All processing happens locally." name="twitter:description"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/>
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<meta name="google-adsense-account" content="ca-pub-1910641763417240">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+<!-- InMobi CMP TCF 2.2 -->
 <script async="true" type="text/javascript">
-(function() {
-var host = window.location.hostname;
-var element = document.createElement('script');
-var firstScript = document.getElementsByTagName('script')[0];
-var url = 'https://cmp.inmobi.com'
-.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
-var uspTries = 0;
-var uspTriesLimit = 3;
-element.async = true;
-element.type = 'text/javascript';
-element.src = url;
-
-firstScript.parentNode.insertBefore(element, firstScript);
-
-function makeStub() {
-var TCF_LOCATOR_NAME = '__tcfapiLocator';
-var queue = [];
-var win = window;
-var cmpFrame;
-
-function addFrame() {
-var doc = win.document;
-var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
-
-if (!otherCMP) {
-if (doc.body) {
-var iframe = doc.createElement('iframe');
-
-iframe.style.cssText = 'display:none';
-iframe.name = TCF_LOCATOR_NAME;
-doc.body.appendChild(iframe);
-} else {
-setTimeout(addFrame, 5);
-}
-}
-return !otherCMP;
-}
-
-function tcfAPIHandler() {
-var gdprApplies;
-var args = arguments;
-
-if (!args.length) {
-return queue;
-} else if (args[0] === 'setGdprApplies') {
-if (
-args.length > 3 &&
-args[2] === 2 &&
-typeof args[3] === 'boolean'
-) {
-gdprApplies = args[3];
-if (typeof args[2] === 'function') {
-args[2]('set', true);
-}
-}
-} else if (args[0] === 'ping') {
-var retr = {
-gdprApplies: gdprApplies,
-cmpLoaded: false,
-cmpStatus: 'stub'
-};
-
-if (typeof args[2] === 'function') {
-args[2](retr);
-}
-} else {
-if(args[0] === 'init' && typeof args[3] === 'object') {
-args[3] = Object.assign(args[3], { tag_version: 'V3' });
-}
-queue.push(args);
-}
-}
-
-function postMessageEventHandler(event) {
-var msgIsString = typeof event.data === 'string';
-var json = {};
-
-try {
-if (msgIsString) {
-json = JSON.parse(event.data);
-} else {
-json = event.data;
-}
-} catch (ignore) {}
-
-var payload = json.__tcfapiCall;
-
-if (payload) {
-window.__tcfapi(
-payload.command,
-payload.version,
-function(retValue, success) {
-var returnMsg = {
-  __tcfapiReturn: {
-    returnValue: retValue,
-    success: success,
-    callId: payload.callId
-  }
-};
-if (msgIsString) {
-  returnMsg = JSON.stringify(returnMsg);
-}
-if (event && event.source && event.source.postMessage) {
-  event.source.postMessage(returnMsg, '*');
-}
-},
-payload.parameter
-);
-}
-}
-
-while (win) {
-try {
-if (win.frames[TCF_LOCATOR_NAME]) {
-cmpFrame = win;
-break;
-}
-} catch (ignore) {}
-
-if (win === window.top) {
-break;
-}
-win = win.parent;
-}
-if (!cmpFrame) {
-addFrame();
-win.__tcfapi = tcfAPIHandler;
-win.addEventListener('message', postMessageEventHandler, false);
-}
-};
-
-makeStub();
-
-function makeGppStub() {
-const CMP_ID = 10;
-const SUPPORTED_APIS = [
-'2:tcfeuv2',
-'6:uspv1',
-'7:usnatv1',
-'8:usca',
-'9:usvav1',
-'10:uscov1',
-'11:usutv1',
-'12:usctv1'
-];
-
-window.__gpp_addFrame = function (n) {
-if (!window.frames[n]) {
-if (document.body) {
-var i = document.createElement("iframe");
-i.style.cssText = "display:none";
-i.name = n;
-document.body.appendChild(i);
-} else {
-window.setTimeout(window.__gpp_addFrame, 10, n);
-}
-}
-};
-window.__gpp_stub = function () {
-var b = arguments;
-__gpp.queue = __gpp.queue || [];
-__gpp.events = __gpp.events || [];
-
-if (!b.length || (b.length == 1 && b[0] == "queue")) {
-return __gpp.queue;
-}
-
-if (b.length == 1 && b[0] == "events") {
-return __gpp.events;
-}
-
-var cmd = b[0];
-var clb = b.length > 1 ? b[1] : null;
-var par = b.length > 2 ? b[2] : null;
-if (cmd === "ping") {
-clb(
-{
-gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
-cmpStatus: "stub", // possible values: stub, loading, loaded, error
-cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
-signalStatus: "not ready", // possible values: not ready, ready
-supportedAPIs: SUPPORTED_APIS, // list of supported APIs
-cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
-sectionList: [],
-applicableSections: [-1],
-gppString: "",
-parsedSections: {},
-},
-true
-);
-} else if (cmd === "addEventListener") {
-if (!("lastId" in __gpp)) {
-__gpp.lastId = 0;
-}
-__gpp.lastId++;
-var lnr = __gpp.lastId;
-__gpp.events.push({
-id: lnr,
-callback: clb,
-parameter: par,
-});
-clb(
-{
-eventName: "listenerRegistered",
-listenerId: lnr, // Registered ID of the listener
-data: true, // positive signal
-pingData: {
-  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
-  cmpStatus: "stub", // possible values: stub, loading, loaded, error
-  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
-  signalStatus: "not ready", // possible values: not ready, ready
-  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
-  cmpId: CMP_ID, // list of supported APIs
-  sectionList: [],
-  applicableSections: [-1],
-  gppString: "",
-  parsedSections: {},
-},
-},
-true
-);
-} else if (cmd === "removeEventListener") {
-var success = false;
-for (var i = 0; i < __gpp.events.length; i++) {
-if (__gpp.events[i].id == par) {
-__gpp.events.splice(i, 1);
-success = true;
-break;
-}
-}
-clb(
-{
-eventName: "listenerRemoved",
-listenerId: par, // Registered ID of the listener
-data: success, // status info
-pingData: {
-  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
-  cmpStatus: "stub", // possible values: stub, loading, loaded, error
-  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
-  signalStatus: "not ready", // possible values: not ready, ready
-  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
-  cmpId: CMP_ID, // CMP ID
-  sectionList: [],
-  applicableSections: [-1],
-  gppString: "",
-  parsedSections: {},
-},
-},
-true
-);
-} else if (cmd === "hasSection") {
-clb(false, true);
-} else if (cmd === "getSection" || cmd === "getField") {
-clb(null, true);
-}
-//queue all other commands
-else {
-__gpp.queue.push([].slice.apply(b));
-}
-};
-window.__gpp_msghandler = function (event) {
-var msgIsString = typeof event.data === "string";
-try {
-var json = msgIsString ? JSON.parse(event.data) : event.data;
-} catch (e) {
-var json = null;
-}
-if (typeof json === "object" && json !== null && "__gppCall" in json) {
-var i = json.__gppCall;
-window.__gpp(
-i.command,
-function (retValue, success) {
-var returnMsg = {
-  __gppReturn: {
-    returnValue: retValue,
-    success: success,
-    callId: i.callId,
-  },
-};
-event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
-},
-"parameter" in i ? i.parameter : null,
-"version" in i ? i.version : "1.1"
-);
-}
-};
-if (!("__gpp" in window) || typeof window.__gpp !== "function") {
-window.__gpp = window.__gpp_stub;
-window.addEventListener("message", window.__gpp_msghandler, false);
-window.__gpp_addFrame("__gppLocator");
-}
-};
-
-makeGppStub();
-
-var uspStubFunction = function() {
-var arg = arguments;
-if (typeof window.__uspapi !== uspStubFunction) {
-setTimeout(function() {
-if (typeof window.__uspapi !== 'undefined') {
-window.__uspapi.apply(window.__uspapi, arg);
-}
-}, 500);
-}
-};
-
-var checkIfUspIsReady = function() {
-uspTries++;
-if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
-console.warn('USP is not accessible');
-} else {
-clearInterval(uspInterval);
-}
-};
-
-if (typeof window.__uspapi === 'undefined') {
-window.__uspapi = uspStubFunction;
-var uspInterval = setInterval(checkIfUspIsReady, 6000);
-}
-})();
+(function(){var host=window.location.hostname;var element=document.createElement('script');var firstScript=document.getElementsByTagName('script')[0];var url='https://cmp.inmobi.com'.concat('/choice/','Z-RnjsbyHH-9v','/',host,'/choice.js?tag_version=V3');var uspTries=0;var uspTriesLimit=3;element.async=true;element.type='text/javascript';element.src=url;firstScript.parentNode.insertBefore(element,firstScript);function makeStub(){var TCF_LOCATOR_NAME='__tcfapiLocator';var queue=[];var win=window;var cmpFrame;function addFrame(){var doc=win.document;var otherCMP=!!(win.frames[TCF_LOCATOR_NAME]);if(!otherCMP){if(doc.body){var iframe=doc.createElement('iframe');iframe.style.cssText='display:none';iframe.name=TCF_LOCATOR_NAME;doc.body.appendChild(iframe);}else{setTimeout(addFrame,5);}}return!otherCMP;}function tcfAPIHandler(){var gdprApplies;var args=arguments;if(!args.length){return queue;}else if(args[0]==='setGdprApplies'){if(args.length>3&&args[2]===2&&typeof args[3]==='boolean'){gdprApplies=args[3];if(typeof args[2]==='function'){args[2]('set',true);}}}else if(args[0]==='ping'){var retr={gdprApplies:gdprApplies,cmpLoaded:false,cmpStatus:'stub'};if(typeof args[2]==='function'){args[2](retr);}}else{if(args[0]==='init'&&typeof args[3]==='object'){args[3]=Object.assign(args[3],{tag_version:'V3'});}queue.push(args);}}function postMessageEventHandler(event){var msgIsString=typeof event.data==='string';var json={};try{if(msgIsString){json=JSON.parse(event.data);}else{json=event.data;}}catch(ignore){}var payload=json.__tcfapiCall;if(payload){window.__tcfapi(payload.command,payload.version,function(retValue,success){var returnMsg={__tcfapiReturn:{returnValue:retValue,success:success,callId:payload.callId}};if(msgIsString){returnMsg=JSON.stringify(returnMsg);}if(event&&event.source&&event.source.postMessage){event.source.postMessage(returnMsg,'*');}},payload.parameter);}}while(win){try{if(win.frames[TCF_LOCATOR_NAME]){cmpFrame=win;break;}}catch(ignore){}if(win===window.top){break;}win=win.parent;}if(!cmpFrame){addFrame();win.__tcfapi=tcfAPIHandler;win.addEventListener('message',postMessageEventHandler,false);}};makeStub();var uspStubFunction=function(){var arg=arguments;if(typeof window.__uspapi!==uspStubFunction){setTimeout(function(){if(typeof window.__uspapi!=='undefined'){window.__uspapi.apply(window.__uspapi,arg);}},500);}};var checkIfUspIsReady=function(){uspTries++;if(window.__uspapi===uspStubFunction&&uspTries<uspTriesLimit){console.warn('USP is not accessible');}else{clearInterval(uspInterval);}};if(typeof window.__uspapi==='undefined'){window.__uspapi=uspStubFunction;var uspInterval=setInterval(checkIfUspIsReady,6000);}})();
 </script>
-<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --accent: #22c55e;
+    --bg: #f4f5fb;
+    --bg-alt: #ffffff;
+    --text: #111827;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --radius-lg: 16px;
+    --radius-pill: 999px;
+    --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+    --max-width: 1120px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+  .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.25rem; }
 
-  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+  /* ── Shared toolbar header ── */
+  header#top { background: rgba(2,6,23,0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+  header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; position: relative; }
+  header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+  header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; font-size: 1.1rem; }
+  header#top .brand-text span { display: block; }
+  header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+  header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+  header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+  header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-weight: 700; font-size: 0.78rem; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease; white-space: nowrap; }
+  header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+  header#top .btn-primary { background: linear-gradient(135deg,#2563eb,#1d4ed8); color: #fff; box-shadow: 0 8px 18px rgba(37,99,235,0.25); }
+  header#top .btn:hover { transform: translateY(-1px); }
+  header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+  header#top .nav-mobile { display: none; position: absolute; right: 0; top: 68px; flex-direction: column; gap: 8px; min-width: 200px; background: rgba(2,6,23,0.96); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); z-index: 200; }
+  header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 9px 10px; border-radius: 10px; font-size: 0.9rem; }
+  header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+  header#top .nav-mobile.open { display: flex; }
+  @media (max-width: 980px) {
+    header#top .nav-cta { display: none; }
+    header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  }
+
+  /* ── Main layout ── */
+  main { padding: 2.25rem 0 2.5rem; }
+  .page-heading { margin-bottom: 1.8rem; }
+  .page-kicker { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--primary-dark); font-weight: 700; margin-bottom: 0.3rem; }
+  .page-title { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.4rem; }
+  .page-description { font-size: 0.95rem; color: var(--text-muted); max-width: 44rem; }
+
+  /* ── Quick links grid ── */
+  .quick-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 0.75rem; margin-bottom: 2rem; }
+  .quick-tool-link { display: flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1rem; background: #fff; border: 1px solid var(--border); border-radius: 14px; font-size: 0.85rem; font-weight: 600; color: var(--text); box-shadow: 0 4px 12px rgba(148,163,184,0.12); transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease; }
+  .quick-tool-link:hover { transform: translateY(-2px); border-color: var(--primary); box-shadow: 0 10px 24px rgba(37,99,235,0.12); }
+  .quick-tool-link .tool-icon { font-size: 1.2rem; }
+
+  /* ── Detail cards ── */
+  .tools-grid { display: grid; grid-template-columns: minmax(0,1fr); gap: 1.5rem; }
+  @media (min-width: 980px) { .tools-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: flex-start; } }
+  .tool-card { background: var(--bg-alt); border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 16px 32px rgba(148,163,184,0.18); padding: 1.2rem 1.2rem 1.4rem; display: flex; flex-direction: column; gap: 0.85rem; }
+  .tool-header { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; }
+  .tool-title { font-size: 1rem; font-weight: 700; }
+  .tool-tag { font-size: 0.72rem; padding: 0.2rem 0.55rem; border-radius: 999px; background: #e0f2fe; color: #0369a1; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+  .tool-summary { font-size: 0.86rem; color: var(--text-muted); margin-top: 0.25rem; }
+  .tool-cta { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg,#2563eb,#1d4ed8); color: #fff; padding: 8px 18px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease; box-shadow: 0 6px 16px rgba(37,99,235,0.25); align-self: flex-start; }
+  .tool-cta:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(37,99,235,0.35); }
+  .article { font-size: 0.86rem; color: #4b5563; border-top: 1px solid #e5e7eb; padding-top: 0.85rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .article h3 { font-size: 0.9rem; font-weight: 700; }
+  .article h4 { font-size: 0.86rem; font-weight: 700; margin-top: 0.4rem; }
+  .article p { line-height: 1.6; }
+  .article ul { padding-left: 1.1rem; }
+  .article li { margin-bottom: 0.25rem; }
+
+  /* ── Related links ── */
+  .related-links { margin: 2rem 0 0; }
+  .related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+  .related-links p { margin: 0 0 12px; color: var(--text-muted); }
+  .link-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 14px; margin-top: 14px; }
+  .link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border); background: var(--bg-alt); text-decoration: none; color: inherit; box-shadow: var(--shadow-soft); transition: transform .14s ease, border-color .14s ease; }
+  .link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); }
+  .link-title { font-weight: 800; margin: 0 0 6px; }
+  .link-desc { margin: 0; font-size: .9rem; color: var(--text-muted); }
+
+  /* ── Footer ── */
+  footer { border-top: 1px solid var(--border); background: #020617; color: #9ca3af; padding: 1.4rem 0; font-size: 0.78rem; margin-top: 2rem; }
+  .footer-grid { display: grid; grid-template-columns: minmax(0,2.2fr) minmax(0,2fr); gap: 1.4rem; }
+  @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 0.4rem; }
+  .footer-links a { color: #e5e7eb; }
+  .footer-links a:hover { text-decoration: underline; }
+
+  /* ── Cookie banner ── */
+  .cis-cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(2,6,23,0.96); border-top: 1px solid #1f2937; z-index: 99999; padding: 14px 20px; box-sizing: border-box; }
+  .cis-cookie-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .cis-cookie-title { font-weight: 600; color: #f9fafb; font-size: 0.92rem; margin-bottom: 2px; }
+  .cis-cookie-text { color: #9ca3af; font-size: 0.82rem; max-width: 560px; }
+  .cis-cookie-text a { color: #60a5fa; text-decoration: underline; }
+  .cis-cookie-actions { display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap; }
+  .cis-btn { padding: 8px 16px; border-radius: 6px; font-size: 0.82rem; font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: opacity .15s; }
+  .cis-btn-decline { background: transparent; border-color: #374151; color: #e5e7eb; }
+  .cis-btn-prefs { background: rgba(99,102,241,0.12); border-color: #1f2937; color: #bfdbfe; }
+  .cis-btn-accept { background: #2563eb; color: #fff; border-color: #2563eb; }
+  .cis-btn:hover { opacity: 0.85; }
+  @media (max-width: 600px) { .cis-cookie-inner { flex-direction: column; align-items: flex-start; } .cis-cookie-actions { width: 100%; justify-content: flex-end; } }
+</style>
 </head>
 <body>
+
 <header id="top">
-<div class="container">
-<nav aria-label="Main navigation" class="nav">
-<a class="brand" href="/">
-<div class="brand-icon">C</div>
-<div class="brand-text">
-<span>Compress It Small</span>
-<span>Smart online compression hub</span>
-</div>
-</a>
-<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
-<div class="nav-links" style="display:none;"></div>
-<!-- Modern toolbar-style CTA with icons -->
-<div class="nav-cta">
-<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>🏠</span><span>Home</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>📄</span><span>PDF Tools</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>🖼️</span><span>Image Tools</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>📂</span><span>Office Tools</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>🎯</span><span>Upload Limit Checker</span>
-</button>
-<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>📰</span><span>Blog</span>
-</button>
-</div>
-<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
-<span></span>
-<span></span>
-<span></span>
-</button>
-</nav>
-<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
-<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
-<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
-<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
-<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
-<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
-<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
-</div>
-</div>
+  <div class="container">
+    <nav aria-label="Main navigation" class="nav">
+      <a class="brand" href="/">
+        <div class="brand-icon">C</div>
+        <div class="brand-text">
+          <span>Compress It Small</span>
+          <span>Smart online compression hub</span>
+        </div>
+      </a>
+      <div class="nav-cta">
+        <button class="btn btn-ghost" onclick="location.href='/'"><span>🏠</span><span>Home</span></button>
+        <button class="btn btn-ghost" onclick="location.href='/tools/pdf/'"><span>📄</span><span>PDF Tools</span></button>
+        <button class="btn btn-ghost" onclick="location.href='/tools/image/'"><span>🖼️</span><span>Image Tools</span></button>
+        <button class="btn btn-ghost" onclick="location.href='/tools/office/'"><span>📂</span><span>Office Tools</span></button>
+        <button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'"><span>🎯</span><span>Upload Limit Checker</span></button>
+        <button class="btn btn-primary" onclick="location.href='/blog/'"><span>📰</span><span>Blog</span></button>
+      </div>
+      <button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+        <span style="display:block;width:22px;height:2px;background:#e5e7eb;border-radius:999px;margin:4px 0;"></span>
+        <span style="display:block;width:22px;height:2px;background:#e5e7eb;border-radius:999px;margin:4px 0;"></span>
+        <span style="display:block;width:22px;height:2px;background:#e5e7eb;border-radius:999px;margin:4px 0;"></span>
+      </button>
+    </nav>
+    <div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+      <a href="/" onclick="toggleMobileNav(false)">Home</a>
+      <a href="/tools/pdf/" onclick="toggleMobileNav(false)">PDF Tools</a>
+      <a href="/tools/image/" onclick="toggleMobileNav(false)">Image Tools</a>
+      <a href="/tools/office/" onclick="toggleMobileNav(false)">Office Tools</a>
+      <a href="/tools/upload-limit-checker/" onclick="toggleMobileNav(false)">Upload Limit Checker</a>
+      <a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+    </div>
+  </div>
 </header>
+
 <main>
-<div class="container">
-<section class="page-heading">
-<div class="page-kicker">Office toolkit</div>
-<h1 class="page-title">Convert DOCX to PDF, clean text &amp; scrub metadata in your browser</h1>
-<p class="page-description">
-        These tools help you prepare office documents for upload: a lightweight DOCX to PDF
-        converter that focuses on text, a cleaner for messy pasted content, a DOCX metadata
-        scrubber for privacy, and a structural size analyser for DOCX, PPTX and XLSX files.
-        Everything runs locally in your browser.
+  <div class="container">
+
+    <section class="page-heading">
+      <div class="page-kicker">Office toolkit</div>
+      <h1 class="page-title">Office file tools — convert, clean, reformat and analyse</h1>
+      <p class="page-description">
+        Browser-based tools to convert DOCX to PDF, format JSON, convert between CSV and Excel,
+        clean text, scrub DOCX metadata, and inspect what's making your office files large.
+        Everything runs locally — your files never leave your device.
       </p>
-</section>
-<section class="tools-grid">
-<!-- TOOL 1: DOCX → PDF (TEXT ONLY) -->
-<article class="tool-card" id="tool-docx-pdf">
-<header class="tool-header">
-<div>
-<h2 class="tool-title">DOCX to PDF (text-based conversion)</h2>
-<p class="tool-summary">
-              Extracts raw text from a DOCX file and places it into a PDF page for simple
-              submissions. Designed for straightforward documents such as cover letters,
-              short reports and basic forms.
-            </p>
-</div>
-<span class="tool-tag">DOCX → PDF</span>
-</header>
+    </section>
 
-<div class="article">
-<h3>How this DOCX to PDF converter works behind the scenes</h3>
-<p>
-            A DOCX file is effectively a compressed folder that contains a collection of
-            XML documents describing the structure and styling of your text. The main body
-            lives in <code>word/document.xml</code>. Instead of attempting to reproduce
-            every formatting nuance, this converter reads that XML, strips the markup and
-            reconstructs a clean, linear text representation. That text is then placed into
-            a PDF page using <code>pdf-lib</code>, with simple line wrapping so the
-            content remains readable.
-          </p>
-<p>
-            The workflow happens entirely in the browser. When you choose a DOCX file,
-            JavaScript reads it as an <code>ArrayBuffer</code> and hands it over to JSZip,
-            which opens the ZIP container in memory. The script locates
-            <code>word/document.xml</code>, decodes it as a UTF-8 string and applies
-            straightforward pattern replacements: paragraph tags become newlines, run tags
-            are discarded, and the textual content between them is retained. This
-            distilled text becomes the input for the PDF stage.
-          </p>
-<h4>What this converter is and what it is not</h4>
-<p>
-            The tool is designed for situations where you quickly need a PDF that contains
-            the words of your document and you are not concerned about exact visual
-            fidelity. Think short cover letters, simple legal notices or administrative
-            forms where the main requirement is “PDF only” rather than “keep the original
-            page layout exactly”. For those use cases, replicating the typographic grid of
-            the original DOCX is less critical than speed, privacy and ease of use.
-          </p>
-<p>
-            It does not attempt to reproduce complex features such as multi-column layouts,
-            embedded tables, equations or floating images. Those elements either appear as
-            part of the linear text or are omitted if they are encoded in ways the text
-            extractor ignores. If you rely on precise formatting for invoices, slide decks
-            or designed brochures, you should export from a full word processor that knows
-            the entire styling model.
-          </p>
-<h4>Benefits of a pure browser-based approach</h4>
-<p>
-            Because no server is involved, you retain full control over your files.
-            Confidential drafts do not leave your machine; the browser simply opens the
-            DOCX container, reads the XML and composes a PDF in memory. When the process
-            finishes, the resulting file is downloaded directly to your device. This is
-            useful in environments where external uploads are restricted or where you want
-            to avoid leaving traces of sensitive documents on third-party services.
-          </p>
-<p>
-            Light weight is another advantage. The converter uses just JSZip and pdf-lib,
-            both loaded from CDNs, which keeps page size reasonable compared to more
-            ambitious solutions that emulate a full word processor in JavaScript. This
-            aligns better with performance expectations on mobile devices and
-            low-bandwidth connections.
-          </p>
-<h4>How the PDF layout is created</h4>
-<p>
-            Once the raw text is available, the tool constructs a single PDF page with a
-            standard A4-like size. It then performs basic line wrapping in JavaScript,
-            splitting the text into lines of roughly fixed character count and inserting
-            manual line breaks where necessary. Every line is positioned using coordinates
-            measured from the top margin, stepping downward by a constant line height. If
-            the text grows beyond the bottom of the page, additional pages are created and
-            the process continues.
-          </p>
-<p>
-            This approach does not match the exact wrapping decisions of your original
-            word processor, but it ensures a stable and legible result that can be opened
-            in any PDF viewer. For most short documents, the difference between layouts is
-            acceptable, and in return you gain a fast, install-free conversion path.
-          </p>
-<h4>Practical tips for use</h4>
-<p>
-            If you know in advance that a document will go through this converter, keep
-            the structure simple: paragraphs, headings and basic lists. Avoid complex
-            multi-column arrangements and heavy graphical elements. After downloading the
-            PDF, open it in your usual viewer and scan through the pages. If critical
-            information is missing or a particular layout detail is required, fall back to
-            a desktop export for that specific document.
-          </p>
-</div>
-</article>
-<!-- TOOL 2: TEXT CLEANER -->
-<article class="tool-card" id="tool-text-cleaner">
-<header class="tool-header">
-<div>
-<h2 class="tool-title">Text cleaner for office content</h2>
-<p class="tool-summary">
-              Paste text from DOCX or PDF, remove broken line breaks, normalise spacing,
-              and straighten punctuation before reusing the cleaned text in forms, email
-              or new documents.
-            </p>
-</div>
-<span class="tool-tag">Text clean</span>
-</header>
+    <!-- ── Quick access tool links ── -->
+    <section style="margin-bottom:2.5rem;">
+      <p class="page-kicker" style="margin-bottom:0.75rem;">Jump to a tool</p>
+      <div class="quick-tools">
 
-<div class="article">
-<h3>Why pasted office text often looks broken</h3>
-<p>
-            Copying and pasting text from DOCX files, PDFs or email clients often drags
-            along invisible formatting. Hard line breaks may appear in the middle of
-            sentences, multiple spaces accumulate at word boundaries, and typographic
-            quotation marks become inconsistent. When that text is reused in forms or new
-            documents, the result can look unprofessional and harder to read than the
-            original.
-          </p>
-<p>
-            The root cause is that many applications treat visual layout and logical text
-            structure as separate concerns. A PDF might insert a line break at the end of
-            every visual line, even if the sentence continues on the next one. A DOCX file
-            may carry styles and control codes that are meaningful inside the word
-            processor but turn into stray spaces and symbols when pasted elsewhere. The
-            cleaner addresses this by applying a set of predictable transformations that
-            make the text behave like paragraphs again.
-          </p>
-<h4>How the cleaner operates on your text</h4>
-<p>
-            When you click “Clean text”, the script takes the content of the input box and
-            processes it step by step. If line trimming is enabled, it removes leading and
-            trailing whitespace from each line. The line-joining option then examines
-            break patterns and decides when to merge neighbouring lines with a space so
-            paragraphs become continuous sequences of words instead of jagged fragments.
-            Empty lines are preserved to indicate paragraph boundaries.
-          </p>
-<p>
-            The cleaner also collapses repeated spaces into a single one. This helps when
-            text has been justified using non-breaking space tricks or when copying from
-            terminal windows and draft layouts. Straightening quotes replaces curly
-            quotation marks and mixed apostrophe styles with plain ASCII quotes, which
-            simplifies further processing in environments that do not handle typographic
-            characters consistently.
-          </p>
-<h4>Balancing automation and control</h4>
-<p>
-            Not every document benefits from the same level of clean-up. Poetry, code
-            snippets and carefully aligned tabular text rely on exact line breaks and
-            spacing, so joining lines indiscriminately would damage meaning. For that
-            reason, each transformation is exposed as a separate checkbox. You can enable
-            only the operations that make sense for your content, preview the result in the
-            output area, and tweak settings as needed.
-          </p>
-<p>
-            A practical habit is to keep the original pasted text untouched in the input
-            area and experiment with different combinations of options. Once the output
-            looks right, use that cleaned version for submission or further editing. If you
-            discover a problem later, you can always go back to the original and run the
-            cleaner again with different switches.
-          </p>
-<h4>Using the downloaded .txt file</h4>
-<p>
-            The “Download .txt” button produces a plain text file encoded in UTF-8. You
-            can attach this file to emails, open it in any text editor, or import it into
-            another application that accepts text uploads. Because it carries no hidden
-            formatting, the risk of layout surprises is much lower than when pasting from
-            rich text sources directly.
-          </p>
-<p>
-            This kind of neutral representation is also useful when preparing content for
-            systems that have strict size limits or character-count constraints. Surplus
-            control characters and redundant spaces are removed, leaving only the parts
-            that actually contribute to the message.
-          </p>
-</div>
-</article>
-<!-- TOOL 3: DOCX METADATA REMOVER -->
-<article class="tool-card" id="tool-docx-meta">
-<header class="tool-header">
-<div>
-<h2 class="tool-title">DOCX metadata remover (privacy cleaner)</h2>
-<p class="tool-summary">
+        <a class="quick-tool-link" href="/tools/office/text-to-docx/">
+          <span class="tool-icon">📝</span> Text to DOCX
+        </a>
+        <a class="quick-tool-link" href="/tools/office/text-to-pdf/">
+          <span class="tool-icon">📄</span> Text to PDF
+        </a>
+        <a class="quick-tool-link" href="/tools/office/json-formatter/">
+          <span class="tool-icon">🔧</span> JSON Formatter
+        </a>
+        <a class="quick-tool-link" href="/tools/office/json-to-csv/">
+          <span class="tool-icon">📊</span> JSON to CSV
+        </a>
+        <a class="quick-tool-link" href="/tools/office/csv-to-json/">
+          <span class="tool-icon">🔄</span> CSV to JSON
+        </a>
+        <a class="quick-tool-link" href="/tools/office/csv-to-excel/">
+          <span class="tool-icon">📗</span> CSV to Excel
+        </a>
+        <a class="quick-tool-link" href="/tools/office/excel-to-csv/">
+          <span class="tool-icon">📋</span> Excel to CSV
+        </a>
+        <a class="quick-tool-link" href="#tool-docx-pdf">
+          <span class="tool-icon">🔒</span> DOCX Metadata Remover
+        </a>
+        <a class="quick-tool-link" href="#tool-office-analyzer">
+          <span class="tool-icon">🔍</span> File Size Analyser
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ── Detail cards ── -->
+    <section class="tools-grid">
+
+      <!-- CARD 1: DOCX → PDF -->
+      <article class="tool-card" id="tool-docx-pdf">
+        <header class="tool-header">
+          <div>
+            <h2 class="tool-title">DOCX to PDF (text-based conversion)</h2>
+            <p class="tool-summary">
+              Extracts raw text from a DOCX file and places it into a PDF for simple submissions —
+              cover letters, short reports and basic forms. No upload required.
+            </p>
+          </div>
+          <span class="tool-tag">DOCX → PDF</span>
+        </header>
+        <a class="tool-cta" href="/tools/office/text-to-docx/">Open tool →</a>
+        <div class="article">
+          <h3>How it works</h3>
+          <p>A DOCX file is a compressed ZIP containing XML. This converter reads <code>word/document.xml</code>, strips the markup, reconstructs clean text, and places it into a PDF using <code>pdf-lib</code> — entirely in your browser.</p>
+          <h4>Best for</h4>
+          <p>Quick PDF conversions where exact visual fidelity doesn't matter — administrative forms, cover letters, simple notices. For complex layouts with tables, columns or images, export from a full word processor instead.</p>
+          <h4>Privacy</h4>
+          <p>No server involved. Your file never leaves your device. The PDF is composed in browser memory and downloaded directly to your machine.</p>
+        </div>
+      </article>
+
+      <!-- CARD 2: Text to PDF -->
+      <article class="tool-card" id="tool-text-pdf">
+        <header class="tool-header">
+          <div>
+            <h2 class="tool-title">Text to PDF</h2>
+            <p class="tool-summary">
+              Paste or type plain text and download it instantly as a clean, portable PDF.
+              Useful for quick notes, short reports or any content you need in PDF format without a word processor.
+            </p>
+          </div>
+          <span class="tool-tag">Text → PDF</span>
+        </header>
+        <a class="tool-cta" href="/tools/office/text-to-pdf/">Open tool →</a>
+        <div class="article">
+          <h3>How it works</h3>
+          <p>Paste your text into the input area, optionally add a title, and click to generate a PDF. The tool uses <code>pdf-lib</code> to build the file entirely in your browser — no upload, no account.</p>
+          <h4>Difference from DOCX to PDF</h4>
+          <p>This tool starts from plain text you type or paste directly. Use it when you don't have a DOCX file but need a quick, clean PDF — meeting notes, drafted emails, copied web content.</p>
+        </div>
+      </article>
+
+      <!-- CARD 3: JSON Formatter -->
+      <article class="tool-card" id="tool-json-formatter">
+        <header class="tool-header">
+          <div>
+            <h2 class="tool-title">JSON Formatter</h2>
+            <p class="tool-summary">
+              Paste minified or messy JSON and get it back properly indented and readable.
+              Validates structure and highlights errors so you can fix them quickly.
+            </p>
+          </div>
+          <span class="tool-tag">JSON</span>
+        </header>
+        <a class="tool-cta" href="/tools/office/json-formatter/">Open tool →</a>
+        <div class="article">
+          <h3>How it works</h3>
+          <p>Paste your JSON into the input area and the formatter parses it with the browser's native <code>JSON.parse()</code>. If the structure is valid, it outputs a cleanly indented version. If there's an error, it tells you where the problem is.</p>
+          <h4>When to use it</h4>
+          <p>Useful for inspecting API responses, debugging configuration files, or cleaning up exported data before sharing or importing it into another system.</p>
+        </div>
+      </article>
+
+      <!-- CARD 4: JSON to CSV -->
+      <article class="tool-card" id="tool-json-to-csv">
+        <header class="tool-header">
+          <div>
+            <h2 class="tool-title">JSON to CSV</h2>
+            <p class="tool-summary">
+              Convert a JSON array of objects into a CSV file ready for Excel, Google Sheets or
+              database imports. Keys become column headers automatically.
+            </p>
+          </div>
+          <span class="tool-tag">JSON → CSV</span>
+        </header>
+        <a class="tool-cta" href="/tools/office/json-to-csv/">Open tool →</a>
+        <div class="article">
+          <h3>How it works</h3>
+          <p>Paste a JSON array (e.g. from an API response or database export). The tool reads the keys from the first object to generate column headers, then maps every row into comma-separated values. Nested objects are flattened with dot notation.</p>
+          <h4>Best for</h4>
+          <p>Turning API responses, MongoDB exports and NoSQL data into spreadsheet-ready format. Supports semicolon delimiter for European CSV formatting.</p>
+        </div>
+      </article>
+
+      <!-- CARD 5: CSV to JSON -->
+      <article class="tool-card" id="tool-csv-to-json">
+        <header class="tool-header">
+          <div>
+            <h2 class="tool-title">CSV to JSON</h2>
+            <p class="tool-summary">
+              Convert a CSV file or pasted CSV text into a JSON array of objects.
+              Each row becomes an object with column header keys.
+            </p>
+          </div>
+          <span class="tool-tag">CSV → JSON</span>
+        </header>
+        <a class="tool-cta" href="/tools/office/csv-to-json/">Open tool →</a>
+        <div class="article">
+          <h3>How it works</h3>
+          <p>Upload a <code>.csv</code> file or paste CSV text. The first row is treated as headers. Each subsequent row becomes a JSON object with those headers as keys. The output is a valid JSON array ready to copy or download.</p>
+          <h4>Best for</h4>
+          <p>Preparing spreadsheet data for import into web apps, APIs or databases that expect JSON format. Processing happens locally — no upload to any server.</p>
+        </div>
+      </article>
+
+      <!-- CARD 6: CSV to Excel -->
+      <article class="tool-card" id="tool-csv-to-excel">
+        <header class="tool-header">
+          <div>
+            <h2 class="tool-title">CSV to Excel</h2>
+            <p class="tool-summary">
+              Convert a CSV file into a proper <code>.xlsx</code> Excel workbook directly in your browser.
+              Useful when a system exports CSV but your recipients expect Excel.
+            </p>
+          </div>
+          <span class="tool-tag">CSV → XLSX</span>
+        </header>
+        <a class="tool-cta" href="/tools/office/csv-to-excel/">Open tool →</a>
+        <div class="article">
+          <h3>How it works</h3>
+          <p>Upload your CSV file and the tool converts it to an <code>.xlsx</code> workbook using SheetJS, running entirely in the browser. The result opens natively in Excel, LibreOffice or Google Sheets.</p>
+          <h4>Best for</h4>
+          <p>When a CRM, analytics tool or data pipeline exports CSV and you need to share the file with colleagues who work in Excel and expect a proper workbook format.</p>
+        </div>
+      </article>
+
+      <!-- CARD 7: Excel to CSV -->
+      <article class="tool-card" id="tool-excel-to-csv">
+        <header class="tool-header">
+          <div>
+            <h2 class="tool-title">Excel to CSV</h2>
+            <p class="tool-summary">
+              Extract the active sheet from an Excel workbook as a plain CSV file.
+              Ideal for feeding spreadsheet data into systems that only accept CSV.
+            </p>
+          </div>
+          <span class="tool-tag">XLSX → CSV</span>
+        </header>
+        <a class="tool-cta" href="/tools/office/excel-to-csv/">Open tool →</a>
+        <div class="article">
+          <h3>How it works</h3>
+          <p>Upload an <code>.xlsx</code> or <code>.xls</code> file. SheetJS reads the first sheet and exports it as a comma-separated text file. Processing is entirely local — your spreadsheet data doesn't leave your device.</p>
+          <h4>Best for</h4>
+          <p>Preparing Excel data for import into databases, CRMs, email marketing tools, or any system with a CSV import option. Also useful for stripping Excel formatting and getting raw data values.</p>
+        </div>
+      </article>
+
+      <!-- CARD 8: Text Cleaner -->
+      <article class="tool-card" id="tool-text-cleaner">
+        <header class="tool-header">
+          <div>
+            <h2 class="tool-title">Text cleaner for office content</h2>
+            <p class="tool-summary">
+              Paste text from DOCX or PDF, remove broken line breaks, normalise spacing, and
+              straighten punctuation before reusing the content in forms, email or new documents.
+            </p>
+          </div>
+          <span class="tool-tag">Text clean</span>
+        </header>
+        <a class="tool-cta" href="/tools/office/text-to-docx/">Open tool →</a>
+        <div class="article">
+          <h3>Why pasted office text looks broken</h3>
+          <p>Copying from PDFs and DOCX files drags along invisible formatting — hard line breaks mid-sentence, multiple spaces, inconsistent quotation marks. The cleaner applies predictable transformations to fix this.</p>
+          <h4>What it does</h4>
+          <ul>
+            <li>Removes leading/trailing whitespace per line.</li>
+            <li>Joins broken lines back into paragraphs.</li>
+            <li>Collapses repeated spaces to single spaces.</li>
+            <li>Optionally straightens curly quotes to plain ASCII.</li>
+          </ul>
+          <p>Each option is a separate checkbox so you only apply what your content needs. Preview the output before downloading.</p>
+        </div>
+      </article>
+
+      <!-- CARD 9: DOCX Metadata Remover -->
+      <article class="tool-card" id="tool-docx-meta">
+        <header class="tool-header">
+          <div>
+            <h2 class="tool-title">DOCX metadata remover (privacy cleaner)</h2>
+            <p class="tool-summary">
               Scrubs author names, revision timestamps and related fields from DOCX files
-              by rewriting metadata XML inside the document package, all in your browser.
+              by rewriting metadata XML inside the document package — all in your browser.
             </p>
-</div>
-<span class="tool-tag">Privacy</span>
-</header>
+          </div>
+          <span class="tool-tag">Privacy</span>
+        </header>
+        <a class="tool-cta" href="/tools/office/text-to-docx/">Open tool →</a>
+        <div class="article">
+          <h3>Why DOCX metadata matters</h3>
+          <p>Word files often embed the original author's name, organisation, creation timestamps, revision counts and editing duration. When shared externally, this metadata can reveal information you didn't intend to disclose.</p>
+          <h4>What it removes</h4>
+          <ul>
+            <li>Author and "last modified by" names from <code>docProps/core.xml</code>.</li>
+            <li>Creation and modification timestamps.</li>
+            <li>Revision counts and editing duration where present.</li>
+          </ul>
+          <h4>Limits</h4>
+          <p>This tool clears DOCX package metadata only — it doesn't scan the body text for names or email addresses written in the document itself. For full anonymisation, review the body text too.</p>
+        </div>
+      </article>
 
-<div class="article">
-<h3>Why DOCX metadata matters for privacy</h3>
-<p>
-            Word processing files often carry more information than the visible text. They
-            may embed the full name of the original author, the organisation name,
-            creation and modification timestamps, template references and revision
-            identifiers. When you share documents externally, this metadata can reveal
-            details about your system, workflow or identity that you did not intend to
-            disclose.
-          </p>
-<p>
-            DOCX uses the Open Packaging Convention, where metadata lives in separate XML
-            parts under the <code>docProps</code> folder: <code>core.xml</code> stores
-            fields such as <code>dc:creator</code>, <code>dcterms:created</code> and
-            <code>dcterms:modified</code>, while <code>app.xml</code> records items like
-            total editing time, number of pages and application name. Removing or
-            neutralising these fields before sharing reduces the amount of context exposed
-            to recipients.
-          </p>
-<h4>How this cleaner modifies metadata</h4>
-<p>
-            When you select a DOCX file, the script opens it as a ZIP archive using JSZip.
-            It looks for the metadata parts under <code>docProps/core.xml</code> and
-            <code>docProps/app.xml</code>. If they exist, the XML content is loaded as
-            text. Instead of parsing the full document model, the cleaner applies targeted
-            replacements: it removes the content between tags such as
-            <code>&lt;dc:creator&gt;…&lt;/dc:creator&gt;</code> and
-            <code>&lt;cp:lastModifiedBy&gt;…&lt;/cp:lastModifiedBy&gt;</code>, either
-            leaving empty tags or collapsing them entirely.
-          </p>
-<p>
-            The updated XML is written back into the ZIP structure, and JSZip generates a
-            fresh DOCX package. From the perspective of Word or compatible editors, the
-            document still opens normally because the structural layout is intact; only
-            specific metadata values have been cleared. The resulting file is downloaded
-            automatically to your device under the chosen output name.
-          </p>
-<h4>What the cleaner targets by default</h4>
-<p>
-            The focus is on fields that commonly carry personal or system-specific
-            information:
-          </p>
-<ul>
-<li>Author and last modified by names.</li>
-<li>Creation and modification timestamps.</li>
-<li>Revision counts and editing duration where present.</li>
-</ul>
-<p>
-            Other structural properties, such as page count and word count, may remain
-            because they are often needed for document management and are less sensitive
-            than direct identity markers. If you require stronger anonymisation, it is
-            still wise to review the resulting file’s properties in Word or LibreOffice to
-            confirm that the cleaned document matches your policy.
-          </p>
-<h4>Limits and good practices</h4>
-<p>
-            This cleaner operates at the level of DOCX package metadata; it does not scan
-            the document body for names or email addresses written in the text. If the
-            body contains personal or organisational information, that content remains. For
-            full anonymisation, you should combine metadata scrubbing with careful reading
-            of the actual text to remove or redact identifiers where appropriate.
-          </p>
-<p>
-            From a workflow perspective, keep the original DOCX in a secure location and
-            treat the cleaned version as the copy intended for sharing. That way, internal
-            revision history and context remain available to your team if needed, while
-            external recipients only see the information you have explicitly decided to
-            expose.
-          </p>
-</div>
-</article>
-<!-- TOOL 4: OFFICE FILE SIZE ANALYSER -->
-<article class="tool-card" id="tool-office-analyzer">
-<header class="tool-header">
-<div>
-<h2 class="tool-title">Office file size analyser (DOCX/PPTX/XLSX)</h2>
-<p class="tool-summary">
-              Inspects the internal ZIP structure of DOCX, PPTX or XLSX files and highlights
-              which embedded parts consume the most space, such as images or media folders.
+      <!-- CARD 10: Office File Size Analyser -->
+      <article class="tool-card" id="tool-office-analyzer">
+        <header class="tool-header">
+          <div>
+            <h2 class="tool-title">Office file size analyser (DOCX / PPTX / XLSX)</h2>
+            <p class="tool-summary">
+              Inspects the internal ZIP structure of DOCX, PPTX or XLSX files and shows which
+              embedded parts consume the most space — images, media folders, unused layouts.
             </p>
-</div>
-<span class="tool-tag">Analyse</span>
-</header>
+          </div>
+          <span class="tool-tag">Analyse</span>
+        </header>
+        <a class="tool-cta" href="/tools/office/text-to-docx/">Open tool →</a>
+        <div class="article">
+          <h3>Why office files get unexpectedly large</h3>
+          <p>DOCX, PPTX and XLSX files are ZIP archives bundling XML with images, charts, embedded documents and style definitions. The culprit is usually not the text but high-resolution images, unused layouts or leftover media inside the package.</p>
+          <h4>How to read the output</h4>
+          <p>The report lists each internal file path with its uncompressed size in kilobytes, sorted largest first. Folders like <code>ppt/media</code> or <code>word/media</code> contain images. Items occupying hundreds of kilobytes are your primary optimisation targets.</p>
+          <h4>What to do next</h4>
+          <p>The analyser only reveals structure — it doesn't modify your file. Use the findings to guide clean-up: replace oversized images, delete unused slide masters, or strip embedded objects in Word or PowerPoint directly.</p>
+        </div>
+      </article>
 
-<div class="article">
-<h3>Understanding why some Office files become unexpectedly large</h3>
-<p>
-            DOCX, PPTX and XLSX files are ZIP archives that bundle XML markup with images,
-            charts, embedded documents and style definitions. When a slide deck or report
-            becomes much heavier than expected, the culprit is often not the text but a
-            collection of high-resolution images, unused layouts or leftover media that
-            remains inside the package. Without inspecting that structure, it is difficult
-            to know where to focus optimisation efforts.
-          </p>
-<p>
-            The size analyser reads the selected file as a binary buffer and passes it to
-            JSZip, which exposes each entry’s name and uncompressed size. The tool then
-            sorts these entries in descending order and prints a report highlighting the
-            largest components. Typical patterns include multiple copies of the same image,
-            audio or video files embedded in slides, and design resources that are never
-            visible in the final document.
-          </p>
-<h4>Interpreting the analysis output</h4>
-<p>
-            The report lists each internal file path with its uncompressed size in
-            kilobytes. Folders such as <code>word/media</code>, <code>ppt/media</code> or
-            <code>xl/media</code> usually contain images. If you see individual items
-            occupying hundreds or thousands of kilobytes, those assets are primary
-            candidates for optimisation via resizing or recompression in their native
-            format. Likewise, unusually large XML parts may indicate embedded objects or
-            very complex sheets.
-          </p>
-<p>
-            The tool does not modify the original document; it only reveals structure. You
-            can then open the file in Word, PowerPoint or Excel and deliberately replace
-            or remove the heavy components. For example, compressing pictures within
-            PowerPoint, replacing full-resolution photos with versions sized to the slide
-            dimensions, or deleting unused slide masters can substantially reduce the final
-            package size.
-          </p>
-<h4>Benefits of client-side inspection</h4>
-<p>
-            Running the analysis in your browser avoids uploading potentially sensitive
-            corporate or personal material to third-party servers. The script only sees
-            filenames and binary sizes; it does not attempt to interpret the semantic
-            content of the XML beyond what is necessary to list entries. This makes the
-            analyser suitable for initial triage in environments with strict data-handling
-            rules.
-          </p>
-<p>
-            It also provides faster feedback than repeatedly guessing and exporting. With a
-            single run you can identify the items most responsible for the file weight and
-            target those specifically, instead of randomly deleting slides or shrinking
-            text.
-          </p>
-<h4>Using the analysis as part of a clean-up workflow</h4>
-<p>
-            A practical workflow combines the analyser with the image tools elsewhere on
-            your site. After identifying large images inside a PPTX, export those graphics
-            to disk, resize or recompress them with suitable settings, and reinsert the
-            optimised versions into the presentation. Running the analyser again should
-            confirm the reduction in total package size.
-          </p>
-<p>
-            For spreadsheets, large size often stems from extensive formatting, embedded
-            charts or objects. The report may reveal specific sheets or drawings as the
-            drivers of complexity. Cleaning or simplifying those elements can make workbooks
-            easier to share with systems that impose upload limits.
-          </p>
-</div>
-</article>
-</section>
-</div>
+    </section>
+  </div>
 </main>
-<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/office/"><div class="link-title">Office Tools</div><p class="link-desc">Shrink Word/Excel/PowerPoint files (practical workflows).</p></a><a class="link-card" href="/tools/image/"><div class="link-title">Image Tools</div><p class="link-desc">Compress and resize JPG/PNG for web, forms and sharing.</p></a><a class="link-card" href="/blog/"><div class="link-title">Guides</div><p class="link-desc">Step-by-step compression guides for real upload limits.</p></a><div class="link-title">Compress PDF</div><p class="link-desc">Reduce PDF size for portals, email and uploads.</p><a class="link-card" href="/tools/pdf/merge-pdf/"><div class="link-title">Merge PDF</div><p class="link-desc">Combine multiple PDFs into one clean document.</p></a></div></div></section><footer>
-<div class="container footer-grid">
-<div>
-<div class="footer-links">
-<a href="/#top">Home</a>
-<a href="/#tools">Tools</a>
-<a href="/#guides">Guides</a>
-<a href="/#faq">FAQ</a>
-<a href="/#contact">Contact</a>
-<a href="/privacy-policy/">Privacy Policy</a>
-<a href="/terms/">Terms &amp; Conditions</a>
-<a href="/cookie-policy/">Cookie Policy</a>
-<a href="/disclaimer/">Disclaimer</a></div>
-<p class="footer-note">
-        © <span id="year"></span> Compress It Small. All rights reserved.
-      </p>
-</div>
-<div>
-<p>
-        This site focuses on educational content and practical utilities. Information is
-        provided for general guidance and may need to be adapted to your specific tools,
-        operating system or platform requirements. Always verify critical workflows
-        with the official instructions of the institution or service you are using.
-      </p>
-</div>
-</div>
+
+<!-- Related links -->
+<section class="related-links">
+  <div class="container">
+    <h2>Explore related tools and guides</h2>
+    <p>Use these links to complete your workflow — compress, convert, merge and split.</p>
+    <div class="link-grid">
+      <a class="link-card" href="/tools/pdf/">
+        <div class="link-title">Compress PDF</div>
+        <p class="link-desc">Reduce PDF size for portals, email and uploads.</p>
+      </a>
+      <a class="link-card" href="/tools/pdf/merge-pdf/">
+        <div class="link-title">Merge PDF</div>
+        <p class="link-desc">Combine multiple PDFs into one clean document.</p>
+      </a>
+      <a class="link-card" href="/tools/image/">
+        <div class="link-title">Image Tools</div>
+        <p class="link-desc">Compress and resize JPG/PNG for web, forms and sharing.</p>
+      </a>
+      <a class="link-card" href="/tools/upload-limit-checker/">
+        <div class="link-title">Upload Limit Checker</div>
+        <p class="link-desc">Check common file size limits for portals and emails.</p>
+      </a>
+      <a class="link-card" href="/blog/">
+        <div class="link-title">Guides</div>
+        <p class="link-desc">Step-by-step compression guides for real upload limits.</p>
+      </a>
+      <a class="link-card" href="/blog/how-to-compress-pdf/">
+        <div class="link-title">How to Compress a PDF</div>
+        <p class="link-desc">Practical workflow for hitting strict upload limits.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#tools">Tools</a>
+        <a href="/#guides">Guides</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/#contact">Contact</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms/">Terms &amp; Conditions</a>
+        <a href="/cookie-policy/">Cookie Policy</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </div>
+      <p style="margin-top:0.5rem;">© <span id="year"></span> Compress It Small. All rights reserved.</p>
+    </div>
+    <div>
+      <p>This site focuses on educational content and practical utilities. Information is provided for general guidance. Always verify critical workflows with the official instructions of the institution or service you are using.</p>
+    </div>
+  </div>
 </footer>
 
-<p style="font-size:0.9rem;color:#444;margin-top:1rem;">This page includes detailed SEO-friendly information explaining how this tool works, recommended settings, and optimization workflows for best results.</p><p style="font-size:0.9rem;color:#444;margin-top:1rem;">These tools are part of the wider Compress It Small hub, so you can jump back to the homepage at any time to discover image, office, and workflow guides that complement your PDF tasks.</p>
-<script>
-(function(){
-  // Footer year
-  var y = document.getElementById('year');
-  if (y) y.textContent = new Date().getFullYear();
-
-  // Mobile nav toggle (shared header)
-  if (typeof window.toggleMobileNav !== 'function') {
-    window.toggleMobileNav = function(force){
-      var panel = document.getElementById('nav-mobile');
-      var btn = document.getElementById('nav-toggle');
-      if (!panel || !btn) return;
-      var isOpen = panel.classList.contains('open');
-      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
-      panel.classList.toggle('open', shouldOpen);
-      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
-      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
-    };
-    document.addEventListener('click', function(e){
-      var panel = document.getElementById('nav-mobile');
-      var btn = document.getElementById('nav-toggle');
-      if (!panel || !btn) return;
-      if (!panel.classList.contains('open')) return;
-      if (panel.contains(e.target) || btn.contains(e.target)) return;
-      window.toggleMobileNav(false);
-    }, true);
-  }
-})();
-</script>
-
-<!-- Cookie Consent Banner -->
-<style>
-.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
-.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
-.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
-.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
-.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
-.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
-.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
-.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
-.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
-.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
-.cis-btn:hover{opacity:0.85;}
-@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
-</style>
+<!-- Cookie consent banner -->
 <div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
-<div class="cis-cookie-inner">
-<div>
-<div class="cis-cookie-title">Cookies &amp; privacy</div>
-<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+  <div class="cis-cookie-inner">
+    <div>
+      <div class="cis-cookie-title">Cookies &amp; privacy</div>
+      <div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+    </div>
+    <div class="cis-cookie-actions">
+      <button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+      <button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+      <button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+    </div>
+  </div>
 </div>
-<div class="cis-cookie-actions">
-<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
-<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
-<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
-</div>
-</div>
-</div>
-<script>
-(function(){
-  var KEY='cis_cookie_consent';
-  var banner=document.getElementById('cisCookieBanner');
-  if(!localStorage.getItem(KEY)){banner.style.display='block';}
-  document.getElementById('cisCookieAccept').addEventListener('click',function(){
-    localStorage.setItem(KEY,'accepted');
-    banner.style.display='none';
-  });
-  document.getElementById('cisCookieDecline').addEventListener('click',function(){
-    localStorage.setItem(KEY,'declined');
-    banner.style.display='none';
-  });
-})();
-</script>
+
 <script>
 (function(){
   // Footer year
-  var y = document.getElementById('year');
-  if (y) y.textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Mobile nav toggle (shared header)
-  if (typeof window.toggleMobileNav !== 'function') {
-    window.toggleMobileNav = function(force){
-      var panel = document.getElementById('nav-mobile');
-      var btn = document.getElementById('nav-toggle');
-      if (!panel || !btn) return;
-      var isOpen = panel.classList.contains('open');
-      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
-      panel.classList.toggle('open', shouldOpen);
-      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
-      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
-    };
-    document.addEventListener('click', function(e){
-      var panel = document.getElementById('nav-mobile');
-      var btn = document.getElementById('nav-toggle');
-      if (!panel || !btn) return;
-      if (!panel.classList.contains('open')) return;
-      if (panel.contains(e.target) || btn.contains(e.target)) return;
-      window.toggleMobileNav(false);
-    }, true);
-  }
+  // Mobile nav toggle
+  window.toggleMobileNav = function(force){
+    var panel = document.getElementById('nav-mobile');
+    var btn = document.getElementById('nav-toggle');
+    if (!panel || !btn) return;
+    var isOpen = panel.classList.contains('open');
+    var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+    panel.classList.toggle('open', shouldOpen);
+    btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+  };
+  document.addEventListener('click', function(e){
+    var panel = document.getElementById('nav-mobile');
+    var btn = document.getElementById('nav-toggle');
+    if (!panel || !btn || !panel.classList.contains('open')) return;
+    if (panel.contains(e.target) || btn.contains(e.target)) return;
+    window.toggleMobileNav(false);
+  }, true);
+
+  // Cookie consent
+  var KEY = 'cis_cookie_consent';
+  var banner = document.getElementById('cisCookieBanner');
+  if (!localStorage.getItem(KEY)) { banner.style.display = 'block'; }
+  document.getElementById('cisCookieAccept').addEventListener('click', function(){
+    localStorage.setItem(KEY, 'accepted'); banner.style.display = 'none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click', function(){
+    localStorage.setItem(KEY, 'declined'); banner.style.display = 'none';
+  });
 })();
 </script>
+
 </body>
 </html>
