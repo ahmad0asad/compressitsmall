@@ -47,37 +47,34 @@
 # ------------------------------------------------
 # 3. GHOST PAGES & DEAD TOOLS → nearest relevant page
 # ------------------------------------------------
-/presets/                      /tools/                   301
-/presets/university-2mb/       /tools/pdf/compress-pdf/  301
-/presets/email-10mb/           /tools/pdf/compress-pdf/  301
-/presets/whatsapp-images/      /tools/image/             301
-/workspace/                    /tools/                   301
-/tool-finder/                  /tools/                   301
-/workflows/                    /blog/                    301
-/updates/                      /blog/                    301
-/tools/youtube-seo/            /tools/                   301
-/tools/repair-pdf              /tools/pdf/               301
-/tools/repair-pdf/             /tools/pdf/               301
-/checklists/scholarship-submission/  /blog/scholarship-upload-limits-compress-pdf/  301
-/tools/pdf/index%20(2).html    /tools/pdf/               301
-/tools/pdf/index (2).html      /tools/pdf/               301
-/tools/unlock-pdf              /tools/pdf/               301
-/tools/unlock-pdf/             /tools/pdf/               301
-/blog/future-of-digital-docs   /blog/                    301
-/blog/future-of-digital-docs/  /blog/                    301
-/blog/why-pdf-still-matters    /blog/                    301
-/blog/why-pdf-still-matters/   /blog/                    301
-/reorder-pdf-pages             /tools/pdf/reorder-pdf/   301
-/reorder-pdf-pages/            /tools/pdf/reorder-pdf/   301
-/assets/logo.png               /favicon_192x192.png      301
-/tools/ppt-to-pdf              /tools/pdf/               301
-/tools/ppt-to-pdf/             /tools/pdf/               301
-/tools/excel-to-pdf            /tools/pdf/               301
-/tools/excel-to-pdf/           /tools/pdf/               301
-/tools/html-to-pdf             /tools/pdf/               301
-/tools/html-to-pdf/            /tools/pdf/               301
-/tools/upload-limit-checker    /tools/                   301
-/tools/upload-limit-checker/   /tools/                   301
+/presets/                      /tools/                              301
+/presets/university-2mb/       /tools/pdf/compress-pdf/             301
+/presets/email-10mb/           /tools/pdf/compress-pdf/             301
+/presets/whatsapp-images/      /tools/image/                        301
+/workspace/                    /tools/                              301
+/tool-finder/                  /tools/                              301
+/workflows/                    /blog/                               301
+/updates/                      /blog/                               301
+/tools/youtube-seo/            /tools/                              301
+/tools/repair-pdf              /tools/pdf/                          301
+/tools/repair-pdf/             /tools/pdf/                          301
+/checklists/scholarship-submission/  /blog/make-pdf-under-2mb-for-scholarship-visa/  301
+/tools/pdf/index%20(2).html    /tools/pdf/                          301
+/tools/pdf/index (2).html      /tools/pdf/                          301
+/tools/unlock-pdf              /tools/pdf/                          301
+/tools/unlock-pdf/             /tools/pdf/                          301
+/blog/future-of-digital-docs   /blog/                               301
+/blog/future-of-digital-docs/  /blog/                               301
+/blog/why-pdf-still-matters    /blog/                               301
+/blog/why-pdf-still-matters/   /blog/                               301
+/reorder-pdf-pages             /tools/pdf/reorder-pdf/              301
+/reorder-pdf-pages/            /tools/pdf/reorder-pdf/              301
+/tools/ppt-to-pdf              /tools/pdf/                          301
+/tools/ppt-to-pdf/             /tools/pdf/                          301
+/tools/excel-to-pdf            /tools/pdf/                          301
+/tools/excel-to-pdf/           /tools/pdf/                          301
+/tools/html-to-pdf             /tools/pdf/                          301
+/tools/html-to-pdf/            /tools/pdf/                          301
 
 # ------------------------------------------------
 # 4. LEGACY .html PAGES → canonical clean slugs
