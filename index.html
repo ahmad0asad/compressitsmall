@@ -9,12 +9,12 @@
 <meta content="CompressItSmall is a privacy-first toolkit to compress PDFs and files, reorder PDF pages, merge/split documents, convert formats, and prepare uploads for portals and email — directly in your browser." name="description"/>
 <meta content="website" property="og:type"/>
 <meta content="Compress It Small" property="og:site_name"/>
-<meta content="CompressItSmall | Free PDF &amp; File Tools (Private)" property="og:title"/>
+<meta content="CompressItSmall | Free PDF &amp; File Tools — Compress, Merge, Reorder" property="og:title"/>
 <meta content="Compress PDFs and files, reorder pages, merge/split, convert formats, and prepare documents for upload limits — all in your browser." property="og:description"/>
 <meta content="https://compressitsmall.co.uk/" property="og:url"/>
 <meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/>
 <meta content="summary" name="twitter:card"/>
-<meta content="CompressItSmall | Free PDF &amp; File Tools (Private)" name="twitter:title"/>
+<meta content="CompressItSmall | Free PDF &amp; File Tools — Compress, Merge, Reorder" name="twitter:title"/>
 <meta content="Compress PDFs and files, reorder pages, merge/split, convert formats, and prepare documents for upload limits — all in your browser." name="twitter:description"/>
 <meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/>
 <meta content="compress pdf online, free pdf compressor, merge pdf, split pdf, pdf to word, word to pdf, pdf to jpg, jpg to pdf, redact pdf, pdf redaction tool, reduce file size, online file compression, compress scanned pdf, image compressor, Upload Limit Checker tools" name="keywords"/>
@@ -23,18 +23,32 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "CompressItSmall",
-  "alternateName": ["Compress It Small", "Compress It"],
-  "url": "https://compressitsmall.co.uk/"
+  "name": "Compress It Small",
+  "alternateName": ["CompressItSmall", "Compress It"],
+  "url": "https://compressitsmall.co.uk/",
+  "description": "Compress PDF, image and office files directly in your browser with privacy-first tools and clear guides.",
+  "inLanguage": "en"
 }
 </script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "CompressItSmall",
+  "name": "Compress It Small",
   "url": "https://compressitsmall.co.uk/",
-  "logo": "https://compressitsmall.co.uk/favicon_192x192.png"
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://compressitsmall.co.uk/favicon_192x192.png",
+    "width": 192,
+    "height": 192
+  },
+  "description": "An independent, privacy-first project offering browser-based tools to compress PDFs, images and office files, plus Upload Limit Checker utilities.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "email": "support@compressitsmall.co.uk",
+    "availableLanguage": ["English"]
+  }
 }
 </script>
 <link href="/favicon_32x32.png" rel="icon" sizes="32x32" type="image/png"/>
@@ -462,32 +476,6 @@
   .cis-btn:hover { opacity: 0.85; }
   @media (max-width: 600px) { .cis-cookie-inner { flex-direction: column; align-items: flex-start; } .cis-cookie-actions { width: 100%; justify-content: flex-end; } }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Compress It Small",
-  "url": "https://compressitsmall.co.uk/",
-  "description": "Compress PDF, image and office files directly in your browser with privacy-first tools and clear guides.",
-  "inLanguage": "en"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Compress It Small",
-  "url": "https://compressitsmall.co.uk/",
-  "logo": "https://compressitsmall.co.uk/favicon.png",
-  "description": "An independent, privacy-first project offering browser-based tools to compress PDFs, images and office files, plus Upload Limit Checker utilities.",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer support",
-    "email": "support@compressitsmall.co.uk",
-    "availableLanguage": ["English"]
-  }
-}
-</script>
 <meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
 <link href="/manifest.webmanifest" rel="manifest"/>
 <meta content="#2563eb" name="theme-color"/>
@@ -875,31 +863,20 @@ Popular tools:
 </footer>
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
-
   function toggleMobileNav(force) {
     var nav = document.getElementById("nav-mobile");
-    if (typeof force === "boolean") {
-      nav.classList.toggle("open", force);
-    } else {
-      nav.classList.toggle("open");
-    }
+    if (typeof force === "boolean") { nav.classList.toggle("open", force); } else { nav.classList.toggle("open"); }
   }
-
   function toggleFaq(btn) {
     var item = btn.closest(".faq-item");
     var list = item.parentElement.querySelectorAll(".faq-item");
     list.forEach(function(el) {
-      if (el !== item) {
-        el.classList.remove("open");
-        var b = el.querySelector(".faq-question");
-        if (b) b.setAttribute("aria-expanded", "false");
-      }
+      if (el !== item) { el.classList.remove("open"); var b = el.querySelector(".faq-question"); if (b) b.setAttribute("aria-expanded", "false"); }
     });
     var willOpen = !item.classList.contains("open");
     item.classList.toggle("open");
     btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
   }
-
   document.addEventListener("DOMContentLoaded", function() {
     var faqItems = document.querySelectorAll(".faq-item");
     faqItems.forEach(function(item, i) {
@@ -920,13 +897,10 @@ Popular tools:
 <script>
 (function(){
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function(){
-      navigator.serviceWorker.register('/sw.js').catch(function(){});
-    });
+    window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); });
   }
 })();
 </script>
-
 <!-- Cookie consent banner -->
 <div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
   <div class="cis-cookie-inner">
@@ -941,21 +915,15 @@ Popular tools:
     </div>
   </div>
 </div>
-
 <script>
 (function(){
-  var KEY    = 'cis_cookie_consent';
+  var KEY = 'cis_cookie_consent';
   var banner = document.getElementById('cisCookieBanner');
   if (!localStorage.getItem(KEY)) banner.style.display = 'block';
-  document.getElementById('cisCookieAccept').addEventListener('click', function(){
-    localStorage.setItem(KEY, 'accepted'); banner.style.display = 'none';
-  });
-  document.getElementById('cisCookieDecline').addEventListener('click', function(){
-    localStorage.setItem(KEY, 'declined'); banner.style.display = 'none';
-  });
+  document.getElementById('cisCookieAccept').addEventListener('click', function(){ localStorage.setItem(KEY, 'accepted'); banner.style.display = 'none'; });
+  document.getElementById('cisCookieDecline').addEventListener('click', function(){ localStorage.setItem(KEY, 'declined'); banner.style.display = 'none'; });
 })();
 </script>
-
 <script>
 (function(){
   const CATALOG = [
@@ -996,47 +964,16 @@ Popular tools:
       { label: "Upload Limit Checker", url: "/tools/upload-limit-checker/" }
     ]}
   ];
-
   const catSel = document.getElementById("toolCategory");
   const toolSel = document.getElementById("toolSelect");
   const openBtn = document.getElementById("openToolBtn");
   if (!catSel || !toolSel || !openBtn) return;
-
-  function fillCategories(){
-    catSel.innerHTML = "";
-    CATALOG.forEach((c, i) => {
-      const opt = document.createElement("option");
-      opt.value = String(i);
-      opt.textContent = c.name;
-      catSel.appendChild(opt);
-    });
-  }
-
-  function fillTools(catIndex){
-    const c = CATALOG[catIndex] || CATALOG[0];
-    toolSel.innerHTML = "";
-    c.tools.forEach((t) => {
-      const opt = document.createElement("option");
-      opt.value = t.url;
-      opt.textContent = t.label;
-      toolSel.appendChild(opt);
-    });
-  }
-
-  function openSelected(){
-    const url = toolSel.value;
-    if (!url) return;
-    window.location.href = url;
-  }
-
+  function fillCategories(){ catSel.innerHTML = ""; CATALOG.forEach((c, i) => { const opt = document.createElement("option"); opt.value = String(i); opt.textContent = c.name; catSel.appendChild(opt); }); }
+  function fillTools(catIndex){ const c = CATALOG[catIndex] || CATALOG[0]; toolSel.innerHTML = ""; c.tools.forEach((t) => { const opt = document.createElement("option"); opt.value = t.url; opt.textContent = t.label; toolSel.appendChild(opt); }); }
+  function openSelected(){ const url = toolSel.value; if (!url) return; window.location.href = url; }
   fillCategories();
   fillTools(0);
-
-  catSel.addEventListener("change", () => {
-    const idx = parseInt(catSel.value, 10);
-    fillTools(isNaN(idx) ? 0 : idx);
-  });
-
+  catSel.addEventListener("change", () => { const idx = parseInt(catSel.value, 10); fillTools(isNaN(idx) ? 0 : idx); });
   openBtn.addEventListener("click", openSelected);
 })();
 </script>
