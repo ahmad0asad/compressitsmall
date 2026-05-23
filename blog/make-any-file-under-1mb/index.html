@@ -1282,42 +1282,24 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 <span>Smart online compression hub</span>
 </div>
 </a>
-<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
-<div class="nav-links" style="display:none;"></div>
-<!-- Modern toolbar-style CTA with icons -->
-<div class="nav-cta">
-<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>🏠</span><span>Home</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>📄</span><span>PDF Tools</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>🖼️</span><span>Image Tools</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>📂</span><span>Office Tools</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>🎯</span><span>Upload Limit Checker</span>
-</button>
-<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>📰</span><span>Blog</span>
-</button>
+<div class="nav-links" style="display:flex; align-items:center; gap:0.75rem;">
+<a class="nav-link" href="/tools/">Tools</a>
+<a class="nav-link" href="/blog/">Blog</a>
+<a class="nav-link" href="/checklists/">Checklists</a>
+<a class="nav-link" href="/faq/">FAQ</a>
+<a class="nav-link" href="/contact/">Contact</a>
 </div>
+<div class="nav-cta"><a class="btn btn-primary" href="/tools/">Open tools</a></div>
 <button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
-<span></span>
-<span></span>
-<span></span>
+<span></span><span></span><span></span>
 </button>
 </nav>
 <div aria-hidden="true" class="nav-mobile" id="nav-mobile">
-<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
-<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
-<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
-<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
-<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/tools/" onclick="toggleMobileNav(false)">Tools</a>
 <a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+<a href="/checklists/" onclick="toggleMobileNav(false)">Checklists</a>
+<a href="/faq/" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/contact/" onclick="toggleMobileNav(false)">Contact</a>
 </div>
 </div>
 </header>
@@ -1327,15 +1309,16 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 <div class="section-heading">
 <div class="section-kicker">Guide</div>
 <h1 class="hero-title">How to Make Any File Under 1MB: Practical Strategies</h1>
+<div style="background:#fffbe6;border-left:4px solid #f59e0b;padding:12px 16px;margin-bottom:24px;border-radius:4px;font-size:0.875rem;color:#444;">
+<strong>Affiliate disclosure:</strong> This page contains Amazon affiliate links. If you purchase through them, I may earn a small commission at no extra cost to you.
+</div>
 <p class="hero-subtitle">How to Make Any File Under 1MB: Practical Strategies: File-size guide for real limits (email, forms, portals): quick workflows, common mistakes, and the…</p>
 </div>
 </div>
 </section>
 <section>
 <div class="container">
-<article class="about-text"><div style="background:#fffbe6;border-left:4px solid #f59e0b;padding:12px 16px;margin-bottom:24px;border-radius:4px;font-size:0.875rem;color:#444;">
-<strong>Affiliate disclosure:</strong> This page contains Amazon affiliate links. If you purchase through them, I may earn a small commission at no extra cost to you.
-</div><p><strong>You upload a file at the last minute and the portal rejects it with a blunt message: “File too large.”</strong> In practice, the fastest wins come from fixing the source first, then doing one clean optimisation pass (not five repeated re-saves).</p>
+<article class="about-text"><p><strong>You upload a file at the last minute and the portal rejects it with a blunt message: “File too large.”</strong> In practice, the fastest wins come from fixing the source first, then doing one clean optimisation pass (not five repeated re-saves).</p>
 <p>In this file guide—<strong>How to Make Any File Under 1MB: Practical Strategies</strong>—you’ll learn what makes files large, which changes deliver the biggest savings, and how to keep the result readable and portal-friendly. The steps are designed for strict upload validators and real deadlines.</p>
 <p>When you’re ready, use <a href="/tools/upload-limit-checker/" style="color:#2563eb;">Upload Limit Checker</a> (and the related tools listed below). The approach is: <strong>clean first → optimise once → verify</strong>.</p>
 <h2>Why limits feel confusing</h2>
@@ -1587,17 +1570,18 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 <div class="container footer-grid">
 <div>
 <div class="footer-links">
-<a href="/#top">Home</a>
-<a href="/#tools">Tools</a>
-<a href="/#guides">Guides</a>
-<a href="/#faq">FAQ</a>
-<a href="/#contact">Contact</a>
+<a href="/">Home</a>
+<a href="/tools/">Tools</a>
+<a href="/blog/">Blog</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
 <a href="/privacy-policy/">Privacy Policy</a>
 <a href="/terms/">Terms &amp; Conditions</a>
 <a href="/cookie-policy/">Cookie Policy</a>
-<a href="/disclaimer/">Disclaimer</a></div>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
 <p class="footer-note">
-        © <span id="year"></span> Compress It Small. All rights reserved.
+        &copy; <span id="year"></span> Compress It Small. All rights reserved.
       </p>
 </div>
 <div>

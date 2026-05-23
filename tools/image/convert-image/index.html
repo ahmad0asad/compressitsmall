@@ -4,7 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Convert Image Format — PNG to JPG/WebP, JPG to PNG, WebP Converter | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Convert images between PNG, JPG and WebP in your browser. Pick format and quality, then download instantly. No upload and no server processing." name="twitter:description"/><meta content="Convert Image Format — PNG to JPG/WebP, JPG to PNG, WebP Converter | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/tools/image/convert-image/" property="og:url"/><meta content="Convert images between PNG, JPG and WebP in your browser. Pick format and quality, then download instantly. No upload and no server processing." property="og:description"/><meta content="Convert Image Format — PNG to JPG/WebP, JPG to PNG, WebP Converter | Compress It Small" property="og:title"/>
+<title>Convert Image Format — PNG to JPG/WebP, JPG to PNG, WebP Converter | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Convert images between PNG, JPG and WebP in your browser. Pick format and quality, then download instantly. No upload and no server processing." name="twitter:description"/><meta content="Convert Image Format — PNG to JPG/WebP, JPG to PNG, WebP Converter | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/tools/image/convert-image/" property="og:url"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="Convert images between PNG, JPG and WebP in your browser. Pick format and quality, then download instantly. No upload and no server processing." property="og:description"/><meta content="Convert Image Format — PNG to JPG/WebP, JPG to PNG, WebP Converter | Compress It Small" property="og:title"/>
 <meta content="Convert images between PNG, JPG and WebP in your browser. Pick format and quality, then download instantly. No upload and no server processing." name="description"/>
 <meta content="convert png to jpg, convert jpg to png, webp converter, image format converter, png to webp, jpg to webp, browser image converter" name="keywords"/>
 <link href="https://compressitsmall.co.uk/tools/image/convert-image/" rel="canonical"/>
@@ -72,18 +73,35 @@
 </style>
 </head>
 <body>
-<header>
+<header id="top">
 <div class="container">
-<nav class="nav">
-<a class="brand" href="/"><span class="brand-icon">C</span><span class="brand-name">Compress It Small</span></a>
-<div class="nav-links">
-<a href="/tools/">Tools</a>
-<a href="/tools/image/">Images</a>
-<a href="/blog/">Blog</a>
-<a href="/contact/">Contact</a>
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
 </div>
-<a class="btn btn-primary" href="/tools/">Open tools</a>
+</a>
+<div class="nav-links" style="display:flex; align-items:center; gap:0.75rem;">
+<a class="nav-link" href="/tools/">Tools</a>
+<a class="nav-link" href="/blog/">Blog</a>
+<a class="nav-link" href="/checklists/">Checklists</a>
+<a class="nav-link" href="/faq/">FAQ</a>
+<a class="nav-link" href="/contact/">Contact</a>
+</div>
+<div class="nav-cta"><a class="btn btn-primary" href="/tools/">Open tools</a></div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span><span></span><span></span>
+</button>
 </nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/tools/" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+<a href="/checklists/" onclick="toggleMobileNav(false)">Checklists</a>
+<a href="/faq/" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/contact/" onclick="toggleMobileNav(false)">Contact</a>
+</div>
 </div>
 </header>
 <main>
@@ -195,10 +213,30 @@
 <p>This tool converts one image at a time. For converting large numbers of images (website image libraries, photography archives, product catalogues), consider command-line tools like ImageMagick or FFmpeg, or cloud-based batch processors. For a small number of images — up to 20 or 30 — processing them individually through this tool is perfectly efficient.</p>
 </section>
 <footer>
-<div class="container">
-<div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:space-between; align-items:center;">
-<span>© <span id="year"></span> Compress It Small</span>
-<span><a href="/privacy-policy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cookie-policy/">Cookies</a></span>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/tools/">Tools</a>
+<a href="/blog/">Blog</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
+<p class="footer-note">
+        &copy; <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
 </div>
 </div>
 </footer>

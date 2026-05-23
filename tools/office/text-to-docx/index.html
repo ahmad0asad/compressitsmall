@@ -1,26 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Text to DOCX — Create a Word Document From Text Online | Compress It Small</title>
-<meta content="Paste any plain text and download a clean Word (.docx) file instantly. No upload, no account — runs entirely in your browser." name="description"/>
-<meta content="text to docx, create word document online, convert text to word, docx generator, browser based, no upload" name="keywords"/>
+<meta content="Convert plain text into a Word (DOCX) document in your browser. Add an optional title and download instantly. Secure — no upload required." name="description"/>
+<meta content="text to docx, create word document online, convert text to word, docx generator, secure office tools, browser based" name="keywords"/>
 <link href="https://compressitsmall.co.uk/tools/office/text-to-docx/" rel="canonical"/>
-<link href="/favicon.png" rel="icon" type="image/png"/>
-<meta content="website" property="og:type"/>
-<meta content="Compress It Small" property="og:site_name"/>
-<meta content="Text to DOCX — Create a Word Document From Text Online | Compress It Small" property="og:title"/>
-<meta content="Paste any plain text and download a clean Word (.docx) file instantly. No upload, no account — runs entirely in your browser." property="og:description"/>
-<meta content="https://compressitsmall.co.uk/tools/office/text-to-docx/" property="og:url"/>
-<meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/>
-<meta content="summary" name="twitter:card"/>
-<meta content="Text to DOCX — Create a Word Document From Text Online | Compress It Small" name="twitter:title"/>
-<meta content="Paste any plain text and download a clean Word (.docx) file instantly. No upload, no account — runs entirely in your browser." name="twitter:description"/>
-<meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/>
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
-<meta name="google-adsense-account" content="ca-pub-1910641763417240">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+<!-- pdf-lib for merging PDFs -->
+<!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -29,522 +18,905 @@
   "url": "https://compressitsmall.co.uk/tools/office/text-to-docx/",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Web browser",
-  "description": "Paste any plain text and download a clean Word (.docx) file instantly. No upload, no account — runs entirely in your browser.",
-  "featureList": ["Text to DOCX conversion", "Optional document title", "Paragraph handling options", "Local browser processing", "No upload required"],
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  "description": "Convert plain text into a Word (DOCX) document in your browser. Add an optional title and download instantly. Secure — no upload required.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0"
+  }
 }
 </script>
-<!-- InMobi CMP TCF 2.2 -->
-<script async="true" type="text/javascript">
-(function(){var host=window.location.hostname;var element=document.createElement('script');var firstScript=document.getElementsByTagName('script')[0];var url='https://cmp.inmobi.com'.concat('/choice/','Z-RnjsbyHH-9v','/',host,'/choice.js?tag_version=V3');var uspTries=0;var uspTriesLimit=3;element.async=true;element.type='text/javascript';element.src=url;firstScript.parentNode.insertBefore(element,firstScript);function makeStub(){var TCF_LOCATOR_NAME='__tcfapiLocator';var queue=[];var win=window;var cmpFrame;function addFrame(){var doc=win.document;var otherCMP=!!(win.frames[TCF_LOCATOR_NAME]);if(!otherCMP){if(doc.body){var iframe=doc.createElement('iframe');iframe.style.cssText='display:none';iframe.name=TCF_LOCATOR_NAME;doc.body.appendChild(iframe);}else{setTimeout(addFrame,5);}}return!otherCMP;}function tcfAPIHandler(){var gdprApplies;var args=arguments;if(!args.length){return queue;}else if(args[0]==='setGdprApplies'){if(args.length>3&&args[2]===2&&typeof args[3]==='boolean'){gdprApplies=args[3];if(typeof args[2]==='function'){args[2]('set',true);}}}else if(args[0]==='ping'){var retr={gdprApplies:gdprApplies,cmpLoaded:false,cmpStatus:'stub'};if(typeof args[2]==='function'){args[2](retr);}}else{if(args[0]==='init'&&typeof args[3]==='object'){args[3]=Object.assign(args[3],{tag_version:'V3'});}queue.push(args);}}function postMessageEventHandler(event){var msgIsString=typeof event.data==='string';var json={};try{if(msgIsString){json=JSON.parse(event.data);}else{json=event.data;}}catch(ignore){}var payload=json.__tcfapiCall;if(payload){window.__tcfapi(payload.command,payload.version,function(retValue,success){var returnMsg={__tcfapiReturn:{returnValue:retValue,success:success,callId:payload.callId}};if(msgIsString){returnMsg=JSON.stringify(returnMsg);}if(event&&event.source&&event.source.postMessage){event.source.postMessage(returnMsg,'*');}},payload.parameter);}}while(win){try{if(win.frames[TCF_LOCATOR_NAME]){cmpFrame=win;break;}}catch(ignore){}if(win===window.top){break;}win=win.parent;}if(!cmpFrame){addFrame();win.__tcfapi=tcfAPIHandler;win.addEventListener('message',postMessageEventHandler,false);}};makeStub();var uspStubFunction=function(){var arg=arguments;if(typeof window.__uspapi!==uspStubFunction){setTimeout(function(){if(typeof window.__uspapi!=='undefined'){window.__uspapi.apply(window.__uspapi,arg);}},500);}};var checkIfUspIsReady=function(){uspTries++;if(window.__uspapi===uspStubFunction&&uspTries<uspTriesLimit){console.warn('USP is not accessible');}else{clearInterval(uspInterval);}};if(typeof window.__uspapi==='undefined'){window.__uspapi=uspStubFunction;var uspInterval=setInterval(checkIfUspIsReady,6000);}})();
-</script>
-<!-- Tool dependencies -->
-<script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 <style>
-  :root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --bg: #f4f5fb;
-    --bg-alt: #ffffff;
-    --text: #111827;
-    --text-muted: #6b7280;
-    --border: #e5e7eb;
-    --radius-lg: 16px;
-    --radius-pill: 999px;
-    --shadow-soft: 0 18px 35px rgba(15,23,42,0.08);
-    --max-width: 1120px;
+    /* SAME DESIGN SYSTEM AS COMPRESSOR PAGE */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #22c55e;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.08);
+      --max-width: 1120px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.25rem; }
+
+    header {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 30;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.7rem 0;
+    }
+
+    .brand {
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    .brand-icon {
+      width: 32px; height: 32px; border-radius: 12px;
+      background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800;
+      box-shadow: 0 10px 22px rgba(30, 64, 175, 0.45);
+    }
+
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-text span:first-child { font-weight: 800; }
+    .brand-text span:last-child { font-size: 0.75rem; color: var(--text-muted); }
+
+    .nav-links { display: flex; gap: 1.1rem; font-size: 0.85rem; }
+    .nav-links a {
+      color: var(--text-muted); font-weight: 500; position: relative; padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      width: 0; height: 2px; background: var(--primary);
+      border-radius: var(--radius-pill); transition: width 0.16s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.6rem 1.3rem; border-radius: var(--radius-pill);
+      font-weight: 600; border: none; cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+    }
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-outline { background: #eef2ff; color: var(--primary-dark); }
+
+    /* HERO SECTION */
+    main { padding: 2.25rem 0 2.5rem; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.6rem; align-items: center;
+    }
+    @media(max-width:900px) { .hero-grid { grid-template-columns: 1fr; } }
+
+    .page-kicker {
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--primary-dark); font-weight: 700;
+    }
+
+    .page-title { font-size: 2rem; font-weight: 800; margin: 0.4rem 0; }
+    .page-description { font-size: 0.95rem; color: var(--text-muted); max-width: 40rem; }
+
+    .hero-pill {
+      background: #e0f2fe; padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem; display: inline-flex; gap: 0.35rem;
+    }
+
+    /* TOOL CARD */
+    .tool-card {
+      background: var(--bg-alt); border-radius: 20px;
+      padding: 1.2rem; margin-top: 2rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .tool-ui {
+      background: #f9fafb; border: 1px dashed #d1d5db;
+      border-radius: 14px; padding: 1rem; margin-top: 1rem;
+      display: flex; flex-direction: column; gap: 0.8rem;
+    }
+
+    .tool-status { font-size: 0.8rem; color: var(--text-muted); }
+    .tool-status.success { color: #15803d; }
+    .tool-status.error { color: #b91c1c; }
+
+    /* ARTICLE */
+    .article {
+      margin-top: 1.4rem; padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem; color: #4b5563;
+    }
+    .article h2, .article h3, .article h4 { color: #111827; margin: 0.6rem 0 0.3rem; }
+
+    footer {
+      margin-top: 2rem; padding: 1.4rem 0; background: #020617; color: #9ca3af;
+      border-top: 1px solid #1e293b; font-size: 0.78rem;
+    }
+  
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+
+/* --- Shared toolbar styling (match homepage) --- */
+header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
+header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
+header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+header#top .brand-text span { display: block; }
+header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
+header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
+
+header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
+header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
+header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
+header#top .btn:hover { transform: translateY(-1px); }
+
+header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
+header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
+header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
+header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
+header#top .nav-mobile.open { display: flex; }
+
+/* Responsive toolbar */
+@media (max-width: 980px) {
+  header#top .nav-cta { display: none; }
+  header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
+  header#top .nav { position: relative; }
+}
+
+
+/* --- Internal linking blocks (SEO + UX) --- */
+.related-links { margin: 34px 0 0; }
+.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
+.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+.link-title { font-weight: 800; margin: 0 0 6px; }
+.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+</style>
+<meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="Text to DOCX — Create a Word Document From Text Online | Compress It Small" property="og:title"/><meta content="Convert plain text into a Word (DOCX) document in your browser. Add an optional title and download instantly. Secure — no upload required." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/office/text-to-docx/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="Text to DOCX — Create a Word Document From Text Online | Compress It Small" name="twitter:title"/><meta content="Convert plain text into a Word (DOCX) document in your browser. Add an optional title and download instantly. Secure — no upload required." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/><script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+<script async="true" type="text/javascript">
+(function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+var TCF_LOCATOR_NAME = '__tcfapiLocator';
+var queue = [];
+var win = window;
+var cmpFrame;
+
+function addFrame() {
+var doc = win.document;
+var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+if (!otherCMP) {
+if (doc.body) {
+var iframe = doc.createElement('iframe');
+
+iframe.style.cssText = 'display:none';
+iframe.name = TCF_LOCATOR_NAME;
+doc.body.appendChild(iframe);
+} else {
+setTimeout(addFrame, 5);
+}
+}
+return !otherCMP;
+}
+
+function tcfAPIHandler() {
+var gdprApplies;
+var args = arguments;
+
+if (!args.length) {
+return queue;
+} else if (args[0] === 'setGdprApplies') {
+if (
+args.length > 3 &&
+args[2] === 2 &&
+typeof args[3] === 'boolean'
+) {
+gdprApplies = args[3];
+if (typeof args[2] === 'function') {
+args[2]('set', true);
+}
+}
+} else if (args[0] === 'ping') {
+var retr = {
+gdprApplies: gdprApplies,
+cmpLoaded: false,
+cmpStatus: 'stub'
+};
+
+if (typeof args[2] === 'function') {
+args[2](retr);
+}
+} else {
+if(args[0] === 'init' && typeof args[3] === 'object') {
+args[3] = Object.assign(args[3], { tag_version: 'V3' });
+}
+queue.push(args);
+}
+}
+
+function postMessageEventHandler(event) {
+var msgIsString = typeof event.data === 'string';
+var json = {};
+
+try {
+if (msgIsString) {
+json = JSON.parse(event.data);
+} else {
+json = event.data;
+}
+} catch (ignore) {}
+
+var payload = json.__tcfapiCall;
+
+if (payload) {
+window.__tcfapi(
+payload.command,
+payload.version,
+function(retValue, success) {
+var returnMsg = {
+  __tcfapiReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: payload.callId
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-  a { color: inherit; text-decoration: none; }
-  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.25rem; }
+};
+if (msgIsString) {
+  returnMsg = JSON.stringify(returnMsg);
+}
+if (event && event.source && event.source.postMessage) {
+  event.source.postMessage(returnMsg, '*');
+}
+},
+payload.parameter
+);
+}
+}
 
-  /* ── Header ── */
-  header#top { background: rgba(2,6,23,0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
-  header#top .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; position: relative; }
-  header#top .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #e5e7eb; }
-  header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; background: radial-gradient(circle at 20% 20%, #93c5fd, #1e3a8a); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; font-size: 1.1rem; }
-  header#top .brand-text span { display: block; }
-  header#top .brand-text span:first-child { font-weight: 800; }
-  header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
-  header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
-  header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-weight: 700; font-size: 0.78rem; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease; white-space: nowrap; }
-  header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
-  header#top .btn-primary { background: linear-gradient(135deg,#2563eb,#1d4ed8); color: #fff; box-shadow: 0 8px 18px rgba(37,99,235,0.25); }
-  header#top .btn:hover { transform: translateY(-1px); }
-  header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
-  header#top .nav-mobile { display: none; position: absolute; right: 0; top: 68px; flex-direction: column; gap: 8px; min-width: 200px; background: rgba(2,6,23,0.96); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); z-index: 200; }
-  header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 9px 10px; border-radius: 10px; font-size: 0.9rem; }
-  header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
-  header#top .nav-mobile.open { display: flex; }
-  @media (max-width: 980px) {
-    header#top .nav-cta { display: none; }
-    header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
-  }
+while (win) {
+try {
+if (win.frames[TCF_LOCATOR_NAME]) {
+cmpFrame = win;
+break;
+}
+} catch (ignore) {}
 
-  /* ── Main ── */
-  main { padding: 2.25rem 0 2.5rem; }
-  .page-kicker { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--primary-dark); font-weight: 700; margin-bottom: 0.35rem; }
+if (win === window.top) {
+break;
+}
+win = win.parent;
+}
+if (!cmpFrame) {
+addFrame();
+win.__tcfapi = tcfAPIHandler;
+win.addEventListener('message', postMessageEventHandler, false);
+}
+};
 
-  /* ── Tool card ── */
-  .tool-card { background: var(--bg-alt); border-radius: 20px; padding: 1.4rem; margin-top: 1.5rem; border: 1px solid var(--border); box-shadow: var(--shadow-soft); }
-  .tool-card h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; }
-  .tool-ui { background: #f9fafb; border: 1px dashed #d1d5db; border-radius: 14px; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
-  .tool-ui label { font-size: 0.8rem; font-weight: 600; color: #374151; }
-  .tool-ui input[type="text"], .tool-ui textarea, .tool-ui select {
-    width: 100%; font: inherit; font-size: 0.84rem; padding: 0.5rem 0.65rem;
-    border-radius: 9px; border: 1px solid #d1d5db; background: #fff;
-  }
-  .tool-ui textarea { resize: vertical; min-height: 180px; }
-  .tool-ui input:focus, .tool-ui textarea:focus, .tool-ui select:focus {
-    outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(37,99,235,0.15);
-  }
-  .field-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-  .field-row > div { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 0.3rem; }
-  .tool-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.65rem 1.4rem; border-radius: var(--radius-pill); background: linear-gradient(135deg,#2563eb,#1d4ed8); color: #fff; font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer; box-shadow: 0 8px 18px rgba(37,99,235,0.25); transition: transform .12s ease, box-shadow .12s ease; align-self: flex-start; }
-  .tool-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 24px rgba(37,99,235,0.35); }
-  .tool-status { font-size: 0.8rem; color: var(--text-muted); min-height: 1.2rem; }
-  .tool-status.success { color: #15803d; font-weight: 600; }
-  .tool-status.error { color: #b91c1c; font-weight: 600; }
+makeStub();
 
-  /* ── How it works ── */
-  .how-section { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
-  .how-section h2 { font-size: 1.1rem; font-weight: 700; }
-  .how-section p, .how-section li { font-size: 0.9rem; color: #4b5563; }
-  .how-section ul { padding-left: 1.2rem; }
-  .how-section li { margin-bottom: 0.3rem; }
+function makeGppStub() {
+const CMP_ID = 10;
+const SUPPORTED_APIS = [
+'2:tcfeuv2',
+'6:uspv1',
+'7:usnatv1',
+'8:usca',
+'9:usvav1',
+'10:uscov1',
+'11:usutv1',
+'12:usctv1'
+];
 
-  /* ── FAQ ── */
-  .faq-section { margin-top: 2rem; }
-  .faq-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
-  .faq-item { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 0.5rem; background: #fff; }
-  .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 0.7rem 1rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; font-weight: 600; cursor: pointer; color: var(--text); gap: 1rem; }
-  .faq-q .toggle { font-size: 1.2rem; color: var(--text-muted); flex-shrink: 0; transition: transform 0.2s ease; }
-  .faq-item.open .faq-q .toggle { transform: rotate(45deg); }
-  .faq-a { display: none; padding: 0 1rem 0.75rem; font-size: 0.86rem; color: #4b5563; line-height: 1.6; }
-  .faq-item.open .faq-a { display: block; }
+window.__gpp_addFrame = function (n) {
+if (!window.frames[n]) {
+if (document.body) {
+var i = document.createElement("iframe");
+i.style.cssText = "display:none";
+i.name = n;
+document.body.appendChild(i);
+} else {
+window.setTimeout(window.__gpp_addFrame, 10, n);
+}
+}
+};
+window.__gpp_stub = function () {
+var b = arguments;
+__gpp.queue = __gpp.queue || [];
+__gpp.events = __gpp.events || [];
 
-  /* ── Content section ── */
-  .content-section { background: #fff; margin-top: 2rem; padding: 2rem; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 6px 20px rgba(17,24,39,.06); line-height: 1.75; }
-  .content-section h2 { font-size: 1.3rem; font-weight: 800; margin: 0 0 0.75rem; color: #111827; }
-  .content-section h3 { font-size: 1.05rem; font-weight: 700; margin: 1.5rem 0 0.45rem; color: var(--primary-dark); }
-  .content-section p { margin: 0 0 0.85rem; color: #374151; font-size: 0.92rem; }
-  .content-section ul, .content-section ol { margin: 0 0 0.85rem 1.3rem; color: #374151; font-size: 0.92rem; }
-  .content-section li { margin-bottom: 0.35rem; }
-  .content-section dl dt { font-weight: 700; color: #111827; margin-top: 1.1rem; font-size: 0.92rem; }
-  .content-section dl dd { margin-left: 0; color: #374151; margin-bottom: 0.5rem; font-size: 0.92rem; }
-  .content-section a { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
-  .content-section code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; }
-  .content-section strong { color: #111827; }
+if (!b.length || (b.length == 1 && b[0] == "queue")) {
+return __gpp.queue;
+}
 
-  /* ── Related links ── */
-  .related-links { margin: 2rem 0 0; }
-  .related-links h2 { font-size: 1.2rem; margin: 0 0 8px; font-weight: 700; }
-  .related-links > .container > p { margin: 0 0 12px; color: var(--text-muted); font-size: 0.9rem; }
-  .link-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 14px; margin-top: 14px; }
-  .link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border); background: var(--bg-alt); text-decoration: none; color: inherit; box-shadow: var(--shadow-soft); transition: transform .14s ease, border-color .14s ease; }
-  .link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); }
-  .link-title { font-weight: 800; margin: 0 0 5px; font-size: 0.92rem; }
-  .link-desc { margin: 0; font-size: .88rem; color: var(--text-muted); line-height: 1.4; }
+if (b.length == 1 && b[0] == "events") {
+return __gpp.events;
+}
 
-  /* ── Footer ── */
-  footer { border-top: 1px solid var(--border); background: #020617; color: #9ca3af; padding: 1.4rem 0; font-size: .78rem; margin-top: 2rem; }
-  .footer-grid { display: grid; grid-template-columns: minmax(0,2.2fr) minmax(0,2fr); gap: 1.4rem; }
-  @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr; } }
-  .footer-links { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: .4rem; }
-  .footer-links a { color: #e5e7eb; }
-  .footer-links a:hover { text-decoration: underline; }
+var cmd = b[0];
+var clb = b.length > 1 ? b[1] : null;
+var par = b.length > 2 ? b[2] : null;
+if (cmd === "ping") {
+clb(
+{
+gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+cmpStatus: "stub", // possible values: stub, loading, loaded, error
+cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+signalStatus: "not ready", // possible values: not ready, ready
+supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+sectionList: [],
+applicableSections: [-1],
+gppString: "",
+parsedSections: {},
+},
+true
+);
+} else if (cmd === "addEventListener") {
+if (!("lastId" in __gpp)) {
+__gpp.lastId = 0;
+}
+__gpp.lastId++;
+var lnr = __gpp.lastId;
+__gpp.events.push({
+id: lnr,
+callback: clb,
+parameter: par,
+});
+clb(
+{
+eventName: "listenerRegistered",
+listenerId: lnr, // Registered ID of the listener
+data: true, // positive signal
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // list of supported APIs
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "removeEventListener") {
+var success = false;
+for (var i = 0; i < __gpp.events.length; i++) {
+if (__gpp.events[i].id == par) {
+__gpp.events.splice(i, 1);
+success = true;
+break;
+}
+}
+clb(
+{
+eventName: "listenerRemoved",
+listenerId: par, // Registered ID of the listener
+data: success, // status info
+pingData: {
+  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+  cmpStatus: "stub", // possible values: stub, loading, loaded, error
+  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+  signalStatus: "not ready", // possible values: not ready, ready
+  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+  cmpId: CMP_ID, // CMP ID
+  sectionList: [],
+  applicableSections: [-1],
+  gppString: "",
+  parsedSections: {},
+},
+},
+true
+);
+} else if (cmd === "hasSection") {
+clb(false, true);
+} else if (cmd === "getSection" || cmd === "getField") {
+clb(null, true);
+}
+//queue all other commands
+else {
+__gpp.queue.push([].slice.apply(b));
+}
+};
+window.__gpp_msghandler = function (event) {
+var msgIsString = typeof event.data === "string";
+try {
+var json = msgIsString ? JSON.parse(event.data) : event.data;
+} catch (e) {
+var json = null;
+}
+if (typeof json === "object" && json !== null && "__gppCall" in json) {
+var i = json.__gppCall;
+window.__gpp(
+i.command,
+function (retValue, success) {
+var returnMsg = {
+  __gppReturn: {
+    returnValue: retValue,
+    success: success,
+    callId: i.callId,
+  },
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+},
+"parameter" in i ? i.parameter : null,
+"version" in i ? i.version : "1.1"
+);
+}
+};
+if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+window.__gpp = window.__gpp_stub;
+window.addEventListener("message", window.__gpp_msghandler, false);
+window.__gpp_addFrame("__gppLocator");
+}
+};
 
-  /* ── Cookie banner ── */
-  .cis-cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(2,6,23,0.96); border-top: 1px solid #1f2937; z-index: 99999; padding: 14px 20px; box-sizing: border-box; }
-  .cis-cookie-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .cis-cookie-title { font-weight: 600; color: #f9fafb; font-size: .92rem; margin-bottom: 2px; }
-  .cis-cookie-text { color: #9ca3af; font-size: .82rem; max-width: 560px; }
-  .cis-cookie-text a { color: #60a5fa; text-decoration: underline; }
-  .cis-cookie-actions { display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap; }
-  .cis-btn { padding: 8px 16px; border-radius: 6px; font-size: .82rem; font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: opacity .15s; }
-  .cis-btn-decline { background: transparent; border-color: #374151; color: #e5e7eb; }
-  .cis-btn-prefs { background: rgba(99,102,241,0.12); border-color: #1f2937; color: #bfdbfe; }
-  .cis-btn-accept { background: #2563eb; color: #fff; border-color: #2563eb; }
-  .cis-btn:hover { opacity: .85; }
-  @media (max-width: 600px) {
-    .cis-cookie-inner { flex-direction: column; align-items: flex-start; }
-    .cis-cookie-actions { width: 100%; justify-content: flex-end; }
-  }
+makeGppStub();
+
+var uspStubFunction = function() {
+var arg = arguments;
+if (typeof window.__uspapi !== uspStubFunction) {
+setTimeout(function() {
+if (typeof window.__uspapi !== 'undefined') {
+window.__uspapi.apply(window.__uspapi, arg);
+}
+}, 500);
+}
+};
+
+var checkIfUspIsReady = function() {
+uspTries++;
+if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+console.warn('USP is not accessible');
+} else {
+clearInterval(uspInterval);
+}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+window.__uspapi = uspStubFunction;
+var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+</script>
+<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+
+  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
+
+<style>
+.tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
+.tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
+.tool-content-section p{margin:0 0 0.85rem;color:#374151;}
+.tool-content-section ol,.tool-content-section ul{margin:0 0 0.85rem 1.3rem;color:#374151;}
+.tool-content-section li{margin-bottom:0.35rem;}
+.tool-content-section dl dt{font-weight:700;color:#111827;margin-top:1rem;}
+.tool-content-section dl dd{margin-left:0;color:#374151;margin-bottom:0.5rem;}
+.tool-content-section a{color:#2563eb;}
+.tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
+.tool-content-section strong{color:#111827;}
 </style>
 </head>
 <body>
-
-<!-- ── Header ── -->
 <header id="top">
-  <div class="container">
-    <nav aria-label="Main navigation" class="nav">
-      <a class="brand" href="/">
-        <div class="brand-icon">C</div>
-        <div class="brand-text">
-          <span>Compress It Small</span>
-          <span>Smart online compression hub</span>
-        </div>
-      </a>
-      <div class="nav-cta">
-        <button class="btn btn-ghost" onclick="location.href='/'"><span>🏠</span><span>Home</span></button>
-        <button class="btn btn-ghost" onclick="location.href='/tools/pdf/'"><span>📄</span><span>PDF Tools</span></button>
-        <button class="btn btn-ghost" onclick="location.href='/tools/image/'"><span>🖼️</span><span>Image Tools</span></button>
-        <button class="btn btn-ghost" onclick="location.href='/tools/office/'"><span>📂</span><span>Office Tools</span></button>
-        <button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'"><span>🎯</span><span>Upload Limit Checker</span></button>
-        <button class="btn btn-primary" onclick="location.href='/blog/'"><span>📰</span><span>Blog</span></button>
-      </div>
-      <button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
-        <span style="display:block;width:22px;height:2px;background:#e5e7eb;border-radius:999px;margin:4px 0;"></span>
-        <span style="display:block;width:22px;height:2px;background:#e5e7eb;border-radius:999px;margin:4px 0;"></span>
-        <span style="display:block;width:22px;height:2px;background:#e5e7eb;border-radius:999px;margin:4px 0;"></span>
-      </button>
-    </nav>
-    <div aria-hidden="true" class="nav-mobile" id="nav-mobile">
-      <a href="/" onclick="toggleMobileNav(false)">Home</a>
-      <a href="/tools/pdf/" onclick="toggleMobileNav(false)">PDF Tools</a>
-      <a href="/tools/image/" onclick="toggleMobileNav(false)">Image Tools</a>
-      <a href="/tools/office/" onclick="toggleMobileNav(false)">Office Tools</a>
-      <a href="/tools/upload-limit-checker/" onclick="toggleMobileNav(false)">Upload Limit Checker</a>
-      <a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
-    </div>
-  </div>
-</header>
-
-<!-- ── Main ── -->
-<main>
-  <div class="container">
-
-    <!-- Page heading -->
-    <section style="margin-top:2rem;margin-bottom:1.5rem;">
-      <div class="page-kicker">Office Tools</div>
-      <h1 style="font-size:2rem;line-height:1.15;font-weight:800;margin-bottom:.6rem;">Text to DOCX — create a Word document from plain text</h1>
-      <p style="color:#475569;max-width:60ch;font-size:0.96rem;">Paste your text and get a clean, properly formatted <code style="background:#f1f5f9;padding:1px 6px;border-radius:4px;font-size:.9em;">.docx</code> file in seconds. No upload, no account, no server involved — everything runs in your browser.</p>
-    </section>
-
-    <!-- Tool card -->
-    <div class="tool-card">
-      <h2>📝 Text to DOCX Converter</h2>
-      <div class="tool-ui">
-
-        <div>
-          <label for="title">Document title (optional)</label>
-          <input id="title" placeholder="e.g., Meeting Notes, Cover Letter Draft" type="text" style="margin-top:0.3rem;"/>
-        </div>
-
-        <div>
-          <label for="text">Paste your text</label>
-          <textarea id="text" placeholder="Write or paste your content here. Use blank lines to separate paragraphs." rows="10" style="margin-top:0.3rem;"></textarea>
-        </div>
-
-        <div class="field-row">
-          <div>
-            <label for="splitMode">Paragraph handling</label>
-            <select id="splitMode" style="margin-top:0.3rem;">
-              <option selected value="blank">Split on blank lines (recommended)</option>
-              <option value="line">Each line is a new paragraph</option>
-            </select>
-          </div>
-          <div>
-            <label for="fileName">Output filename</label>
-            <input id="fileName" type="text" value="document.docx" style="margin-top:0.3rem;"/>
-          </div>
-        </div>
-
-        <button class="tool-btn" onclick="textToDocx()" type="button">⬇ Create &amp; Download DOCX</button>
-        <p aria-live="polite" class="tool-status" id="status" role="status"></p>
-
-      </div>
-    </div>
-
-    <!-- How it works -->
-    <section class="how-section">
-      <h2>How to use this tool</h2>
-      <p style="font-size:0.9rem;color:#4b5563;">This tool builds a real <code style="background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:.9em;">.docx</code> file inside your browser using the <code style="background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:.9em;">docx.js</code> library — the same format Microsoft Word uses. Your text never leaves your device.</p>
-      <ul>
-        <li><strong>Paste any text</strong> — from a PDF, a notes app, an email, a terminal, or anywhere else.</li>
-        <li><strong>Add a title</strong> — it appears as a heading at the top of the document.</li>
-        <li><strong>Choose paragraph handling</strong> — blank-line splitting works best for most content; per-line splitting is useful for lists or poetry.</li>
-        <li><strong>Name your file</strong> — the <code style="background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:.9em;">.docx</code> extension is added automatically if you leave it out.</li>
-        <li><strong>Click Create &amp; Download</strong> — opens directly in Word, LibreOffice, or Google Docs.</li>
-      </ul>
-      <p style="font-size:0.88rem;color:var(--text-muted);margin-top:0.4rem;">Need a PDF instead? Use the <a href="/tools/office/text-to-pdf/" style="color:var(--primary);">Text to PDF tool</a>.</p>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq-section">
-      <h2>Frequently asked questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          Does this preserve formatting like bold or italics?
-          <span class="toggle">+</span>
-        </button>
-        <div class="faq-a">Plain text has no formatting codes, so the downloaded DOCX will contain clean, unstyled paragraphs. You can apply fonts, bold, italics, and bullet points in Word or LibreOffice after download. If you need the document styled, this tool gives you the cleanest possible starting point.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          Is my text private — does it get sent anywhere?
-          <span class="toggle">+</span>
-        </button>
-        <div class="faq-a">Your text never leaves your browser. The DOCX is built entirely in memory using JavaScript, then downloaded directly to your device. Nothing is sent to our servers, nothing is logged, and everything is discarded when you close the tab. It's safe to use with confidential drafts, legal documents, and personal correspondence.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          Will the DOCX open in older versions of Word?
-          <span class="toggle">+</span>
-        </button>
-        <div class="faq-a">Yes. The output uses standard OOXML formatting compatible with Word 2007 and all later versions, as well as LibreOffice 5+, Google Docs, and Apple Pages. If you see a "Compatibility Mode" banner in Word, use File → Convert to upgrade the file to the latest format.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          Is there a word or character limit?
-          <span class="toggle">+</span>
-        </button>
-        <div class="faq-a">There's no enforced limit. The conversion runs on your device, so performance depends on your hardware. Documents up to 50,000 words generate almost instantly. Very large documents (100,000+ words) may take 2–5 seconds on older devices.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          My downloaded file shows as .docx.txt — how do I fix it?
-          <span class="toggle">+</span>
-        </button>
-        <div class="faq-a">Some operating systems hide file extensions and incorrectly rename downloads. Right-click the file, choose Rename, and remove the .txt suffix so the filename ends in .docx only. Then double-click to open in Word.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          Does this work on mobile?
-          <span class="toggle">+</span>
-        </button>
-        <div class="faq-a">Yes. The tool works on any modern mobile browser — Chrome, Safari, Firefox, or Edge on iOS and Android. After downloading, open the file using the Microsoft Word app or Google Docs app on your phone.</div>
-      </div>
-
-    </section>
-
-  </div>
-</main>
-
-<!-- ── Related links ── -->
-<section class="related-links">
-  <div class="container">
-    <h2>Explore related tools and guides</h2>
-    <p>Continue your workflow with these tools from Compress It Small.</p>
-    <div class="link-grid">
-      <a class="link-card" href="/tools/office/text-to-pdf/">
-        <div class="link-title">Text to PDF</div>
-        <p class="link-desc">Create a non-editable PDF from plain text — same speed, no upload.</p>
-      </a>
-      <a class="link-card" href="/tools/office/">
-        <div class="link-title">All Office Tools</div>
-        <p class="link-desc">JSON formatter, CSV converters, metadata remover and more.</p>
-      </a>
-      <a class="link-card" href="/tools/pdf/compress-pdf/">
-        <div class="link-title">Compress PDF</div>
-        <p class="link-desc">Reduce PDF size for portals, email and strict upload limits.</p>
-      </a>
-      <a class="link-card" href="/tools/pdf/merge-pdf/">
-        <div class="link-title">Merge PDF</div>
-        <p class="link-desc">Combine multiple PDF files into one clean document.</p>
-      </a>
-      <a class="link-card" href="/tools/upload-limit-checker/">
-        <div class="link-title">Upload Limit Checker</div>
-        <p class="link-desc">Check your file size against common portal limits before you upload.</p>
-      </a>
-      <a class="link-card" href="/blog/">
-        <div class="link-title">Guides</div>
-        <p class="link-desc">Step-by-step compression guides for real-world upload limits.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── Content section ── -->
 <div class="container">
-  <section class="content-section">
-
-    <h2>Text to DOCX: turn plain text into a real Word document</h2>
-    <p>A <code>.docx</code> file is the standard editable document format — accepted by employers, universities, government portals, and collaboration platforms worldwide. When you paste text into this converter and click download, you get a properly structured Word document built entirely in your browser. No server, no account, no waiting.</p>
-
-    <h3>Why convert text to DOCX rather than copy-pasting into Word?</h3>
-    <p>Copying raw text directly into Word often carries over invisible characters, broken line breaks, or encoding errors — especially from PDFs, web pages, or terminal windows. This tool strips all of that out and rebuilds clean paragraph structure in a valid <code>.docx</code> file. The result opens without compatibility warnings in Microsoft Word, LibreOffice Writer, Google Docs, and Apple Pages.</p>
-    <p>It's also faster than opening Word, creating a new document, pasting text, fixing the formatting, and saving. This tool skips every one of those steps.</p>
-
-    <h3>What people actually use this for</h3>
-    <ul>
-      <li><strong>Cover letters and job applications</strong> — Recruiters often request editable Word files. Converting from plain text avoids hidden character corruption that can make a PDF copy-paste look wrong.</li>
-      <li><strong>Academic submissions</strong> — Many university portals require <code>.docx</code> format. This gives you a clean starting point when all you have is typed notes or a plain text draft.</li>
-      <li><strong>Legal and official documents</strong> — Draft contracts, affidavits, or declarations in plain text first, then convert to DOCX for final formatting and signature.</li>
-      <li><strong>Meeting notes and minutes</strong> — Quickly turn bullet-point notes from a notes app into a shareable, named Word file.</li>
-      <li><strong>Manuscript drafts</strong> — Writers who draft in plain text editors like Notepad, iA Writer, or Obsidian can convert chapters to DOCX for editing in Word with track changes.</li>
-      <li><strong>Email content archiving</strong> — Extract important email text and save it as a properly named document for record-keeping or handover.</li>
-    </ul>
-
-    <h3>Tips for getting the best output</h3>
-    <ul>
-      <li>Use <strong>blank lines between paragraphs</strong> — they become proper paragraph breaks in the DOCX.</li>
-      <li>Remove HTML tags or markdown symbols before pasting — they will appear as literal characters in the document.</li>
-      <li>For numbered lists, type the numbers manually (1. 2. 3.) — you can convert them to auto-numbered lists in Word after download.</li>
-      <li>Unicode characters, accented letters, Arabic, Chinese, and other scripts are all fully supported.</li>
-      <li>If your text includes a heading at the top, add it to the Title field instead — it will render with proper heading styling.</li>
-    </ul>
-
-    <h3>What you can do with the file after download</h3>
-    <p>Once you open the <code>.docx</code> file in Word or LibreOffice, it behaves exactly like any other Word document. You can change the font and size, adjust line spacing, add a header with your name and date, insert a table of contents, apply styles, track changes collaboratively, or export to PDF using File → Save As.</p>
-    <p>If you need the document as a PDF rather than an editable file, use our <a href="/tools/office/text-to-pdf/">Text to PDF tool</a> instead. It produces a clean, non-editable PDF from the same plain text input.</p>
-
-    <h3>Privacy and security</h3>
-    <p>This converter runs entirely in your browser using the open-source <code>docx.js</code> library. Your text is never sent to our servers, never stored in a database, and never logged anywhere. There are no accounts, no sign-ups, and no session data retained after you close the tab. It is safe to use for confidential drafts, legal correspondence, medical records, and any other sensitive content.</p>
-
-    <h3>Related tools</h3>
-    <ul>
-      <li><a href="/tools/office/text-to-pdf/">Text to PDF</a> — Create a non-editable PDF from plain text</li>
-      <li><a href="/tools/pdf/compress-pdf/">Compress PDF</a> — Reduce PDF size after converting</li>
-      <li><a href="/tools/pdf/merge-pdf/">Merge PDF</a> — Combine multiple documents into one</li>
-      <li><a href="/tools/office/json-formatter/">JSON Formatter</a> — Format and validate JSON in your browser</li>
-      <li><a href="/tools/office/csv-to-excel/">CSV to Excel</a> — Convert spreadsheet data to <code>.xlsx</code> format</li>
-    </ul>
-
-  </section>
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="/">
+<div class="brand-icon">C</div>
+<div class="brand-text">
+<span>Compress It Small</span>
+<span>Smart online compression hub</span>
 </div>
+</a>
+<div class="nav-links" style="display:flex; align-items:center; gap:0.75rem;">
+<a class="nav-link" href="/tools/">Tools</a>
+<a class="nav-link" href="/blog/">Blog</a>
+<a class="nav-link" href="/checklists/">Checklists</a>
+<a class="nav-link" href="/faq/">FAQ</a>
+<a class="nav-link" href="/contact/">Contact</a>
+</div>
+<div class="nav-cta"><a class="btn btn-primary" href="/tools/">Open tools</a></div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/tools/" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+<a href="/checklists/" onclick="toggleMobileNav(false)">Checklists</a>
+<a href="/faq/" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/contact/" onclick="toggleMobileNav(false)">Contact</a>
+</div>
+</div>
+</header>
+<main>
+<div class="container">
+<section style="margin-top:2rem;margin-bottom:1.5rem;">
+<h1 style="font-size:2rem;line-height:1.15;margin-bottom:.75rem;">Create a DOCX from text — quick Word documents for submissions and editing</h1>
+<p style="color:#475569;max-width:70ch;">Paste your text and generate a clean Word (.docx) file instantly. Useful for reports, notes, drafts, and any content you need to edit in Microsoft Word or LibreOffice.</p>
+</section>
+<section class="tool-card">
+<h2>Text to DOCX Converter</h2>
+<div class="tool-ui">
+<label for="title">Document title (optional)</label>
+<input id="title" placeholder="e.g., Meeting Notes" type="text"/>
+<label for="text" style="margin-top:.75rem;">Paste your text</label>
+<textarea id="text" placeholder="Write or paste text here..." rows="10" style="width:100%;padding:.8rem;border-radius:12px;border:1px solid rgba(148,163,184,0.35);"></textarea>
+<div class="field-row" style="margin-top:.75rem;">
+<div style="flex:1;min-width:220px;">
+<label for="splitMode">Paragraph handling</label>
+<select id="splitMode">
+<option selected="" value="blank">Split on blank lines</option>
+<option value="line">Each line is a paragraph</option>
+</select>
+</div>
+<div style="flex:1;min-width:220px;">
+<label for="fileName">File name</label>
+<input id="fileName" type="text" value="document.docx"/>
+</div>
+</div>
+<button class="btn" onclick="textToDocx()" style="margin-top:1rem;" type="button">Create DOCX</button>
+<p aria-live="polite" class="tool-status" id="status" role="status"></p>
+<p id="progress" style="color:#64748b;font-size:.95rem;margin-top:.25rem;"></p>
+</div>
+</section>
+<section style="margin-top:2rem;">
+<h2>How it works</h2>
+<p>This tool creates a Microsoft Word (.docx) file from plain text directly in your browser. It is helpful when you have notes, emails, or drafted content and need a clean document for submission or editing.</p>
+<ul style="margin-top:.75rem;padding-left:1.25rem;">
+<li>Split on blank lines to keep logical paragraphs.</li>
+<li>DOCX generation runs locally — no upload.</li>
+<li>For PDF output, use the <a href="/tools/office/text-to-pdf/">Text to PDF</a> tool.</li>
+</ul>
+</section>
+<section style="margin-top:2rem;">
+<h2>Related tools</h2>
+<ul class="link-list"><li><a href="/tools/office/text-to-pdf/">Text to PDF</a></li><li><a href="/tools/office/json-formatter/">JSON formatter</a></li><li><a href="/tools/office/csv-to-excel/">CSV to Excel</a></li><li><a href="/tools/pdf/">PDF compressor</a></li><li><a href="/blog/">Blog</a></li></ul>
+</section>
+<section style="margin-top:2rem;">
+<h2>FAQ</h2>
+<div class="faq">
+<div class="faq-item">
+<button class="faq-q" type="button">Does this keep formatting like bold?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>No. This converts plain text. For rich formatting, start from a Word editor or add formatting after download.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Is it private?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>Yes. All processing is local.</p></div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Can I add headings?<span aria-hidden="true">+</span></button>
+<div class="faq-a"><p>Use the title field for a basic heading. Further styling can be done in Word after download.</p></div>
+</div></div>
+</section>
+</div>
+</main>
+<section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/pdf/"><div class="link-title">Compress PDF</div><p class="link-desc">Reduce PDF size for portals, email and uploads.</p></a><a class="link-card" href="/tools/pdf/split-pdf/"><div class="link-title">Split PDF</div><p class="link-desc">Extract ranges or split large PDFs into smaller parts.</p></a><a class="link-card" href="/tools/pdf/rotate-pdf/"><div class="link-title">Rotate PDF</div><p class="link-desc">Fix sideways pages for submissions and printing.</p></a><a class="link-card" href="/tools/pdf/reorder-pdf/"><div class="link-title">Reorder PDF</div><p class="link-desc">Re-arrange pages before you upload or sign.</p></a><a class="link-card" href="/tools/pdf/delete-pages/"><div class="link-title">Delete PDF Pages</div><p class="link-desc">Remove unwanted pages to cut size and clutter.</p></a><a class="link-card" href="/tools/pdf/jpg-to-pdf/"><div class="link-title">JPG to PDF</div><p class="link-desc">Convert images into a single shareable PDF.</p></a><a class="link-card" href="/blog/how-to-compress-pdf/"><div class="link-title">How to Compress PDF</div><p class="link-desc">Step-by-step PDF compression workflow.</p></a></div></div></section>
+<section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
+<h2>Text to DOCX: Turn Plain Text Into a Real Word Document</h2>
+<p>A DOCX file is the standard format for editable documents — accepted by employers, universities, government portals, and collaboration platforms worldwide. When you paste text into this tool and click Convert, you get a properly formatted <code>.docx</code> file built entirely inside your browser. Nothing is uploaded to any server.</p>
 
-<!-- ── Footer ── -->
-<footer>
-  <div class="container footer-grid">
-    <div>
-      <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/#tools">Tools</a>
-        <a href="/#guides">Guides</a>
-        <a href="/#faq">FAQ</a>
-        <a href="/#contact">Contact</a>
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/terms/">Terms &amp; Conditions</a>
-        <a href="/cookie-policy/">Cookie Policy</a>
-        <a href="/disclaimer/">Disclaimer</a>
-      </div>
-      <p style="margin-top:.5rem;">© <span id="year"></span> Compress It Small. All rights reserved.</p>
-    </div>
-    <div>
-      <p>This site focuses on educational content and practical utilities. Information is provided for general guidance. Always verify critical workflows with the official instructions of the institution or service you are using.</p>
-    </div>
-  </div>
+<h3>Why convert text to DOCX instead of copying and pasting?</h3>
+<p>Copying raw text into Word often carries over unexpected formatting, invisible characters, or encoding errors — especially if the source is a PDF, a web page, or a terminal window. This converter strips all of that out and rebuilds clean paragraph structure in a valid DOCX file. The result opens instantly in Microsoft Word, LibreOffice Writer, Google Docs, or Apple Pages without any compatibility warnings.</p>
+
+<h3>Step-by-step: how to create a Word document from text</h3>
+<ol>
+  <li><strong>Paste your text</strong> — Copy any block of text from any source: a PDF, a notes app, a form, an email draft, or a code snippet.</li>
+  <li><strong>Set an optional title</strong> — Enter a heading for your document. It appears at the top in bold when the file opens.</li>
+  <li><strong>Name your file</strong> — Give it a descriptive filename like <code>cover-letter.docx</code> or <code>report-draft.docx</code>. The <code>.docx</code> extension is added automatically if you omit it.</li>
+  <li><strong>Click Create DOCX</strong> — The file is generated in milliseconds and your download starts immediately.</li>
+  <li><strong>Open in Word or LibreOffice</strong> — Apply your own fonts, bullet points, headers, or tables as needed.</li>
+</ol>
+
+<h3>Common real-world use cases</h3>
+<ul>
+  <li><strong>Cover letters and job applications</strong> — Recruiters often request an editable Word file. Converting from plain text ensures no hidden characters or format corruption.</li>
+  <li><strong>Academic submissions</strong> — Many university portals and thesis systems require <code>.docx</code> format. This tool gives you a clean starting point when all you have is typed notes.</li>
+  <li><strong>Legal and official documents</strong> — Draft contracts, affidavits, or declarations in plain text first, then convert to DOCX for final formatting and signatures.</li>
+  <li><strong>Meeting notes and minutes</strong> — Quickly turn bullet-point notes from a notes app into a shareable Word file.</li>
+  <li><strong>Manuscript drafts</strong> — Writers who draft in plain text editors (Notepad, iA Writer, Obsidian) can convert chapters to DOCX for editing in Word with track changes.</li>
+  <li><strong>Email content repurposing</strong> — Extract important email text and save it as a named document for archiving or handover.</li>
+</ul>
+
+<h3>Formatting tips before you convert</h3>
+<ul>
+  <li>Use <strong>blank lines</strong> between paragraphs — they become proper paragraph breaks in the DOCX.</li>
+  <li>Remove any HTML tags or markdown symbols if you're pasting from a web editor — they will appear as literal text.</li>
+  <li>For numbered lists, type the numbers manually (1. 2. 3.) — you can convert them to auto-numbered lists in Word after download.</li>
+  <li>Unicode characters, accented letters, and non-English scripts are fully supported.</li>
+  <li>There is no character limit for most use cases; very large documents (100,000+ words) may take a second longer to generate.</li>
+</ul>
+
+<h3>What happens after download?</h3>
+<p>Once you open the <code>.docx</code> file in Microsoft Word or LibreOffice, it behaves exactly like any other Word document. You can change the font, adjust line spacing, add a header with your name and date, insert a table of contents, track changes collaboratively, or convert it to PDF using File → Save As. If you need the document as a PDF, use our <a href="/tools/office/text-to-pdf/">Text to PDF tool</a> to get a non-editable version instead.</p>
+
+<h3>Privacy and security</h3>
+<p>This converter runs entirely in your browser using the <code>docx.js</code> library. Your text is never sent to our servers, never stored in a database, and never logged. There are no accounts, no sign-ups, and no session data retained after you close the browser tab. It is safe to use for confidential drafts, legal documents, and personal correspondence.</p>
+
+<h3>Frequently asked questions</h3>
+<dl>
+  <dt>Will the DOCX open correctly in older versions of Word?</dt>
+  <dd>Yes. The output uses standard OOXML formatting compatible with Word 2007 and all later versions, as well as LibreOffice 5+ and Google Docs. If you see a compatibility mode warning, simply use File → Convert to upgrade the file in Word.</dd>
+
+  <dt>Can I include images in the document?</dt>
+  <dd>This tool converts text only. To add images, open the downloaded DOCX in Word or LibreOffice and insert them using the Insert → Pictures menu. For a PDF with embedded images, use our <a href="/tools/office/text-to-pdf/">Text to PDF converter</a>.</dd>
+
+  <dt>Is there a word or character limit?</dt>
+  <dd>There is no enforced limit. The conversion runs locally in your browser, so performance depends on your device. Documents up to 50,000 words generate almost instantly. Very large documents may take 2–5 seconds depending on your hardware.</dd>
+
+  <dt>Why does my downloaded file show as .docx.txt on some systems?</dt>
+  <dd>Some operating systems hide file extensions and incorrectly rename downloaded files. Right-click the file, choose Rename, and remove the .txt suffix so the filename ends in .docx. Then double-click to open in Word.</dd>
+
+  <dt>Can I use this on my phone?</dt>
+  <dd>Yes. The tool works on any modern mobile browser — Chrome, Safari, Firefox, or Edge on iOS and Android. After downloading, open the file using the Microsoft Word or Google Docs app.</dd>
+
+  <dt>Does formatting like bold or italics carry over?</dt>
+  <dd>Plain text has no formatting codes. The DOCX will contain clean, unformatted paragraphs which you can style manually in Word. If you need bold or italic text preserved, paste from a source that supports rich text and apply formatting in Word after download.</dd>
+</dl>
+
+<h3>Related tools</h3>
+<ul>
+  <li><a href="/tools/office/text-to-pdf/">Text to PDF</a> — Create a non-editable PDF from plain text</li>
+  <li><a href="/tools/pdf/compress-pdf/">Compress PDF</a> — Reduce PDF file size after converting</li>
+  <li><a href="/tools/pdf/merge-pdf/">Merge PDF</a> — Combine multiple documents into one</li>
+  <li><a href="/blog/word-document-too-large-fix/">Fix an oversized Word document</a> — What to do when your DOCX is rejected for being too large</li>
+</ul>
+</section><footer>
+<div class="container footer-grid">
+<div>
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/tools/">Tools</a>
+<a href="/blog/">Blog</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+<a href="/terms/">Terms &amp; Conditions</a>
+<a href="/cookie-policy/">Cookie Policy</a>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
+<p class="footer-note">
+        &copy; <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
+</div>
 </footer>
 
-<!-- ── Cookie banner ── -->
-<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
-  <div class="cis-cookie-inner">
-    <div>
-      <div class="cis-cookie-title">Cookies &amp; privacy</div>
-      <div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
-    </div>
-    <div class="cis-cookie-actions">
-      <button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
-      <button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
-      <button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
-    </div>
-  </div>
-</div>
-
-<!-- ── Single consolidated script block ── -->
 <script>
 (function(){
-
-  /* Footer year */
+  // Footer year
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
-  /* Mobile nav */
-  window.toggleMobileNav = function(force){
-    var panel = document.getElementById('nav-mobile');
-    var btn   = document.getElementById('nav-toggle');
-    if (!panel || !btn) return;
-    var shouldOpen = (typeof force === 'boolean') ? force : !panel.classList.contains('open');
-    panel.classList.toggle('open', shouldOpen);
-    btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
-    panel.setAttribute('aria-hidden',  shouldOpen ? 'false' : 'true');
-  };
-  document.addEventListener('click', function(e){
-    var panel = document.getElementById('nav-mobile');
-    var btn   = document.getElementById('nav-toggle');
-    if (!panel || !btn || !panel.classList.contains('open')) return;
-    if (panel.contains(e.target) || btn.contains(e.target)) return;
-    window.toggleMobileNav(false);
-  }, true);
-
-  /* FAQ accordion */
-  window.toggleFaq = function(btn){
-    var item = btn.closest('.faq-item');
-    document.querySelectorAll('.faq-item').forEach(function(el){
-      if (el !== item) el.classList.remove('open');
-    });
-    item.classList.toggle('open');
-  };
-
-  /* Cookie consent */
-  var KEY    = 'cis_cookie_consent';
-  var banner = document.getElementById('cisCookieBanner');
-  if (!localStorage.getItem(KEY)) banner.style.display = 'block';
-  document.getElementById('cisCookieAccept').addEventListener('click', function(){
-    localStorage.setItem(KEY,'accepted'); banner.style.display='none';
-  });
-  document.getElementById('cisCookieDecline').addEventListener('click', function(){
-    localStorage.setItem(KEY,'declined'); banner.style.display='none';
-  });
-
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
 })();
+</script>
+<script>
 
-/* Text to DOCX converter */
+document.getElementById("year").textContent = new Date().getFullYear();
+
 async function textToDocx(){
-  var status   = document.getElementById('status');
-  var title    = (document.getElementById('title').value || '').trim();
-  var text     = (document.getElementById('text').value  || '').toString();
-  var splitMode= document.getElementById('splitMode').value;
-  var fileName = (document.getElementById('fileName').value || 'document.docx').trim();
-  if (!fileName.toLowerCase().endsWith('.docx')) fileName += '.docx';
+  const status=document.getElementById("status");
+  const progress=document.getElementById("progress");
+  const title=(document.getElementById("title").value||"").trim();
+  const text=(document.getElementById("text").value||"").toString();
+  const splitMode=document.getElementById("splitMode").value;
+  let fileName=(document.getElementById("fileName").value||"document.docx").trim();
+  if(!fileName.toLowerCase().endsWith(".docx")) fileName += ".docx";
 
-  if (!text.trim() && !title) {
-    status.textContent = 'Add a title or some text first.';
-    status.className = 'tool-status error';
+  if(!text.trim() && !title){
+    status.textContent="Add a title or some text first.";
+    status.className="tool-status error";
     return;
   }
 
-  status.textContent = 'Building DOCX…';
-  status.className = 'tool-status';
+  status.textContent="Building DOCX...";
+  status.className="tool-status";
+  progress.textContent="";
 
-  try {
-    var D = docx;
-    var children = [];
+  try{
+    const { Document, Packer, Paragraph, HeadingLevel } = docx;
 
-    if (title) {
-      children.push(new D.Paragraph({ text: title, heading: D.HeadingLevel.HEADING_1 }));
-      children.push(new D.Paragraph({ text: '' }));
+    const children=[];
+
+    if(title){
+      children.push(new Paragraph({ text: title, heading: HeadingLevel.HEADING_1 }));
+      children.push(new Paragraph({ text: "" }));
     }
 
-    var parts = splitMode === 'line'
-      ? text.split(/\r?\n/)
-      : text.split(/\r?\n\s*\r?\n/);
+    let parts=[];
+    if(splitMode==="line"){
+      parts=text.split(/\r?\n/);
+    }else{
+      parts=text.split(/\r?\n\s*\r?\n/); // blank lines
+    }
 
-    parts = parts.map(function(p){ return p.replace(/\r/g,'').trim(); }).filter(Boolean);
-    parts.forEach(function(p){ children.push(new D.Paragraph({ text: p })); });
+    parts = parts.map(p=>p.replace(/\r/g,'').trim()).filter(Boolean);
 
-    var doc  = new D.Document({ sections: [{ children: children }] });
-    var blob = await D.Packer.toBlob(doc);
+    for(const p of parts){
+      children.push(new Paragraph({ text: p }));
+    }
+
+    const doc = new Document({ sections: [{ children }] });
+    progress.textContent="Packing...";
+    const blob = await Packer.toBlob(doc);
     saveAs(blob, fileName);
 
-    status.textContent = '✓ DOCX downloaded successfully.';
-    status.className = 'tool-status success';
-  } catch(err) {
+    status.textContent="Done! DOCX download started.";
+    status.className="tool-status success";
+    progress.textContent="";
+  }catch(err){
     console.error(err);
-    status.textContent = 'Something went wrong. Please try again.';
-    status.className = 'tool-status error';
+    status.textContent="Could not create DOCX. Please try again.";
+    status.className="tool-status error";
+    progress.textContent="";
   }
 }
-</script>
 
+</script>
+<!-- Cookie Consent Banner -->
+<style>
+.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
+.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
+.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
+.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
+.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
+.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
+.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
+.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
+.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
+.cis-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
+</style>
+<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
+<div class="cis-cookie-inner">
+<div>
+<div class="cis-cookie-title">Cookies &amp; privacy</div>
+<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
+</div>
+<div class="cis-cookie-actions">
+<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
+<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
+<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var KEY='cis_cookie_consent';
+  var banner=document.getElementById('cisCookieBanner');
+  if(!localStorage.getItem(KEY)){banner.style.display='block';}
+  document.getElementById('cisCookieAccept').addEventListener('click',function(){
+    localStorage.setItem(KEY,'accepted');
+    banner.style.display='none';
+  });
+  document.getElementById('cisCookieDecline').addEventListener('click',function(){
+    localStorage.setItem(KEY,'declined');
+    banner.style.display='none';
+  });
+})();
+</script>
+<script>
+(function(){
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Mobile nav toggle (shared header)
+  if (typeof window.toggleMobileNav !== 'function') {
+    window.toggleMobileNav = function(force){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      var isOpen = panel.classList.contains('open');
+      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
+      panel.classList.toggle('open', shouldOpen);
+      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    };
+    document.addEventListener('click', function(e){
+      var panel = document.getElementById('nav-mobile');
+      var btn = document.getElementById('nav-toggle');
+      if (!panel || !btn) return;
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      window.toggleMobileNav(false);
+    }, true);
+  }
+})();
+</script>
 </body>
 </html>

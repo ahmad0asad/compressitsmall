@@ -4,7 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>FAQ | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Quick answers about privacy, supported files, and how the tools behave in your browser." name="twitter:description"/><meta content="FAQ | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/faq/" property="og:url"/><meta content="Quick answers about privacy, supported files, and how the tools behave in your browser." property="og:description"/><meta content="FAQ | Compress It Small" property="og:title"/>
+<title>FAQ | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Quick answers about privacy, supported files, and how the tools behave in your browser." name="twitter:description"/><meta content="FAQ | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/faq/" property="og:url"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="Quick answers about privacy, supported files, and how the tools behave in your browser." property="og:description"/><meta content="FAQ | Compress It Small" property="og:title"/>
 <meta content="Quick answers about privacy, supported files, and how the tools behave in your browser." name="description"/>
 <link href="https://compressitsmall.co.uk/faq/" rel="canonical"/>
 <meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
@@ -76,6 +77,9 @@ header#top .nav-mobile.open{display:flex}
 .link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
 .link-title { font-weight: 800; margin: 0 0 6px; }
 .link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
+
+    .nav-link { color: var(--text-muted); font-weight: 600; font-size: 0.95rem; padding: 0.35rem 0.5rem; border-radius: 10px; }
+    .nav-link:hover { background: rgba(37,99,235,0.07); color: var(--text); }
 </style>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -489,26 +493,25 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 <span>Smart online compression hub</span>
 </div>
 </a>
-<div class="nav-cta">
-<a class="btn btn-ghost" href="/"><span>🏠</span><span>Home</span></a>
-<a class="btn btn-ghost" href="/tools/pdf/"><span>📄</span><span>PDF Tools</span></a>
-<a class="btn btn-ghost" href="/tools/image/"><span>🖼️</span><span>Image Tools</span></a>
-<a class="btn btn-ghost" href="/tools/office/"><span>📂</span><span>Office Tools</span></a>
-<a class="btn btn-primary" href="/blog/"><span>📰</span><span>Blog</span></a>
+<div class="nav-links" style="display:flex; align-items:center; gap:0.75rem;">
+<a class="nav-link" href="/tools/">Tools</a>
+<a class="nav-link" href="/blog/">Blog</a>
+<a class="nav-link" href="/checklists/">Checklists</a>
+<a class="nav-link" href="/faq/">FAQ</a>
+<a class="nav-link" href="/contact/">Contact</a>
 </div>
+<div class="nav-cta"><a class="btn btn-primary" href="/tools/">Open tools</a></div>
 <button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
 <span></span><span></span><span></span>
 </button>
-<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
-<a href="/">Home</a>
-<a href="/tools/">Tools</a>
-<a href="/how-it-works/">How it works</a>
-<a href="/faq/">FAQ</a>
-<a href="/about/">About</a>
-<a href="/contact/">Contact</a>
-<a href="/blog/">Blog</a>
-</div>
 </nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/tools/" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+<a href="/checklists/" onclick="toggleMobileNav(false)">Checklists</a>
+<a href="/faq/" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/contact/" onclick="toggleMobileNav(false)">Contact</a>
+</div>
 </div>
 </header>
 <main>
@@ -540,21 +543,31 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 </main>
 <section class="related-links"><div class="container"><h2>Explore related tools and guides</h2><p>Use these internal links to complete your workflow faster (compress, convert, merge, split) and follow the most relevant guides.</p><div class="link-grid"><a class="link-card" href="/tools/image/"><div class="link-title">Image Tools</div><p class="link-desc">Compress and resize JPG/PNG for web, forms and sharing.</p></a><a class="link-card" href="/tools/office/"><div class="link-title">Office Tools</div><p class="link-desc">Shrink Word/Excel/PowerPoint files (practical workflows).</p></a><a class="link-card" href="/tools/upload-limit-checker/"><div class="link-title">Upload Limit Checker</div><p class="link-desc">Check common file size limits for portals and emails.</p></a><a class="link-card" href="/blog/"><div class="link-title">Guides</div><p class="link-desc">Step-by-step compression guides for real upload limits.</p></a></div></div></section>
 <footer>
-<div class="container">
+<div class="container footer-grid">
+<div>
 <div class="footer-links">
 <a href="/">Home</a>
 <a href="/tools/">Tools</a>
-<a href="/tools/pdf/">PDF Tools</a>
-<a href="/blog/">Guides</a>
-<a href="/faq/">FAQ</a>
+<a href="/blog/">Blog</a>
 <a href="/about/">About</a>
 <a href="/contact/">Contact</a>
 <a href="/privacy-policy/">Privacy Policy</a>
-<a href="/terms/">Terms</a>
+<a href="/terms/">Terms &amp; Conditions</a>
 <a href="/cookie-policy/">Cookie Policy</a>
 <a href="/disclaimer/">Disclaimer</a>
 </div>
-<p>© <span id="year"></span> Compress It Small. All rights reserved.</p>
+<p class="footer-note">
+        &copy; <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
 </div>
 </footer>
 <script>

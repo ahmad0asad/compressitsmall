@@ -4,7 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>How It Works | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Learn how Compress It Small processes files in your browser, what happens to your data, and how to get the best results. Includes quick links to PDF, image, and office tools." name="twitter:description"/><meta content="How It Works | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/how-it-works/" property="og:url"/><meta content="Learn how Compress It Small processes files in your browser, what happens to your data, and how to get the best results. Includes quick links to PDF, image, and office tools." property="og:description"/><meta content="How It Works | Compress It Small" property="og:title"/>
+<title>How It Works | Compress It Small</title><meta content="summary" name="twitter:card"/><meta content="Learn how Compress It Small processes files in your browser, what happens to your data, and how to get the best results. Includes quick links to PDF, image, and office tools." name="twitter:description"/><meta content="How It Works | Compress It Small" name="twitter:title"/><meta content="website" property="og:type"/><meta content="https://compressitsmall.co.uk/how-it-works/" property="og:url"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="Learn how Compress It Small processes files in your browser, what happens to your data, and how to get the best results. Includes quick links to PDF, image, and office tools." property="og:description"/><meta content="How It Works | Compress It Small" property="og:title"/>
 <meta content="Learn how Compress It Small processes files in your browser, what happens to your data, and how to get the best results. Includes quick links to PDF, image, and office tools." name="description"/>
 <link href="https://compressitsmall.co.uk/how-it-works/" rel="canonical"/>
 <meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
@@ -75,6 +76,9 @@ header#top .nav-mobile.open{display:flex}
 .links a{border:1px solid var(--border);background:#fff;border-radius:14px;padding:10px 12px}
 .links a:hover{border-color:#cbd5e1}
 
+
+    .nav-link { color: var(--text-muted); font-weight: 600; font-size: 0.95rem; padding: 0.35rem 0.5rem; border-radius: 10px; }
+    .nav-link:hover { background: rgba(37,99,235,0.07); color: var(--text); }
 </style>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -488,26 +492,25 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 <span>Smart online compression hub</span>
 </div>
 </a>
-<div class="nav-cta">
-<a class="btn btn-ghost" href="/"><span>🏠</span><span>Home</span></a>
-<a class="btn btn-ghost" href="/tools/pdf/"><span>📄</span><span>PDF Tools</span></a>
-<a class="btn btn-ghost" href="/tools/image/"><span>🖼️</span><span>Image Tools</span></a>
-<a class="btn btn-ghost" href="/tools/office/"><span>📂</span><span>Office Tools</span></a>
-<a class="btn btn-primary" href="/blog/"><span>📰</span><span>Blog</span></a>
+<div class="nav-links" style="display:flex; align-items:center; gap:0.75rem;">
+<a class="nav-link" href="/tools/">Tools</a>
+<a class="nav-link" href="/blog/">Blog</a>
+<a class="nav-link" href="/checklists/">Checklists</a>
+<a class="nav-link" href="/faq/">FAQ</a>
+<a class="nav-link" href="/contact/">Contact</a>
 </div>
+<div class="nav-cta"><a class="btn btn-primary" href="/tools/">Open tools</a></div>
 <button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
 <span></span><span></span><span></span>
 </button>
-<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
-<a href="/">Home</a>
-<a href="/tools/">Tools</a>
-<a href="/how-it-works/">How it works</a>
-<a href="/faq/">FAQ</a>
-<a href="/about/">About</a>
-<a href="/contact/">Contact</a>
-<a href="/blog/">Blog</a>
-</div>
 </nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/tools/" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+<a href="/checklists/" onclick="toggleMobileNav(false)">Checklists</a>
+<a href="/faq/" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/contact/" onclick="toggleMobileNav(false)">Contact</a>
+</div>
 </div>
 </header>
 <main>
@@ -670,21 +673,31 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 </div>
 </main>
 <footer>
-<div class="container">
+<div class="container footer-grid">
+<div>
 <div class="footer-links">
 <a href="/">Home</a>
 <a href="/tools/">Tools</a>
-<a href="/tools/pdf/">PDF Tools</a>
-<a href="/blog/">Guides</a>
-<a href="/faq/">FAQ</a>
+<a href="/blog/">Blog</a>
 <a href="/about/">About</a>
 <a href="/contact/">Contact</a>
 <a href="/privacy-policy/">Privacy Policy</a>
-<a href="/terms/">Terms</a>
+<a href="/terms/">Terms &amp; Conditions</a>
 <a href="/cookie-policy/">Cookie Policy</a>
 <a href="/disclaimer/">Disclaimer</a>
 </div>
-<p>© <span id="year"></span> Compress It Small. All rights reserved.</p>
+<p class="footer-note">
+        &copy; <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
+</div>
+<div>
+<p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
+</div>
 </div>
 </footer>
 <script>

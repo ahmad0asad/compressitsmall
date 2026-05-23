@@ -636,42 +636,24 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 <span>Smart online compression hub</span>
 </div>
 </a>
-<!-- Desktop nav links are intentionally minimal; main CTAs are toolbar buttons -->
-<div class="nav-links" style="display:none;"></div>
-<!-- Modern toolbar-style CTA with icons -->
-<div class="nav-cta">
-<button class="btn btn-ghost" onclick="location.href='/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>🏠</span><span>Home</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/pdf/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>📄</span><span>PDF Tools</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/image/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>🖼️</span><span>Image Tools</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/office/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>📂</span><span>Office Tools</span>
-</button>
-<button class="btn btn-ghost" onclick="location.href='/tools/upload-limit-checker/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>🎯</span><span>Upload Limit Checker</span>
-</button>
-<button class="btn btn-primary" onclick="location.href='/blog/'" style="padding:4px 10px;font-size:0.78rem;display:inline-flex;align-items:center;gap:4px;">
-<span>📰</span><span>Blog</span>
-</button>
+<div class="nav-links" style="display:flex; align-items:center; gap:0.75rem;">
+<a class="nav-link" href="/tools/">Tools</a>
+<a class="nav-link" href="/blog/">Blog</a>
+<a class="nav-link" href="/checklists/">Checklists</a>
+<a class="nav-link" href="/faq/">FAQ</a>
+<a class="nav-link" href="/contact/">Contact</a>
 </div>
+<div class="nav-cta"><a class="btn btn-primary" href="/tools/">Open tools</a></div>
 <button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
-<span></span>
-<span></span>
-<span></span>
+<span></span><span></span><span></span>
 </button>
 </nav>
 <div aria-hidden="true" class="nav-mobile" id="nav-mobile">
-<a href="/#tools" onclick="toggleMobileNav(false)">Tools</a>
-<a href="/#how-it-works" onclick="toggleMobileNav(false)">How it works</a>
-<a href="/#guides" onclick="toggleMobileNav(false)">Guides</a>
-<a href="/#faq" onclick="toggleMobileNav(false)">FAQ</a>
-<a href="/#contact" onclick="toggleMobileNav(false)">Contact</a>
+<a href="/tools/" onclick="toggleMobileNav(false)">Tools</a>
 <a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+<a href="/checklists/" onclick="toggleMobileNav(false)">Checklists</a>
+<a href="/faq/" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/contact/" onclick="toggleMobileNav(false)">Contact</a>
 </div>
 </div>
 </header>
@@ -885,17 +867,18 @@ deep and accurate comparison of textual differences.
 <div class="container footer-grid">
 <div>
 <div class="footer-links">
-<a href="/#top">Home</a>
-<a href="/#tools">Tools</a>
-<a href="/#guides">Guides</a>
-<a href="/#faq">FAQ</a>
-<a href="/#contact">Contact</a>
+<a href="/">Home</a>
+<a href="/tools/">Tools</a>
+<a href="/blog/">Blog</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
 <a href="/privacy-policy/">Privacy Policy</a>
 <a href="/terms/">Terms &amp; Conditions</a>
 <a href="/cookie-policy/">Cookie Policy</a>
-<a href="/disclaimer/">Disclaimer</a></div>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
 <p class="footer-note">
-        © <span id="year"></span> Compress It Small. All rights reserved.
+        &copy; <span id="year"></span> Compress It Small. All rights reserved.
       </p>
 </div>
 <div>

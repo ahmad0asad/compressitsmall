@@ -173,7 +173,10 @@
     .footer-links{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:.4rem}
     .footer-links a{color:#e5e7eb}
     .footer-links a:hover{text-decoration:underline}
-  </style>
+  
+    .nav-link { color: var(--text-muted); font-weight: 600; font-size: 0.95rem; padding: 0.35rem 0.5rem; border-radius: 10px; }
+    .nav-link:hover { background: rgba(37,99,235,0.07); color: var(--text); }
+</style>
 <!-- pdf-lib (self-hosted to avoid CDN redirect failures) -->
 <script src="/assets/js/pdf-lib.min.js"></script>
 <!-- Schema: WebApplication -->
@@ -581,26 +584,25 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 <span>Smart online compression hub</span>
 </div>
 </a>
-<div aria-label="Quick links" class="nav-cta">
-<a class="btn btn-ghost" href="/">Home</a>
-<a class="btn btn-ghost" href="/tools/pdf/">PDF Tools</a>
-<a class="btn btn-ghost" href="/tools/image/">Image Tools</a>
-<a class="btn btn-ghost" href="/tools/office/">Office Tools</a>
-<a class="btn btn-ghost" href="/tools/upload-limit-checker/">Upload Limit Checker</a>
-<a class="btn btn-primary" href="/blog/">Blog</a>
+<div class="nav-links" style="display:flex; align-items:center; gap:0.75rem;">
+<a class="nav-link" href="/tools/">Tools</a>
+<a class="nav-link" href="/blog/">Blog</a>
+<a class="nav-link" href="/checklists/">Checklists</a>
+<a class="nav-link" href="/faq/">FAQ</a>
+<a class="nav-link" href="/contact/">Contact</a>
 </div>
-<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" type="button">
+<div class="nav-cta"><a class="btn btn-primary" href="/tools/">Open tools</a></div>
+<button aria-controls="nav-mobile" aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" type="button">
 <span></span><span></span><span></span>
 </button>
-<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
-<a href="/">Home</a>
-<a href="/tools/pdf/">PDF Tools</a>
-<a href="/tools/image/">Image Tools</a>
-<a href="/tools/office/">Office Tools</a>
-<a href="/tools/upload-limit-checker/">Upload Limit Checker</a>
-<a href="/blog/">Blog</a>
-</div>
 </nav>
+<div aria-hidden="true" class="nav-mobile" id="nav-mobile">
+<a href="/tools/" onclick="toggleMobileNav(false)">Tools</a>
+<a href="/blog/" onclick="toggleMobileNav(false)">Blog</a>
+<a href="/checklists/" onclick="toggleMobileNav(false)">Checklists</a>
+<a href="/faq/" onclick="toggleMobileNav(false)">FAQ</a>
+<a href="/contact/" onclick="toggleMobileNav(false)">Contact</a>
+</div>
 </div>
 </header>
 <main>
@@ -768,20 +770,26 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 <div>
 <div class="footer-links">
 <a href="/">Home</a>
-<a href="/tools/pdf/">PDF Tools</a>
+<a href="/tools/">Tools</a>
 <a href="/blog/">Blog</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
 <a href="/privacy-policy/">Privacy Policy</a>
 <a href="/terms/">Terms &amp; Conditions</a>
 <a href="/cookie-policy/">Cookie Policy</a>
 <a href="/disclaimer/">Disclaimer</a>
 </div>
-<p>© <span id="year"></span> Compress It Small. All rights reserved.</p>
+<p class="footer-note">
+        &copy; <span id="year"></span> Compress It Small. All rights reserved.
+      </p>
 </div>
 <div>
 <p>
-          This site provides practical utilities and educational guidance. Always verify critical workflows with the official
-          instructions of the institution or service you are using.
-        </p>
+        This site focuses on educational content and practical utilities. Information is
+        provided for general guidance and may need to be adapted to your specific tools,
+        operating system or platform requirements. Always verify critical workflows
+        with the official instructions of the institution or service you are using.
+      </p>
 </div>
 </div>
 </footer>
