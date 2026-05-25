@@ -67,8 +67,14 @@
 /reorder-pdf-pages             /tools/pdf/reorder-pdf/   301
 /reorder-pdf-pages/            /tools/pdf/reorder-pdf/   301
 /assets/logo.png               /favicon_192x192.png      301
+/tools.html                    /tools/                   301
+/tools/edit-pdf                /tools/pdf/               301
+/tools/edit-pdf/               /tools/pdf/               301
+/blog/why-pdf-still-matters    /blog/how-to-compress-pdf/ 301
+/blog/why-pdf-still-matters/   /blog/how-to-compress-pdf/ 301
 
 # ------------------------------------------------
 # 4. CUSTOM 404
 # ------------------------------------------------
 /*    /404.html    404
+
