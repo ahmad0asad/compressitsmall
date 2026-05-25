@@ -70,11 +70,21 @@
 /tools.html                    /tools/                   301
 /tools/edit-pdf                /tools/pdf/               301
 /tools/edit-pdf/               /tools/pdf/               301
-/blog/why-pdf-still-matters    /blog/how-to-compress-pdf/ 301
-/blog/why-pdf-still-matters/   /blog/how-to-compress-pdf/ 301
+/blog/why-pdf-still-matters    /blog/how-to-compress-pdf/  301
+/blog/why-pdf-still-matters/   /blog/how-to-compress-pdf/  301
+/blog/optimize-pdf-quality     /blog/how-to-compress-pdf/  301
+/blog/optimize-pdf-quality/    /blog/how-to-compress-pdf/  301
+/blog/protect-pdf-step-by-step  /blog/redact-pdf-before-sharing-private-data/  301
+/blog/protect-pdf-step-by-step/ /blog/redact-pdf-before-sharing-private-data/  301
+/cookie-policy.html            /cookie-policy/           301
+/tools/rotate-pdf              /tools/pdf/rotate-pdf/    301
+/tools/rotate-pdf/             /tools/pdf/rotate-pdf/    301
+/tools/merge-pdf               /tools/pdf/merge-pdf/     301
+/tools/merge-pdf/              /tools/pdf/merge-pdf/     301
+/privacy                       /privacy-policy/          301
+/privacy/                      /privacy-policy/          301
 
 # ------------------------------------------------
 # 4. CUSTOM 404
 # ------------------------------------------------
 /*    /404.html    404
-
