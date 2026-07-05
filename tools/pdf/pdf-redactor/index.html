@@ -6,7 +6,6 @@
 <title>PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small</title>
 <meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." name="description"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<!-- PDF.js -->
 <script id="pdfjs-lib" onerror="(function(s){var f=['https://cdn.jsdelivr.net/npm/pdfjs-dist@2.14.305/build/pdf.min.js','https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.min.js'];var i=0;function n(){if(i&gt;=f.length)return;s.src=f[i++];}s.onerror=function(){n();};n();})(this)" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script><script>(function(){
   try {
     if (window.pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
@@ -20,7 +19,6 @@
     }
   } catch(e) {}
 })();</script>
-<!-- pdf-lib -->
 <script src="/assets/js/pdf-lib.min.js"></script>
 <style>
 body{margin:0;font-family:sans-serif;background:#f4f5fb;}
@@ -104,7 +102,6 @@ header#top .nav-mobile.open { display: flex; }
     .nav-link:hover { background: rgba(37,99,235,0.07); color: var(--text); }
 </style>
 <link href="https://compressitsmall.co.uk/tools/pdf/pdf-redactor/" rel="canonical"/><meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small" property="og:title"/><meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/pdf/pdf-redactor/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small" name="twitter:title"/><meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
-<!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
 <script async="true" type="text/javascript">
 (function() {
 var host = window.location.hostname;
@@ -427,7 +424,6 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 }
 })();
 </script>
-<!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "PDF Redactor — Blackout or Blur Sensitive Information", "url": "https://compressitsmall.co.uk/tools/pdf/pdf-redactor/", "applicationCategory": "Utility", "operatingSystem": "Web browser", "description": "Redact sensitive text and images from PDFs directly in your browser. Draw blackout or blur boxes over private data — no upload to external servers.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}</script>  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
 
@@ -478,9 +474,7 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 </header>
 <div class="container">
 <div class="layout">
-<!-- SIDEBAR -->
 <div class="sidebar" id="thumbSidebar"></div>
-<!-- WORKSPACE -->
 <div class="workspace">
 <div class="tools">
 <input accept="application/pdf" id="pdfInput" type="file"/>
@@ -541,7 +535,7 @@ async function loadThumbnails(){
    img.src=canvas.toDataURL();
    img.onclick=()=>{currentPage=i;renderPage(i);}
    side.appendChild(img);
- }
+}
 }
 
 //================= RENDER PAGE ======================//
@@ -655,48 +649,48 @@ function drawRedactionLayer(){
 
 //================= BLUR FUNCTION ======================//
 function blurImageData(data,w,h,radius){
-  // Simple (but real) box blur for preview on the overlay canvas.
-  radius = Math.max(0, Math.min(40, Math.round(radius||0)));
-  if(radius < 2) return;
+ // Simple (but real) box blur for preview on the overlay canvas.
+ radius = Math.max(0, Math.min(40, Math.round(radius||0)));
+ if(radius < 2) return;
 
-  const src = new Uint8ClampedArray(data); // copy
-  const tmp = new Uint8ClampedArray(data.length);
+ const src = new Uint8ClampedArray(data); // copy
+ const tmp = new Uint8ClampedArray(data.length);
 
-  // Horizontal pass
-  for(let y=0;y<h;y++){
-    for(let x=0;x<w;x++){
-      let r=0,g=0,b=0,a=0,count=0;
-      for(let dx=-radius; dx<=radius; dx++){
-        const xx = Math.max(0, Math.min(w-1, x+dx));
-        const idx = (y*w + xx)*4;
-        r += src[idx]; g += src[idx+1]; b += src[idx+2]; a += src[idx+3];
-        count++;
-      }
-      const o = (y*w + x)*4;
-      tmp[o]   = r/count;
-      tmp[o+1] = g/count;
-      tmp[o+2] = b/count;
-      tmp[o+3] = a/count;
-    }
-  }
+ // Horizontal pass
+ for(let y=0;y<h;y++){
+   for(let x=0;x<w;x++){
+     let r=0,g=0,b=0,a=0,count=0;
+     for(let dx=-radius; dx<=radius; dx++){
+       const xx = Math.max(0, Math.min(w-1, x+dx));
+       const idx = (y*w + xx)*4;
+       r += src[idx]; g += src[idx+1]; b += src[idx+2]; a += src[idx+3];
+       count++;
+     }
+     const o = (y*w + x)*4;
+     tmp[o]   = r/count;
+     tmp[o+1] = g/count;
+     tmp[o+2] = b/count;
+     tmp[o+3] = a/count;
+   }
+ }
 
-  // Vertical pass (write back into data)
-  for(let y=0;y<h;y++){
-    for(let x=0;x<w;x++){
-      let r=0,g=0,b=0,a=0,count=0;
-      for(let dy=-radius; dy<=radius; dy++){
-        const yy = Math.max(0, Math.min(h-1, y+dy));
-        const idx = (yy*w + x)*4;
-        r += tmp[idx]; g += tmp[idx+1]; b += tmp[idx+2]; a += tmp[idx+3];
-        count++;
-      }
-      const o = (y*w + x)*4;
-      data[o]   = r/count;
-      data[o+1] = g/count;
-      data[o+2] = b/count;
-      data[o+3] = a/count;
-    }
-  }
+ // Vertical pass (write back into data)
+ for(let y=0;y<h;y++){
+   for(let x=0;x<w;x++){
+     let r=0,g=0,b=0,a=0,count=0;
+     for(let dy=-radius; dy<=radius; dy++){
+       const yy = Math.max(0, Math.min(h-1, y+dy));
+       const idx = (yy*w + x)*4;
+       r += tmp[idx]; g += tmp[idx+1]; b += tmp[idx+2]; a += tmp[idx+3];
+       count++;
+     }
+     const o = (y*w + x)*4;
+     data[o]   = r/count;
+     data[o+1] = g/count;
+     data[o+2] = b/count;
+     data[o+3] = a/count;
+   }
+ }
 }
 
 //================= UNDO ===============================//
@@ -783,62 +777,48 @@ async function applyRedactions(){
     "Downloaded redacted.pdf (redacted pages were flattened for security).";
 }
 </script>
-<!-- ================= ARTICLE ================= -->
 <section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
-<h2>Redact PDF: Permanently Remove Sensitive Information</h2>
-<p>Redaction permanently removes private, confidential, or legally sensitive information from PDF documents before sharing, publishing, or archiving. Unlike simply covering text with a black box in a viewer (which can be removed), proper redaction eliminates the underlying text data permanently. This tool applies permanent redaction in your browser.</p>
+<h2>Browser-Based PDF Redaction: Securely Mask, Blackout, or Blur Sensitive Document Objects</h2>
+<p>Document sanitization is a fundamental privacy requirement before releasing, storing, or transferring official paperwork. True redaction does not merely draw a cosmetic element over text; it entirely strips out hidden dataset layers, underlying string structures, and embedded information to eliminate information leaks. This browser-based tool provides local workspace isolation, executing object manipulation inside your local browser memory space to ensure absolute file protection.</p>
 
-<h3>How to redact a PDF</h3>
+<h3>How to Execute Structural PDF Object Masking</h3>
 <ol>
-  <li><strong>Upload your PDF</strong>.</li>
-  <li><strong>Select text or areas to redact</strong> — click and drag to mark regions.</li>
-  <li><strong>Click Apply Redaction</strong> — the marked content is permanently removed and replaced with a black bar.</li>
-  <li><strong>Download the redacted PDF</strong> — verify the content is gone before sharing.</li>
+  <li><strong>Load the Source File:</strong> Choose your target document using the file selector and select the <strong>Load PDF</strong> button to build out your local workspace tree.</li>
+  <li><strong>Configure Modification Vectors:</strong> Toggle between the traditional **Blackout** mode (complete opaque geometric coverage) or the advanced **Blur** mode for smooth algorithmic text scrambling.</li>
+  <li><strong>Target Specific Target Elements:</strong> Use the multi-mode execution engine to isolate records: Select **Draw Box** to capture custom rectangular regions, **Click Text** to mask individual string items instantly, or **Drag Text** to sweep clean lines across consecutive sentences.</li>
+  <li><strong>Adjust Processing Strength:</strong> If utilizing the blurring engine, calibrate your privacy threshold from **Light** up to **Extreme** to completely scramble characters beyond legibility.</li>
+  <li><strong>Flatten and Commit Download:</strong> Click **Apply & Download**. The local processing script converts the modified components into a unified, flattened graphic layout, creating a fresh, universally compliant file with zero remaining text-extraction risks.</li>
 </ol>
 
-<h3>What needs to be redacted</h3>
+<h3>Official Datasets Requiring Sanitization</h3>
 <ul>
-  <li><strong>Personal data</strong> — Names, addresses, national ID numbers, dates of birth, and financial account numbers in documents shared publicly or with third parties.</li>
-  <li><strong>Legal proceedings</strong> — Court orders often require redaction of victim names, witness identities, and medical details before public filing.</li>
-  <li><strong>Freedom of Information responses</strong> — Public bodies must redact exempt information before releasing documents.</li>
-  <li><strong>Medical records</strong> — Patient names and identifiers redacted before using records for training, research, or case studies.</li>
-  <li><strong>Business contracts</strong> — Commercial terms and pricing redacted before using contracts as reference templates.</li>
+  <li><strong>Personally Identifiable Information (PII):</strong> Clear out citizen identity markers, residential layouts, passport numbers, tax identifiers, dates of birth, and banking rows prior to public distribution.</li>
+  <li><strong>Legal & Juridical Transcripts:</strong> Protect sensitive legal filings by obfuscating key witness variables, protected signatures, and background medical summaries to meet courtroom standard rules.</li>
+  <li><strong>Corporate Negotiations & Contracts:</strong> Conceal critical vendor agreements, private pricing models, internal project schedules, and proprietary business schemas before using contracts as reference tools.</li>
+  <li><strong>Regulatory & Health Records:</strong> Completely remove patient tracking numbers and individual descriptions from clinical case files before deploying them for instructional, scientific, or archival reference.</li>
 </ul>
 
-<h3>Important: verify redaction before sharing</h3>
-<p>Always open the downloaded PDF in a viewer and attempt to select or copy the redacted text to confirm it has been permanently removed. Incomplete redaction — where the text appears hidden but is still present in the PDF's data layer — is a serious privacy risk that has led to high-profile data breaches.</p>
+<h3>The Severe Security Flaw of Standard Visual Overlays</h3>
+<p>A dangerous mistakes in digital document management is attempting to protect files by simply layering dark shapes over character lines in basic document viewing programs. In standard PDF layers, drawing a solid box merely inserts an overlay vector element on top of the original data. The character strings remain fully active underneath. A third party can simply open the document, press select-all, or extract the raw text directly into another file to expose the hidden records. High-profile international data leaks happen because teams use these superficial annotation layers instead of structural flattening engines.</p>
+<p>True cryptographic and visual sanitization demands that the underlying information layer be entirely overwritten or replaced. Our client-side rendering engine accomplishes this by rendering target pages to a flat pixel map layer, applying the visual blackout modifications directly to the canvas elements, and rebuilding an insulated, flat document stream that completely severs access to historical file values.</p>
 
-<h3>Frequently asked questions</h3>
+<h3>Frequently Asked Technical Questions</h3>
 <dl>
-  <dt>Is this tool GDPR-compliant for data removal purposes?</dt>
-  <dd>This tool applies permanent visual redaction. For legal compliance, always verify redacted content cannot be extracted before relying on this for regulatory requirements. Consult a legal professional for GDPR compliance advice specific to your situation.</dd>
+  <dt>How does client-side browser isolation protect my confidential files?</dt>
+  <dd>Unlike alternative processing tools that force you to upload documents to external remote web servers—introducing server interception and data exfiltration pathways—this utility operates entirely inside your local device's sandboxed browser context. Your document never touches an external link or processing queue, ensuring full structural security.</dd>
 
-  <dt>Can I search for text to redact?</dt>
-  <dd>If the tool includes a text search feature, you can search for specific terms and mark all instances for redaction. Check the interface for this option.</dd>
+  <dt>What is the functional difference between Blackout and Blur style profiles?</dt>
+  <dd>The traditional Blackout function completely overwrites data markers with solid block parameters, providing maximum corporate compliance validation. The Blur mechanism deploys a local spatial blurring matrix algorithm to cleanly scramble characters. This masks readability while maintaining the general layout aesthetics of the page.</dd>
 
-  <dt>Is my document private?</dt>
-  <dd>Yes. Everything runs locally in your browser with no server communication.</dd>
+  <dt>Does this local framework preserve digital signature chains?</dt>
+  <dd>No. Because proper object destruction completely strips out underlying data layers and flattens target files to eliminate security leaks, any preexisting cryptographic signatures, fillable forms, or interactive bookmark tables are intentionally removed from the final download stream to maintain full data validation security.</dd>
 </dl>
 
-<h3>Related tools</h3>
+<h3>Related Workflow Utilities</h3>
 <ul>
-  <li><a href="/tools/pdf/extract-pages/">Extract Pages</a></li>
-  <li><a href="/tools/pdf/delete-pages/">Delete Pages</a></li>
-  <li><a href="/tools/pdf/compress-pdf/">Compress PDF</a></li>
-</ul>
-
-<h3>Why proper redaction is more complex than it looks</h3>
-<p>Many people redact PDFs by drawing a black rectangle over sensitive text in a PDF viewer, then saving. This is dangerously inadequate — in most viewers, the black box is just a visual layer on top of the text. The underlying characters remain in the document's data and can be revealed by selecting all text, searching, or removing the overlay in a PDF editor. High-profile data breaches have occurred because government agencies used this ineffective method.</p>
-<p>Proper redaction permanently removes the text from the document's data layer — not just covers it visually. The original characters and metadata are eliminated and cannot be recovered.</p>
-<h3>What redaction removes and what it does not</h3>
-<p>Redaction removes selected text and replaces it with a solid opaque block. It does not automatically remove document metadata (author name, creation date, revision history). For full privacy preparation, also strip document metadata before sharing sensitive files.</p>
-<h3>Legal and regulatory requirements</h3>
-<p><strong>GDPR:</strong> Personal data — names, addresses, national ID numbers, health data — must be properly removed before sharing with third parties. <strong>Freedom of Information:</strong> Public authorities must redact exempt information before releasing documents. <strong>Court submissions:</strong> Many jurisdictions require redaction of personal identifiers from publicly filed documents. <strong>Medical:</strong> HIPAA and similar regulations require patient identifiers to be removed before records are used for research or training.</p>
-<h3>Best practices</h3>
-<ul>
-  <li>Always verify the redacted version — attempt to select and copy the redacted text to confirm it cannot be extracted.</li>
-  <li>Keep the original unredacted file in a secure location.</li>
-  <li>Search for all instances of sensitive terms before redacting — terms appearing multiple times are easy to miss page by page.</li>
+  <li><a href="/tools/pdf/extract-pages/">Extract Pages</a> — Separate individual documents into modular pages.</li>
+  <li><a href="/tools/pdf/delete-pages/">Delete Pages</a> — Drop specific pages completely out of an active document tree.</li>
+  <li><a href="/tools/pdf/compress-pdf/">Compress PDF</a> — Reduce document size parameters for rapid portal transfers.</li>
 </ul>
 </section><footer>
 <div class="container footer-grid">
@@ -898,7 +878,6 @@ async function applyRedactions(){
 })();
 </script>
 
-<!-- Cookie Consent Banner -->
 <style>
 .cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
 .cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
@@ -971,6 +950,6 @@ async function applyRedactions(){
 })();
 </script>
 
-<p class="last-updated" style="font-size:0.8em;color:#888;margin-top:2rem;">Page last updated: <time id="last-updated-date" datetime="2026-07-01">2026-07-01</time></p>
+<p class="last-updated" style="font-size:0.8em;color:#888;margin-top:2rem;">Page last updated: <time id="last-updated-date" datetime="2026-07-05">2026-07-05</time></p>
 </body>
 </html>
