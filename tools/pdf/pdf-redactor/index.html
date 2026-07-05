@@ -1,25 +1,20 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <title>PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small</title>
 <meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." name="description"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<script id="pdfjs-lib" onerror="(function(s){var f=['https://cdn.jsdelivr.net/npm/pdfjs-dist@2.14.305/build/pdf.min.js','https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.min.js'];var i=0;function n(){if(i&gt;=f.length)return;s.src=f[i++];}s.onerror=function(){n();};n();})(this)" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script><script>(function(){
-  try {
-    if (window.pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
-      (function(){
-  var src = (document.getElementById('pdfjs-lib') && document.getElementById('pdfjs-lib').src) || '';
-  var worker = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js";
-  if (src.indexOf('cdn.jsdelivr.net') !== -1) worker = "https://cdn.jsdelivr.net/npm/pdfjs-dist@2.14.305/build/pdf.worker.min.js";
-  else if (src.indexOf('unpkg.com') !== -1) worker = "https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.worker.min.js";
-  pdfjsLib.GlobalWorkerOptions.workerSrc = worker;
-})();
-    }
-  } catch(e) {}
-})();</script>
-<script src="/assets/js/pdf-lib.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+<script>
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js';
+  }
+</script>
+
+<script src="/assets/js/pdf-lib.min.js" onerror="this.src='https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js'"></script>
+
 <style>
 body{margin:0;font-family:sans-serif;background:#f4f5fb;}
 header{background:white;border-bottom:1px solid #e5e7eb;padding:1rem;position:sticky;top:0;z-index:20;}
@@ -31,30 +26,15 @@ header{background:white;border-bottom:1px solid #e5e7eb;padding:1rem;position:st
 .sidebar img:hover{transform:scale(1.03);}
 .workspace{flex:1;background:white;border:1px solid #ddd;border-radius:10px;position:relative;padding:1rem;}
 canvas{border:1px solid #ccc;max-width:100%;}
-.tools{display:flex;gap:.5rem;margin-bottom:.7rem;}
+.tools{display:flex;gap:.5rem;margin-bottom:.7rem;flex-wrap:wrap;align-items:center;}
 .btn{padding:.5rem 1rem;background:#2563eb;color:white;border-radius:6px;cursor:pointer;border:none;font-weight:600;}
 .btn:hover{background:#1e4ed8;}
 .toggle{padding:.3rem .8rem;background:#e2e8f0;border-radius:6px;cursor:pointer;font-size:.9rem;}
 .toggle.active{background:#2563eb;color:white;}
 #blurLevels span{padding:.3rem .6rem;border:1px solid #2563eb;border-radius:5px;margin-right:6px;cursor:pointer;font-size:.85rem;}
 #blurLevels span.active{background:#2563eb;color:white;}
-#status{margin-top:.5rem;font-size:.9rem;color:#444;}
-.overlay-canvas{position:absolute;left:0;top:0;}
-
-
-/* --- Internal linking blocks (SEO + UX) --- */
-.related-links { margin: 34px 0 0; }
-.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
-.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
-.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
-.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
-  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
-  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
-}
-.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
-.link-title { font-weight: 800; margin: 0 0 6px; }
-.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
-
+#status{margin-top:.5rem;font-size:.9rem;color:#444;font-weight:600;}
+.overlay-canvas{position:absolute;left:0;top:0;cursor:crosshair;}
 
 /* --- Shared toolbar styling (match homepage) --- */
 header#top { background: rgba(2, 6, 23, 0.85); border-bottom: 1px solid #1f2937; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; }
@@ -64,370 +44,26 @@ header#top .brand-icon { width: 42px; height: 42px; border-radius: 16px; backgro
 header#top .brand-text span { display: block; }
 header#top .brand-text span:first-child { font-weight: 800; letter-spacing: .2px; }
 header#top .brand-text span:last-child { font-size: .82rem; opacity: .85; color: #bfdbfe; }
-
 header#top .nav-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
 header#top .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; border: 1px solid transparent; text-decoration: none; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease; white-space: nowrap; }
 header#top .btn-ghost { background: #020617; color: #bfdbfe; border-color: #1f2937; }
 header#top .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 12px 24px rgba(37, 99, 235, 0.25); }
 header#top .btn:hover { transform: translateY(-1px); }
-
 header#top .nav-toggle { display: none; background: transparent; color: #e5e7eb; border: 1px solid #1f2937; border-radius: 12px; padding: 10px 12px; cursor: pointer; }
 header#top .nav-mobile { display: none; position: absolute; right: 16px; top: 72px; flex-direction: column; gap: 10px; min-width: 220px; background: rgba(2, 6, 23, 0.95); border: 1px solid #1f2937; border-radius: 16px; padding: 12px; box-shadow: 0 25px 55px rgba(0,0,0,.45); }
 header#top .nav-mobile a { color: #e5e7eb; text-decoration: none; padding: 10px 10px; border-radius: 12px; }
 header#top .nav-mobile a:hover { background: rgba(37,99,235,.18); }
 header#top .nav-mobile.open { display: flex; }
 
-/* Responsive toolbar */
 @media (max-width: 980px) {
   header#top .nav-cta { display: none; }
   header#top .nav-toggle { display: inline-flex; align-items: center; gap: 8px; }
   header#top .nav { position: relative; }
 }
 
+.nav-link { color: var(--text-muted); font-weight: 600; font-size: 0.95rem; padding: 0.35rem 0.5rem; border-radius: 10px; }
+.nav-link:hover { background: rgba(37,99,235,0.07); color: #111; }
 
-/* --- Internal linking blocks (SEO + UX) --- */
-.related-links { margin: 34px 0 0; }
-.related-links h2 { font-size: 1.25rem; margin: 0 0 8px; }
-.related-links p { margin: 0 0 12px; color: var(--text-muted, #6b7280); }
-.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
-.link-card { display: block; padding: 14px; border-radius: 16px; border: 1px solid var(--border, #e5e7eb); background: var(--bg-alt, #ffffff);
-  text-decoration: none; color: inherit; box-shadow: var(--shadow-soft, 0 10px 20px rgba(15,23,42,.06));
-  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
-}
-.link-card:hover { transform: translateY(-2px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
-.link-title { font-weight: 800; margin: 0 0 6px; }
-.link-desc { margin: 0; font-size: .95rem; line-height: 1.35; color: var(--text-muted, #6b7280); }
-
-    .nav-link { color: var(--text-muted); font-weight: 600; font-size: 0.95rem; padding: 0.35rem 0.5rem; border-radius: 10px; }
-    .nav-link:hover { background: rgba(37,99,235,0.07); color: var(--text); }
-</style>
-<link href="https://compressitsmall.co.uk/tools/pdf/pdf-redactor/" rel="canonical"/><meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small" property="og:title"/><meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/pdf/pdf-redactor/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small" name="twitter:title"/><meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
-<script async="true" type="text/javascript">
-(function() {
-var host = window.location.hostname;
-var element = document.createElement('script');
-var firstScript = document.getElementsByTagName('script')[0];
-var url = 'https://cmp.inmobi.com'
-.concat('/choice/', 'Z-RnjsbyHH-9v', '/', host, '/choice.js?tag_version=V3');
-var uspTries = 0;
-var uspTriesLimit = 3;
-element.async = true;
-element.type = 'text/javascript';
-element.src = url;
-
-firstScript.parentNode.insertBefore(element, firstScript);
-
-function makeStub() {
-var TCF_LOCATOR_NAME = '__tcfapiLocator';
-var queue = [];
-var win = window;
-var cmpFrame;
-
-function addFrame() {
-var doc = win.document;
-var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
-
-if (!otherCMP) {
-if (doc.body) {
-var iframe = doc.createElement('iframe');
-
-iframe.style.cssText = 'display:none';
-iframe.name = TCF_LOCATOR_NAME;
-doc.body.appendChild(iframe);
-} else {
-setTimeout(addFrame, 5);
-}
-}
-return !otherCMP;
-}
-
-function tcfAPIHandler() {
-var gdprApplies;
-var args = arguments;
-
-if (!args.length) {
-return queue;
-} else if (args[0] === 'setGdprApplies') {
-if (
-args.length > 3 &&
-args[2] === 2 &&
-typeof args[3] === 'boolean'
-) {
-gdprApplies = args[3];
-if (typeof args[2] === 'function') {
-args[2]('set', true);
-}
-}
-} else if (args[0] === 'ping') {
-var retr = {
-gdprApplies: gdprApplies,
-cmpLoaded: false,
-cmpStatus: 'stub'
-};
-
-if (typeof args[2] === 'function') {
-args[2](retr);
-}
-} else {
-if(args[0] === 'init' && typeof args[3] === 'object') {
-args[3] = Object.assign(args[3], { tag_version: 'V3' });
-}
-queue.push(args);
-}
-}
-
-function postMessageEventHandler(event) {
-var msgIsString = typeof event.data === 'string';
-var json = {};
-
-try {
-if (msgIsString) {
-json = JSON.parse(event.data);
-} else {
-json = event.data;
-}
-} catch (ignore) {}
-
-var payload = json.__tcfapiCall;
-
-if (payload) {
-window.__tcfapi(
-payload.command,
-payload.version,
-function(retValue, success) {
-var returnMsg = {
-  __tcfapiReturn: {
-    returnValue: retValue,
-    success: success,
-    callId: payload.callId
-  }
-};
-if (msgIsString) {
-  returnMsg = JSON.stringify(returnMsg);
-}
-if (event && event.source && event.source.postMessage) {
-  event.source.postMessage(returnMsg, '*');
-}
-},
-payload.parameter
-);
-}
-}
-
-while (win) {
-try {
-if (win.frames[TCF_LOCATOR_NAME]) {
-cmpFrame = win;
-break;
-}
-} catch (ignore) {}
-
-if (win === window.top) {
-break;
-}
-win = win.parent;
-}
-if (!cmpFrame) {
-addFrame();
-win.__tcfapi = tcfAPIHandler;
-win.addEventListener('message', postMessageEventHandler, false);
-}
-};
-
-makeStub();
-
-function makeGppStub() {
-const CMP_ID = 10;
-const SUPPORTED_APIS = [
-'2:tcfeuv2',
-'6:uspv1',
-'7:usnatv1',
-'8:usca',
-'9:usvav1',
-'10:uscov1',
-'11:usutv1',
-'12:usctv1'
-];
-
-window.__gpp_addFrame = function (n) {
-if (!window.frames[n]) {
-if (document.body) {
-var i = document.createElement("iframe");
-i.style.cssText = "display:none";
-i.name = n;
-document.body.appendChild(i);
-} else {
-window.setTimeout(window.__gpp_addFrame, 10, n);
-}
-}
-};
-window.__gpp_stub = function () {
-var b = arguments;
-__gpp.queue = __gpp.queue || [];
-__gpp.events = __gpp.events || [];
-
-if (!b.length || (b.length == 1 && b[0] == "queue")) {
-return __gpp.queue;
-}
-
-if (b.length == 1 && b[0] == "events") {
-return __gpp.events;
-}
-
-var cmd = b[0];
-var clb = b.length > 1 ? b[1] : null;
-var par = b.length > 2 ? b[2] : null;
-if (cmd === "ping") {
-clb(
-{
-gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
-cmpStatus: "stub", // possible values: stub, loading, loaded, error
-cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
-signalStatus: "not ready", // possible values: not ready, ready
-supportedAPIs: SUPPORTED_APIS, // list of supported APIs
-cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
-sectionList: [],
-applicableSections: [-1],
-gppString: "",
-parsedSections: {},
-},
-true
-);
-} else if (cmd === "addEventListener") {
-if (!("lastId" in __gpp)) {
-__gpp.lastId = 0;
-}
-__gpp.lastId++;
-var lnr = __gpp.lastId;
-__gpp.events.push({
-id: lnr,
-callback: clb,
-parameter: par,
-});
-clb(
-{
-eventName: "listenerRegistered",
-listenerId: lnr, // Registered ID of the listener
-data: true, // positive signal
-pingData: {
-  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
-  cmpStatus: "stub", // possible values: stub, loading, loaded, error
-  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
-  signalStatus: "not ready", // possible values: not ready, ready
-  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
-  cmpId: CMP_ID, // list of supported APIs
-  sectionList: [],
-  applicableSections: [-1],
-  gppString: "",
-  parsedSections: {},
-},
-},
-true
-);
-} else if (cmd === "removeEventListener") {
-var success = false;
-for (var i = 0; i < __gpp.events.length; i++) {
-if (__gpp.events[i].id == par) {
-__gpp.events.splice(i, 1);
-success = true;
-break;
-}
-}
-clb(
-{
-eventName: "listenerRemoved",
-listenerId: par, // Registered ID of the listener
-data: success, // status info
-pingData: {
-  gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
-  cmpStatus: "stub", // possible values: stub, loading, loaded, error
-  cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
-  signalStatus: "not ready", // possible values: not ready, ready
-  supportedAPIs: SUPPORTED_APIS, // list of supported APIs
-  cmpId: CMP_ID, // CMP ID
-  sectionList: [],
-  applicableSections: [-1],
-  gppString: "",
-  parsedSections: {},
-},
-},
-true
-);
-} else if (cmd === "hasSection") {
-clb(false, true);
-} else if (cmd === "getSection" || cmd === "getField") {
-clb(null, true);
-}
-//queue all other commands
-else {
-__gpp.queue.push([].slice.apply(b));
-}
-};
-window.__gpp_msghandler = function (event) {
-var msgIsString = typeof event.data === "string";
-try {
-var json = msgIsString ? JSON.parse(event.data) : event.data;
-} catch (e) {
-var json = null;
-}
-if (typeof json === "object" && json !== null && "__gppCall" in json) {
-var i = json.__gppCall;
-window.__gpp(
-i.command,
-function (retValue, success) {
-var returnMsg = {
-  __gppReturn: {
-    returnValue: retValue,
-    success: success,
-    callId: i.callId,
-  },
-};
-event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
-},
-"parameter" in i ? i.parameter : null,
-"version" in i ? i.version : "1.1"
-);
-}
-};
-if (!("__gpp" in window) || typeof window.__gpp !== "function") {
-window.__gpp = window.__gpp_stub;
-window.addEventListener("message", window.__gpp_msghandler, false);
-window.__gpp_addFrame("__gppLocator");
-}
-};
-
-makeGppStub();
-
-var uspStubFunction = function() {
-var arg = arguments;
-if (typeof window.__uspapi !== uspStubFunction) {
-setTimeout(function() {
-if (typeof window.__uspapi !== 'undefined') {
-window.__uspapi.apply(window.__uspapi, arg);
-}
-}, 500);
-}
-};
-
-var checkIfUspIsReady = function() {
-uspTries++;
-if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
-console.warn('USP is not accessible');
-} else {
-clearInterval(uspInterval);
-}
-};
-
-if (typeof window.__uspapi === 'undefined') {
-window.__uspapi = uspStubFunction;
-var uspInterval = setInterval(checkIfUspIsReady, 6000);
-}
-})();
-</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "PDF Redactor — Blackout or Blur Sensitive Information", "url": "https://compressitsmall.co.uk/tools/pdf/pdf-redactor/", "applicationCategory": "Utility", "operatingSystem": "Web browser", "description": "Redact sensitive text and images from PDFs directly in your browser. Draw blackout or blur boxes over private data — no upload to external servers.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}</script>  <meta name="google-adsense-account" content="ca-pub-1910641763417240">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1910641763417240" crossorigin="anonymous"></script>
-
-<style>
 .tool-content-section h2{font-size:1.35rem;margin:0 0 0.75rem;color:#111827;}
 .tool-content-section h3{font-size:1.05rem;margin:1.4rem 0 0.4rem;color:#1d4ed8;}
 .tool-content-section p{margin:0 0 0.85rem;color:#374151;}
@@ -439,6 +75,8 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 .tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
 .tool-content-section strong{color:#111827;}
 </style>
+<link href="https://compressitsmall.co.uk/tools/pdf/pdf-redactor/" rel="canonical"/><meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small" property="og:title"/><meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/pdf/pdf-redactor/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small" name="twitter:title"/><meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "PDF Redactor — Blackout or Blur Sensitive Information", "url": "https://compressitsmall.co.uk/tools/pdf/pdf-redactor/", "applicationCategory": "Utility", "operatingSystem": "Web browser", "description": "Redact sensitive text and images from PDFs directly in your browser. Draw blackout or blur boxes over private data — no upload to external servers.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}</script>
 </head>
 <body>
 <header id="top">
@@ -479,26 +117,28 @@ var uspInterval = setInterval(checkIfUspIsReady, 6000);
 <div class="tools">
 <input accept="application/pdf" id="pdfInput" type="file"/>
 <button class="btn" onclick="loadPDF()">Load PDF</button>
-<div class="toggle" id="modeSelect" onclick="setMode('select')">Select</div>
+<div class="toggle active" id="modeSelect" onclick="setMode('select')">Select</div>
 <div class="toggle" id="modeRedRect" onclick="setMode('rect')">Draw Box</div>
 <div class="toggle" id="modeRedClick" onclick="setMode('click')">Click Text</div>
 <div class="toggle" id="modeRedDrag" onclick="setMode('drag')">Drag Text</div>
-<div class="toggle" id="styleBlack" onclick="setRedactionStyle('black')">Blackout</div>
+<div style="width: 2px; height: 20px; background: #ddd; margin: 0 5px;"></div>
+<div class="toggle active" id="styleBlack" onclick="setRedactionStyle('black')">Blackout</div>
 <div class="toggle" id="styleBlur" onclick="setRedactionStyle('blur')">Blur</div>
 <span id="blurLevels">
 <span onclick="setBlur(5,this)">Light</span>
-<span onclick="setBlur(12,this)">Medium</span>
+<span class="active" onclick="setBlur(12,this)">Medium</span>
 <span onclick="setBlur(20,this)">Strong</span>
 <span onclick="setBlur(28,this)">Extreme</span>
 </span>
-<button class="btn" onclick="undoRedaction()">Undo</button>
+<div style="flex-grow: 1;"></div>
+<button class="btn" style="background:#4b5563;" onclick="undoRedaction()">Undo</button>
 <button class="btn" onclick="applyRedactions()">Apply &amp; Download</button>
 </div>
-<div id="canvasContainer" style="position:relative;">
+<div id="canvasContainer" style="position:relative; overflow-x: auto;">
 <canvas id="pdfCanvas"></canvas>
 <canvas class="overlay-canvas" id="overlayCanvas"></canvas>
 </div>
-<div id="status"></div>
+<div id="status">Waiting for PDF upload...</div>
 </div>
 </div>
 </div>
@@ -513,11 +153,33 @@ const octx=overlayCanvas.getContext("2d");
 
 //================= LOADING PDF =====================//
 async function loadPDF(){
- const file=document.getElementById("pdfInput").files[0];
- if(!file){alert("Select a PDF first");return;}
- pdfDoc=await pdfjsLib.getDocument(await file.arrayBuffer()).promise;
- loadThumbnails();
- renderPage(currentPage);
+  const file = document.getElementById("pdfInput").files[0];
+  if(!file){ alert("Select a PDF first"); return; }
+  
+  document.getElementById("status").textContent = "Loading PDF securely in browser...";
+  
+  try {
+    // Generate a secure local object URL so it loads instantly without crashing memory
+    const fileUrl = URL.createObjectURL(file);
+    pdfDoc = await pdfjsLib.getDocument(fileUrl).promise;
+    
+    currentPage = 1;
+    
+    // Render the main page FIRST so the user isn't stuck waiting
+    await renderPage(currentPage);
+    
+    document.getElementById("status").textContent = "PDF loaded. Rendering sidebar thumbnails...";
+    
+    // Load thumbnails asynchronously in the background
+    loadThumbnails().then(() => {
+        document.getElementById("status").textContent = "Ready for redaction. Select a tool above.";
+    });
+
+  } catch (err) {
+    console.error(err);
+    document.getElementById("status").textContent = "Error loading PDF.";
+    alert("Could not load PDF: " + err.message);
+  }
 }
 
 //================== THUMBNAILS ======================//
@@ -535,7 +197,7 @@ async function loadThumbnails(){
    img.src=canvas.toDataURL();
    img.onclick=()=>{currentPage=i;renderPage(i);}
    side.appendChild(img);
-}
+ }
 }
 
 //================= RENDER PAGE ======================//
@@ -555,6 +217,7 @@ async function renderPage(num){
    fontSize:Math.abs(t.transform[0])
  }));
  drawRedactionLayer();
+ document.getElementById("status").textContent = `Viewing page ${num} of ${pdfDoc.numPages}`;
 }
 
 //================= REDACTION MODE ====================//
@@ -565,6 +228,8 @@ function setMode(m){
  if(m==="rect")document.getElementById("modeRedRect").classList.add("active");
  if(m==="click")document.getElementById("modeRedClick").classList.add("active");
  if(m==="drag")document.getElementById("modeRedDrag").classList.add("active");
+ 
+ overlayCanvas.style.cursor = (m === "select") ? "default" : "crosshair";
 }
 function setRedactionStyle(s){
  redStyle=s;
@@ -616,7 +281,9 @@ function getPos(e){
 function addRectRedaction(a,b){
  const x=Math.min(a.x,b.x),y=Math.min(a.y,b.y);
  const w=Math.abs(a.x-b.x),h=Math.abs(a.y-b.y);
- redactions.push({page:currentPage,x,y,w,h,type:"rect",style:redStyle,blur:blurStrength});
+ if (w > 5 && h > 5) {
+    redactions.push({page:currentPage,x,y,w,h,type:"rect",style:redStyle,blur:blurStrength});
+ }
 }
 
 function addClickTextRedaction(pos){
@@ -629,7 +296,9 @@ function addClickTextRedaction(pos){
 function addTextRangeRedaction(a,b){
  const x=Math.min(a.x,b.x),y=Math.min(a.y,b.y);
  const w=Math.abs(a.x-b.x),h=Math.abs(a.y-b.y);
- redactions.push({page:currentPage,x,y,w,h,type:"textBlock",style:redStyle,blur:blurStrength});
+ if (w > 5 && h > 5) {
+    redactions.push({page:currentPage,x,y,w,h,type:"textBlock",style:redStyle,blur:blurStrength});
+ }
 }
 
 //================= DRAW REDACTION LAYER ==============//
@@ -649,14 +318,12 @@ function drawRedactionLayer(){
 
 //================= BLUR FUNCTION ======================//
 function blurImageData(data,w,h,radius){
- // Simple (but real) box blur for preview on the overlay canvas.
  radius = Math.max(0, Math.min(40, Math.round(radius||0)));
  if(radius < 2) return;
 
- const src = new Uint8ClampedArray(data); // copy
+ const src = new Uint8ClampedArray(data); 
  const tmp = new Uint8ClampedArray(data.length);
 
- // Horizontal pass
  for(let y=0;y<h;y++){
    for(let x=0;x<w;x++){
      let r=0,g=0,b=0,a=0,count=0;
@@ -674,7 +341,6 @@ function blurImageData(data,w,h,radius){
    }
  }
 
- // Vertical pass (write back into data)
  for(let y=0;y<h;y++){
    for(let x=0;x<w;x++){
      let r=0,g=0,b=0,a=0,count=0;
@@ -706,77 +372,84 @@ async function applyRedactions(){
   if(!file){ alert("Select a PDF first"); return; }
   if(!pdfDoc){ alert("Load the PDF first"); return; }
 
-  document.getElementById("status").textContent = "Applying secure redaction… (flattening redacted pages)";
-  const exportScale = 2.0; // higher = better quality, bigger output
-  const factor = exportScale / scale;
+  document.getElementById("status").textContent = "Flattening layers to guarantee security...";
+  
+  try {
+      const exportScale = 2.0; 
+      const factor = exportScale / scale;
 
-  // Load original PDF in pdf-lib so we can copy non-redacted pages as-is
-  const origBytes = await file.arrayBuffer();
-  const origPdf = await PDFLib.PDFDocument.load(origBytes);
+      const origBytes = await file.arrayBuffer();
+      const origPdf = await PDFLib.PDFDocument.load(origBytes);
+      const outPdf = await PDFLib.PDFDocument.create();
 
-  const outPdf = await PDFLib.PDFDocument.create();
+      for(let i=1;i<=pdfDoc.numPages;i++){
+        document.getElementById("status").textContent = `Processing page ${i} of ${pdfDoc.numPages}...`;
+        const reds = redactions.filter(r=>r.page===i);
+        
+        if(reds.length===0){
+          const [copied] = await outPdf.copyPages(origPdf, [i-1]);
+          outPdf.addPage(copied);
+          continue;
+        }
 
-  for(let i=1;i<=pdfDoc.numPages;i++){
-    const reds = redactions.filter(r=>r.page===i);
-    if(reds.length===0){
-      const [copied] = await outPdf.copyPages(origPdf, [i-1]);
-      outPdf.addPage(copied);
-      continue;
-    }
+        const page = await pdfDoc.getPage(i);
+        const vp1 = page.getViewport({scale:1});
+        const vp = page.getViewport({scale:exportScale});
 
-    const page = await pdfDoc.getPage(i);
-    const vp1 = page.getViewport({scale:1});
-    const vp = page.getViewport({scale:exportScale});
+        const canvas = document.createElement("canvas");
+        const cctx = canvas.getContext("2d");
+        canvas.width = vp.width;
+        canvas.height = vp.height;
 
-    const canvas = document.createElement("canvas");
-    const cctx = canvas.getContext("2d");
-    canvas.width = vp.width;
-    canvas.height = vp.height;
+        await page.render({canvasContext:cctx, viewport:vp}).promise;
 
-    await page.render({canvasContext:cctx, viewport:vp}).promise;
+        for(const r of reds){
+          const x = r.x * factor;
+          const y = r.y * factor;
+          const w = r.w * factor;
+          const h = r.h * factor;
 
-    for(const r of reds){
-      const x = r.x * factor;
-      const y = r.y * factor;
-      const w = r.w * factor;
-      const h = r.h * factor;
+          if(r.style === "black"){
+            cctx.save();
+            cctx.fillStyle = "black";
+            cctx.fillRect(x, y, w, h);
+            cctx.restore();
+          } else {
+            cctx.save();
+            cctx.beginPath();
+            cctx.rect(x, y, w, h);
+            cctx.clip();
+            const px = Math.max(2, Math.round((r.blur || 12) * (exportScale/1.5)));
+            cctx.filter = `blur(${px}px)`;
+            cctx.drawImage(canvas, 0, 0);
+            cctx.restore();
+          }
+        }
 
-      if(r.style === "black"){
-        cctx.save();
-        cctx.fillStyle = "black";
-        cctx.fillRect(x, y, w, h);
-        cctx.restore();
-      } else {
-        cctx.save();
-        cctx.beginPath();
-        cctx.rect(x, y, w, h);
-        cctx.clip();
-        const px = Math.max(2, Math.round((r.blur || 12) * (exportScale/1.5)));
-        cctx.filter = `blur(${px}px)`;
-        cctx.drawImage(canvas, 0, 0);
-        cctx.restore();
+        const dataUrl = canvas.toDataURL("image/jpeg", 0.92);
+        const imgBytes = await (await fetch(dataUrl)).arrayBuffer();
+        const img = await outPdf.embedJpg(imgBytes);
+
+        const outPage = outPdf.addPage([vp1.width, vp1.height]);
+        outPage.drawImage(img, {x:0, y:0, width:vp1.width, height:vp1.height});
       }
-    }
 
-    const dataUrl = canvas.toDataURL("image/jpeg", 0.92);
-    const imgBytes = await (await fetch(dataUrl)).arrayBuffer();
-    const img = await outPdf.embedJpg(imgBytes);
+      const outBytes = await outPdf.save();
+      const blob = new Blob([outBytes], {type:"application/pdf"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "redacted.pdf";
+      a.click();
 
-    const outPage = outPdf.addPage([vp1.width, vp1.height]);
-    outPage.drawImage(img, {x:0, y:0, width:vp1.width, height:vp1.height});
+      document.getElementById("status").textContent = "Success! Downloaded securely redacted PDF.";
+  } catch (err) {
+      console.error(err);
+      document.getElementById("status").textContent = "Error during redaction.";
+      alert("Failed to export PDF: " + err.message);
   }
-
-  const outBytes = await outPdf.save();
-  const blob = new Blob([outBytes], {type:"application/pdf"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "redacted.pdf";
-  a.click();
-
-  document.getElementById("status").textContent =
-    "Downloaded redacted.pdf (redacted pages were flattened for security).";
 }
 </script>
+
 <section class="tool-content-section container" style="background:#fff;margin-top:2rem;padding:2rem 2rem 1.5rem;border-radius:14px;border:1px solid #e5e7eb;box-shadow:0 6px 20px rgba(17,24,39,.06);line-height:1.7;">
 <h2>Browser-Based PDF Redaction: Securely Mask, Blackout, or Blur Sensitive Document Objects</h2>
 <p>Document sanitization is a fundamental privacy requirement before releasing, storing, or transferring official paperwork. True redaction does not merely draw a cosmetic element over text; it entirely strips out hidden dataset layers, underlying string structures, and embedded information to eliminate information leaks. This browser-based tool provides local workspace isolation, executing object manipulation inside your local browser memory space to ensure absolute file protection.</p>
@@ -820,7 +493,9 @@ async function applyRedactions(){
   <li><a href="/tools/pdf/delete-pages/">Delete Pages</a> — Drop specific pages completely out of an active document tree.</li>
   <li><a href="/tools/pdf/compress-pdf/">Compress PDF</a> — Reduce document size parameters for rapid portal transfers.</li>
 </ul>
-</section><footer>
+</section>
+
+<footer>
 <div class="container footer-grid">
 <div>
 <div class="footer-links">
@@ -834,27 +509,19 @@ async function applyRedactions(){
 <a href="/cookie-policy/">Cookie Policy</a>
 <a href="/disclaimer/">Disclaimer</a>
 </div>
-<p class="footer-note">
-        &copy; <span id="year"></span> Compress It Small. All rights reserved.
-      </p>
+<p class="footer-note">&copy; <span id="year"></span> Compress It Small. All rights reserved.</p>
 </div>
 <div>
-<p>
-        This site focuses on educational content and practical utilities. Information is
-        provided for general guidance and may need to be adapted to your specific tools,
-        operating system or platform requirements. Always verify critical workflows
-        with the official instructions of the institution or service you are using.
-      </p>
+<p>This site focuses on educational content and practical utilities. Information is provided for general guidance and may need to be adapted to your specific tools, operating system or platform requirements. Always verify critical workflows with the official instructions of the institution or service you are using.</p>
 </div>
 </div>
 </footer>
+
 <script>
 (function(){
-  // Footer year
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
-  // Mobile nav toggle (shared header)
   if (typeof window.toggleMobileNav !== 'function') {
     window.toggleMobileNav = function(force){
       var panel = document.getElementById('nav-mobile');
@@ -877,79 +544,5 @@ async function applyRedactions(){
   }
 })();
 </script>
-
-<style>
-.cis-cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:rgba(2,6,23,0.96);border-top:1px solid #1f2937;z-index:99999;padding:14px 20px;box-sizing:border-box;}
-.cis-cookie-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
-.cis-cookie-title{font-weight:600;color:#f9fafb;font-size:0.92rem;margin-bottom:2px;}
-.cis-cookie-text{color:#9ca3af;font-size:0.82rem;max-width:560px;}
-.cis-cookie-text a{color:#60a5fa;text-decoration:underline;}
-.cis-cookie-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;}
-.cis-btn{padding:8px 16px;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:opacity .15s;}
-.cis-btn-decline{background:transparent;border-color:#374151;color:#e5e7eb;}
-.cis-btn-prefs{background:rgba(99,102,241,0.12);border-color:#1f2937;color:#bfdbfe;}
-.cis-btn-accept{background:#2563eb;color:#fff;border-color:#2563eb;}
-.cis-btn:hover{opacity:0.85;}
-@media(max-width:600px){.cis-cookie-inner{flex-direction:column;align-items:flex-start;}.cis-cookie-actions{width:100%;justify-content:flex-end;}}
-</style>
-<div aria-label="Cookie consent" class="cis-cookie-banner" id="cisCookieBanner" role="dialog" style="display:none;">
-<div class="cis-cookie-inner">
-<div>
-<div class="cis-cookie-title">Cookies &amp; privacy</div>
-<div class="cis-cookie-text">We use essential cookies to keep this site running. With your permission, we may also use optional cookies for analytics and advertising. <a href="/cookie-policy/">Cookie Policy</a>.</div>
-</div>
-<div class="cis-cookie-actions">
-<button class="cis-btn cis-btn-decline" id="cisCookieDecline" type="button">Decline</button>
-<button class="cis-btn cis-btn-prefs" onclick="location.href='/cookie-policy/';" type="button">Preferences</button>
-<button class="cis-btn cis-btn-accept" id="cisCookieAccept" type="button">Accept</button>
-</div>
-</div>
-</div>
-<script>
-(function(){
-  var KEY='cis_cookie_consent';
-  var banner=document.getElementById('cisCookieBanner');
-  if(!localStorage.getItem(KEY)){banner.style.display='block';}
-  document.getElementById('cisCookieAccept').addEventListener('click',function(){
-    localStorage.setItem(KEY,'accepted');
-    banner.style.display='none';
-  });
-  document.getElementById('cisCookieDecline').addEventListener('click',function(){
-    localStorage.setItem(KEY,'declined');
-    banner.style.display='none';
-  });
-})();
-</script>
-<script>
-(function(){
-  // Footer year
-  var y = document.getElementById('year');
-  if (y) y.textContent = new Date().getFullYear();
-
-  // Mobile nav toggle (shared header)
-  if (typeof window.toggleMobileNav !== 'function') {
-    window.toggleMobileNav = function(force){
-      var panel = document.getElementById('nav-mobile');
-      var btn = document.getElementById('nav-toggle');
-      if (!panel || !btn) return;
-      var isOpen = panel.classList.contains('open');
-      var shouldOpen = (typeof force === 'boolean') ? force : !isOpen;
-      panel.classList.toggle('open', shouldOpen);
-      btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
-      panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
-    };
-    document.addEventListener('click', function(e){
-      var panel = document.getElementById('nav-mobile');
-      var btn = document.getElementById('nav-toggle');
-      if (!panel || !btn) return;
-      if (!panel.classList.contains('open')) return;
-      if (panel.contains(e.target) || btn.contains(e.target)) return;
-      window.toggleMobileNav(false);
-    }, true);
-  }
-})();
-</script>
-
-<p class="last-updated" style="font-size:0.8em;color:#888;margin-top:2rem;">Page last updated: <time id="last-updated-date" datetime="2026-07-05">2026-07-05</time></p>
 </body>
 </html>
