@@ -6,7 +6,7 @@
 # ------------------------------------------------
 # 1. BLOG .html → clean slug (fixes GSC duplicates)
 # ------------------------------------------------
-/blog/all-tools-explained-2026.html                          /blog/all-tools-explained-2026/                          301
+/blog/all-tools-explained-2026.html                     /blog/all-tools-explained-2026/                          301
 /blog/best-compression-settings-whatsapp-email-forms.html    /blog/best-compression-settings-whatsapp-email-forms/    301
 /blog/compress-pdf-email-job-portals.html                    /blog/compress-pdf-email-job-portals/                    301
 /blog/compress-scanned-pdfs-clear-text-small-size.html       /blog/compress-scanned-pdfs-clear-text-small-size/       301
@@ -15,76 +15,89 @@
 /blog/image-compression-for-web.html                         /blog/image-compression-for-web/                         301
 /blog/image-size-best-practices.html                         /blog/image-size-best-practices/                         301
 /blog/jpg-vs-png-smallest-file-size.html                     /blog/jpg-vs-png-smallest-file-size/                     301
-/blog/make-any-file-under-1mb.html                           /blog/make-any-file-under-1mb/                           301
+/blog/make-any-file-under-1mb.html                            /blog/make-any-file-under-1mb/                            301
 /blog/pdf-too-large-to-upload-size-limits.html               /blog/pdf-too-large-to-upload-size-limits/               301
 /blog/reduce-image-size-for-web-without-losing-quality.html  /blog/reduce-image-size-for-web-without-losing-quality/  301
-/blog/remove-hidden-data-from-documents.html                 /blog/remove-hidden-data-from-documents/                 301
-/blog/shrink-word-excel-powerpoint-files.html                /blog/shrink-word-excel-powerpoint-files/                301
+/blog/remove-hidden-data-from-documents.html                  /blog/remove-hidden-data-from-documents/                  301
+/blog/shrink-word-excel-powerpoint-files.html                 /blog/shrink-word-excel-powerpoint-files/                 301
 /blog/why-images-are-so-big-how-to-fix.html                  /blog/why-images-are-so-big-how-to-fix/                  301
 /blog/add-page-numbers-to-pdf-fast.html                      /blog/add-page-numbers-to-pdf-fast/                      301
 /blog/sign-pdf-online-free-secure.html                       /blog/sign-pdf-online-free-secure/                       301
-/blog/redact-pdf-before-sharing-private-data.html            /blog/redact-pdf-before-sharing-private-data/            301
+/blog/redact-pdf-before-sharing-private-data.html             /blog/redact-pdf-before-sharing-private-data/             301
 /blog/compare-two-pdfs-find-changes.html                     /blog/compare-two-pdfs-find-changes/                     301
-/blog/extract-pages-from-pdf-create-new-file.html            /blog/extract-pages-from-pdf-create-new-file/            301
+/blog/extract-pages-from-pdf-create-new-file.html             /blog/extract-pages-from-pdf-create-new-file/             301
 /blog/extract-text-from-pdf-copy-download.html               /blog/extract-text-from-pdf-copy-download/               301
-/blog/pdf-to-jpg-small-size-for-forms.html                   /blog/pdf-to-jpg-small-size-for-forms/                   301
+/blog/pdf-to-jpg-small-size-for-forms.html                    /blog/pdf-to-jpg-small-size-for-forms/                    301
 /blog/reorder-pdf-pages-for-application.html                 /blog/reorder-pdf-pages-for-application/                 301
 /blog/crop-image-to-passport-photo-size.html                 /blog/crop-image-to-passport-photo-size/                 301
 /blog/watermark-image-protect-work.html                      /blog/watermark-image-protect-work/                      301
 /blog/csv-to-excel-clean-formatting.html                     /blog/csv-to-excel-clean-formatting/                     301
 /blog/make-pdf-under-2mb-for-scholarship-visa.html           /blog/make-pdf-under-2mb-for-scholarship-visa/           301
-/blog/email-forms-upload-limits-spain-italy-2026.html        /blog/email-forms-upload-limits-spain-italy-2026/        301
-/blog/remove-exif-metadata-from-images-privacy.html          /blog/remove-exif-metadata-from-images-privacy/          301
-/blog/pdf-pages-to-images-and-back-best-size.html            /blog/pdf-pages-to-images-and-back-best-size/            301
-/blog/fix-invalid-json-common-errors.html                    /blog/fix-invalid-json-common-errors/                    301
-/blog/watermark-a-pdf-confidential-draft.html                /blog/watermark-a-pdf-confidential-draft/                301
+/blog/email-forms-upload-limits-spain-italy-2026.html         /blog/email-forms-upload-limits-spain-italy-2026/         301
+/blog/pdf-pages-to-images-and-back-best-size.html             /blog/pdf-pages-to-images-and-back-best-size/             301
+/blog/fix-invalid-json-common-errors.html                     /blog/fix-invalid-json-common-errors/                     301
+/blog/watermark-a-pdf-confidential-draft.html                 /blog/watermark-a-pdf-confidential-draft/                 301
 
 # ------------------------------------------------
-# 2. DUPLICATE TOOL → canonical tool
+# 2. REMOVED EXIF BLOG → New Master Privacy Slug
+# ------------------------------------------------
+/blog/remove-exif-metadata-from-images-privacy.html          /blog/metadata-removal-privacy-pdf-office/               301
+/blog/remove-exif-metadata-from-images-privacy/             /blog/metadata-removal-privacy-pdf-office/               301
+
+# ------------------------------------------------
+# 3. TRUNCATED SLUGS (Fixes 404 Crawl Errors)
+# ------------------------------------------------
+/blog/pdf-pages-to-images-and-back-best/                    /blog/pdf-pages-to-images-and-back-best-size/            301
+/blog/reduce-image-size-for-web-without/                    /blog/reduce-image-size-for-web-without-losing-quality/  301
+/blog/email-forms-upload-limits-spain/                      /blog/email-forms-upload-limits-spain-italy-2026/        301
+/blog/email-attachment-limits-gmail-outlook/                /blog/email-attachment-limits-gmail-outlook-icloud/      301
+
+# ------------------------------------------------
+# 4. DUPLICATE TOOL → canonical tool
 # ------------------------------------------------
 /tools/pdf/pdf-compressor/    /tools/pdf/compress-pdf/    301
 
 # ------------------------------------------------
-# 3. GHOST PAGES → nearest relevant page
+# 5. GHOST PAGES → nearest relevant page
 # ------------------------------------------------
-/presets/                      /tools/                   301
-/presets/university-2mb/       /tools/pdf/compress-pdf/  301
-/presets/email-10mb/           /tools/pdf/compress-pdf/  301
-/presets/whatsapp-images/      /tools/image/             301
-/workspace/                    /tools/                   301
-/tool-finder/                  /tools/                   301
-/workflows/                    /blog/                    301
-/updates/                      /blog/                    301
-/tools/youtube-seo/            /tools/                   301
-/tools/repair-pdf              /tools/pdf/               301
-/tools/repair-pdf/             /tools/pdf/               301
-/checklists/scholarship-submission/  /blog/scholarship-upload-limits-compress-pdf/  301
-/tools/pdf/index%20(2).html    /tools/pdf/               301
-/tools/unlock-pdf              /tools/pdf/               301
-/tools/unlock-pdf/             /tools/pdf/               301
-/blog/future-of-digital-docs   /blog/                    301
-/blog/future-of-digital-docs/  /blog/                    301
-/reorder-pdf-pages             /tools/pdf/reorder-pdf/   301
-/reorder-pdf-pages/            /tools/pdf/reorder-pdf/   301
-/assets/logo.png               /favicon_192x192.png      301
-/tools.html                    /tools/                   301
-/tools/edit-pdf                /tools/pdf/               301
-/tools/edit-pdf/               /tools/pdf/               301
-/blog/why-pdf-still-matters    /blog/how-to-compress-pdf/  301
-/blog/why-pdf-still-matters/   /blog/how-to-compress-pdf/  301
-/blog/optimize-pdf-quality     /blog/how-to-compress-pdf/  301
-/blog/optimize-pdf-quality/    /blog/how-to-compress-pdf/  301
-/blog/protect-pdf-step-by-step  /blog/redact-pdf-before-sharing-private-data/  301
-/blog/protect-pdf-step-by-step/ /blog/redact-pdf-before-sharing-private-data/  301
-/cookie-policy.html            /cookie-policy/           301
-/tools/rotate-pdf              /tools/pdf/rotate-pdf/    301
-/tools/rotate-pdf/             /tools/pdf/rotate-pdf/    301
-/tools/merge-pdf               /tools/pdf/merge-pdf/     301
-/tools/merge-pdf/              /tools/pdf/merge-pdf/     301
-/privacy                       /privacy-policy/          301
-/privacy/                      /privacy-policy/          301
+/presets/                       /tools/                    301
+/presets/university-2mb/        /tools/pdf/compress-pdf/   301
+/presets/email-10mb/            /tools/pdf/compress-pdf/   301
+/presets/whatsapp-images/       /tools/image/              301
+/workspace/                     /tools/                    301
+/tool-finder/                   /tools/                    301
+/workflows/                     /blog/                     301
+/updates/                       /blog/                     301
+/tools/youtube-seo/             /tools/                    301
+/tools/repair-pdf               /tools/pdf/                301
+/tools/repair-pdf/              /tools/pdf/                301
+/checklists/scholarship-submission/  /blog/scholarship-upload-limits-compress-pdf/   301
+/tools/pdf/index%20(2).html     /tools/pdf/                301
+/tools/unlock-pdf               /tools/pdf/                301
+/tools/unlock-pdf/              /tools/pdf/                301
+/blog/future-of-digital-docs    /blog/                     301
+/blog/future-of-digital-docs/   /blog/                     301
+/reorder-pdf-pages              /tools/pdf/reorder-pdf/    301
+/reorder-pdf-pages/             /tools/pdf/reorder-pdf/    301
+/assets/logo.png                /favicon_192x192.png       301
+/tools.html                     /tools/                    301
+/tools/edit-pdf                 /tools/pdf/                301
+/tools/edit-pdf/                /tools/pdf/                301
+/blog/why-pdf-still-matters     /blog/how-to-compress-pdf/ 301
+/blog/why-pdf-still-matters/    /blog/how-to-compress-pdf/ 301
+/blog/optimize-pdf-quality      /blog/how-to-compress-pdf/ 301
+/blog/optimize-pdf-quality/     /blog/how-to-compress-pdf/ 301
+/blog/protect-pdf-step-by-step  /blog/redact-pdf-before-sharing-private-data/   301
+/blog/protect-pdf-step-by-step/ /blog/redact-pdf-before-sharing-private-data/   301
+/cookie-policy.html             /cookie-policy/            301
+/tools/rotate-pdf               /tools/pdf/rotate-pdf/     301
+/tools/rotate-pdf/              /tools/pdf/rotate-pdf/     301
+/tools/merge-pdf                /tools/pdf/merge-pdf/      301
+/tools/merge-pdf/               /tools/pdf/merge-pdf/      301
+/privacy                        /privacy-policy/           301
+/privacy/                       /privacy-policy/           301
 
 # ------------------------------------------------
-# 4. CUSTOM 404
+# 6. CUSTOM 404
 # ------------------------------------------------
-/*    /404.html    404
+/* /404.html    404
