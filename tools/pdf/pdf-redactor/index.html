@@ -6,14 +6,20 @@
 <meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." name="description"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
-<script>
-  if (window.pdfjsLib) {
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js';
-  }
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 
-<script src="/assets/js/pdf-lib.min.js" onerror="this.src='https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js'"></script>
+<script>
+  // Ensure the PDF worker is loaded and explicitly bound to the window to prevent "undefined" errors
+  window.onload = function() {
+    if (typeof window['pdfjs-dist/build/pdf'] !== 'undefined') {
+      window.pdfjsLib = window['pdfjs-dist/build/pdf'];
+    }
+    if (typeof pdfjsLib !== 'undefined') {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    }
+  };
+</script>
 
 <style>
 body{margin:0;font-family:sans-serif;background:#f4f5fb;}
@@ -29,6 +35,7 @@ canvas{border:1px solid #ccc;max-width:100%;}
 .tools{display:flex;gap:.5rem;margin-bottom:.7rem;flex-wrap:wrap;align-items:center;}
 .btn{padding:.5rem 1rem;background:#2563eb;color:white;border-radius:6px;cursor:pointer;border:none;font-weight:600;}
 .btn:hover{background:#1e4ed8;}
+.btn:disabled{background:#94a3b8;cursor:not-allowed;}
 .toggle{padding:.3rem .8rem;background:#e2e8f0;border-radius:6px;cursor:pointer;font-size:.9rem;}
 .toggle.active{background:#2563eb;color:white;}
 #blurLevels span{padding:.3rem .6rem;border:1px solid #2563eb;border-radius:5px;margin-right:6px;cursor:pointer;font-size:.85rem;}
@@ -75,7 +82,19 @@ header#top .nav-mobile.open { display: flex; }
 .tool-content-section code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.92em;}
 .tool-content-section strong{color:#111827;}
 </style>
-<link href="https://compressitsmall.co.uk/tools/pdf/pdf-redactor/" rel="canonical"/><meta content="website" property="og:type"/><meta content="Compress It Small" property="og:site_name"/><meta content="PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small" property="og:title"/><meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." property="og:description"/><meta content="https://compressitsmall.co.uk/tools/pdf/pdf-redactor/" property="og:url"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/><meta content="summary" name="twitter:card"/><meta content="PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small" name="twitter:title"/><meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." name="twitter:description"/><meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/><meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
+
+<link href="https://compressitsmall.co.uk/tools/pdf/pdf-redactor/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Compress It Small" property="og:site_name"/>
+<meta content="PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small" property="og:title"/>
+<meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." property="og:description"/>
+<meta content="https://compressitsmall.co.uk/tools/pdf/pdf-redactor/" property="og:url"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" property="og:image"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="PDF Redactor — Blackout or Blur Sensitive Information | Compress It Small" name="twitter:title"/>
+<meta content="Free PDF redactor tool. Permanently blackout or blur text, numbers, images, and sensitive details. Click-to-redact, drag-select redaction, or draw boxes. 100% private." name="twitter:description"/>
+<meta content="https://compressitsmall.co.uk/favicon_192x192.png" name="twitter:image"/>
+<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "PDF Redactor — Blackout or Blur Sensitive Information", "url": "https://compressitsmall.co.uk/tools/pdf/pdf-redactor/", "applicationCategory": "Utility", "operatingSystem": "Web browser", "description": "Redact sensitive text and images from PDFs directly in your browser. Draw blackout or blur boxes over private data — no upload to external servers.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}</script>
 </head>
 <body>
@@ -116,7 +135,7 @@ header#top .nav-mobile.open { display: flex; }
 <div class="workspace">
 <div class="tools">
 <input accept="application/pdf" id="pdfInput" type="file"/>
-<button class="btn" onclick="loadPDF()">Load PDF</button>
+<button class="btn" id="loadBtn" onclick="loadPDF()">Load PDF</button>
 <div class="toggle active" id="modeSelect" onclick="setMode('select')">Select</div>
 <div class="toggle" id="modeRedRect" onclick="setMode('rect')">Draw Box</div>
 <div class="toggle" id="modeRedClick" onclick="setMode('click')">Click Text</div>
@@ -153,16 +172,20 @@ const octx=overlayCanvas.getContext("2d");
 
 //================= LOADING PDF =====================//
 async function loadPDF(){
+  if (typeof pdfjsLib === 'undefined') {
+      document.getElementById("status").textContent = "Loading engine, please wait a second and click again...";
+      return;
+  }
+  
   const file = document.getElementById("pdfInput").files[0];
   if(!file){ alert("Select a PDF first"); return; }
   
   document.getElementById("status").textContent = "Loading PDF securely in browser...";
+  document.getElementById("loadBtn").disabled = true;
   
   try {
-    // Generate a secure local object URL so it loads instantly without crashing memory
     const fileUrl = URL.createObjectURL(file);
     pdfDoc = await pdfjsLib.getDocument(fileUrl).promise;
-    
     currentPage = 1;
     
     // Render the main page FIRST so the user isn't stuck waiting
@@ -173,11 +196,13 @@ async function loadPDF(){
     // Load thumbnails asynchronously in the background
     loadThumbnails().then(() => {
         document.getElementById("status").textContent = "Ready for redaction. Select a tool above.";
+        document.getElementById("loadBtn").disabled = false;
     });
 
   } catch (err) {
     console.error(err);
     document.getElementById("status").textContent = "Error loading PDF.";
+    document.getElementById("loadBtn").disabled = false;
     alert("Could not load PDF: " + err.message);
   }
 }
@@ -369,8 +394,10 @@ function undoRedaction(){
 async function applyRedactions(){
   const input = document.getElementById("pdfInput");
   const file = input.files[0];
+  
   if(!file){ alert("Select a PDF first"); return; }
   if(!pdfDoc){ alert("Load the PDF first"); return; }
+  if (typeof PDFLib === 'undefined') { alert("Processing engine is still loading. Try again in a moment."); return; }
 
   document.getElementById("status").textContent = "Flattening layers to guarantee security...";
   
